@@ -1,4 +1,4 @@
-# JavaPrepHub
+# BabuHub
 
 A visually stunning, animated, and educational website where students can learn Java programming through interactive examples and dry run visualizations.
 
@@ -50,7 +50,7 @@ npm run dev
 ## Project Structure
 
 ```
-javaprephub/
+babuhub/
 ├── src/
 │   ├── app/
 │   │   ├── about/

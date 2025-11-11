@@ -1,6 +1,6 @@
-# Verification Script for JavaPrepHub Setup
+# Verification Script for BabuHub Setup
 
-Write-Host "JavaPrepHub Setup Verification" -ForegroundColor Cyan
+Write-Host "BabuHub Setup Verification" -ForegroundColor Cyan
 Write-Host "================================" -ForegroundColor Cyan
 Write-Host ""
 

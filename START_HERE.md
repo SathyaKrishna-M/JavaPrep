@@ -1,4 +1,4 @@
-# 🚀 JavaPrepHub - Quick Start Guide
+# 🚀 BabuHub - Quick Start Guide
 
 ## ✅ Project Status: READY
 

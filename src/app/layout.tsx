@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'JavaPrepHub - Master Java for Exams',
+  title: 'BabuHub - Master Java for Exams',
   description: 'Interactive, Visual, and Easy Java learning platform for students',
   icons: {
     icon: '/favicon.ico',

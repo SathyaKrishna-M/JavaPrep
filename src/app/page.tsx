@@ -59,7 +59,7 @@ export default function Home() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="glass-card max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-3xl font-bold mb-6">Why JavaPrepHub?</h2>
+          <h2 className="text-3xl font-bold mb-6">Why BabuHub?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
               <div className="text-4xl mb-4">📚</div>

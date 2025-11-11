@@ -40,7 +40,7 @@ export default function AboutPage() {
           className="text-center mb-16"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-            About JavaPrepHub
+            About BabuHub
           </h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             An interactive, visual, and educational platform designed to help students master Java programming for exams
@@ -75,7 +75,7 @@ export default function AboutPage() {
         >
           <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
           <p className="text-gray-300 leading-relaxed mb-4">
-            JavaPrepHub was created with the vision of making Java programming accessible and understandable for all students. We believe that learning programming should be interactive, visual, and engaging.
+            BabuHub was created with the vision of making Java programming accessible and understandable for all students. We believe that learning programming should be interactive, visual, and engaging.
           </p>
           <p className="text-gray-300 leading-relaxed">
             Our platform combines clear explanations, practical examples, and innovative visualization tools to help you understand not just what the code does, but how it executes step-by-step.

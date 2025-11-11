@@ -24,7 +24,7 @@ export default function Footer() {
             </motion.span>
           </p>
           <p className="text-gray-500 text-sm mt-2">
-            © 2024 JavaPrepHub. All rights reserved.
+            © 2024 BabuHub. All rights reserved.
           </p>
         </motion.div>
       </div>

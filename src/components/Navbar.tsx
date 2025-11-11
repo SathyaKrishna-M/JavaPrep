@@ -42,7 +42,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center space-x-2 group">
             <FiCode className="w-8 h-8 text-blue-400 group-hover:text-blue-500 transition-colors" />
             <span className="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-              JavaPrepHub
+              BabuHub
             </span>
           </Link>
 

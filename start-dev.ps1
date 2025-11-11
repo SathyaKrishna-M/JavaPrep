@@ -1,6 +1,6 @@
-# Quick Start Script for JavaPrepHub Development Server
+# Quick Start Script for BabuHub Development Server
 
-Write-Host "Starting JavaPrepHub Development Server..." -ForegroundColor Cyan
+Write-Host "Starting BabuHub Development Server..." -ForegroundColor Cyan
 Write-Host ""
 
 # Check if node_modules exists
