@@ -185,7 +185,7 @@ export default function CircuitDiagram({ type, title, width = 600, height = 400 
             
             {/* Output labels */}
             <text x="250" y={height/2 - 20} fill="#00b4ff" fontSize="14" fontWeight="600">DIFFERENCE = A⊕B</text>
-            <text x="250" y={height/2 + 40} fill="#00b4ff" fontSize="14" fontWeight="600">BORROW = A'B</text>
+            <text x="250" y={height/2 + 40} fill="#00b4ff" fontSize="14" fontWeight="600">BORROW = A&apos;B</text>
           </g>
         )
       

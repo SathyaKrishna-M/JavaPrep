@@ -121,7 +121,7 @@ Mastery of Boolean algebra is essential for efficient digital circuit design.`,
       question: 'Simplify the expression: A · B + A · B\'',
       solution: 'Using the distributive law:\n\nA · B + A · B\' = A · (B + B\')\n\nSince B + B\' = 1 (complement law):\n\nA · (B + B\') = A · 1 = A\n\nTherefore, A · B + A · B\' = A',
       kMap: {
-        type: '2var',
+        type: '2var' as const,
         values: [0, 1, 0, 1],
         title: 'K-map for A·B + A·B\' = A (shows A is independent of B)',
         highlightedGroups: [

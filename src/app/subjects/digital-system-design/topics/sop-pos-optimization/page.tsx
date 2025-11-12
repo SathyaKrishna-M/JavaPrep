@@ -93,7 +93,7 @@ Grid with 8 cells representing minterms m0 through m7
 → Minimizes human error
 → Easy to verify`,
       kMap: {
-        type: '3var',
+        type: '3var' as const,
         values: [0, 1, 0, 1, 0, 1, 0, 1],
         title: 'Example: F = Σ(1, 3, 5, 7) - All 1s form one group where C=1 → F = C',
         highlightedGroups: [
@@ -129,7 +129,7 @@ Simplify F = Σ(0, 1, 2, 3, 8, 9, 10, 11)
 All 1s form one large group covering A'B' and AB'.
 Result: F = B' (A and C are eliminated)`,
       kMap: {
-        type: '2var',
+        type: '2var' as const,
         values: [1, 1, 0, 0],
         title: 'Example: F = Σ(0, 1) - Group m0 and m1 → F = A\'',
         highlightedGroups: [
@@ -186,7 +186,7 @@ K-map optimization is essential for designing efficient digital circuits with mi
       question: 'Simplify the SOP expression: A\'B\'C + A\'BC + ABC\' + ABC using K-map',
       solution: 'Step 1: Create a 3-variable K-map\nStep 2: Mark minterms: A\'B\'C (001), A\'BC (011), ABC\' (110), ABC (111)\nStep 3: Group adjacent 1s:\n  - Group 1: A\'B\'C + A\'BC = A\'C\n  - Group 2: ABC\' + ABC = AB\n\nSimplified expression: F = A\'C + AB',
       kMap: {
-        type: '3var',
+        type: '3var' as const,
         values: [0, 1, 0, 1, 0, 0, 1, 1],
         title: 'K-map for F = A\'B\'C + A\'BC + ABC\' + ABC = A\'C + AB',
         highlightedGroups: [
@@ -199,7 +199,7 @@ K-map optimization is essential for designing efficient digital circuits with mi
       question: 'Convert the function F = Σ(0, 2, 5, 7) to POS form',
       solution: 'F = Σ(0, 2, 5, 7) means minterms 0, 2, 5, 7 are 1\n\nMaxterms are where F = 0: Π(1, 3, 4, 6)\n\nPOS form: F = (A+B+C\') · (A+B\'+C\') · (A\'+B+C) · (A\'+B\'+C)',
       kMap: {
-        type: '3var',
+        type: '3var' as const,
         values: [1, 0, 1, 0, 0, 1, 0, 1],
         title: 'K-map for F = Σ(0, 2, 5, 7) - 1s shown, 0s are maxterms',
         highlightedGroups: [
@@ -226,7 +226,7 @@ K-map optimization is essential for designing efficient digital circuits with mi
       question: 'What is the simplified form of F = A\'B + AB\' using K-map?',
       solution: 'This is already a simplified SOP form.\n\nK-map would show:\n  - A\'B corresponds to minterm 2 (010)\n  - AB\' corresponds to minterm 6 (110)\n\nThese cannot be grouped together, so the expression is already minimal:\nF = A\'B + AB\' (which is also A ⊕ B, the XOR function)',
       kMap: {
-        type: '3var',
+        type: '3var' as const,
         values: [0, 0, 1, 0, 0, 0, 1, 0],
         title: 'K-map for F = A\'B + AB\' (XOR function - cannot be simplified further)',
         highlightedGroups: [

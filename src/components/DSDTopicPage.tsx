@@ -88,6 +88,8 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
   const [activeTab, setActiveTab] = useState<'explanation' | 'practice' | 'flowchart' | 'quiz'>(
     'explanation'
   )
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({})
+  const [showResults, setShowResults] = useState(false)
 
   const tabs = [
     { id: 'explanation' as const, label: 'Explanation', icon: <FiBook className="w-4 h-4" /> },
@@ -271,9 +273,6 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
 
   const renderQuiz = () => {
     if (content.quizQuestions && content.quizQuestions.length > 0) {
-      const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({})
-      const [showResults, setShowResults] = useState(false)
-
       const calculateScore = () => {
         let correct = 0
         content.quizQuestions?.forEach((q, index) => {
@@ -420,7 +419,14 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
         {tabs.map((tab) => (
           <button
             key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
+            onClick={() => {
+              setActiveTab(tab.id)
+              // Reset quiz state when switching away from quiz tab
+              if (tab.id !== 'quiz') {
+                setSelectedAnswers({})
+                setShowResults(false)
+              }
+            }}
             className={`px-6 py-3 font-semibold transition-all relative flex items-center gap-2 whitespace-nowrap ${
               activeTab === tab.id
                 ? 'text-blue-400'

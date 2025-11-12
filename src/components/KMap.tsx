@@ -24,11 +24,11 @@ export default function KMap({ type, values, title, highlightedGroups = [] }: KM
     return (
       <svg width={width} height={height} className="overflow-visible">
         {/* Column labels */}
-        <text x={labelWidth + cellSize} y={labelWidth - 5} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="middle">B'</text>
+        <text x={labelWidth + cellSize} y={labelWidth - 5} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="middle">B&apos;</text>
         <text x={labelWidth + cellSize * 2} y={labelWidth - 5} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="middle">B</text>
         
         {/* Row labels */}
-        <text x={labelWidth - 10} y={labelWidth + cellSize / 2} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="end">A'</text>
+        <text x={labelWidth - 10} y={labelWidth + cellSize / 2} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="end">A&apos;</text>
         <text x={labelWidth - 10} y={labelWidth + cellSize * 1.5} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="end">A</text>
 
         {/* Grid */}
@@ -87,13 +87,13 @@ export default function KMap({ type, values, title, highlightedGroups = [] }: KM
     return (
       <svg width={width} height={height} className="overflow-visible">
         {/* Column labels */}
-        <text x={labelWidth + cellSize} y={labelWidth - 5} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="middle">C'</text>
+        <text x={labelWidth + cellSize} y={labelWidth - 5} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="middle">C&apos;</text>
         <text x={labelWidth + cellSize * 2} y={labelWidth - 5} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="middle">C</text>
         <text x={labelWidth + cellSize * 3} y={labelWidth - 5} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="middle">C</text>
-        <text x={labelWidth + cellSize * 4} y={labelWidth - 5} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="middle">C'</text>
+        <text x={labelWidth + cellSize * 4} y={labelWidth - 5} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="middle">C&apos;</text>
         
         {/* Row labels */}
-        <text x={labelWidth - 10} y={labelWidth + cellSize / 2} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="end">A'B'</text>
+        <text x={labelWidth - 10} y={labelWidth + cellSize / 2} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="end">A&apos;B&apos;</text>
         <text x={labelWidth - 10} y={labelWidth + cellSize * 1.5} fill="#00b4ff" fontSize="14" fontWeight="bold" textAnchor="end">AB</text>
 
         {/* Grid */}
@@ -153,16 +153,16 @@ export default function KMap({ type, values, title, highlightedGroups = [] }: KM
     return (
       <svg width={width} height={height} className="overflow-visible">
         {/* Column labels */}
-        <text x={labelWidth + cellSize} y={labelWidth - 5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="middle">C'D'</text>
-        <text x={labelWidth + cellSize * 2} y={labelWidth - 5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="middle">C'D</text>
+        <text x={labelWidth + cellSize} y={labelWidth - 5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="middle">C&apos;D&apos;</text>
+        <text x={labelWidth + cellSize * 2} y={labelWidth - 5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="middle">C&apos;D</text>
         <text x={labelWidth + cellSize * 3} y={labelWidth - 5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="middle">CD</text>
-        <text x={labelWidth + cellSize * 4} y={labelWidth - 5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="middle">CD'</text>
+        <text x={labelWidth + cellSize * 4} y={labelWidth - 5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="middle">CD&apos;</text>
         
         {/* Row labels */}
-        <text x={labelWidth - 10} y={labelWidth + cellSize / 2} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="end">A'B'</text>
-        <text x={labelWidth - 10} y={labelWidth + cellSize * 1.5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="end">A'B</text>
+        <text x={labelWidth - 10} y={labelWidth + cellSize / 2} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="end">A&apos;B&apos;</text>
+        <text x={labelWidth - 10} y={labelWidth + cellSize * 1.5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="end">A&apos;B</text>
         <text x={labelWidth - 10} y={labelWidth + cellSize * 2.5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="end">AB</text>
-        <text x={labelWidth - 10} y={labelWidth + cellSize * 3.5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="end">AB'</text>
+        <text x={labelWidth - 10} y={labelWidth + cellSize * 3.5} fill="#00b4ff" fontSize="12" fontWeight="bold" textAnchor="end">AB&apos;</text>
 
         {/* Grid */}
         <rect x={labelWidth} y={labelWidth} width={cellSize * 4} height={cellSize * 4} fill="none" stroke="#00b4ff" strokeWidth="2" />
