@@ -271,7 +271,8 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
     )
   }
 
-  const renderQuiz = () => {
+  // Quiz component to avoid hook usage in render function
+  const QuizContent = () => {
     if (content.quizQuestions && content.quizQuestions.length > 0) {
       const calculateScore = () => {
         let correct = 0
@@ -385,6 +386,10 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
         </div>
       </div>
     )
+  }
+
+  const renderQuiz = () => {
+    return <QuizContent />
   }
 
   return (
