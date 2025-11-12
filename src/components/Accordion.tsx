@@ -6,6 +6,9 @@ import { FiChevronDown, FiEye, FiPlay, FiGitBranch } from 'react-icons/fi'
 import CodeBlock from './CodeBlock'
 import DryRunVisualizer, { DryRunStep } from './DryRunVisualizer'
 import AnimatedFlowchart, { FlowStep, FlowEdge } from './AnimatedFlowchart'
+import CircuitDiagram from './CircuitDiagram'
+import TruthTable from './TruthTable'
+import KMap from './KMap'
 
 export interface AccordionItem {
   question: string
@@ -16,6 +19,26 @@ export interface AccordionItem {
   flowSteps?: FlowStep[]
   flowNodes?: FlowStep[]
   flowEdges?: FlowEdge[]
+  circuitDiagram?: {
+    type: string
+    title?: string
+    width?: number
+    height?: number
+  }
+  truthTable?: {
+    headers: string[]
+    rows: (string | number)[][]
+    title?: string
+  }
+  kMap?: {
+    type: '2var' | '3var' | '4var'
+    values: number[]
+    title?: string
+    highlightedGroups?: Array<{
+      cells: number[]
+      color?: string
+    }>
+  }
 }
 
 interface AccordionProps {
@@ -97,6 +120,41 @@ export default function Accordion({ items }: AccordionProps) {
                       </p>
                     )}
                   </div>
+
+                  {/* Circuit Diagram */}
+                  {item.circuitDiagram && (
+                    <div className="mt-4">
+                      <CircuitDiagram
+                        type={item.circuitDiagram.type}
+                        title={item.circuitDiagram.title}
+                        width={item.circuitDiagram.width}
+                        height={item.circuitDiagram.height}
+                      />
+                    </div>
+                  )}
+
+                  {/* Truth Table */}
+                  {item.truthTable && (
+                    <div className="mt-4">
+                      <TruthTable
+                        headers={item.truthTable.headers}
+                        rows={item.truthTable.rows}
+                        title={item.truthTable.title}
+                      />
+                    </div>
+                  )}
+
+                  {/* K-Map */}
+                  {item.kMap && (
+                    <div className="mt-4">
+                      <KMap
+                        type={item.kMap.type}
+                        values={item.kMap.values}
+                        title={item.kMap.title}
+                        highlightedGroups={item.kMap.highlightedGroups}
+                      />
+                    </div>
+                  )}
 
                   {/* Flowchart Button */}
                   {((item.flowSteps && item.flowSteps.length > 0) || 

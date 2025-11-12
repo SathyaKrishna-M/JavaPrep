@@ -3,13 +3,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import ThemeToggle from './ThemeToggle'
-import { FiCode, FiMenu, FiX } from 'react-icons/fi'
+import { FiCode, FiMenu, FiX, FiChevronDown } from 'react-icons/fi'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isSubjectsOpen, setIsSubjectsOpen] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -20,9 +21,13 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  const subjects = [
+    { href: '/subjects/java', label: 'Java' },
+    { href: '/subjects/digital-system-design', label: 'Digital System Design' },
+  ]
+
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/topics', label: 'Topics' },
     { href: '/visualizer', label: 'Visualizer' },
     { href: '/about', label: 'About' },
   ]
@@ -71,6 +76,60 @@ export default function Navbar() {
                 </Link>
               )
             })}
+            
+            {/* Subjects Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsSubjectsOpen(true)}
+              onMouseLeave={() => setIsSubjectsOpen(false)}
+            >
+              <button
+                className={`relative px-4 py-2 rounded-lg transition-colors flex items-center gap-1 ${
+                  pathname.startsWith('/subjects')
+                    ? 'text-blue-400 font-semibold'
+                    : 'text-gray-300 hover:text-white'
+                }`}
+              >
+                Subjects
+                <FiChevronDown className={`w-4 h-4 transition-transform ${isSubjectsOpen ? 'rotate-180' : ''}`} />
+                {pathname.startsWith('/subjects') && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 glass rounded-lg -z-10"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+              </button>
+              
+              <AnimatePresence>
+                {isSubjectsOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    className="absolute top-full left-0 mt-2 glass-card min-w-[200px] py-2 z-50"
+                  >
+                    {subjects.map((subject) => {
+                      const isActive = pathname.startsWith(subject.href)
+                      return (
+                        <Link
+                          key={subject.href}
+                          href={subject.href}
+                          className={`block px-4 py-2 transition-colors ${
+                            isActive
+                              ? 'text-blue-400 font-semibold bg-blue-500/20'
+                              : 'text-gray-300 hover:text-white hover:bg-blue-500/10'
+                          }`}
+                        >
+                          {subject.label}
+                        </Link>
+                      )
+                    })}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+            
             <ThemeToggle />
           </div>
 
@@ -116,6 +175,26 @@ export default function Navbar() {
                 </Link>
               )
             })}
+            <div className="px-4 py-2">
+              <div className="text-gray-400 text-sm font-semibold mb-2">Subjects</div>
+              {subjects.map((subject) => {
+                const isActive = pathname.startsWith(subject.href)
+                return (
+                  <Link
+                    key={subject.href}
+                    href={subject.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`block px-4 py-2 rounded-lg transition-colors ${
+                      isActive
+                        ? 'text-blue-400 font-semibold glass'
+                        : 'text-gray-300 hover:text-white hover:glass'
+                    }`}
+                  >
+                    {subject.label}
+                  </Link>
+                )
+              })}
+            </div>
           </motion.div>
         )}
       </div>

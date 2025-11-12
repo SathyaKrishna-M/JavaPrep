@@ -3,9 +3,32 @@
 import { motion } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import TopicCard from '@/components/TopicCard'
-import { topics } from '@/data/topics'
 import Link from 'next/link'
+import { FaJava } from 'react-icons/fa'
+import { FiCpu } from 'react-icons/fi'
+
+const subjects = [
+  {
+    id: 'java',
+    title: 'Java Programming',
+    description: 'Master Java programming with interactive examples, visualizations, and practice exercises',
+    icon: <FaJava className="w-16 h-16" />,
+    href: '/subjects/java',
+    color: 'from-orange-400 to-orange-600',
+    bgColor: 'from-orange-500/10 to-orange-600/10',
+    borderColor: 'border-orange-500/30',
+  },
+  {
+    id: 'digital-system-design',
+    title: 'Digital System Design',
+    description: 'Learn digital logic design, circuit optimization, and programmable devices with visual flowcharts',
+    icon: <FiCpu className="w-16 h-16" />,
+    href: '/subjects/digital-system-design',
+    color: 'from-blue-400 to-cyan-600',
+    bgColor: 'from-blue-500/10 to-cyan-600/10',
+    borderColor: 'border-blue-500/30',
+  },
+]
 
 export default function Home() {
   return (
@@ -20,34 +43,44 @@ export default function Home() {
           className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-            Master Java for Exams
+            BabuHub Learning Platform
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 mb-8">
-            Interactive, Visual, Easy
+            Interactive, Visual, Easy - Master Programming & Digital Design
           </p>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link
-              href="/topics"
-              className="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-blue-500/50 transition-all duration-300"
-            >
-              Start Learning
-            </Link>
-          </motion.div>
         </motion.div>
 
-        {/* Topic Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
-          {topics.map((topic, index) => (
+        {/* Subject Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
+          {subjects.map((subject, index) => (
             <motion.div
-              key={topic.id}
+              key={subject.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
             >
-              <TopicCard topic={topic} />
+              <Link href={subject.href}>
+                <motion.div
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className={`glass-card h-full cursor-pointer group border-2 ${subject.borderColor} bg-gradient-to-br ${subject.bgColor}`}
+                >
+                  <div className={`text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r ${subject.color}`}>
+                    {subject.icon}
+                  </div>
+                  <h3 className={`text-2xl font-bold mb-3 bg-gradient-to-r ${subject.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform`}>
+                    {subject.title}
+                  </h3>
+                  <p className="text-gray-300 mb-6">{subject.description}</p>
+                  <motion.div
+                    className={`flex items-center gap-2 font-semibold bg-gradient-to-r ${subject.color} bg-clip-text text-transparent`}
+                    initial={{ x: 0 }}
+                    whileHover={{ x: 5 }}
+                  >
+                    Explore Topics →
+                  </motion.div>
+                </motion.div>
+              </Link>
             </motion.div>
           ))}
         </div>
