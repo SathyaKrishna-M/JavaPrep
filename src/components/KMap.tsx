@@ -53,12 +53,12 @@ export default function KMap({ type, values, title, highlightedGroups = [] }: KM
               <text
                 x={x + cellSize / 2}
                 y={y + cellSize / 2 + 5}
-                fill="#ffffff"
+                fill={values[i] === -1 ? "#ff6b6b" : "#ffffff"}
                 fontSize="18"
                 fontWeight="bold"
                 textAnchor="middle"
               >
-                {values[i] ?? 0}
+                {values[i] === -1 ? 'X' : (values[i] ?? 0)}
               </text>
               <text
                 x={x + cellSize / 2}
@@ -120,12 +120,12 @@ export default function KMap({ type, values, title, highlightedGroups = [] }: KM
               <text
                 x={x + cellSize / 2}
                 y={y + cellSize / 2 + 5}
-                fill="#ffffff"
+                fill={values[i] === -1 ? "#ff6b6b" : "#ffffff"}
                 fontSize="18"
                 fontWeight="bold"
                 textAnchor="middle"
               >
-                {values[i] ?? 0}
+                {values[i] === -1 ? 'X' : (values[i] ?? 0)}
               </text>
               <text
                 x={x + cellSize / 2}
@@ -190,12 +190,12 @@ export default function KMap({ type, values, title, highlightedGroups = [] }: KM
               <text
                 x={x + cellSize / 2}
                 y={y + cellSize / 2 + 5}
-                fill="#ffffff"
+                fill={values[i] === -1 ? "#ff6b6b" : "#ffffff"}
                 fontSize="16"
                 fontWeight="bold"
                 textAnchor="middle"
               >
-                {values[i] ?? 0}
+                {values[i] === -1 ? 'X' : (values[i] ?? 0)}
               </text>
               <text
                 x={x + cellSize / 2}

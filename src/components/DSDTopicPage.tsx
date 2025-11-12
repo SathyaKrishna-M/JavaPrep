@@ -9,6 +9,7 @@ import AnimatedFlowchart, { FlowStep, FlowEdge } from '@/components/AnimatedFlow
 import CircuitDiagram from '@/components/CircuitDiagram'
 import TruthTable from '@/components/TruthTable'
 import KMap from '@/components/KMap'
+import HomeAssignment from '@/components/HomeAssignment'
 import { 
   FiArrowRight, 
   FiCode, 
@@ -17,7 +18,8 @@ import {
   FiCheckCircle,
   FiAlertCircle,
   FiGitBranch,
-  FiHelpCircle
+  FiHelpCircle,
+  FiHome
 } from 'react-icons/fi'
 
 export interface CircuitDiagramData {
@@ -85,7 +87,7 @@ interface DSDTopicPageProps {
 }
 
 export default function DSDTopicPage({ content, subjectHref = '/subjects/digital-system-design' }: DSDTopicPageProps) {
-  const [activeTab, setActiveTab] = useState<'explanation' | 'practice' | 'flowchart' | 'quiz'>(
+  const [activeTab, setActiveTab] = useState<'explanation' | 'practice' | 'flowchart' | 'quiz' | 'assignment'>(
     'explanation'
   )
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({})
@@ -96,6 +98,7 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
     { id: 'practice' as const, label: 'Practice', icon: <FiTarget className="w-4 h-4" /> },
     { id: 'flowchart' as const, label: 'Flowchart', icon: <FiGitBranch className="w-4 h-4" /> },
     { id: 'quiz' as const, label: 'Quiz', icon: <FiHelpCircle className="w-4 h-4" /> },
+    { id: 'assignment' as const, label: 'Home Assignment', icon: <FiHome className="w-4 h-4" /> },
   ]
 
   const renderExplanation = () => {
@@ -465,6 +468,7 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
           {activeTab === 'practice' && renderPractice()}
           {activeTab === 'flowchart' && renderFlowchart()}
           {activeTab === 'quiz' && renderQuiz()}
+          {activeTab === 'assignment' && <HomeAssignment />}
         </motion.div>
       </AnimatePresence>
     </div>

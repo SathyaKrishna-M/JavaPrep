@@ -88,5 +88,13 @@ export const dsdTopics: DSDTopic[] = [
     href: '/subjects/digital-system-design/topics/reversible-gates',
     session: 11,
   },
+  {
+    id: 'important-questions',
+    title: 'Important Questions',
+    description: 'Selected important questions with detailed solutions',
+    icon: '📚',
+    href: '/subjects/digital-system-design/topics/important-questions',
+    session: 0,
+  },
 ]
 
