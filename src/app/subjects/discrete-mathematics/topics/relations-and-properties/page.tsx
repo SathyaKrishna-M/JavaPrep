@@ -4,7 +4,7 @@ import DMTopicPage from '@/components/DMTopicPage'
 import { FiBook, FiTarget, FiGitBranch } from 'react-icons/fi'
 
 const content = {
-  title: 'Relations, Functions & Equivalence',
+  title: 'Relations & Their Properties',
   explanationSections: [
     {
       title: '🔗 Relations',

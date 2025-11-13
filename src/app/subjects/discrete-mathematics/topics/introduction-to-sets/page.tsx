@@ -4,7 +4,7 @@ import DMTopicPage from '@/components/DMTopicPage'
 import { FiBook, FiTarget, FiGitBranch } from 'react-icons/fi'
 
 const content = {
-  title: 'Sets, Subsets, Power Set, Venn Diagrams, Set Operations, Cartesian Product',
+  title: 'Introduction to Sets',
   explanationSections: [
     {
       title: '📊 Sets and Set Notation',

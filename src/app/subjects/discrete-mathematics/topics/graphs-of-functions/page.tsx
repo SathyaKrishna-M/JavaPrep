@@ -4,7 +4,7 @@ import DMTopicPage from '@/components/DMTopicPage'
 import { FiBook, FiTarget, FiCode } from 'react-icons/fi'
 
 const content = {
-  title: 'Functions for Computer Science (Graphs, Floor, Ceiling, Boolean, Exponential)',
+  title: 'Introduction to Graphs of Functions',
   explanationSections: [
     {
       title: '📊 Floor and Ceiling Functions',
