@@ -5,7 +5,7 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 import { FaJava } from 'react-icons/fa'
-import { FiCpu } from 'react-icons/fi'
+import { FiCpu, FiLayers } from 'react-icons/fi'
 
 const subjects = [
   {
@@ -27,6 +27,16 @@ const subjects = [
     color: 'from-blue-400 to-cyan-600',
     bgColor: 'from-blue-500/10 to-cyan-600/10',
     borderColor: 'border-blue-500/30',
+  },
+  {
+    id: 'discrete-mathematics',
+    title: 'Discrete Mathematics',
+    description: 'Master sets, relations, functions, lattices, and discrete structures with interactive diagrams and examples',
+    icon: <FiLayers className="w-16 h-16" />,
+    href: '/subjects/discrete-mathematics',
+    color: 'from-purple-400 to-pink-600',
+    bgColor: 'from-purple-500/10 to-pink-600/10',
+    borderColor: 'border-purple-500/30',
   },
 ]
 
@@ -51,7 +61,7 @@ export default function Home() {
         </motion.div>
 
         {/* Subject Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto">
           {subjects.map((subject, index) => (
             <motion.div
               key={subject.id}

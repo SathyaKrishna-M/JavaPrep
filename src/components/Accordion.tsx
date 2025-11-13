@@ -39,6 +39,7 @@ export interface AccordionItem {
       color?: string
     }>
   }
+  customContent?: React.ReactNode
 }
 
 interface AccordionProps {
@@ -153,6 +154,13 @@ export default function Accordion({ items }: AccordionProps) {
                         title={item.kMap.title}
                         highlightedGroups={item.kMap.highlightedGroups}
                       />
+                    </div>
+                  )}
+
+                  {/* Custom Content */}
+                  {item.customContent && (
+                    <div className="mt-4">
+                      {item.customContent}
                     </div>
                   )}
 
