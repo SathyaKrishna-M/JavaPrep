@@ -3,15 +3,9 @@
 import { useState, useEffect, useRef, KeyboardEvent } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import Fuse from 'fuse.js'
+import Fuse, { FuseResult } from 'fuse.js'
 import { searchIndex, SearchItem } from '@/data/search-index'
 import { FiSearch, FiX, FiArrowRight } from 'react-icons/fi'
-
-type FuseResult<T> = {
-  item: T
-  refIndex: number
-  score?: number
-}
 
 interface SearchDropdownProps {
   isOpen: boolean

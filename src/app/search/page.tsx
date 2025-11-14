@@ -1,19 +1,13 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import Fuse from 'fuse.js'
+import Fuse, { FuseResult } from 'fuse.js'
 import { searchIndex, SearchItem, trendingSearches } from '@/data/search-index'
 import { FiSearch, FiArrowRight, FiBook } from 'react-icons/fi'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-
-type FuseResult<T> = {
-  item: T
-  refIndex: number
-  score?: number
-}
 
 const typeIcons: Record<SearchItem['type'], string> = {
   topic: '📘',
@@ -35,7 +29,7 @@ const subjectLabels: Record<SearchItem['subject'], string> = {
   DM: 'Discrete Mathematics',
 }
 
-export default function SearchPage() {
+function SearchContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const query = searchParams.get('q') || ''
@@ -245,6 +239,27 @@ export default function SearchPage() {
       </div>
       <Footer />
     </main>
+  )
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen">
+          <Navbar />
+          <div className="container mx-auto px-4 py-20">
+            <div className="text-center py-16">
+              <FiSearch className="w-16 h-16 text-gray-500 mx-auto mb-4 animate-pulse" />
+              <h2 className="text-2xl font-bold text-white mb-2">Loading search...</h2>
+            </div>
+          </div>
+          <Footer />
+        </main>
+      }
+    >
+      <SearchContent />
+    </Suspense>
   )
 }
 
