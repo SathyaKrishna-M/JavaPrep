@@ -27,7 +27,7 @@ Benefits:
     
     // Public getter method
     public String getName() {
-        return name;
+        return this.name;
     }
     
     // Public setter method
@@ -58,7 +58,7 @@ Types:
     private String name;
     
     public String getName() {
-        return name;  // Can access private variable within class
+        return this.name;  // Can access private variable within class
     }
 }`,
     },
@@ -70,24 +70,24 @@ Types:
 Getter Methods:
 → Return the value of <span class="text-cyan-300">private variable</span>
 → <span class="text-cyan-300">Naming:</span> <span class="text-blue-400">getVariableName()</span>
-→ <span class="text-amber-300">Example:</span> <span class="text-cyan-300">public String getName() { return name; }</span>
+→ <span class="text-amber-300">Example:</span> <span class="text-cyan-300">public String getName() { return this.name; }</span>
 
 Setter Methods:
 → Set the value of <span class="text-cyan-300">private variable</span>
 → <span class="text-cyan-300">Naming:</span> <span class="text-blue-400">setVariableName()</span>
 → <span class="text-amber-300">Can include validation logic</span>
-→ <span class="text-amber-300">Example:</span> <span class="text-cyan-300">public void setName(String n) { name = n; }</span>`,
+→ <span class="text-amber-300">Example:</span> <span class="text-cyan-300">public void setName(String n) { this.name = n; }</span>`,
       code: `public class GetterSetter {
     private String name;
     private int age;
     
     // Getter methods
     public String getName() {
-        return name;
+        return this.name;
     }
     
     public int getAge() {
-        return age;
+        return this.age;
     }
     
     // Setter methods
@@ -156,15 +156,15 @@ Benefits:
     
     // Getter methods
     public String getName() {
-        return name;
+        return this.name;
     }
     
     public int getAge() {
-        return age;
+        return this.age;
     }
     
     public double getGpa() {
-        return gpa;
+        return this.gpa;
     }
     
     // Setter methods with validation
@@ -192,9 +192,9 @@ Benefits:
     
     // Method to display student information
     public void display() {
-        System.out.println("Name: " + name);
-        System.out.println("Age: " + age);
-        System.out.println("GPA: " + gpa);
+        System.out.println("Name: " + this.name);
+        System.out.println("Age: " + this.age);
+        System.out.println("GPA: " + this.gpa);
     }
 }
 
@@ -234,30 +234,30 @@ class Car {
         Scanner sc = new Scanner(System.in);
         
         System.out.print("Enter Registration Number: ");
-        Regno = sc.nextLine();
+        this.Regno = sc.nextLine();
         
         System.out.print("Enter Owner Name: ");
-        OwnerName = sc.nextLine();
+        this.OwnerName = sc.nextLine();
         
         System.out.print("Enter Model (Year): ");
-        Model = sc.nextInt();
+        this.Model = sc.nextInt();
         sc.nextLine(); // consume newline
         
         System.out.print("Enter Fuel Used: ");
-        FuelUsed = sc.nextLine();
+        this.FuelUsed = sc.nextLine();
         
         System.out.print("Enter Engine Number: ");
-        EngineNumber = sc.nextLine();
+        this.EngineNumber = sc.nextLine();
     }
     
     // Method to print data
     public void printData() {
         System.out.println("\\n=== Car Details ===");
-        System.out.println("Registration Number: " + Regno);
-        System.out.println("Owner Name: " + OwnerName);
-        System.out.println("Model (Year): " + Model);
-        System.out.println("Fuel Used: " + FuelUsed);
-        System.out.println("Engine Number: " + EngineNumber);
+        System.out.println("Registration Number: " + this.Regno);
+        System.out.println("Owner Name: " + this.OwnerName);
+        System.out.println("Model (Year): " + this.Model);
+        System.out.println("Fuel Used: " + this.FuelUsed);
+        System.out.println("Engine Number: " + this.EngineNumber);
     }
 }
 
@@ -286,30 +286,30 @@ class Country {
         Scanner sc = new Scanner(System.in);
         
         System.out.print("Enter Country Name: ");
-        CName = sc.nextLine();
+        this.CName = sc.nextLine();
         
         System.out.print("Enter Capital City: ");
-        CapitalCity = sc.nextLine();
+        this.CapitalCity = sc.nextLine();
         
         System.out.print("Enter Area (sq km): ");
-        Area = sc.nextDouble();
+        this.Area = sc.nextDouble();
         
         System.out.print("Enter Population: ");
-        Population = sc.nextLong();
+        this.Population = sc.nextLong();
         sc.nextLine(); // consume newline
         
         System.out.print("Enter Currency: ");
-        Currency = sc.nextLine();
+        this.Currency = sc.nextLine();
     }
     
     // Method to print data
     public void printData() {
         System.out.println("\\n=== Country Details ===");
-        System.out.println("Country Name: " + CName);
-        System.out.println("Capital City: " + CapitalCity);
-        System.out.println("Area: " + Area + " sq km");
-        System.out.println("Population: " + Population);
-        System.out.println("Currency: " + Currency);
+        System.out.println("Country Name: " + this.CName);
+        System.out.println("Capital City: " + this.CapitalCity);
+        System.out.println("Area: " + this.Area + " sq km");
+        System.out.println("Population: " + this.Population);
+        System.out.println("Currency: " + this.Currency);
     }
 }
 
@@ -338,35 +338,35 @@ class Player {
         Scanner sc = new Scanner(System.in);
         
         System.out.print("Enter Player Name: ");
-        PName = sc.nextLine();
+        this.PName = sc.nextLine();
         
         System.out.print("Enter Matches Played: ");
-        MatchesPlayed = sc.nextInt();
+        this.MatchesPlayed = sc.nextInt();
         
         System.out.print("Enter Balls Faced: ");
-        Balls_Faced = sc.nextInt();
+        this.Balls_Faced = sc.nextInt();
         
         System.out.print("Enter Runs Scored: ");
-        Runs_Scored = sc.nextInt();
+        this.Runs_Scored = sc.nextInt();
     }
     
     // Method to calculate strike rate
     public void calculateStrikeRate() {
-        if (Balls_Faced > 0) {
-            Strike_Rate = (Runs_Scored * 100.0) / Balls_Faced;
+        if (this.Balls_Faced > 0) {
+            this.Strike_Rate = (this.Runs_Scored * 100.0) / this.Balls_Faced;
         } else {
-            Strike_Rate = 0.0;
+            this.Strike_Rate = 0.0;
         }
     }
     
     // Method to print data
     public void printData() {
         System.out.println("\\n=== Player Details ===");
-        System.out.println("Player Name: " + PName);
-        System.out.println("Matches Played: " + MatchesPlayed);
-        System.out.println("Balls Faced: " + Balls_Faced);
-        System.out.println("Runs Scored: " + Runs_Scored);
-        System.out.println("Strike Rate: " + String.format("%.2f", Strike_Rate));
+        System.out.println("Player Name: " + this.PName);
+        System.out.println("Matches Played: " + this.MatchesPlayed);
+        System.out.println("Balls Faced: " + this.Balls_Faced);
+        System.out.println("Runs Scored: " + this.Runs_Scored);
+        System.out.println("Strike Rate: " + String.format("%.2f", this.Strike_Rate));
     }
 }
 
@@ -398,38 +398,38 @@ class Movie {
         Scanner sc = new Scanner(System.in);
         
         System.out.print("Enter Movie Name: ");
-        MName = sc.nextLine();
+        this.MName = sc.nextLine();
         
         System.out.print("Enter Hero Name: ");
-        Hero = sc.nextLine();
+        this.Hero = sc.nextLine();
         
         System.out.print("Enter Heroine Name: ");
-        Heroien = sc.nextLine();
+        this.Heroien = sc.nextLine();
         
         System.out.print("Enter Year of Release: ");
-        YOR = sc.nextInt();
+        this.YOR = sc.nextInt();
         sc.nextLine(); // consume newline
         
         System.out.print("Enter Director Name: ");
-        Director = sc.nextLine();
+        this.Director = sc.nextLine();
         
         System.out.print("Enter Producer Name: ");
-        Producer = sc.nextLine();
+        this.Producer = sc.nextLine();
         
         System.out.print("Enter Movie Type (Action/Comedy/Horror/etc): ");
-        MType = sc.nextLine();
+        this.MType = sc.nextLine();
     }
     
     // Method to print data
     public void printData() {
         System.out.println("\\n=== Movie Details ===");
-        System.out.println("Movie Name: " + MName);
-        System.out.println("Hero: " + Hero);
-        System.out.println("Heroine: " + Heroien);
-        System.out.println("Year of Release: " + YOR);
-        System.out.println("Director: " + Director);
-        System.out.println("Producer: " + Producer);
-        System.out.println("Movie Type: " + MType);
+        System.out.println("Movie Name: " + this.MName);
+        System.out.println("Hero: " + this.Hero);
+        System.out.println("Heroine: " + this.Heroien);
+        System.out.println("Year of Release: " + this.YOR);
+        System.out.println("Director: " + this.Director);
+        System.out.println("Producer: " + this.Producer);
+        System.out.println("Movie Type: " + this.MType);
     }
 }
 
@@ -457,26 +457,26 @@ class Doctor {
         Scanner sc = new Scanner(System.in);
         
         System.out.print("Enter Doctor ID: ");
-        Id = sc.nextInt();
+        this.Id = sc.nextInt();
         sc.nextLine(); // consume newline
         
         System.out.print("Enter Doctor Name: ");
-        Name = sc.nextLine();
+        this.Name = sc.nextLine();
         
         System.out.print("Enter Specialisation: ");
-        Specialisation = sc.nextLine();
+        this.Specialisation = sc.nextLine();
         
         System.out.print("Enter Consultation Fee: ");
-        ConsultationFee = sc.nextDouble();
+        this.ConsultationFee = sc.nextDouble();
     }
     
     // Method to print data
     public void printData() {
         System.out.println("\\n=== Doctor Details ===");
-        System.out.println("Doctor ID: " + Id);
-        System.out.println("Name: " + Name);
-        System.out.println("Specialisation: " + Specialisation);
-        System.out.println("Consultation Fee: ₹" + ConsultationFee);
+        System.out.println("Doctor ID: " + this.Id);
+        System.out.println("Name: " + this.Name);
+        System.out.println("Specialisation: " + this.Specialisation);
+        System.out.println("Consultation Fee: ₹" + this.ConsultationFee);
     }
 }
 
@@ -504,27 +504,27 @@ class Item {
         Scanner sc = new Scanner(System.in);
         
         System.out.print("Enter Item ID: ");
-        Id = sc.nextInt();
+        this.Id = sc.nextInt();
         sc.nextLine(); // consume newline
         
         System.out.print("Enter Item Name: ");
-        Name = sc.nextLine();
+        this.Name = sc.nextLine();
         
         System.out.print("Enter Price: ");
-        Price = sc.nextDouble();
+        this.Price = sc.nextDouble();
         sc.nextLine(); // consume newline
         
         System.out.print("Enter Availability (In Stock/Out of Stock): ");
-        Availability = sc.nextLine();
+        this.Availability = sc.nextLine();
     }
     
     // Method to print data
     public void printData() {
         System.out.println("\\n=== Item Details ===");
-        System.out.println("Item ID: " + Id);
-        System.out.println("Item Name: " + Name);
-        System.out.println("Price: ₹" + Price);
-        System.out.println("Availability: " + Availability);
+        System.out.println("Item ID: " + this.Id);
+        System.out.println("Item Name: " + this.Name);
+        System.out.println("Price: ₹" + this.Price);
+        System.out.println("Availability: " + this.Availability);
     }
 }
 
@@ -556,41 +556,41 @@ class Bill {
         Scanner sc = new Scanner(System.in);
         
         System.out.print("Enter Bill Number: ");
-        Bill_Num = sc.nextInt();
+        this.Bill_Num = sc.nextInt();
         sc.nextLine(); // consume newline
         
         System.out.print("Enter Customer Name: ");
-        Customer_Name = sc.nextLine();
+        this.Customer_Name = sc.nextLine();
         
         System.out.print("Enter Bill Amount: ");
-        Bill_Amount = sc.nextDouble();
+        this.Bill_Amount = sc.nextDouble();
         
         System.out.print("Enter Discount Percent: ");
-        DiscountPercent = sc.nextDouble();
+        this.DiscountPercent = sc.nextDouble();
         
         System.out.print("Enter GST %: ");
-        GST = sc.nextDouble();
+        this.GST = sc.nextDouble();
     }
     
     // Method to calculate discount, GST and net bill
     public void calculateBill() {
-        DiscountAmount = (Bill_Amount * DiscountPercent) / 100.0;
-        double amountAfterDiscount = Bill_Amount - DiscountAmount;
-        GSTAmount = (amountAfterDiscount * GST) / 100.0;
-        NetBill = amountAfterDiscount + GSTAmount;
+        this.DiscountAmount = (this.Bill_Amount * this.DiscountPercent) / 100.0;
+        double amountAfterDiscount = this.Bill_Amount - this.DiscountAmount;
+        this.GSTAmount = (amountAfterDiscount * this.GST) / 100.0;
+        this.NetBill = amountAfterDiscount + this.GSTAmount;
     }
     
     // Method to display all details
     public void displayData() {
         System.out.println("\\n=== Bill Details ===");
-        System.out.println("Bill Number: " + Bill_Num);
-        System.out.println("Customer Name: " + Customer_Name);
-        System.out.println("Bill Amount: ₹" + String.format("%.2f", Bill_Amount));
-        System.out.println("Discount Percent: " + DiscountPercent + "%");
-        System.out.println("Discount Amount: ₹" + String.format("%.2f", DiscountAmount));
-        System.out.println("GST %: " + GST + "%");
-        System.out.println("GST Amount: ₹" + String.format("%.2f", GSTAmount));
-        System.out.println("Net Bill to Pay: ₹" + String.format("%.2f", NetBill));
+        System.out.println("Bill Number: " + this.Bill_Num);
+        System.out.println("Customer Name: " + this.Customer_Name);
+        System.out.println("Bill Amount: ₹" + String.format("%.2f", this.Bill_Amount));
+        System.out.println("Discount Percent: " + this.DiscountPercent + "%");
+        System.out.println("Discount Amount: ₹" + String.format("%.2f", this.DiscountAmount));
+        System.out.println("GST %: " + this.GST + "%");
+        System.out.println("GST Amount: ₹" + String.format("%.2f", this.GSTAmount));
+        System.out.println("Net Bill to Pay: ₹" + String.format("%.2f", this.NetBill));
     }
 }
 
@@ -634,32 +634,32 @@ class EmpSalary {
         Scanner sc = new Scanner(System.in);
         
         System.out.print("Enter Employee ID: ");
-        EmpId = sc.nextInt();
+        this.EmpId = sc.nextInt();
         sc.nextLine(); // consume newline
         
         System.out.print("Enter Employee Name: ");
-        Name = sc.nextLine();
+        this.Name = sc.nextLine();
         
         System.out.print("Enter Basic Salary: ");
-        Basic = sc.nextDouble();
+        this.Basic = sc.nextDouble();
     }
     
     // Method to calculate DA, HRA and Gross
     public void calculateSalary() {
-        Da = (Basic * 30) / 100.0;  // DA is 30% of Basic
-        HRA = (Basic * 20) / 100.0;  // HRA is 20% of Basic
-        Gross = Basic + Da + HRA;    // Gross = Basic + DA + HRA
+        this.Da = (this.Basic * 30) / 100.0;  // DA is 30% of Basic
+        this.HRA = (this.Basic * 20) / 100.0;  // HRA is 20% of Basic
+        this.Gross = this.Basic + this.Da + this.HRA;    // Gross = Basic + DA + HRA
     }
     
     // Method to print all details
     public void printData() {
         System.out.println("\\n=== Employee Salary Details ===");
-        System.out.println("Employee ID: " + EmpId);
-        System.out.println("Employee Name: " + Name);
-        System.out.println("Basic Salary: ₹" + String.format("%.2f", Basic));
-        System.out.println("DA (30% of Basic): ₹" + String.format("%.2f", Da));
-        System.out.println("HRA (20% of Basic): ₹" + String.format("%.2f", HRA));
-        System.out.println("Gross Salary: ₹" + String.format("%.2f", Gross));
+        System.out.println("Employee ID: " + this.EmpId);
+        System.out.println("Employee Name: " + this.Name);
+        System.out.println("Basic Salary: ₹" + String.format("%.2f", this.Basic));
+        System.out.println("DA (30% of Basic): ₹" + String.format("%.2f", this.Da));
+        System.out.println("HRA (20% of Basic): ₹" + String.format("%.2f", this.HRA));
+        System.out.println("Gross Salary: ₹" + String.format("%.2f", this.Gross));
     }
 }
 
@@ -681,20 +681,20 @@ public class EmpSalaryDemo {
     
     // Getter methods
     public String getName() {
-        return name;
+        return this.name;
     }
     
     public int getMarks() {
-        return marks;
+        return this.marks;
     }
     
     // Setter methods
     public void setName(String n) {
-        name = n;
+        this.name = n;
     }
     
     public void setMarks(int m) {
-        marks = m;
+        this.marks = m;
     }
 }
 

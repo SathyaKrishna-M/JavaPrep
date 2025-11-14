@@ -43,6 +43,13 @@ export const topics: Topic[] = [
     href: '/topics/nested-loops',
   },
   {
+    id: 'patterns',
+    title: 'Patterns',
+    description: 'Star, number, and alphabet patterns',
+    icon: '✨',
+    href: '/topics/patterns',
+  },
+  {
     id: 'arrays1d',
     title: '1D Arrays',
     description: 'Single-dimensional arrays',
