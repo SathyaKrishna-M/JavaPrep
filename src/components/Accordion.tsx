@@ -71,13 +71,16 @@ export default function Accordion({ items }: AccordionProps) {
 
   return (
     <div className="space-y-4">
-      {items.map((item, index) => (
-        <motion.div
-          key={index}
-          className="glass-card overflow-hidden"
-          whileHover={{ boxShadow: '0 8px 32px 0 rgba(0, 180, 255, 0.2)' }}
-          transition={{ duration: 0.3 }}
-        >
+      {items.map((item, index) => {
+        const questionId = `practice-${index}`
+        return (
+          <motion.div
+            key={index}
+            id={questionId}
+            className="glass-card overflow-hidden scroll-mt-20"
+            whileHover={{ boxShadow: '0 8px 32px 0 rgba(0, 180, 255, 0.2)' }}
+            transition={{ duration: 0.3 }}
+          >
           <button
             onClick={() => toggleItem(index)}
             className="w-full flex items-center justify-between p-4 text-left hover:bg-blue-500/10 transition-colors rounded-lg group"
@@ -256,7 +259,8 @@ export default function Accordion({ items }: AccordionProps) {
             )}
           </AnimatePresence>
         </motion.div>
-      ))}
+        )
+      })}
     </div>
   )
 }

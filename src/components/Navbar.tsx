@@ -2,16 +2,19 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import ThemeToggle from './ThemeToggle'
-import { FiCode, FiMenu, FiX, FiChevronDown } from 'react-icons/fi'
+import SearchDropdown from './SearchDropdown'
+import { FiCode, FiMenu, FiX, FiChevronDown, FiSearch } from 'react-icons/fi'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSubjectsOpen, setIsSubjectsOpen] = useState(false)
+  const [isSearchOpen, setIsSearchOpen] = useState(false)
   const pathname = usePathname()
+  const router = useRouter()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,6 +23,21 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Keyboard shortcut for search (CTRL+K or CMD+K)
+  useEffect(() => {
+    const handleKeyDown = (e: globalThis.KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault()
+        setIsSearchOpen(true)
+      }
+      if (e.key === 'Escape' && isSearchOpen) {
+        setIsSearchOpen(false)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isSearchOpen])
 
   const subjects = [
     { href: '/subjects/java', label: 'Java' },
@@ -130,11 +148,31 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
             
+            {/* Search Button */}
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="relative px-4 py-2 rounded-full glass hover:bg-white/10 transition-colors flex items-center gap-2 text-gray-300 hover:text-white"
+              title="Search (Ctrl+K)"
+            >
+              <FiSearch className="w-4 h-4" />
+              <span className="hidden lg:inline text-sm">Search</span>
+              <kbd className="hidden lg:inline-flex items-center gap-1 px-1.5 py-0.5 text-xs font-medium bg-white/10 rounded border border-white/20">
+                <span className="text-[10px]">⌘</span>K
+              </kbd>
+            </button>
+            
             <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="glass p-2 rounded-lg"
+              aria-label="Search"
+            >
+              <FiSearch className="w-5 h-5" />
+            </button>
             <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -198,6 +236,12 @@ export default function Navbar() {
           </motion.div>
         )}
       </div>
+      
+      {/* Search Dropdown */}
+      <SearchDropdown
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+      />
     </motion.nav>
   )
 }

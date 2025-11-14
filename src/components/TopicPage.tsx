@@ -71,51 +71,63 @@ export default function TopicPage({ content }: TopicPageProps) {
     { id: 'practice' as const, label: 'Practice', icon: <FiTarget className="w-4 h-4" /> },
   ]
 
+  // Generate ID from title
+  const generateId = (title: string) => {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-|-$/g, '')
+  }
+
   const renderExplanation = () => {
     if (content.explanationSections && content.explanationSections.length > 0) {
       return (
         <div className="space-y-6">
-          {content.explanationSections.map((section, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className="glass-card"
-            >
-              <div className="flex items-start gap-4 mb-4">
-                {section.icon && (
-                  <div className="flex-shrink-0 mt-1 text-blue-400">
-                    {section.icon}
-                  </div>
-                )}
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center gap-2">
-                  <FiArrowRight className="w-5 h-5 text-cyan-400" />
-                  {section.title}
-                </h3>
-              </div>
-              <div className="prose prose-invert max-w-none">
-                <div 
-                  className="text-gray-300 whitespace-pre-line leading-relaxed mb-4"
-                  dangerouslySetInnerHTML={{ __html: section.content || '' }}
-                />
-                {section.code && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="mt-4"
-                  >
-                    <div className="flex items-center gap-2 mb-2">
-                      <FiCode className="w-4 h-4 text-amber-400" />
-                      <span className="text-sm font-semibold text-amber-400">Example Code:</span>
+          {content.explanationSections.map((section, index) => {
+            const sectionId = generateId(section.title)
+            return (
+              <motion.div
+                key={index}
+                id={sectionId}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="glass-card scroll-mt-20"
+              >
+                <div className="flex items-start gap-4 mb-4">
+                  {section.icon && (
+                    <div className="flex-shrink-0 mt-1 text-blue-400">
+                      {section.icon}
                     </div>
-                    <CodeBlock code={section.code} language="java" />
-                  </motion.div>
-                )}
-              </div>
-            </motion.div>
-          ))}
+                  )}
+                  <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent flex items-center gap-2">
+                    <FiArrowRight className="w-5 h-5 text-cyan-400" />
+                    {section.title}
+                  </h3>
+                </div>
+                <div className="prose prose-invert max-w-none">
+                  <div 
+                    className="text-gray-300 whitespace-pre-line leading-relaxed mb-4"
+                    dangerouslySetInnerHTML={{ __html: section.content || '' }}
+                  />
+                  {section.code && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.2 }}
+                      className="mt-4"
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <FiCode className="w-4 h-4 text-amber-400" />
+                        <span className="text-sm font-semibold text-amber-400">Example Code:</span>
+                      </div>
+                      <CodeBlock code={section.code} language="java" />
+                    </motion.div>
+                  )}
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       )
     } else if (content.explanation) {

@@ -77,5 +77,12 @@ export const topics: Topic[] = [
     icon: '🔒',
     href: '/topics/encapsulation',
   },
+  {
+    id: 'important-questions',
+    title: 'Important Questions',
+    description: 'PSTJ important practice questions',
+    icon: '📝',
+    href: '/topics/important-questions',
+  },
 ]
 
