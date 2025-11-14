@@ -218,6 +218,201 @@ Instance Methods:
     }
 }`,
     },
+    {
+      question: 'Develop a Java program to create a Student class with attributes id, name, branch, fee. Class should have methods to accept the data and print the data.',
+      solution: 'Create a Student class with attributes id, name, branch, fee. Create acceptData() method using Scanner to read input, and printData() method to display all information. Use methods to handle input and output operations.',
+      solutionCode: `import java.util.Scanner;
+
+class Student {
+    int id;
+    String name;
+    String branch;
+    double fee;
+    
+    // Method to accept data
+    public void acceptData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Student ID: ");
+        this.id = sc.nextInt();
+        sc.nextLine(); // consume newline
+        System.out.print("Enter Student Name: ");
+        this.name = sc.nextLine();
+        System.out.print("Enter Branch: ");
+        this.branch = sc.nextLine();
+        System.out.print("Enter Fee: ");
+        this.fee = sc.nextDouble();
+    }
+    
+    // Method to print data
+    public void printData() {
+        System.out.println("\\n=== Student Details ===");
+        System.out.println("Student ID: " + this.id);
+        System.out.println("Student Name: " + this.name);
+        System.out.println("Branch: " + this.branch);
+        System.out.println("Fee: ₹" + this.fee);
+    }
+}
+
+public class StudentDemo {
+    public static void main(String[] args) {
+        Student student = new Student();
+        student.acceptData();
+        student.printData();
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to find square value and cube value of a number using two separate methods. Each method should take number as parameter and should return the square value and cube value respectively.',
+      solution: 'Create two separate methods: square() to calculate and return square of a number (n * n), and cube() to calculate and return cube of a number (n * n * n). Both methods take a number as parameter and return the calculated value.',
+      solutionCode: `public class SquareCube {
+    // Method to find square of a number
+    public static int square(int num) {
+        return num * num;
+    }
+    
+    // Method to find cube of a number
+    public static int cube(int num) {
+        return num * num * num;
+    }
+    
+    public static void main(String[] args) {
+        int number = 5;
+        int squareValue = square(number);
+        int cubeValue = cube(number);
+        System.out.println("Number: " + number);
+        System.out.println("Square: " + squareValue);
+        System.out.println("Cube: " + cubeValue);
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to find sum of any two numbers using a method. Method should take two integers as parameters, find the sum and should return the sum.',
+      solution: 'Create a method that takes two integer parameters, calculates their sum, and returns the result. The method signature should be: public static int sum(int a, int b).',
+      solutionCode: `public class SumTwoNumbers {
+    // Method to find sum of two numbers
+    public static int sum(int a, int b) {
+        return a + b;
+    }
+    
+    public static void main(String[] args) {
+        int num1 = 15;
+        int num2 = 25;
+        int result = sum(num1, num2);
+        System.out.println("Sum of " + num1 + " and " + num2 + " = " + result);
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to find sum of the first n natural numbers using a method. Method should take number as parameter and should return the sum.',
+      solution: 'Create a method that takes an integer n as parameter, calculates the sum of first n natural numbers (1 + 2 + 3 + ... + n) using a loop, and returns the sum. Formula can also be used: n * (n + 1) / 2.',
+      solutionCode: `public class SumNaturalNumbers {
+    // Method to find sum of first n natural numbers
+    public static int sumNatural(int n) {
+        int sum = 0;
+        for (int i = 1; i <= n; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+    
+    public static void main(String[] args) {
+        int n = 10;
+        int total = sumNatural(n);
+        System.out.println("Sum of first " + n + " natural numbers: " + total);
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to calculate area & perimeter of rectangle using two separate methods. Methods should take length & breadth as parameters and should return area & perimeter.',
+      solution: 'Create two separate methods: calculateArea() that takes length and breadth as parameters and returns area (length * breadth), and calculatePerimeter() that takes length and breadth and returns perimeter (2 * (length + breadth)).',
+      solutionCode: `public class RectangleAreaPerimeter {
+    // Method to calculate area of rectangle
+    public static double calculateArea(double length, double breadth) {
+        return length * breadth;
+    }
+    
+    // Method to calculate perimeter of rectangle
+    public static double calculatePerimeter(double length, double breadth) {
+        return 2 * (length + breadth);
+    }
+    
+    public static void main(String[] args) {
+        double length = 10.5;
+        double breadth = 5.5;
+        double area = calculateArea(length, breadth);
+        double perimeter = calculatePerimeter(length, breadth);
+        System.out.println("Length: " + length);
+        System.out.println("Breadth: " + breadth);
+        System.out.println("Area: " + area);
+        System.out.println("Perimeter: " + perimeter);
+    }
+}`,
+    },
+    {
+      question: 'DJP [Develop a Java Program] to find given number is odd or even and also prime.',
+      solution: 'Create methods to check if a number is odd/even and prime. isEven() returns true if number % 2 == 0. isPrime() checks if number is divisible only by 1 and itself. Use loops to check divisibility from 2 to sqrt(n).',
+      solutionCode: `public class NumberCheck {
+    // Method to check if number is even
+    public static boolean isEven(int num) {
+        return num % 2 == 0;
+    }
+    
+    // Method to check if number is odd
+    public static boolean isOdd(int num) {
+        return num % 2 != 0;
+    }
+    
+    // Method to check if number is prime
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        int number = 17;
+        System.out.println("Number: " + number);
+        System.out.println("Is Even: " + isEven(number));
+        System.out.println("Is Odd: " + isOdd(number));
+        System.out.println("Is Prime: " + isPrime(number));
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to find the given number is perfect number or not using a method. Method should take number as parameter & should return true if number is perfect otherwise should return false.',
+      solution: 'Create a method that takes a number as parameter and checks if it is a perfect number. A perfect number is equal to the sum of its proper divisors (excluding itself). Find all divisors, sum them, and compare with the number.',
+      solutionCode: `public class PerfectNumber {
+    // Method to check if number is perfect
+    public static boolean isPerfect(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        int sum = 0;
+        for (int i = 1; i < num; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return sum == num;
+    }
+    
+    public static void main(String[] args) {
+        int number = 28;
+        boolean result = isPerfect(number);
+        if (result) {
+            System.out.println(number + " is a perfect number");
+        } else {
+            System.out.println(number + " is not a perfect number");
+        }
+    }
+}`,
+    },
   ] as PracticeQuestion[],
 }
 

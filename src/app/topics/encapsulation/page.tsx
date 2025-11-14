@@ -708,6 +708,446 @@ public class Main {
     }
 }`,
     },
+    {
+      question: 'Draw a class diagram and develop a Java program to create a class Employee with the attributes Id, name, designation, Salary. Class should facilitate accept the data and print data to the user using method. Create another class Example2 to test the Employee class.',
+      solution: 'Create an Employee class with private attributes: Id (int), name (String), designation (String), Salary (double). Implement acceptData() method using Scanner to read input, and printData() method to display all information. Create Example2 class to test the Employee class.',
+      solutionCode: `import java.util.Scanner;
+
+class Employee {
+    private int Id;
+    private String name;
+    private String designation;
+    private double Salary;
+    
+    // Method to accept data
+    public void acceptData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Employee ID: ");
+        this.Id = sc.nextInt();
+        sc.nextLine(); // consume newline
+        System.out.print("Enter Employee Name: ");
+        this.name = sc.nextLine();
+        System.out.print("Enter Designation: ");
+        this.designation = sc.nextLine();
+        System.out.print("Enter Salary: ");
+        this.Salary = sc.nextDouble();
+    }
+    
+    // Method to print data
+    public void printData() {
+        System.out.println("\\n=== Employee Details ===");
+        System.out.println("Employee ID: " + this.Id);
+        System.out.println("Employee Name: " + this.name);
+        System.out.println("Designation: " + this.designation);
+        System.out.println("Salary: ₹" + this.Salary);
+    }
+}
+
+public class Example2 {
+    public static void main(String[] args) {
+        Employee emp = new Employee();
+        emp.acceptData();
+        emp.printData();
+    }
+}`,
+    },
+    {
+      question: 'Create a class Book that stores with attributes bookID, name, author name, publisher name, MRP. Class should facilitate methods to accept the data and to print the data. Create another class Example to test the Book class.',
+      solution: 'Create a Book class with private attributes: bookID (int or String), name (String), author name (String), publisher name (String), MRP (double). Implement acceptData() and printData() methods. Create Example class to test the Book class.',
+      solutionCode: `import java.util.Scanner;
+
+class Book {
+    private int bookID;
+    private String name;
+    private String authorName;
+    private String publisherName;
+    private double MRP;
+    
+    // Method to accept data
+    public void acceptData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Book ID: ");
+        this.bookID = sc.nextInt();
+        sc.nextLine(); // consume newline
+        System.out.print("Enter Book Name: ");
+        this.name = sc.nextLine();
+        System.out.print("Enter Author Name: ");
+        this.authorName = sc.nextLine();
+        System.out.print("Enter Publisher Name: ");
+        this.publisherName = sc.nextLine();
+        System.out.print("Enter MRP: ");
+        this.MRP = sc.nextDouble();
+    }
+    
+    // Method to print data
+    public void printData() {
+        System.out.println("\\n=== Book Details ===");
+        System.out.println("Book ID: " + this.bookID);
+        System.out.println("Book Name: " + this.name);
+        System.out.println("Author Name: " + this.authorName);
+        System.out.println("Publisher Name: " + this.publisherName);
+        System.out.println("MRP: ₹" + this.MRP);
+    }
+}
+
+public class Example {
+    public static void main(String[] args) {
+        Book book = new Book();
+        book.acceptData();
+        book.printData();
+    }
+}`,
+    },
+    {
+      question: 'Create a class Rectangle with attributes name, length, breadth, area, perimeter. Class should facilitate the method, accept the data and display data, calculate, print data. Create another class Example4 to test the Rectangle class.',
+      solution: 'Create a Rectangle class with private attributes: name (String), length (double), breadth (double), area (double), perimeter (double). Implement acceptData() to read input, calculate() to compute area and perimeter, and printData() to display all information. Create Example4 class to test.',
+      solutionCode: `import java.util.Scanner;
+
+class Rectangle {
+    private String name;
+    private double length;
+    private double breadth;
+    private double area;
+    private double perimeter;
+    
+    // Method to accept data
+    public void acceptData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Rectangle Name: ");
+        this.name = sc.nextLine();
+        System.out.print("Enter Length: ");
+        this.length = sc.nextDouble();
+        System.out.print("Enter Breadth: ");
+        this.breadth = sc.nextDouble();
+    }
+    
+    // Method to calculate area and perimeter
+    public void calculate() {
+        this.area = this.length * this.breadth;
+        this.perimeter = 2 * (this.length + this.breadth);
+    }
+    
+    // Method to print data
+    public void printData() {
+        System.out.println("\\n=== Rectangle Details ===");
+        System.out.println("Rectangle Name: " + this.name);
+        System.out.println("Length: " + this.length);
+        System.out.println("Breadth: " + this.breadth);
+        System.out.println("Area: " + this.area);
+        System.out.println("Perimeter: " + this.perimeter);
+    }
+}
+
+public class Example4 {
+    public static void main(String[] args) {
+        Rectangle rect = new Rectangle();
+        rect.acceptData();
+        rect.calculate();
+        rect.printData();
+    }
+}`,
+    },
+    {
+      question: 'Draw a class diagram and develop a Java program to create a class Customer for electricity department with attributes custId, name, previous reading, current reading, no of units & bill to pay. Class should facilitate the methods for accepting the data calculating the bill and printing the bill to user. Use the following condition to calculate the bill: for units upto 100 ₹ 1 per unit, for units upto 200 ₹ 2 per unit, for units upto 300 ₹ 3 per unit, for units upto 400 ₹ 4 per unit, for units upto 500 ₹ 5 per unit, for units above 500 ₹ 6 per unit. Create another class Example5 to test the functionality of Customer class.',
+      solution: 'Create a Customer class with private attributes: custId (int), name (String), previousReading (double), currentReading (double), units (double), billToPay (double). Implement acceptData() to read input, calculateBill() to compute bill based on units using if-else conditions, and printBill() to display all details. Create Example5 class to test.',
+      solutionCode: `import java.util.Scanner;
+
+class Customer {
+    private int custId;
+    private String name;
+    private double previousReading;
+    private double currentReading;
+    private double units;
+    private double billToPay;
+    
+    // Method to accept data
+    public void acceptData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Customer ID: ");
+        this.custId = sc.nextInt();
+        sc.nextLine(); // consume newline
+        System.out.print("Enter Customer Name: ");
+        this.name = sc.nextLine();
+        System.out.print("Enter Previous Reading: ");
+        this.previousReading = sc.nextDouble();
+        System.out.print("Enter Current Reading: ");
+        this.currentReading = sc.nextDouble();
+    }
+    
+    // Method to calculate bill
+    public void calculateBill() {
+        this.units = this.currentReading - this.previousReading;
+        if (this.units <= 100) {
+            this.billToPay = this.units * 1;
+        } else if (this.units <= 200) {
+            this.billToPay = 100 * 1 + (this.units - 100) * 2;
+        } else if (this.units <= 300) {
+            this.billToPay = 100 * 1 + 100 * 2 + (this.units - 200) * 3;
+        } else if (this.units <= 400) {
+            this.billToPay = 100 * 1 + 100 * 2 + 100 * 3 + (this.units - 300) * 4;
+        } else if (this.units <= 500) {
+            this.billToPay = 100 * 1 + 100 * 2 + 100 * 3 + 100 * 4 + (this.units - 400) * 5;
+        } else {
+            this.billToPay = 100 * 1 + 100 * 2 + 100 * 3 + 100 * 4 + 100 * 5 + (this.units - 500) * 6;
+        }
+    }
+    
+    // Method to print bill
+    public void printBill() {
+        System.out.println("\\n=== Electricity Bill ===");
+        System.out.println("Customer ID: " + this.custId);
+        System.out.println("Customer Name: " + this.name);
+        System.out.println("Previous Reading: " + this.previousReading);
+        System.out.println("Current Reading: " + this.currentReading);
+        System.out.println("Units Consumed: " + this.units);
+        System.out.println("Bill to Pay: ₹" + this.billToPay);
+    }
+}
+
+public class Example5 {
+    public static void main(String[] args) {
+        Customer customer = new Customer();
+        customer.acceptData();
+        customer.calculateBill();
+        customer.printBill();
+    }
+}`,
+    },
+    {
+      question: 'Draw a class diagram and develop a Java program to create a class Student Result with the private attributes rollno, name, marks in 5 subjects m1, m2, m3, m4, m5, total and result. Class should facilitate the methods to accept the data and calculate total result, print the details to the user. Use the following condition to calculate the result: In every subject student scored ≥ 35 result is \'pass\' otherwise result is \'fail\'.',
+      solution: 'Create a StudentResult class with private attributes: rollno (int), name (String), m1, m2, m3, m4, m5 (int), total (int), result (String). Implement acceptData() to read input, calculateTotal() to sum all marks, calculateResult() to check if all subjects >= 35, and printData() to display all details.',
+      solutionCode: `import java.util.Scanner;
+
+class StudentResult {
+    private int rollno;
+    private String name;
+    private int m1;
+    private int m2;
+    private int m3;
+    private int m4;
+    private int m5;
+    private int total;
+    private String result;
+    
+    // Method to accept data
+    public void acceptData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Roll Number: ");
+        this.rollno = sc.nextInt();
+        sc.nextLine(); // consume newline
+        System.out.print("Enter Student Name: ");
+        this.name = sc.nextLine();
+        System.out.print("Enter Marks in Subject 1: ");
+        this.m1 = sc.nextInt();
+        System.out.print("Enter Marks in Subject 2: ");
+        this.m2 = sc.nextInt();
+        System.out.print("Enter Marks in Subject 3: ");
+        this.m3 = sc.nextInt();
+        System.out.print("Enter Marks in Subject 4: ");
+        this.m4 = sc.nextInt();
+        System.out.print("Enter Marks in Subject 5: ");
+        this.m5 = sc.nextInt();
+    }
+    
+    // Method to calculate total
+    public void calculateTotal() {
+        this.total = this.m1 + this.m2 + this.m3 + this.m4 + this.m5;
+    }
+    
+    // Method to calculate result
+    public void calculateResult() {
+        if (this.m1 >= 35 && this.m2 >= 35 && this.m3 >= 35 && this.m4 >= 35 && this.m5 >= 35) {
+            this.result = "Pass";
+        } else {
+            this.result = "Fail";
+        }
+    }
+    
+    // Method to print data
+    public void printData() {
+        System.out.println("\\n=== Student Result ===");
+        System.out.println("Roll Number: " + this.rollno);
+        System.out.println("Student Name: " + this.name);
+        System.out.println("Marks in Subject 1: " + this.m1);
+        System.out.println("Marks in Subject 2: " + this.m2);
+        System.out.println("Marks in Subject 3: " + this.m3);
+        System.out.println("Marks in Subject 4: " + this.m4);
+        System.out.println("Marks in Subject 5: " + this.m5);
+        System.out.println("Total Marks: " + this.total);
+        System.out.println("Result: " + this.result);
+    }
+}
+
+public class StudentResultDemo {
+    public static void main(String[] args) {
+        StudentResult student = new StudentResult();
+        student.acceptData();
+        student.calculateTotal();
+        student.calculateResult();
+        student.printData();
+    }
+}`,
+    },
+    {
+      question: 'Draw a class diagram & develop a Java program to create a class Fan with the private attributes manufacturer, no. of wings, colour, MRP, remote supported. Class should facilitate to accept the data & print the data. If fan supports remote add 10% to the MRP before printing.',
+      solution: 'Create a Fan class with private attributes: manufacturer (String), noOfWings (int), colour (String), MRP (double), remoteSupported (boolean). Implement acceptData() to read input, and printData() to display all information. If remoteSupported is true, add 10% to MRP before printing.',
+      solutionCode: `import java.util.Scanner;
+
+class Fan {
+    private String manufacturer;
+    private int noOfWings;
+    private String colour;
+    private double MRP;
+    private boolean remoteSupported;
+    
+    // Method to accept data
+    public void acceptData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Manufacturer: ");
+        this.manufacturer = sc.nextLine();
+        System.out.print("Enter Number of Wings: ");
+        this.noOfWings = sc.nextInt();
+        sc.nextLine(); // consume newline
+        System.out.print("Enter Colour: ");
+        this.colour = sc.nextLine();
+        System.out.print("Enter MRP: ");
+        this.MRP = sc.nextDouble();
+        System.out.print("Remote Supported (true/false): ");
+        this.remoteSupported = sc.nextBoolean();
+    }
+    
+    // Method to print data
+    public void printData() {
+        System.out.println("\\n=== Fan Details ===");
+        System.out.println("Manufacturer: " + this.manufacturer);
+        System.out.println("Number of Wings: " + this.noOfWings);
+        System.out.println("Colour: " + this.colour);
+        
+        double finalMRP = this.MRP;
+        if (this.remoteSupported) {
+            finalMRP = this.MRP + (this.MRP * 0.10); // Add 10% if remote supported
+        }
+        
+        System.out.println("MRP: ₹" + this.MRP);
+        if (this.remoteSupported) {
+            System.out.println("Final MRP (with 10% remote charge): ₹" + finalMRP);
+        } else {
+            System.out.println("Final MRP: ₹" + finalMRP);
+        }
+        System.out.println("Remote Supported: " + this.remoteSupported);
+    }
+}
+
+public class FanDemo {
+    public static void main(String[] args) {
+        Fan fan = new Fan();
+        fan.acceptData();
+        fan.printData();
+    }
+}`,
+    },
+    {
+      question: 'Draw a class diagram & develop a Java program to create a class Cuboid with the private attributes length, breadth, height, Volume, T.S [Total Surface Area]. Class should facilitate the methods calculate, accept data, & display the data to the user. Create another class Example to test the functionality of Cuboid class.',
+      solution: 'Create a Cuboid class with private attributes: length (double), breadth (double), height (double), Volume (double), TSA (double). Implement acceptData() to read input, calculate() to compute Volume = length * breadth * height and TSA = 2 * (length*breadth + breadth*height + height*length), and printData() to display all information.',
+      solutionCode: `import java.util.Scanner;
+
+class Cuboid {
+    private double length;
+    private double breadth;
+    private double height;
+    private double Volume;
+    private double TSA;
+    
+    // Method to accept data
+    public void acceptData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Length: ");
+        this.length = sc.nextDouble();
+        System.out.print("Enter Breadth: ");
+        this.breadth = sc.nextDouble();
+        System.out.print("Enter Height: ");
+        this.height = sc.nextDouble();
+    }
+    
+    // Method to calculate volume and TSA
+    public void calculate() {
+        this.Volume = this.length * this.breadth * this.height;
+        this.TSA = 2 * (this.length * this.breadth + this.breadth * this.height + this.height * this.length);
+    }
+    
+    // Method to print data
+    public void printData() {
+        System.out.println("\\n=== Cuboid Details ===");
+        System.out.println("Length: " + this.length);
+        System.out.println("Breadth: " + this.breadth);
+        System.out.println("Height: " + this.height);
+        System.out.println("Volume: " + this.Volume);
+        System.out.println("Total Surface Area (T.S.A): " + this.TSA);
+    }
+}
+
+public class Example {
+    public static void main(String[] args) {
+        Cuboid cuboid = new Cuboid();
+        cuboid.acceptData();
+        cuboid.calculate();
+        cuboid.printData();
+    }
+}`,
+    },
+    {
+      question: 'Draw a class diagram & develop a Java program to create a class Cone with private attributes radius, height, & slant height, V [Volume], T.S.A [Total Surface Area], L.S.A [Lateral Surface Area]. Class should facilitate the methods to accept the data and print to the user. Test the class in another class Example.',
+      solution: 'Create a Cone class with private attributes: radius (double), height (double), slantHeight (double), Volume (double), TSA (double), LSA (double). Implement acceptData() to read input, calculate() to compute Volume = (1/3) * π * r² * h, LSA = π * r * l, TSA = π * r * (r + l), and printData() to display all information.',
+      solutionCode: `import java.util.Scanner;
+
+class Cone {
+    private double radius;
+    private double height;
+    private double slantHeight;
+    private double Volume;
+    private double TSA;
+    private double LSA;
+    
+    // Method to accept data
+    public void acceptData() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter Radius: ");
+        this.radius = sc.nextDouble();
+        System.out.print("Enter Height: ");
+        this.height = sc.nextDouble();
+        System.out.print("Enter Slant Height: ");
+        this.slantHeight = sc.nextDouble();
+    }
+    
+    // Method to calculate volume, LSA and TSA
+    public void calculate() {
+        double pi = 3.14159;
+        this.Volume = (1.0 / 3.0) * pi * this.radius * this.radius * this.height;
+        this.LSA = pi * this.radius * this.slantHeight;
+        this.TSA = pi * this.radius * (this.radius + this.slantHeight);
+    }
+    
+    // Method to print data
+    public void printData() {
+        System.out.println("\\n=== Cone Details ===");
+        System.out.println("Radius: " + this.radius);
+        System.out.println("Height: " + this.height);
+        System.out.println("Slant Height: " + this.slantHeight);
+        System.out.println("Volume (V): " + String.format("%.2f", this.Volume));
+        System.out.println("Lateral Surface Area (L.S.A): " + String.format("%.2f", this.LSA));
+        System.out.println("Total Surface Area (T.S.A): " + String.format("%.2f", this.TSA));
+    }
+}
+
+public class Example {
+    public static void main(String[] args) {
+        Cone cone = new Cone();
+        cone.acceptData();
+        cone.calculate();
+        cone.printData();
+    }
+}`,
+    },
   ] as PracticeQuestion[],
 }
 

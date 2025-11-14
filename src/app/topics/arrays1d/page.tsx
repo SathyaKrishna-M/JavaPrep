@@ -271,6 +271,176 @@ Operations:
         { line: 12, vars: { max: 32, i: 5 }, output: 'Largest: 32\\n', description: 'Printing: Largest: 32' },
       ] as DryRunStep[],
     },
+    {
+      question: 'Develop a Java program to find the highest value in 1D array using methods. The method should take array as parameter and return the max value.',
+      solution: 'Create a method that takes an array as parameter, finds the maximum value by comparing all elements, and returns the maximum value. Initialize max with first element and compare with rest.',
+      solutionCode: `public class FindMaxInArray {
+    // Method to find maximum value in array
+    public static int findMax(int[] arr) {
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        return max;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {10, 25, 8, 32, 15, 45, 20};
+        int maxValue = findMax(arr);
+        System.out.println("Maximum value in array: " + maxValue);
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to find sum of the even values and odd values of the given array using 2 separate methods. Each method should take array as parameter and should return sum of the even elements and odd elements respectively.',
+      solution: 'Create two separate methods: sumEven() to calculate sum of even numbers and sumOdd() to calculate sum of odd numbers. Both methods take array as parameter and return their respective sums.',
+      solutionCode: `public class SumEvenOdd {
+    // Method to find sum of even values
+    public static int sumEven(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 == 0) {
+                sum += arr[i];
+            }
+        }
+        return sum;
+    }
+    
+    // Method to find sum of odd values
+    public static int sumOdd(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % 2 == 1) {
+                sum += arr[i];
+            }
+        }
+        return sum;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {10, 25, 8, 32, 15, 45, 20};
+        int evenSum = sumEven(arr);
+        int oddSum = sumOdd(arr);
+        System.out.println("Sum of even values: " + evenSum);
+        System.out.println("Sum of odd values: " + oddSum);
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to reverse the elements of the given array using a method. The method should take array as parameter and should not return anything.',
+      solution: 'Create a void method that takes an array as parameter and reverses it in-place. Use two pointers approach: swap elements from start and end, moving towards center until they meet.',
+      solutionCode: `public class ReverseArray {
+    // Method to reverse array (void method)
+    public static void reverse(int[] arr) {
+        int start = 0;
+        int end = arr.length - 1;
+        while (start < end) {
+            // Swap elements
+            int temp = arr[start];
+            arr[start] = arr[end];
+            arr[end] = temp;
+            start++;
+            end--;
+        }
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        System.out.println("Original array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+        
+        reverse(arr);
+        
+        System.out.println("Reversed array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to find least value in the array using a method. Method should take array as parameter and return the least value.',
+      solution: 'Create a method that takes an array as parameter, finds the minimum value by comparing all elements, and returns the minimum value. Initialize min with first element and compare with rest.',
+      solutionCode: `public class FindMinInArray {
+    // Method to find minimum value in array
+    public static int findMin(int[] arr) {
+        int min = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        return min;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {10, 25, 8, 32, 15, 45, 20};
+        int minValue = findMin(arr);
+        System.out.println("Minimum value in array: " + minValue);
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to sort the elements with bubble sort technique using method. Method should take array as parameter and should not return.',
+      solution: 'Create a void method that takes an array as parameter and sorts it using bubble sort algorithm. Bubble sort compares adjacent elements and swaps them if they are in wrong order. Repeat until array is sorted.',
+      solutionCode: `public class BubbleSort {
+    // Method to sort array using bubble sort (void method)
+    public static void bubbleSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    // Swap elements
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {64, 34, 25, 12, 22, 11, 90};
+        System.out.println("Original array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        System.out.println();
+        
+        bubbleSort(arr);
+        
+        System.out.println("Sorted array:");
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to find sum of the elements of a single dimensional array using method. Method should take array as parameter.',
+      solution: 'Create a method that takes an array as parameter, calculates the sum of all elements by iterating through the array, and returns the sum. Initialize sum to 0 and add each element.',
+      solutionCode: `public class SumArray {
+    // Method to find sum of array elements
+    public static int sumArray(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+    
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        int total = sumArray(arr);
+        System.out.println("Sum of array elements: " + total);
+    }
+}`,
+    },
   ] as PracticeQuestion[],
   dryRunCode: `public class Arrays1D {
     public static void main(String[] args) {

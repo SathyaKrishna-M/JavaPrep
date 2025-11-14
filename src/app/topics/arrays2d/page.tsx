@@ -277,6 +277,112 @@ Common Operations:
         { line: 7, vars: { i: 3 }, output: '10 10 10 \\n10 10 10 \\n10 10 10 \\n', description: 'Outer loop: i = 3, condition (3 < 3 is false) - outer loop exits' },
       ] as DryRunStep[],
     },
+    {
+      question: 'Develop a Java program to find the least value in 2D array using method. The method should take 2D array as parameter and should return the least value of the array.',
+      solution: 'Create a method that takes a 2D array as parameter, finds the minimum value by comparing all elements using nested loops, and returns the minimum value. Initialize min with first element and compare with all others.',
+      solutionCode: `public class FindMinIn2DArray {
+    // Method to find minimum value in 2D array
+    public static int findMin(int[][] arr) {
+        int min = arr[0][0];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] < min) {
+                    min = arr[i][j];
+                }
+            }
+        }
+        return min;
+    }
+    
+    public static void main(String[] args) {
+        int[][] arr = {
+            {10, 25, 8},
+            {32, 15, 45},
+            {20, 5, 30}
+        };
+        int minValue = findMin(arr);
+        System.out.println("Minimum value in 2D array: " + minValue);
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to find the highest value in the given array using a method. The method should take 2D array parameter and should return the highest value.',
+      solution: 'Create a method that takes a 2D array as parameter, finds the maximum value by comparing all elements using nested loops, and returns the maximum value. Initialize max with first element and compare with all others.',
+      solutionCode: `public class FindMaxIn2DArray {
+    // Method to find maximum value in 2D array
+    public static int findMax(int[][] arr) {
+        int max = arr[0][0];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] > max) {
+                    max = arr[i][j];
+                }
+            }
+        }
+        return max;
+    }
+    
+    public static void main(String[] args) {
+        int[][] arr = {
+            {10, 25, 8},
+            {32, 15, 45},
+            {20, 5, 30}
+        };
+        int maxValue = findMax(arr);
+        System.out.println("Maximum value in 2D array: " + maxValue);
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to find the sum of the principal diagonal elements using a method. The method should take 2D array as parameter and should return the sum.',
+      solution: 'Create a method that takes a 2D array as parameter, calculates the sum of principal diagonal elements (where row index equals column index), and returns the sum. Use a single loop to iterate through diagonal elements.',
+      solutionCode: `public class DiagonalSum {
+    // Method to find sum of principal diagonal
+    public static int diagonalSum(int[][] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            sum += arr[i][i];  // Principal diagonal: row index = column index
+        }
+        return sum;
+    }
+    
+    public static void main(String[] args) {
+        int[][] arr = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+        int sum = diagonalSum(arr);
+        System.out.println("Sum of principal diagonal: " + sum);
+    }
+}`,
+    },
+    {
+      question: 'Develop a Java program to find sum of 2D array elements using a method. Method should take 2D array as parameter and return the sum.',
+      solution: 'Create a method that takes a 2D array as parameter, calculates the sum of all elements by using nested loops to iterate through all rows and columns, and returns the total sum.',
+      solutionCode: `public class Sum2DArray {
+    // Method to find sum of all elements in 2D array
+    public static int sum2DArray(int[][] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                sum += arr[i][j];
+            }
+        }
+        return sum;
+    }
+    
+    public static void main(String[] args) {
+        int[][] arr = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+        int total = sum2DArray(arr);
+        System.out.println("Sum of all elements in 2D array: " + total);
+    }
+}`,
+    },
   ] as PracticeQuestion[],
 }
 
