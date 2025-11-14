@@ -9,6 +9,12 @@ import { FiSearch, FiArrowRight, FiBook } from 'react-icons/fi'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
+type FuseResult<T> = {
+  item: T
+  refIndex: number
+  score?: number
+}
+
 const typeIcons: Record<SearchItem['type'], string> = {
   topic: '📘',
   subtopic: '📚',
@@ -33,7 +39,7 @@ export default function SearchPage() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const query = searchParams.get('q') || ''
-  const [results, setResults] = useState<Fuse.FuseResult<SearchItem>[]>([])
+  const [results, setResults] = useState<FuseResult<SearchItem>[]>([])
   const [fuse, setFuse] = useState<Fuse<SearchItem> | null>(null)
 
   // Initialize Fuse.js
@@ -65,7 +71,7 @@ export default function SearchPage() {
     }
     acc[subject].push(result)
     return acc
-  }, {} as Record<SearchItem['subject'], Fuse.FuseResult<SearchItem>[]>)
+  }, {} as Record<SearchItem['subject'], FuseResult<SearchItem>[]>)
 
   const handleSelectResult = (item: SearchItem) => {
     const url = item.anchorId ? `${item.url}#${item.anchorId}` : item.url

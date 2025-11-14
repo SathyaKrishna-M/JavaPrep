@@ -7,6 +7,12 @@ import Fuse from 'fuse.js'
 import { searchIndex, SearchItem } from '@/data/search-index'
 import { FiSearch, FiX, FiArrowRight } from 'react-icons/fi'
 
+type FuseResult<T> = {
+  item: T
+  refIndex: number
+  score?: number
+}
+
 interface SearchDropdownProps {
   isOpen: boolean
   onClose: () => void
@@ -29,7 +35,7 @@ const subjectColors: Record<SearchItem['subject'], string> = {
 
 export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: SearchDropdownProps) {
   const [query, setQuery] = useState(initialQuery)
-  const [results, setResults] = useState<Fuse.FuseResult<SearchItem>[]>([])
+  const [results, setResults] = useState<FuseResult<SearchItem>[]>([])
   const [selectedIndex, setSelectedIndex] = useState(0)
   const inputRef = useRef<HTMLInputElement>(null)
   const router = useRouter()
