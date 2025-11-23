@@ -1,14 +1,14 @@
 'use client'
 
 import TopicPage, { ExplanationSection, PracticeQuestion } from '@/components/TopicPage'
-import { FiBug, FiTarget } from 'react-icons/fi'
+import { FiAlertCircle, FiTarget } from 'react-icons/fi'
 
 const content = {
   title: 'Debugging Techniques',
   explanationSections: [
     {
       title: 'Introduction to Debugging',
-      icon: <FiBug className="w-6 h-6" />,
+      icon: <FiAlertCircle className="w-6 h-6" />,
       content: `<span class="text-blue-400 font-semibold">Debugging</span> is finding and fixing errors in code.
 
 Types of Errors:

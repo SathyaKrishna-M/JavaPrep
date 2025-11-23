@@ -49,6 +49,49 @@ public class AbstractionDemo {
 }`,
     },
   ],
+  exampleCode: `// Abstract class example
+abstract class Shape {
+    abstract double area();  // Abstract method
+    
+    void display() {  // Concrete method
+        System.out.println("Area: " + area());
+    }
+}
+
+class Circle extends Shape {
+    double radius;
+    
+    Circle(double r) {
+        radius = r;
+    }
+    
+    double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+class Rectangle extends Shape {
+    double width, height;
+    
+    Rectangle(double w, double h) {
+        width = w;
+        height = h;
+    }
+    
+    double area() {
+        return width * height;
+    }
+}
+
+public class AbstractionDemo {
+    public static void main(String[] args) {
+        Shape s1 = new Circle(5);
+        s1.display();  // Uses abstraction
+        
+        Shape s2 = new Rectangle(4, 6);
+        s2.display();  // Uses abstraction
+    }
+}`,
   practiceQuestions: [
     {
       question: 'Create an abstract class Vehicle with abstract method start(). Create Car class implementing it.',

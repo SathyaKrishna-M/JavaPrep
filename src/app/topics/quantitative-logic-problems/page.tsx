@@ -1,14 +1,14 @@
 'use client'
 
 import TopicPage, { ExplanationSection, PracticeQuestion } from '@/components/TopicPage'
-import { FiCalculator, FiTarget } from 'react-icons/fi'
+import { FiHash, FiTarget } from 'react-icons/fi'
 
 const content = {
   title: 'Quantitative Logic Problems',
   explanationSections: [
     {
       title: 'Number Series',
-      icon: <FiCalculator className="w-6 h-6" />,
+      icon: <FiHash className="w-6 h-6" />,
       content: `<span class="text-blue-400 font-semibold">Number Series</span> problems find patterns in sequences.
 
 Common Patterns:

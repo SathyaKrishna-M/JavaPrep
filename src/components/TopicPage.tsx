@@ -49,7 +49,7 @@ export interface TopicContent {
   title: string
   explanationSections?: ExplanationSection[]
   explanation?: string // Fallback for old format
-  exampleCode: string
+  exampleCode?: string
   practiceQuestions?: PracticeQuestion[]
   practiceCode?: string // Fallback for old format
   dryRunSteps?: DryRunStep[]
@@ -254,7 +254,10 @@ export default function TopicPage({ content }: TopicPageProps) {
                   <FiCode className="w-6 h-6 text-blue-400" />
                   Example Code
                 </h2>
-                <CodeBlock code={content.exampleCode} language="java" />
+                <CodeBlock 
+                  code={content.exampleCode || content.explanationSections?.[0]?.code || '// No example code available'} 
+                  language="java" 
+                />
               </div>
             </div>
           )}

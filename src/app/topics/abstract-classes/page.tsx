@@ -48,6 +48,48 @@ public class AbstractClassDemo {
 }`,
     },
   ],
+  exampleCode: `abstract class Shape {
+    abstract double area();  // Abstract method
+    
+    void display() {  // Concrete method
+        System.out.println("Area: " + area());
+    }
+}
+
+class Rectangle extends Shape {
+    double width, height;
+    
+    Rectangle(double w, double h) {
+        width = w;
+        height = h;
+    }
+    
+    double area() {
+        return width * height;
+    }
+}
+
+class Circle extends Shape {
+    double radius;
+    
+    Circle(double r) {
+        radius = r;
+    }
+    
+    double area() {
+        return Math.PI * radius * radius;
+    }
+}
+
+public class AbstractClassDemo {
+    public static void main(String[] args) {
+        Shape s1 = new Rectangle(5, 10);
+        s1.display();  // Area: 50.0
+        
+        Shape s2 = new Circle(7);
+        s2.display();  // Area: 153.93804002589985
+    }
+}`,
   practiceQuestions: [
     {
       question: 'Create an abstract class Animal with abstract method makeSound(). Create Dog class extending it.',
