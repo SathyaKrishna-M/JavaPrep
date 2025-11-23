@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="maven-antrun-" default="main">
+  <target name="main">
+    <copy file="E:\6Projects\JavaPrep\BabuHub\src\visualizer\java-runtime/build-output/classes.wasm" tofile="E:\6Projects\JavaPrep\BabuHub\src\visualizer\java-runtime/../../../public/wasm/runtime.wasm" overwrite="true" />
+    <copy file="E:\6Projects\JavaPrep\BabuHub\src\visualizer\java-runtime/build-output/classes.wasm-runtime.js" tofile="E:\6Projects\JavaPrep\BabuHub\src\visualizer\java-runtime/../../../public/wasm/runtime.js" overwrite="true" />
+  </target>
+</project>
