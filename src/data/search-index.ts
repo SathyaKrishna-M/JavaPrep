@@ -6,20 +6,76 @@ export interface SearchItem {
   content: string
   url: string
   anchorId?: string
+  co?: string
 }
 
-// Java Topics
+// Java Topics (ordered by CO structure)
 const javaTopics = [
-  { id: 'input-output', title: 'Input/Output', description: 'Learn how to read and write data in Java', href: '/topics/input-output' },
-  { id: 'operators', title: 'Operators', description: 'Arithmetic, logical, and relational operators', href: '/topics/operators' },
-  { id: 'conditionals', title: 'Conditionals', description: 'if, else, switch statements', href: '/topics/conditionals' },
-  { id: 'loops', title: 'Loops', description: 'for, while, do-while loops', href: '/topics/loops' },
-  { id: 'nested-loops', title: 'Nested Loops', description: 'Loops within loops', href: '/topics/nested-loops' },
-  { id: 'patterns', title: 'Patterns', description: 'Star, number, and alphabet patterns', href: '/topics/patterns' },
-  { id: 'arrays1d', title: '1D Arrays', description: 'Single-dimensional arrays', href: '/topics/arrays1d' },
-  { id: 'arrays2d', title: '2D Arrays', description: 'Two-dimensional arrays', href: '/topics/arrays2d' },
-  { id: 'methods', title: 'Methods', description: 'Functions and methods in Java', href: '/topics/methods' },
-  { id: 'encapsulation', title: 'Encapsulation', description: 'Data hiding and access modifiers', href: '/topics/encapsulation' },
+  // CO1 — Basic Java Programming Constructs (BTL-2 → BTL-3)
+  { id: 'variables-data-types', title: 'Variables and Data Types', description: 'Syntax, data types, variables, operators', href: '/topics/variables-data-types', co: 'CO1' },
+  { id: 'operators', title: 'Operators', description: 'Arithmetic, logical, and relational operators', href: '/topics/operators', co: 'CO1' },
+  { id: 'type-casting', title: 'Type Casting', description: 'Converting between different data types', href: '/topics/type-casting', co: 'CO1' },
+  { id: 'input-output', title: 'Input/Output', description: 'Learn how to read and write data in Java', href: '/topics/input-output', co: 'CO1' },
+  { id: 'conditionals', title: 'Conditionals', description: 'if, else, switch statements', href: '/topics/conditionals', co: 'CO1' },
+  { id: 'loops', title: 'Loops', description: 'for, while, do-while loops', href: '/topics/loops', co: 'CO1' },
+  { id: 'nested-loops', title: 'Nested Loops', description: 'Loops within loops', href: '/topics/nested-loops', co: 'CO1' },
+  { id: 'dry-run-flow-tracing', title: 'Dry Run & Flow Tracing', description: 'Manually tracing code execution step-by-step', href: '/topics/dry-run-flow-tracing', co: 'CO1' },
+  { id: 'debugging-techniques', title: 'Debugging Techniques', description: 'Finding and fixing errors in code', href: '/topics/debugging-techniques', co: 'CO1' },
+  { id: 'patterns', title: 'Patterns', description: 'Star, number, and alphabet patterns', href: '/topics/patterns', co: 'CO1' },
+  { id: 'problem-solving-methodology', title: 'Problem-Solving Methodology', description: 'Systematic approach to solving programming problems', href: '/topics/problem-solving-methodology', co: 'CO1' },
+  { id: 'flowchart-design', title: 'Flowchart Design', description: 'Visual representation of algorithms using flowcharts', href: '/topics/flowchart-design', co: 'CO1' },
+  
+  // CO2 — Arrays & Algorithmic Problem Solving (BTL-2 → BTL-4)
+  { id: 'arrays-memory-model', title: 'Arrays & Memory Model', description: 'How arrays are stored in memory, references, and memory allocation', href: '/topics/arrays-memory-model', co: 'CO2' },
+  { id: 'arrays1d', title: '1D Arrays', description: 'Single-dimensional arrays - creation, traversal, memory layout', href: '/topics/arrays1d', co: 'CO2' },
+  { id: 'searching-algorithms', title: 'Searching Algorithms', description: 'Linear search and binary search algorithms', href: '/topics/searching-algorithms', co: 'CO2' },
+  { id: 'sorting-algorithms', title: 'Sorting Algorithms', description: 'Bubble, Selection, Insertion, Merge, and Quick Sort', href: '/topics/sorting-algorithms', co: 'CO2' },
+  { id: 'arrays2d', title: '2D Arrays', description: 'Two-dimensional arrays and matrix algorithms', href: '/topics/arrays2d', co: 'CO2' },
+  { id: 'matrix-algorithms', title: 'Matrix Algorithms', description: 'Matrix transpose, rotation, diagonal operations, and spiral traversal', href: '/topics/matrix-algorithms', co: 'CO2' },
+  { id: 'prefix-sum-sliding-window', title: 'Prefix Sum & Sliding Window', description: 'Prefix sum for range queries and sliding window technique', href: '/topics/prefix-sum-sliding-window', co: 'CO2' },
+  { id: 'two-pointer-technique', title: 'Two-Pointer Technique', description: 'Efficient array traversal using two pointers', href: '/topics/two-pointer-technique', co: 'CO2' },
+  { id: 'competitive-programming', title: 'CodeChef-Style Problem Solving', description: 'Quantitative array problems and competitive programming strategies', href: '/topics/competitive-programming', co: 'CO2' },
+  
+  // CO3 — Recursion, Bitwise & String-Based Problem Solving (BTL-2 → BTL-4)
+  { id: 'recursion-basics', title: 'Recursion Basics', description: 'Understanding recursion, stack frames, base cases, and recursive thinking', href: '/topics/recursion-basics', co: 'CO3' },
+  { id: 'bitwise-operators', title: 'Bitwise Operators', description: 'AND, OR, XOR, NOT, and shift operators for bit manipulation', href: '/topics/bitwise-operators', co: 'CO3' },
+  { id: 'bit-manipulation-tricks', title: 'Bit Manipulation Tricks', description: 'Even/odd check, power of 2, subset generation, and bit tricks', href: '/topics/bit-manipulation-tricks', co: 'CO3' },
+  { id: 'strings-immutability', title: 'Strings and Immutability', description: 'String class, immutability, and common string operations', href: '/topics/strings-immutability', co: 'CO3' },
+  { id: 'stringbuilder-stringbuffer', title: 'StringBuilder & StringBuffer', description: 'Mutable string classes for efficient string manipulation', href: '/topics/stringbuilder-stringbuffer', co: 'CO3' },
+  { id: 'string-problems', title: 'String Problems', description: 'Palindrome, anagram, substring, and frequency count problems', href: '/topics/string-problems', co: 'CO3' },
+  { id: 'regex-pattern-matching', title: 'Regex - Pattern Matching & Validation', description: 'Regular expressions for pattern matching and validation', href: '/topics/regex-pattern-matching', co: 'CO3' },
+  { id: 'recursive-problems', title: 'Recursive Problems', description: 'Fibonacci, backtracking, Tower of Hanoi, and other recursive problems', href: '/topics/recursive-problems', co: 'CO3' },
+  { id: 'quantitative-logic-problems', title: 'Quantitative Logic Problems', description: 'Number series, prime numbers, perfect numbers, and mathematical sequences', href: '/topics/quantitative-logic-problems', co: 'CO3' },
+  
+  // CO4 — OOP Foundations & Modularization (BTL-2 → BTL-4)
+  { id: 'classes-objects', title: 'Classes & Objects', description: 'Class definition, object creation, instance variables, and instance methods', href: '/topics/classes-objects', co: 'CO4' },
+  { id: 'constructors-this', title: 'Constructors & this Keyword', description: 'Default and parameterized constructors, constructor overloading, and this keyword', href: '/topics/constructors-this', co: 'CO4' },
+  { id: 'methods', title: 'Methods', description: 'Functions and methods in Java - overloading and modularization', href: '/topics/methods', co: 'CO4' },
+  { id: 'static-members', title: 'Static Members', description: 'Static variables, static methods, static blocks, and when to use static', href: '/topics/static-members', co: 'CO4' },
+  { id: 'encapsulation', title: 'Encapsulation', description: 'Data hiding, access modifiers, getters and setters', href: '/topics/encapsulation', co: 'CO4' },
+  { id: 'abstraction', title: 'Abstraction', description: 'Hiding implementation details, data abstraction, and method abstraction', href: '/topics/abstraction', co: 'CO4' },
+  { id: 'modular-program-structure', title: 'Modular Program Structure', description: 'Breaking code into classes, organizing modules, and class design principles', href: '/topics/modular-program-structure', co: 'CO4' },
+  { id: 'analyzing-class-design', title: 'Analyzing Class Design', description: 'Single responsibility, cohesion, coupling, encapsulation analysis, and design patterns', href: '/topics/analyzing-class-design', co: 'CO4' },
+  
+  // CO5 — Advanced OOP & System Architecture (BTL-2 → BTL-5)
+  { id: 'inheritance', title: 'Inheritance', description: 'Class inheritance, IS-A relationship, method overriding, and code reuse', href: '/topics/inheritance', co: 'CO5' },
+  { id: 'method-overriding-super-final', title: 'Method Overriding, super & final', description: 'Method overriding, super keyword, final keyword, and runtime polymorphism', href: '/topics/method-overriding-super-final', co: 'CO5' },
+  { id: 'interfaces', title: 'Interfaces', description: 'Interface definition, multiple inheritance, default methods, and static methods', href: '/topics/interfaces', co: 'CO5' },
+  { id: 'abstract-classes', title: 'Abstract Classes', description: 'Abstract classes, abstract methods, partial abstraction, and template pattern', href: '/topics/abstract-classes', co: 'CO5' },
+  { id: 'polymorphism', title: 'Polymorphism', description: 'Compile-time and runtime polymorphism, method overloading and overriding', href: '/topics/polymorphism', co: 'CO5' },
+  { id: 'reflection-api', title: 'Reflection API', description: 'Runtime class inspection, dynamic method invocation, and field access', href: '/topics/reflection-api', co: 'CO5' },
+  { id: 'design-patterns', title: 'Design Patterns', description: 'Factory, Singleton, Strategy, Template Method patterns and best practices', href: '/topics/design-patterns', co: 'CO5' },
+  { id: 'domain-system-modeling', title: 'Domain System Modeling', description: 'Entity identification, relationship modeling, and complete domain models', href: '/topics/domain-system-modeling', co: 'CO5' },
+  
+  // CO6 — Robust & Scalable Java Applications (BTL-2 → BTL-4)
+  { id: 'exception-handling', title: 'Exception Handling', description: 'try-catch-finally, throw, throws, common exceptions, and error handling', href: '/topics/exception-handling', co: 'CO6' },
+  { id: 'custom-exceptions', title: 'Custom Exceptions', description: 'Creating custom exceptions, checked vs unchecked, and exception chaining', href: '/topics/custom-exceptions', co: 'CO6' },
+  { id: 'file-io-streams', title: 'File I/O Streams', description: 'File reading and writing, FileReader, FileWriter, BufferedReader, BufferedWriter', href: '/topics/file-io-streams', co: 'CO6' },
+  { id: 'serialization', title: 'Serialization', description: 'Object serialization, deserialization, Serializable interface, and transient keyword', href: '/topics/serialization', co: 'CO6' },
+  { id: 'generics', title: 'Generics', description: 'Generic classes, methods, type parameters, type safety, and wildcards', href: '/topics/generics', co: 'CO6' },
+  { id: 'collections-framework', title: 'Collections Framework', description: 'List, Set, Map, Queue interfaces, ArrayList, HashSet, HashMap, and common operations', href: '/topics/collections-framework', co: 'CO6' },
+  { id: 'lambda-expressions', title: 'Lambda Expressions', description: 'Lambda syntax, functional interfaces, method references, and concise code', href: '/topics/lambda-expressions', co: 'CO6' },
+  { id: 'stream-api', title: 'Stream API', description: 'Stream operations, filter, map, reduce, collect, and functional programming', href: '/topics/stream-api', co: 'CO6' },
 ]
 
 // DSD Topics
@@ -154,6 +210,7 @@ export const searchIndex: SearchItem[] = [
     subject: 'Java' as const,
     content: topic.description,
     url: topic.href,
+    co: topic.co,
   })),
   
   // DSD Topics

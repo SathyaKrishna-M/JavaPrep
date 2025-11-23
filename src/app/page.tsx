@@ -3,127 +3,158 @@
 import { motion } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import Link from 'next/link'
+import Hero from '@/components/Hero'
+import SubjectCard from '@/components/SubjectCard'
+import FeatureCard from '@/components/FeatureCard'
 import { FaJava } from 'react-icons/fa'
-import { FiCpu, FiLayers } from 'react-icons/fi'
+import { FiCpu, FiLayers, FiBook, FiCode, FiEye } from 'react-icons/fi'
 
 const subjects = [
   {
     id: 'java',
     title: 'Java Programming',
-    description: 'Master Java programming with interactive examples, visualizations, and practice exercises',
-    icon: <FaJava className="w-16 h-16" />,
+    description: 'Master Java programming with interactive examples, visualizations, and practice exercises designed for exam preparation.',
+    icon: <FaJava className="w-12 h-12" />,
     href: '/subjects/java',
-    color: 'from-orange-400 to-orange-600',
-    bgColor: 'from-orange-500/10 to-orange-600/10',
-    borderColor: 'border-orange-500/30',
+    gradientFrom: 'from-orange-400',
+    gradientTo: 'to-orange-600',
   },
   {
     id: 'digital-system-design',
     title: 'Digital System Design',
-    description: 'Learn digital logic design, circuit optimization, and programmable devices with visual flowcharts',
-    icon: <FiCpu className="w-16 h-16" />,
+    description: 'Learn digital logic design, circuit optimization, and programmable devices with visual flowcharts and interactive diagrams.',
+    icon: <FiCpu className="w-12 h-12" />,
     href: '/subjects/digital-system-design',
-    color: 'from-blue-400 to-cyan-600',
-    bgColor: 'from-blue-500/10 to-cyan-600/10',
-    borderColor: 'border-blue-500/30',
+    gradientFrom: 'from-blue-400',
+    gradientTo: 'to-cyan-600',
   },
   {
     id: 'discrete-mathematics',
     title: 'Discrete Mathematics',
-    description: 'Master sets, relations, functions, lattices, and discrete structures with interactive diagrams and examples',
-    icon: <FiLayers className="w-16 h-16" />,
+    description: 'Master sets, relations, functions, lattices, and discrete structures with interactive diagrams and step-by-step examples.',
+    icon: <FiLayers className="w-12 h-12" />,
     href: '/subjects/discrete-mathematics',
-    color: 'from-purple-400 to-pink-600',
-    bgColor: 'from-purple-500/10 to-pink-600/10',
-    borderColor: 'border-purple-500/30',
+    gradientFrom: 'from-purple-400',
+    gradientTo: 'to-pink-600',
+  },
+]
+
+const features = [
+  {
+    icon: <FiBook className="w-8 h-8" />,
+    title: 'Read Concepts',
+    description: 'Learn with clear, comprehensive explanations and visual aids',
+    gradientFrom: 'from-blue-400',
+    gradientTo: 'to-cyan-500',
+  },
+  {
+    icon: <FiCode className="w-8 h-8" />,
+    title: 'Practice Examples',
+    description: 'Practice with real coding examples and interactive exercises',
+    gradientFrom: 'from-purple-400',
+    gradientTo: 'to-pink-500',
+  },
+  {
+    icon: <FiEye className="w-8 h-8" />,
+    title: 'Visualize Dry Runs',
+    description: 'See code execution step-by-step with interactive visualizations',
+    gradientFrom: 'from-cyan-400',
+    gradientTo: 'to-blue-500',
   },
 ]
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen relative overflow-hidden">
       <Navbar />
-      <div className="container mx-auto px-4 py-16">
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-            BabuHub Learning Platform
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8">
-            Interactive, Visual, Easy - Master Programming & Digital Design
-          </p>
-        </motion.div>
+      
+      {/* Hero Section */}
+      <Hero />
 
-        {/* Subject Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 max-w-6xl mx-auto">
-          {subjects.map((subject, index) => (
-            <motion.div
-              key={subject.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.2 }}
-            >
-              <Link href={subject.href}>
-                <motion.div
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`glass-card h-full cursor-pointer group border-2 ${subject.borderColor} bg-gradient-to-br ${subject.bgColor}`}
-                >
-                  <div className={`text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r ${subject.color}`}>
-                    {subject.icon}
-                  </div>
-                  <h3 className={`text-2xl font-bold mb-3 bg-gradient-to-r ${subject.color} bg-clip-text text-transparent group-hover:scale-105 transition-transform`}>
-                    {subject.title}
-                  </h3>
-                  <p className="text-gray-300 mb-6">{subject.description}</p>
-                  <motion.div
-                    className={`flex items-center gap-2 font-semibold bg-gradient-to-r ${subject.color} bg-clip-text text-transparent`}
-                    initial={{ x: 0 }}
-                    whileHover={{ x: 5 }}
-                  >
-                    Explore Topics →
-                  </motion.div>
-                </motion.div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+      {/* Subjects Section */}
+      <section className="relative py-24 px-4">
+        {/* Section Divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        
+        <div className="container mx-auto max-w-7xl">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent">
+                Explore Subjects
+              </span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Choose a subject to start your learning journey
+            </p>
+          </motion.div>
 
-        {/* Features Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="glass-card max-w-4xl mx-auto text-center"
-        >
-          <h2 className="text-3xl font-bold mb-6">Why BabuHub?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div>
-              <div className="text-4xl mb-4">📚</div>
-              <h3 className="text-xl font-semibold mb-2">Read Concepts</h3>
-              <p className="text-gray-300">Learn Java concepts with clear explanations</p>
-            </div>
-            <div>
-              <div className="text-4xl mb-4">💻</div>
-              <h3 className="text-xl font-semibold mb-2">Practice Examples</h3>
-              <p className="text-gray-300">Practice with real coding examples</p>
-            </div>
-            <div>
-              <div className="text-4xl mb-4">👁️</div>
-              <h3 className="text-xl font-semibold mb-2">Visualize Dry Runs</h3>
-              <p className="text-gray-300">See code execution step-by-step</p>
-            </div>
+          {/* Subject Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {subjects.map((subject, index) => (
+              <SubjectCard
+                key={subject.id}
+                title={subject.title}
+                description={subject.description}
+                icon={subject.icon}
+                href={subject.href}
+                gradientFrom={subject.gradientFrom}
+                gradientTo={subject.gradientTo}
+                delay={index * 0.1}
+              />
+            ))}
           </div>
-        </motion.div>
-      </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="relative py-24 px-4">
+        {/* Section Divider */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        
+        <div className="container mx-auto max-w-6xl">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent">
+                Why BabuHub?
+              </span>
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Everything you need to master programming and digital design
+            </p>
+          </motion.div>
+
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <FeatureCard
+                key={index}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+                gradientFrom={feature.gradientFrom}
+                gradientTo={feature.gradientTo}
+                delay={index * 0.1}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </main>
   )
 }
-

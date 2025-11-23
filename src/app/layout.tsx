@@ -9,7 +9,11 @@ export const metadata: Metadata = {
   title: 'BabuHub - Master Java for Exams',
   description: 'Interactive, Visual, and Easy Java learning platform for students',
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: '/logo.svg',
   },
 }
 
