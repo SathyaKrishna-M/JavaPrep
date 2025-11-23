@@ -31,7 +31,10 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
   const [query, setQuery] = useState(initialQuery)
   const [results, setResults] = useState<FuseResult<SearchItem>[]>([])
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const [isKeyboardNavigating, setIsKeyboardNavigating] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
+  const resultsRef = useRef<HTMLDivElement>(null)
+  const selectedItemRef = useRef<HTMLDivElement>(null)
   const router = useRouter()
   const fuseRef = useRef<Fuse<SearchItem> | null>(null)
 
@@ -53,8 +56,32 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
       setSelectedIndex(0)
     } else {
       setResults([])
+      setSelectedIndex(0)
     }
   }, [query])
+
+  // Scroll selected item into view only when using keyboard navigation
+  useEffect(() => {
+    if (isKeyboardNavigating && selectedItemRef.current && resultsRef.current) {
+      const selectedElement = selectedItemRef.current
+      const container = resultsRef.current
+      
+      const containerRect = container.getBoundingClientRect()
+      const elementRect = selectedElement.getBoundingClientRect()
+      
+      // Check if element is outside visible area
+      if (elementRect.top < containerRect.top) {
+        // Element is above visible area
+        selectedElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      } else if (elementRect.bottom > containerRect.bottom) {
+        // Element is below visible area
+        selectedElement.scrollIntoView({ behavior: 'smooth', block: 'end' })
+      }
+      
+      // Reset flag after scrolling
+      setTimeout(() => setIsKeyboardNavigating(false), 300)
+    }
+  }, [selectedIndex, isKeyboardNavigating])
 
   // Focus input when dropdown opens
   useEffect(() => {
@@ -70,13 +97,22 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'ArrowDown') {
       e.preventDefault()
-      setSelectedIndex(prev => (prev < results.length - 1 ? prev + 1 : prev))
+      e.stopPropagation()
+      if (results.length > 0) {
+        setIsKeyboardNavigating(true)
+        setSelectedIndex(prev => (prev < results.length - 1 ? prev + 1 : prev))
+      }
     } else if (e.key === 'ArrowUp') {
       e.preventDefault()
-      setSelectedIndex(prev => (prev > 0 ? prev - 1 : 0))
+      e.stopPropagation()
+      if (results.length > 0) {
+        setIsKeyboardNavigating(true)
+        setSelectedIndex(prev => (prev > 0 ? prev - 1 : 0))
+      }
     } else if (e.key === 'Enter') {
       e.preventDefault()
-      if (results.length > 0) {
+      e.stopPropagation()
+      if (results.length > 0 && selectedIndex < results.length) {
         handleSelectResult(results[selectedIndex].item)
       } else if (query.length >= 2) {
         // Navigate to search page if no results but query exists
@@ -84,9 +120,23 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
         onClose()
       }
     } else if (e.key === 'Escape') {
+      e.preventDefault()
+      e.stopPropagation()
       onClose()
     }
   }
+
+  // Prevent body scroll when search is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
 
   const handleSelectResult = (item: SearchItem) => {
     const url = item.anchorId ? `${item.url}#${item.anchorId}` : item.url
@@ -166,7 +216,7 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
         </div>
 
         {/* Results */}
-        <div className="max-h-96 overflow-y-auto">
+        <div ref={resultsRef} className="max-h-96 overflow-y-auto">
           {query.length >= 2 ? (
             results.length > 0 ? (
               <div className="py-2">
@@ -176,10 +226,15 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
                   return (
                     <motion.div
                       key={item.id}
+                      ref={isSelected ? selectedItemRef : null}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.05 }}
                       onClick={() => handleSelectResult(item)}
+                      onMouseEnter={() => {
+                        setIsKeyboardNavigating(false)
+                        setSelectedIndex(index)
+                      }}
                       className={`px-4 py-3 cursor-pointer transition-colors ${
                         isSelected
                           ? 'bg-blue-500/20 border-l-4 border-blue-400'

@@ -29,49 +29,80 @@ export default function SubjectCard({
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
+      transition={{ duration: 0.6, delay, ease: 'easeOut' }}
     >
       <Link href={href}>
         <motion.div
-          whileHover={{ scale: 1.03, y: -8 }}
+          whileHover={{ scale: 1.03, y: -4 }}
           whileTap={{ scale: 0.98 }}
           className="group relative h-full"
         >
-          {/* Gradient Border */}
-          <div
-            className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${gradientFrom} ${gradientTo} opacity-20 group-hover:opacity-40 transition-opacity duration-300 blur-sm`}
-          />
-          
-          {/* Glass Card */}
-          <div className="relative h-full p-8 rounded-2xl glass border border-white/10 backdrop-blur-xl group-hover:border-white/20 transition-all duration-300">
-            {/* Icon with Glow */}
-            <div className="mb-6 flex justify-center">
-              <div className={`relative p-4 rounded-2xl bg-gradient-to-br ${gradientFrom} ${gradientTo} bg-opacity-10 group-hover:bg-opacity-20 transition-all duration-300`}>
-                <div className="relative flex items-center justify-center [&>svg]:w-12 [&>svg]:h-12">
-                  {/* Gradient background for icon */}
-                  <div className={`absolute inset-0 bg-gradient-to-r ${gradientFrom} ${gradientTo} rounded-lg opacity-30`} />
-                  <div className="relative z-10 [&>svg]:fill-current [&>svg]:text-white/90">
-                    {icon}
+          {/* Premium Gradient Border with Animated Mask - Brighter */}
+          <div className={`relative p-[2px] rounded-2xl bg-gradient-to-br ${gradientFrom} ${gradientTo} opacity-60 group-hover:opacity-90 transition-opacity duration-300 overflow-hidden`}>
+            {/* Rotating Gradient Mask */}
+            <motion.div
+              className={`absolute inset-0 opacity-0 group-hover:opacity-40`}
+              animate={{
+                rotate: [0, 360],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
+              style={{
+                background: `conic-gradient(from 0deg, transparent, rgba(59, 130, 246, 0.7), rgba(6, 182, 212, 0.7), transparent)`,
+              }}
+            />
+            
+            {/* Inner Glass Card - Brighter background */}
+            <div className="relative h-full min-h-[400px] flex flex-col p-10 rounded-2xl bg-white/15 backdrop-blur-xl border border-white/20 group-hover:border-white/30 transition-all duration-300 shadow-lg group-hover:shadow-2xl group-hover:shadow-blue-500/30">
+              {/* Gradient overlay for brightness */}
+              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${gradientFrom} ${gradientTo} opacity-15 group-hover:opacity-25 transition-opacity duration-300 pointer-events-none`} />
+              <div className="relative z-10 h-full flex flex-col">
+                {/* Icon with Glowing Circle and Hover Animations - Brighter */}
+                <div className="mb-6 flex justify-center flex-shrink-0">
+                <motion.div
+                  whileHover={{ rotate: 6, scale: 1.05 }}
+                  className={`relative w-24 h-24 rounded-full bg-gradient-to-br ${gradientFrom} ${gradientTo} p-[2px] shadow-lg`}
+                >
+                  <div className="w-full h-full rounded-full bg-black/30 backdrop-blur-sm flex items-center justify-center">
+                    <div className="relative z-10 [&>svg]:w-12 [&>svg]:h-12 [&>svg]:text-white [&>svg]:drop-shadow-2xl [&>svg]:brightness-110">
+                      {icon}
+                    </div>
                   </div>
-                </div>
-                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${gradientFrom} ${gradientTo} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300`} />
+                  {/* Glowing Ring - Brighter */}
+                  <motion.div
+                    className={`absolute inset-0 rounded-full bg-gradient-to-r ${gradientFrom} ${gradientTo} opacity-30 group-hover:opacity-60 blur-xl transition-opacity duration-300`}
+                    animate={{
+                      opacity: [0.2, 0.4, 0.2],
+                      scale: [1, 1.15, 1],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: 'easeInOut',
+                    }}
+                  />
+                </motion.div>
               </div>
-            </div>
 
-            {/* Title */}
-            <h3 className={`text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r ${gradientFrom} ${gradientTo} bg-clip-text text-transparent`}>
-              {title}
-            </h3>
+                {/* Title - Bright white text */}
+                <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white drop-shadow-lg flex-shrink-0">
+                  {title}
+                </h3>
 
-            {/* Description */}
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              {description}
-            </p>
+                {/* Description - Bright white text */}
+                <p className="text-white mb-6 leading-relaxed flex-grow drop-shadow-md">
+                  {description}
+                </p>
 
-            {/* CTA */}
-            <div className={`flex items-center gap-2 font-semibold text-sm bg-gradient-to-r ${gradientFrom} ${gradientTo} bg-clip-text text-transparent group-hover:gap-3 transition-all duration-300`}>
-              Explore Topics
-              <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                {/* CTA - Bright white text */}
+                <div className="flex items-center gap-2 font-semibold text-sm text-white group-hover:gap-3 transition-all duration-300 flex-shrink-0 drop-shadow-md">
+                  Explore Topics
+                  <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -79,4 +110,3 @@ export default function SubjectCard({
     </motion.div>
   )
 }
-

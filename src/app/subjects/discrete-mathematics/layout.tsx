@@ -18,7 +18,7 @@ export default function DiscreteMathematicsLayout({
   return (
     <main className="min-h-screen">
       <Navbar />
-      <div className="container mx-auto px-4 py-24">
+      <div className="container mx-auto px-4 py-12 md:py-16">
         {isSubjectIndex ? (
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             <div className="lg:col-span-4">{children}</div>
