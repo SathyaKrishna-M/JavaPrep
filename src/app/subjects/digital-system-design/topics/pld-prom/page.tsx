@@ -80,7 +80,7 @@ Inputs (n) → [Fixed AND Array] → 2^n Minterms → [Programmable OR Array] �
     {
       title: '📊 PROM Applications',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `PROMs are used for various applications in digital system design.
+      content: `PROMs are used for various applications in digital design computer orientation architecture.
 
 <span class="text-amber-300 font-semibold">Function Implementation:</span>
 • Implementing Boolean functions in SOP canonical form
@@ -156,7 +156,7 @@ PROM is inefficient for functions with few minterms:
 ✓ <span class="text-cyan-300">Compare</span> PROM with other PLDs (PLA, PAL)
 ✓ <span class="text-cyan-300">Identify</span> when PROM is the appropriate choice
 
-Understanding PLDs is essential for modern digital system design.`,
+Understanding PLDs is essential for modern digital design computer orientation architecture.`,
     },
   ],
   practiceQuestions: [

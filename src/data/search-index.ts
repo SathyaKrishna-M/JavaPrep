@@ -2,7 +2,7 @@ export interface SearchItem {
   id: string
   title: string
   type: 'topic' | 'subtopic' | 'question' | 'important_question' | 'pattern'
-  subject: 'Java' | 'DSD' | 'DM'
+  subject: 'Java' | 'DDCOA' | 'DM'
   content: string
   url: string
   anchorId?: string
@@ -90,6 +90,11 @@ const dsdTopics = [
   { id: 'pla-pal', title: 'PLA & PAL', description: 'Advanced PLD comparison', href: '/subjects/digital-system-design/topics/pla-pal' },
   { id: 'cpld-fpga', title: 'CPLD & FPGA', description: 'CPLD and FPGA architecture', href: '/subjects/digital-system-design/topics/cpld-fpga' },
   { id: 'reversible-gates', title: 'Reversible Gates', description: 'Reversible logic gates', href: '/subjects/digital-system-design/topics/reversible-gates' },
+  { id: 'microcomputer-architecture', title: 'Microcomputer Architecture', description: 'CPU architecture, buses, registers, and instruction cycle', href: '/subjects/digital-system-design/topics/microcomputer-architecture' },
+  { id: 'operands-addressing-modes', title: 'Operands and Addressing Modes', description: 'Operand types and addressing modes (immediate, register, direct, indirect, indexed, etc.)', href: '/subjects/digital-system-design/topics/operands-addressing-modes' },
+  { id: 'instruction-formats', title: 'Instruction Formats', description: 'Zero-address, one-address, two-address, three-address, stack-based, accumulator-based, register-based formats', href: '/subjects/digital-system-design/topics/instruction-formats' },
+  { id: 'instruction-set-machine-cycle', title: 'Instruction Set and Machine Cycle', description: 'Instruction classification, machine cycles (fetch, memory read/write, I/O read/write, interrupt)', href: '/subjects/digital-system-design/topics/instruction-set-machine-cycle' },
+  { id: 'subroutine-call-return', title: 'Subroutine Call and Return Mechanism', description: 'Subroutine concepts, call mechanism, return mechanism, call stack, stack diagrams', href: '/subjects/digital-system-design/topics/subroutine-call-return' },
   { id: 'important-questions', title: 'Important Questions', description: 'Selected important questions with detailed solutions', href: '/subjects/digital-system-design/topics/important-questions' },
 ]
 
@@ -190,14 +195,14 @@ const javaPracticeQuestions: SearchItem[] = [
 
 // DSD Important Questions
 const dsdImportantQuestions: SearchItem[] = [
-  { id: 'dsd-iq-1', title: 'Number System Conversion', type: 'important_question', subject: 'DSD', content: 'Convert (358)₁₀ into binary, octal and hexadecimal', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-1' },
-  { id: 'dsd-iq-2', title: 'Binary to Decimal Conversion', type: 'important_question', subject: 'DSD', content: 'Convert (11010011)₂ into Decimal, octal and hexadecimal', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-2' },
-  { id: 'dsd-iq-3', title: 'Logic Gate Implementation', type: 'important_question', subject: 'DSD', content: 'Implement logic gates and truth tables', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-3' },
-  { id: 'dsd-iq-4', title: 'Boolean Algebra Simplification', type: 'important_question', subject: 'DSD', content: 'Simplify Boolean expressions using laws and theorems', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-4' },
-  { id: 'dsd-iq-5', title: 'K-Map Optimization', type: 'important_question', subject: 'DSD', content: 'Optimize SOP and POS using K-maps', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-5' },
-  { id: 'dsd-iq-6', title: 'Half and Full Adder', type: 'important_question', subject: 'DSD', content: 'Design half adder and full adder circuits', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-6' },
-  { id: 'dsd-iq-7', title: 'MUX and DEMUX', type: 'important_question', subject: 'DSD', content: 'Multiplexer and demultiplexer design and applications', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-7' },
-  { id: 'dsd-iq-8', title: 'Encoder and Decoder', type: 'important_question', subject: 'DSD', content: 'Encoder and decoder circuit implementation', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-8' },
+  { id: 'dsd-iq-1', title: 'Number System Conversion', type: 'important_question', subject: 'DDCOA', content: 'Convert (358)₁₀ into binary, octal and hexadecimal', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-1' },
+  { id: 'dsd-iq-2', title: 'Binary to Decimal Conversion', type: 'important_question', subject: 'DDCOA', content: 'Convert (11010011)₂ into Decimal, octal and hexadecimal', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-2' },
+  { id: 'dsd-iq-3', title: 'Logic Gate Implementation', type: 'important_question', subject: 'DDCOA', content: 'Implement logic gates and truth tables', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-3' },
+  { id: 'dsd-iq-4', title: 'Boolean Algebra Simplification', type: 'important_question', subject: 'DDCOA', content: 'Simplify Boolean expressions using laws and theorems', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-4' },
+  { id: 'dsd-iq-5', title: 'K-Map Optimization', type: 'important_question', subject: 'DDCOA', content: 'Optimize SOP and POS using K-maps', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-5' },
+  { id: 'dsd-iq-6', title: 'Half and Full Adder', type: 'important_question', subject: 'DDCOA', content: 'Design half adder and full adder circuits', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-6' },
+  { id: 'dsd-iq-7', title: 'MUX and DEMUX', type: 'important_question', subject: 'DDCOA', content: 'Multiplexer and demultiplexer design and applications', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-7' },
+  { id: 'dsd-iq-8', title: 'Encoder and Decoder', type: 'important_question', subject: 'DDCOA', content: 'Encoder and decoder circuit implementation', url: '/subjects/digital-system-design/topics/important-questions', anchorId: 'question-8' },
 ]
 
 // Build search index
@@ -218,7 +223,7 @@ export const searchIndex: SearchItem[] = [
     id: topic.id,
     title: topic.title,
     type: 'topic' as const,
-    subject: 'DSD' as const,
+    subject: 'DDCOA' as const,
     content: topic.description,
     url: topic.href,
   })),

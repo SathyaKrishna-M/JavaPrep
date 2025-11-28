@@ -19,13 +19,13 @@ const typeIcons: Record<SearchItem['type'], string> = {
 
 const subjectColors: Record<SearchItem['subject'], string> = {
   Java: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-  DSD: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+  DDCOA: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
   DM: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
 }
 
 const subjectLabels: Record<SearchItem['subject'], string> = {
   Java: 'Java Programming',
-  DSD: 'Digital System Design',
+  DDCOA: 'DDCOA - Digital Design Computer Orientation Architecture',
   DM: 'Discrete Mathematics',
 }
 

@@ -175,7 +175,7 @@ const content = {
 ✓ <span class="text-cyan-300">Recognize</span> the role of embedded memory and DSP blocks in FPGAs
 ✓ <span class="text-cyan-300">Analyze</span> timing characteristics and routing complexity
 
-CPLD and FPGA are essential for modern digital system design, offering flexibility and high performance.`,
+CPLD and FPGA are essential for modern digital design computer orientation architecture, offering flexibility and high performance.`,
     },
   ],
   practiceQuestions: [

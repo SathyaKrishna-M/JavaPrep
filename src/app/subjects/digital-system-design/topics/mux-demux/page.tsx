@@ -129,7 +129,7 @@ MUX can implement any Boolean function:
 ✓ <span class="text-cyan-300">Apply</span> MUX/DEMUX in data routing, conversion, and selection applications
 ✓ <span class="text-cyan-300">Analyze</span> the relationship between number of inputs, select lines, and outputs
 
-MUX and DEMUX are fundamental building blocks in digital system design.`,
+MUX and DEMUX are fundamental building blocks in digital design computer orientation architecture.`,
     },
   ],
   practiceQuestions: [

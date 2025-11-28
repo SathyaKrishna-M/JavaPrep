@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import CodeBlock from './CodeBlock'
-import { FiPlay, FiPause, FiSkipForward, FiRotateCcw, FiEye, FiChevronLeft } from 'react-icons/fi'
+import { FiPlay, FiPause, FiSkipForward, FiRotateCcw, FiEye, FiChevronLeft, FiSkipBack } from 'react-icons/fi'
 
 export interface DryRunStep {
   line: number
@@ -119,7 +119,7 @@ export default function DryRunVisualizer({
             disabled={currentStep === 0}
             className="glass px-5 py-2.5 rounded-lg hover:bg-blue-500/20 transition-colors flex items-center gap-2 font-semibold text-gray-300 border border-gray-700/30 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <FiChevronLeft className="w-4 h-4" /> Previous
+            <FiSkipBack className="w-4 h-4" /> Previous
           </motion.button>
           <div className="flex items-center gap-2 ml-auto">
             <label className="text-sm">Speed:</label>

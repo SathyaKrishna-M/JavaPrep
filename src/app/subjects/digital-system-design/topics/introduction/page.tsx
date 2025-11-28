@@ -4,7 +4,7 @@ import DSDTopicPage, { ExplanationSection, PracticeQuestion } from '@/components
 import { FiBook, FiTarget, FiGitBranch } from 'react-icons/fi'
 
 const content = {
-  title: 'Introduction to Digital System Design',
+  title: 'Introduction to Digital Design Computer Orientation Architecture',
   explanationSections: [
     {
       title: '🧠 Number Systems and Conversions',
@@ -215,7 +215,7 @@ A | B | C | Y = ABC
 ✓ <span class="text-cyan-300">Distinguish</span> between combinational and sequential logic circuits
 ✓ <span class="text-cyan-300">Apply</span> fundamental concepts to analyze and design basic digital circuits
 
-These foundational concepts are essential for understanding more advanced topics in digital system design.`,
+These foundational concepts are essential for understanding more advanced topics in digital design computer orientation architecture.`,
     },
   ],
   practiceQuestions: [

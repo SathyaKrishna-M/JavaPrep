@@ -2,6 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Milestone E: Visualizer UI Enhancements */
+
+/* Glass card utility */
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl shadow-xl;
+  }
+  
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl;
+  }
+  
+  /* Custom scrollbar for visualizer */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-900/50 rounded-full;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-blue-500/30 rounded-full hover:bg-blue-500/50 transition-colors;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-blue-500/50;
+  }
+  
+  /* Firefox scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(59, 130, 246, 0.3) rgba(17, 24, 39, 0.5);
+  }
+}
+
 :root {
   --background: #0d1117;
   --foreground: #f8fafc;
@@ -39,21 +76,53 @@ body {
 
 /* Glassmorphism utility classes */
 .glass {
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .glass-card {
-  @apply glass rounded-xl p-6 shadow-lg;
-  box-shadow: 0 8px 32px 0 rgba(0, 123, 255, 0.1);
-  transition: all 0.3s ease;
+  @apply glass rounded-2xl p-6;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .glass-card:hover {
-  box-shadow: 0 8px 32px 0 rgba(0, 170, 255, 0.3);
-  transform: translateY(-4px);
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Zero-Gravity Animations */
+@keyframes float-breathing {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float-slow {
+  animation: float-breathing 6s ease-in-out infinite;
+}
+
+.animate-float-medium {
+  animation: float-breathing 4s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-breathing 3s ease-in-out infinite;
+}
+
+/* Colored Shadow Utilities */
+.shadow-glow-blue {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.15), 0 0 0 1px rgba(59, 130, 246, 0.1);
+}
+
+.shadow-glow-purple {
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.15), 0 0 0 1px rgba(168, 85, 247, 0.1);
+}
+
+.shadow-glow-cyan {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15), 0 0 0 1px rgba(6, 182, 212, 0.1);
 }
 
 /* Animated background */

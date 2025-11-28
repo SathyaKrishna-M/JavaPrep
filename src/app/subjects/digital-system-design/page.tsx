@@ -126,7 +126,7 @@ export default function DigitalSystemDesignPage() {
             Subjects
           </Link>
           <FiChevronRight className="w-4 h-4" />
-          <span className="text-white">Digital System Design</span>
+          <span className="text-white">Digital Design Computer Orientation Architecture</span>
         </motion.nav>
 
         {/* Hero Section */}
@@ -142,13 +142,13 @@ export default function DigitalSystemDesignPage() {
           <div className="flex items-center gap-4">
             <FiCpu className="w-12 h-12 md:w-16 md:h-16 text-blue-500" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent leading-tight">
-              Digital System Design
+              Digital Design Computer Orientation Architecture
             </h1>
           </div>
         </motion.div>
 
         {/* Search Bar */}
-        <TopicSearch query={searchQuery} onQueryChange={setSearchQuery} placeholder="Search digital system design topics..." />
+        <TopicSearch query={searchQuery} onQueryChange={setSearchQuery} placeholder="Search digital design computer orientation architecture topics..." />
 
         {/* Topics List by Section */}
         <div className="space-y-10 md:space-y-14">

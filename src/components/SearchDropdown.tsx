@@ -23,7 +23,7 @@ const typeIcons: Record<SearchItem['type'], string> = {
 
 const subjectColors: Record<SearchItem['subject'], string> = {
   Java: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
-  DSD: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
+  DDCOA: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
   DM: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
 }
 
@@ -65,10 +65,10 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
     if (isKeyboardNavigating && selectedItemRef.current && resultsRef.current) {
       const selectedElement = selectedItemRef.current
       const container = resultsRef.current
-      
+
       const containerRect = container.getBoundingClientRect()
       const elementRect = selectedElement.getBoundingClientRect()
-      
+
       // Check if element is outside visible area
       if (elementRect.top < containerRect.top) {
         // Element is above visible area
@@ -77,7 +77,7 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
         // Element is below visible area
         selectedElement.scrollIntoView({ behavior: 'smooth', block: 'end' })
       }
-      
+
       // Reset flag after scrolling
       setTimeout(() => setIsKeyboardNavigating(false), 300)
     }
@@ -143,7 +143,7 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
     router.push(url)
     onClose()
     setQuery('')
-    
+
     // Scroll to element if anchor exists
     if (item.anchorId) {
       setTimeout(() => {
@@ -176,7 +176,7 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 pointer-events-auto">
       {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -185,7 +185,7 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
         onClick={onClose}
         className="fixed inset-0 bg-black/50 backdrop-blur-sm"
       />
-      
+
       {/* Search Container */}
       <motion.div
         initial={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -235,11 +235,10 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
                         setIsKeyboardNavigating(false)
                         setSelectedIndex(index)
                       }}
-                      className={`px-4 py-3 cursor-pointer transition-colors ${
-                        isSelected
+                      className={`px-4 py-3 cursor-pointer transition-colors ${isSelected
                           ? 'bg-blue-500/20 border-l-4 border-blue-400'
                           : 'hover:bg-white/5'
-                      }`}
+                        }`}
                     >
                       <div className="flex items-start gap-3">
                         <span className="text-2xl flex-shrink-0">{typeIcons[item.type]}</span>

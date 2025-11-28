@@ -42,7 +42,7 @@ function DSDSidebar() {
 
   return (
     <aside className="glass-card h-fit sticky top-24">
-      <h2 className="text-xl font-bold mb-4">DSD Topics</h2>
+      <h2 className="text-xl font-bold mb-4">DDCOA Topics</h2>
       <nav className="space-y-2">
         {dsdTopics.map((topic, index) => {
           const isActive = pathname === topic.href

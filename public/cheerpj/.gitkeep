@@ -1,0 +1,9 @@
+# CheerpJ Runtime Directory
+# 
+# Place CheerpJ distribution files here:
+# - cheerpj.js (main runtime)
+# - cheerpj.wasm (WebAssembly runtime)
+# - Other CheerpJ assets
+#
+# See CHEERPJ-SETUP.md for detailed instructions
+

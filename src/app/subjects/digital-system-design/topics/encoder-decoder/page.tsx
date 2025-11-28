@@ -160,7 +160,7 @@ This implements F = A'B + AB' + AB
 ✓ <span class="text-cyan-300">Recognize</span> the relationship between decoders and demultiplexers
 ✓ <span class="text-cyan-300">Design</span> circuits using encoders and decoders for various applications
 
-Encoders and decoders are essential components in digital system design.`,
+Encoders and decoders are essential components in digital design computer orientation architecture.`,
     },
   ],
   practiceQuestions: [

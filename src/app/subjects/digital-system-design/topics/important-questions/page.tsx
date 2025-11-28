@@ -21,7 +21,7 @@ export default function ImportantQuestionsPage() {
           className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors mb-4"
         >
           <FiArrowRight className="w-4 h-4 rotate-180" />
-          Back to DSD Topics
+          Back to DDCOA Topics
         </Link>
       </motion.div>
 
@@ -35,7 +35,7 @@ export default function ImportantQuestionsPage() {
           Important Questions & Solutions
         </h1>
         <p className="text-xl text-gray-300 mb-6">
-          Comprehensive collection of important DSD questions with detailed solutions
+          Comprehensive collection of important DDCOA questions with detailed solutions
         </p>
       </motion.div>
 

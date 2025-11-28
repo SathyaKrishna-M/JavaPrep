@@ -12,7 +12,7 @@ import { FiCpu, FiLayers, FiBook, FiCode, FiEye } from 'react-icons/fi'
 const subjects = [
   {
     id: 'digital-system-design',
-    title: 'Digital System Design',
+    title: 'Digital Design Computer Orientation Architecture',
     description: 'Learn digital logic design, circuit optimization, and programmable devices with visual flowcharts and interactive diagrams.',
     icon: <FiCpu className="w-12 h-12" />,
     href: '/subjects/digital-system-design',
