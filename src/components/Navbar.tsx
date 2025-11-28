@@ -62,7 +62,7 @@ export default function Navbar() {
       className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none"
     >
       <div
-        className={`pointer-events-auto w-full max-w-7xl rounded-full transition-all duration-500 ${isScrolled
+        className={`pointer-events-auto w-full max-w-6xl rounded-full transition-all duration-500 ${isScrolled
           ? 'glass shadow-glow-blue py-2 px-6'
           : 'glass py-3 px-8 bg-white/5'
           }`}
@@ -94,6 +94,9 @@ export default function Navbar() {
             >
               <FiSearch className="w-4 h-4 group-hover:text-blue-400 transition-colors" />
               <span className="text-sm font-medium">Search topics...</span>
+              <div className="absolute right-2 px-1.5 py-0.5 rounded text-[10px] bg-white/10 border border-white/5 text-gray-500 font-mono">
+                /
+              </div>
             </button>
           </div>
 

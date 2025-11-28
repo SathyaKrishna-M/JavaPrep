@@ -176,7 +176,7 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 pointer-events-auto">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4">
       {/* Backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
