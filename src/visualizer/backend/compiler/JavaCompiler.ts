@@ -15,7 +15,9 @@ import { CompilationResult, CompilationOptions } from './types'
 const execAsync = promisify(exec)
 
 export class JavaCompiler {
-  private static readonly COMPILE_DIR = join(process.cwd(), 'tmp', 'compile')
+  private static readonly COMPILE_DIR = process.platform === 'win32'
+    ? join(process.cwd(), 'tmp', 'compile')
+    : '/tmp/run-java'
   private static readonly MAX_COMPILE_TIME = 10000 // 10 seconds
 
   /**
@@ -28,33 +30,33 @@ export class JavaCompiler {
   ): Promise<CompilationResult> {
     const compileId = uuidv4()
     const compileDir = join(this.COMPILE_DIR, compileId)
-    
+
     try {
       // Create compile directory
       await mkdir(compileDir, { recursive: true })
-      
+
       // Write source files
       const mainJavaPath = join(compileDir, 'Main.java')
       const tracePrinterPath = join(compileDir, 'TracePrinter.java')
-      
+
       await writeFile(mainJavaPath, sourceCode, 'utf-8')
       await writeFile(tracePrinterPath, tracePrinterCode, 'utf-8')
-      
+
       // Compile with javac
       // Use relative paths to avoid issues with spaces in paths
-      const javacCommand = `javac -encoding UTF-8 Main.java TracePrinter.java`
-      
+      const javacCommand = `javac -encoding UTF-8 -d . Main.java TracePrinter.java`
+
       try {
         const { stdout, stderr } = await execAsync(javacCommand, {
           timeout: options.timeout || this.MAX_COMPILE_TIME,
           cwd: compileDir,
           maxBuffer: 1024 * 1024, // 1MB buffer
         })
-        
+
         // Check if .class files were created
         const mainClassExists = existsSync(join(compileDir, 'Main.class'))
         const tracePrinterClassExists = existsSync(join(compileDir, 'TracePrinter.class'))
-        
+
         if (!mainClassExists || !tracePrinterClassExists) {
           const errorMsg = stderr || stdout || 'Compilation failed - class files not created'
           console.error('[JavaCompiler] Compilation failed:', errorMsg)
@@ -66,7 +68,7 @@ export class JavaCompiler {
             warnings: [],
           }
         }
-        
+
         return {
           success: true,
           classpath: compileDir,

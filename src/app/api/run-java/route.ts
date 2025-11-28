@@ -11,6 +11,8 @@ import { JavaSandbox } from '@/visualizer/backend/sandbox/JavaSandbox'
 import { TraceParser } from '@/visualizer/backend/trace/TraceParser'
 import { ExecutionSnapshot } from '@/visualizer/core/tracking/Snapshot'
 
+export const runtime = 'nodejs' // Force Node.js runtime for Vercel
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
@@ -25,11 +27,11 @@ export async function POST(request: NextRequest) {
 
     // Ensure code has a Main class declaration
     let processedCode = code.trim()
-    
+
     // Extract class name if it exists
     const classMatch = processedCode.match(/public\s+class\s+(\w+)/)
     const className = classMatch ? classMatch[1] : null
-    
+
     // If no class or class is not Main, wrap/rename to Main
     if (!className || className !== 'Main') {
       if (className) {
@@ -45,7 +47,7 @@ export async function POST(request: NextRequest) {
 
     // Step 1: Instrument code
     const instrumented = Injector.instrument(processedCode)
-    
+
     if (instrumented.errors.length > 0) {
       console.error('[run-java] Instrumentation errors:', instrumented.errors)
       return NextResponse.json(
