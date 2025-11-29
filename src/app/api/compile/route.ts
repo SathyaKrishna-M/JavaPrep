@@ -39,9 +39,9 @@ async function checkJavacAvailable(): Promise<{ available: boolean; error?: stri
     }
     return { available: false, error: 'javac not found in PATH' }
   } catch (error: any) {
-    return { 
-      available: false, 
-      error: `javac check failed: ${error.message}. Please install JDK 11+ and ensure javac is in PATH.` 
+    return {
+      available: false,
+      error: `javac check failed: ${error.message}. Please install JDK 11+ and ensure javac is in PATH.`
     }
   }
 }
@@ -81,7 +81,7 @@ async function cleanupOldCompiles(): Promise<void> {
 function parseJavaSource(source: string): { packageName: string | null; className: string | null } {
   const packageMatch = source.match(/package\s+([a-zA-Z_][a-zA-Z0-9_.]*)\s*;/)
   const classMatch = source.match(/public\s+class\s+([a-zA-Z_][a-zA-Z0-9_]*)/)
-  
+
   return {
     packageName: packageMatch ? packageMatch[1] : null,
     className: classMatch ? classMatch[1] : null,
@@ -97,143 +97,74 @@ function sanitizeFilename(name: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    // Check javac availability
-    const javacCheck = await checkJavacAvailable()
-    if (!javacCheck.available) {
+    const javaServiceUrl = process.env.JAVA_SERVICE_URL;
+
+    if (!javaServiceUrl) {
       return NextResponse.json(
         {
           success: false,
-          error: 'JDK not available',
-          message: javacCheck.error || 'javac is not installed or not in PATH. Please install JDK 11+ and ensure javac is available.',
-          instructions: [
-            '1. Download JDK 11+ from: https://adoptium.net/',
-            '2. Install JDK',
-            '3. Add JDK bin directory to PATH',
-            '4. Verify: javac -version',
-            '5. Restart the dev server'
-          ]
+          error: 'Configuration Error',
+          message: 'JAVA_SERVICE_URL environment variable is not set. Please deploy the java-service and configure this variable.'
         },
         { status: 503 }
-      )
+      );
     }
 
-    // Parse request
-    const body = await request.json()
-    const { source, packageName: providedPackage, mainClass: providedMainClass } = body
-
-    if (!source || typeof source !== 'string') {
-      return NextResponse.json(
-        { success: false, error: 'Invalid request: source code is required' },
-        { status: 400 }
-      )
-    }
-
-    // Parse Java source to extract package and class
-    const { packageName: parsedPackage, className: parsedClass } = parseJavaSource(source)
-    const packageName = providedPackage || parsedPackage
-    const mainClass = providedMainClass || parsedClass
-
-    if (!mainClass) {
-      return NextResponse.json(
-        { success: false, error: 'Could not determine main class. Please provide a public class with a main method.' },
-        { status: 400 }
-      )
-    }
-
-    // Create unique compile directory
-    const compileId = uuidv4()
-    const compileDir = join(COMPILE_DIR, compileId)
-    await mkdir(compileDir, { recursive: true })
-
-    // Create package directory structure if needed
-    let sourceFilePath = join(compileDir, `${mainClass}.java`)
-    if (packageName) {
-      const packageDir = join(compileDir, ...packageName.split('.'))
-      await mkdir(packageDir, { recursive: true })
-      sourceFilePath = join(packageDir, `${mainClass}.java`)
-    }
-
-    // Write source file
-    await writeFile(sourceFilePath, source, 'utf-8')
-
-    // Compile with javac
-    const classpath = join(process.cwd(), 'src', 'visualizer', 'java-runtime', 'target', 'classes')
-    const javacCommand = packageName
-      ? `javac -cp "${classpath}" -d "${compileDir}" "${sourceFilePath}"`
-      : `javac -cp "${classpath}" -d "${compileDir}" "${sourceFilePath}"`
+    const body = await request.json();
 
     try {
-      const { stdout, stderr } = await execAsync(javacCommand, {
-        timeout: MAX_COMPILE_TIME,
-        cwd: compileDir,
-      })
+      const response = await fetch(`${javaServiceUrl}/compile`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
 
-      // javac outputs errors to stderr, warnings may be in stdout
-      if (stderr && stderr.trim() && !stderr.includes('warning:')) {
-        // Check if compilation actually failed (class files not created)
-        const expectedClassFile = packageName
-          ? join(compileDir, ...packageName.split('.'), `${mainClass}.class`)
-          : join(compileDir, `${mainClass}.class`)
+      const data = await response.json();
 
-        if (!existsSync(expectedClassFile)) {
-          return NextResponse.json(
-            {
-              success: false,
-              error: 'Compilation failed',
-              compilationErrors: stderr,
-            },
-            { status: 400 }
-          )
-        }
+      if (!response.ok) {
+        return NextResponse.json(data, { status: response.status });
       }
-    } catch (error: any) {
-      // Compilation error
+
+      // If successful, the service returns jarBase64
+      // We need to save it to the public directory so the frontend can load it
+      // Or we can return it directly if the frontend supports it.
+      // The current frontend expects a jarUrl.
+
+      if (data.success && data.jarBase64) {
+        const jarBuffer = Buffer.from(data.jarBase64, 'base64');
+        const jarFileName = `${data.compileId}.jar`;
+        const jarPath = join(process.cwd(), 'public', 'jars', jarFileName);
+
+        // Ensure directory exists
+        const { mkdir, writeFile } = require('fs/promises');
+        await mkdir(join(process.cwd(), 'public', 'jars'), { recursive: true });
+        await writeFile(jarPath, jarBuffer);
+
+        return NextResponse.json({
+          success: true,
+          jarUrl: `/jars/${jarFileName}`,
+          mainClass: data.mainClass,
+          compileId: data.compileId,
+        });
+      }
+
+      return NextResponse.json(data);
+
+    } catch (fetchError: any) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Compilation failed',
-          compilationErrors: error.stderr || error.message,
+          error: 'Service Unavailable',
+          message: `Failed to connect to Java execution service: ${fetchError.message}`
         },
-        { status: 400 }
-      )
+        { status: 503 }
+      );
     }
 
-    // Create JAR file
-    const jarFileName = `${compileId}.jar`
-    const jarPath = join(JAR_OUTPUT_DIR, jarFileName)
-    await mkdir(JAR_OUTPUT_DIR, { recursive: true })
-
-    // Build jar command
-    const mainClassFullName = packageName ? `${packageName}.${mainClass}` : mainClass
-    const jarCommand = `jar cf "${jarPath}" -C "${compileDir}" .`
-
-    try {
-      await execAsync(jarCommand, { timeout: 10000 })
-    } catch (error: any) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'JAR creation failed',
-          details: error.message,
-        },
-        { status: 500 }
-      )
-    }
-
-    // Return JAR URL (served from public/jars/)
-    const jarUrl = `/jars/${jarFileName}`
-
-    // Schedule cleanup (async, don't wait)
-    cleanupOldCompiles().catch(() => {})
-
-    return NextResponse.json({
-      success: true,
-      jarUrl,
-      mainClass: mainClassFullName,
-      compileId,
-    })
   } catch (error: any) {
-    console.error('[Compile API] Error:', error)
+    console.error('[Compile API] Error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -241,7 +172,7 @@ export async function POST(request: NextRequest) {
         message: error.message,
       },
       { status: 500 }
-    )
+    );
   }
 }
 

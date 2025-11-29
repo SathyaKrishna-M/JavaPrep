@@ -15,105 +15,46 @@ export const runtime = 'nodejs' // Force Node.js runtime for Vercel
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
-    const { code } = body
+    const javaServiceUrl = process.env.JAVA_SERVICE_URL;
 
-    if (!code || typeof code !== 'string') {
-      return NextResponse.json(
-        { success: false, error: 'Invalid request: code is required' },
-        { status: 400 }
-      )
-    }
-
-    // Ensure code has a Main class declaration
-    let processedCode = code.trim()
-
-    // Extract class name if it exists
-    const classMatch = processedCode.match(/public\s+class\s+(\w+)/)
-    const className = classMatch ? classMatch[1] : null
-
-    // If no class or class is not Main, wrap/rename to Main
-    if (!className || className !== 'Main') {
-      if (className) {
-        // Replace class name with Main
-        processedCode = processedCode.replace(/public\s+class\s+\w+/, 'public class Main')
-      } else {
-        // Wrap in a Main class if no class declaration
-        processedCode = `public class Main {
-    ${processedCode}
-}`
-      }
-    }
-
-    // Step 1: Instrument code
-    const instrumented = Injector.instrument(processedCode)
-
-    if (instrumented.errors.length > 0) {
-      console.error('[run-java] Instrumentation errors:', instrumented.errors)
+    if (!javaServiceUrl) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Instrumentation failed',
-          errors: instrumented.errors,
+          error: 'Configuration Error',
+          message: 'JAVA_SERVICE_URL environment variable is not set. Please deploy the java-service and configure this variable.'
         },
-        { status: 400 }
-      )
+        { status: 503 }
+      );
     }
 
-    // Step 2: Compile
-    const compileResult = await JavaCompiler.compile(
-      instrumented.instrumentedCode,
-      instrumented.tracePrinterCode
-    )
+    const body = await request.json();
 
-    if (!compileResult.success) {
-      console.error('[run-java] Compilation errors:', compileResult.errors)
-      console.error('[run-java] Full instrumented code:')
-      console.error(instrumented.instrumentedCode)
-      console.error('[run-java] Original code:')
-      console.error(processedCode)
+    try {
+      const response = await fetch(`${javaServiceUrl}/run`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+      });
+
+      const data = await response.json();
+      return NextResponse.json(data, { status: response.status });
+
+    } catch (fetchError: any) {
       return NextResponse.json(
         {
           success: false,
-          error: 'Compilation failed',
-          errors: compileResult.errors,
-          warnings: compileResult.warnings,
-          instrumentedCodePreview: instrumented.instrumentedCode.substring(0, 2000), // For debugging
+          error: 'Service Unavailable',
+          message: `Failed to connect to Java execution service: ${fetchError.message}`
         },
-        { status: 400 }
-      )
+        { status: 503 }
+      );
     }
 
-    // Step 3: Execute in sandbox
-    const execResult = await JavaSandbox.execute(compileResult.classpath)
-
-    if (!execResult.success && !execResult.timedOut) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Execution failed',
-          errors: [execResult.error || `Exit code: ${execResult.exitCode}`],
-          stdout: execResult.stdout,
-          stderr: execResult.stderr,
-        },
-        { status: 500 }
-      )
-    }
-
-    // Step 4: Parse trace
-    const parsed = TraceParser.parse(execResult.stderr, execResult.stdout)
-
-    // Step 5: Return snapshots
-    return NextResponse.json({
-      success: true,
-      snapshots: parsed.snapshots,
-      output: parsed.output,
-      errors: parsed.errors,
-      warnings: [...instrumented.warnings, ...compileResult.warnings],
-      timedOut: execResult.timedOut,
-    })
   } catch (error: any) {
-    console.error('[run-java] Error:', error)
+    console.error('[Run API] Error:', error);
     return NextResponse.json(
       {
         success: false,
@@ -121,7 +62,7 @@ export async function POST(request: NextRequest) {
         message: error.message,
       },
       { status: 500 }
-    )
+    );
   }
 }
 
