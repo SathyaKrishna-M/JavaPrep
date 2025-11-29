@@ -7,7 +7,7 @@ import Hero from '@/components/Hero'
 import SubjectCard from '@/components/SubjectCard'
 import FeatureCard from '@/components/FeatureCard'
 import { FaJava } from 'react-icons/fa'
-import { FiCpu, FiLayers, FiBook, FiCode, FiEye } from 'react-icons/fi'
+import { FiCpu, FiLayers, FiBook, FiCode, FiEye, FiActivity } from 'react-icons/fi'
 
 const subjects = [
   {
@@ -55,11 +55,11 @@ const features = [
     gradientTo: 'to-pink-500',
   },
   {
-    icon: <FiEye className="w-12 h-12" />,
-    title: 'Visualize Dry Runs',
-    description: 'See code execution step-by-step with interactive visualizations',
-    gradientFrom: 'from-cyan-400',
-    gradientTo: 'to-blue-500',
+    icon: <FiActivity className="w-12 h-12" />,
+    title: 'Track Progress',
+    description: 'Monitor your learning journey and achieve your goals',
+    gradientFrom: 'from-green-400',
+    gradientTo: 'to-emerald-500',
   },
 ]
 
@@ -67,7 +67,7 @@ export default function Home() {
   return (
     <main className="min-h-screen relative">
       <Navbar />
-      
+
       {/* Shared Background Layer - Extends across Hero and Subjects */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
         {/* Floating Glow Orbs - Scattered with movement */}
@@ -130,7 +130,7 @@ export default function Home() {
             background: 'radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%)',
           }}
         />
-        
+
         {/* Gradient Background Glow - Scattered with movement */}
         <motion.div
           className="absolute w-96 h-96 bg-blue-500/20 rounded-full blur-3xl"
@@ -208,7 +208,7 @@ export default function Home() {
           }}
         />
       </div>
-      
+
       {/* Hero Section */}
       <Hero />
 
@@ -216,7 +216,7 @@ export default function Home() {
       <section className="relative py-20 px-4 z-10">
         {/* White Translucent Divider */}
         <div className="absolute top-0 left-0 right-0 h-px bg-white/10" />
-        
+
         <div className="container mx-auto max-w-7xl relative z-10">
           {/* Section Header with Enhanced Styling */}
           <motion.div
@@ -277,7 +277,7 @@ export default function Home() {
       <section className="relative py-20 px-4 z-10">
         {/* Subtle Gradient Divider */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-        
+
         <div className="container mx-auto max-w-7xl relative z-10">
           {/* Section Header with Enhanced Styling */}
           <motion.div
