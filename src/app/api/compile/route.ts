@@ -16,7 +16,9 @@ import { v4 as uuidv4 } from 'uuid'
 const execAsync = promisify(exec)
 
 // Compile directory (project-local, secure)
-const COMPILE_DIR = join(process.cwd(), 'tmp', 'compile')
+const COMPILE_DIR = process.platform === 'win32'
+  ? join(process.cwd(), 'tmp', 'compile')
+  : '/tmp/compile'
 // JAR files are served from public directory
 // Note: CheerpJ CDN is used, but JARs are still stored locally
 const JAR_OUTPUT_DIR = join(process.cwd(), 'public', 'jars')
@@ -39,9 +41,9 @@ async function checkJavacAvailable(): Promise<{ available: boolean; error?: stri
     }
     return { available: false, error: 'javac not found in PATH' }
   } catch (error: any) {
-    return { 
-      available: false, 
-      error: `javac check failed: ${error.message}. Please install JDK 11+ and ensure javac is in PATH.` 
+    return {
+      available: false,
+      error: `javac check failed: ${error.message}. Please install JDK 11+ and ensure javac is in PATH.`
     }
   }
 }
@@ -81,7 +83,7 @@ async function cleanupOldCompiles(): Promise<void> {
 function parseJavaSource(source: string): { packageName: string | null; className: string | null } {
   const packageMatch = source.match(/package\s+([a-zA-Z_][a-zA-Z0-9_.]*)\s*;/)
   const classMatch = source.match(/public\s+class\s+([a-zA-Z_][a-zA-Z0-9_]*)/)
-  
+
   return {
     packageName: packageMatch ? packageMatch[1] : null,
     className: classMatch ? classMatch[1] : null,
@@ -224,7 +226,7 @@ export async function POST(request: NextRequest) {
     const jarUrl = `/jars/${jarFileName}`
 
     // Schedule cleanup (async, don't wait)
-    cleanupOldCompiles().catch(() => {})
+    cleanupOldCompiles().catch(() => { })
 
     return NextResponse.json({
       success: true,
