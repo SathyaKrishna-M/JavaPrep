@@ -7,10 +7,10 @@
  * Milestone C: Full execution implementation with callback collection
  */
 
-import { 
-  ExecutionSnapshot, 
-  Variable, 
-  StackFrame, 
+import {
+  ExecutionSnapshot,
+  Variable,
+  StackFrame,
   HeapObject,
   CollectionPreview,
   ExceptionInfo,
@@ -70,7 +70,7 @@ export class JavaRunner {
   private callStack: StackFrame[] = []
   private heap: Map<string, HeapObject> = new Map()
   private output: string = ''
-  
+
   // Milestone D: Advanced state tracking
   private collectionsPreview: Map<string, CollectionPreview> = new Map()
   private activeException: ExceptionInfo | null = null
@@ -80,7 +80,7 @@ export class JavaRunner {
   private staticInits: StaticInitInfo[] = []
   private recursionInfo: RecursionInfo | null = null
   private thisReference: string | null = null
-  
+
   // Configuration
   private maxHeapObjects: number = 5000
   private maxCollectionPreviewSize: number = 50
@@ -100,21 +100,21 @@ export class JavaRunner {
 
     // Load WASM module using wasm-loader
     const { loadWASMRuntime } = await import('../../utils/wasm-loader')
-    
+
     try {
       this.wasmModule = await loadWASMRuntime()
     } catch (error: any) {
       console.error('[JavaRunner] Failed to load WASM runtime:', error)
       throw new Error(`WASM runtime failed to load: ${error.message}`)
     }
-    
+
     if (!this.wasmModule) {
       throw new Error('WASM module is null after loading')
     }
-    
+
     // Initialize the runtime
     await this.wasmModule.initializeRuntime()
-    
+
     // Set up callback bindings
     this.wasmModule.bindTrackerCallbacks({
       onStep: (lineNumber) => {
@@ -140,7 +140,7 @@ export class JavaRunner {
         throw new Error(`Execution error: ${error}`)
       },
     })
-    
+
     this.isInitialized = true
     console.log('[JavaRunner] ✓ WASM Runtime ready')
   }
@@ -163,7 +163,7 @@ export class JavaRunner {
     if (!this.wasmModule) {
       throw new Error('WASM module not initialized. Simulation runtime was removed. WASM must be available.')
     }
-    
+
     if (!this.wasmModule.isReady()) {
       throw new Error('WASM runtime is not ready. Call initializeRuntime() first.')
     }
@@ -213,7 +213,7 @@ export class JavaRunner {
       try {
         // Clear event buffer
         this.eventBuffer = []
-        
+
         // Debug: Log before execution
         if (process.env.NEXT_PUBLIC_VERBOSE_SNAPSHOTS === 'true') {
           console.log('[JavaRunner] Starting execution with instrumented code:')
@@ -234,7 +234,7 @@ export class JavaRunner {
 
             // Convert events to snapshots
             const snapshots = this.convertEventsToSnapshots()
-            
+
             // Debug: Log snapshots
             if (process.env.NEXT_PUBLIC_VERBOSE_SNAPSHOTS === 'true') {
               console.log('[JavaRunner] Generated snapshots:', snapshots.length)
@@ -242,10 +242,10 @@ export class JavaRunner {
                 console.log(`[JavaRunner] Snapshot ${idx}: line=${snap.lineNumber}, output="${snap.output}", vars=${snap.variables.length}`)
               })
             }
-            
+
             // Map instrumented line numbers to original line numbers
             const mappedSnapshots = this.mapSnapshotsToOriginalLines(snapshots)
-            
+
             resolve(mappedSnapshots)
           })
           .catch(reject)
@@ -377,7 +377,7 @@ export class JavaRunner {
    */
   private handleOutputEvent(text: string): void {
     // Debug logging
-    if (process.env.NEXT_PUBLIC_VERBOSE_SNAPSHOTS === 'true') {
+    if ((process.env.NEXT_PUBLIC_VERBOSE_SNAPSHOTS ?? '') === 'true') {
       console.log('[JavaRunner] EVENT_OUTPUT:', text, 'Current output:', this.output)
     }
 
@@ -445,7 +445,7 @@ export class JavaRunner {
 
     // Notify callbacks
     this.snapshotCallbacks.forEach(callback => callback(snapshot))
-    
+
     // Clear transient state (but keep heap, collections, etc.)
     this.lastReturn = null
   }
@@ -490,7 +490,7 @@ export class JavaRunner {
 
     const lineNum = snapshot.lineNumber
     const vars = snapshot.variables || []
-    
+
     if (vars.length > 0) {
       const varList = vars.map(v => `${v.name} = ${v.value}`).join(', ')
       return `Executing line ${lineNum}. Variables: ${varList}`
