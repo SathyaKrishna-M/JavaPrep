@@ -92,16 +92,7 @@ export default function Hero() {
             </motion.button>
           </Link>
 
-          <Link href="/visualizer">
-            <motion.button
-              whileHover={{ scale: 1.03, y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              className="group px-8 py-4 rounded-xl glass border border-white/10 text-white font-semibold text-lg hover:bg-white/10 hover:border-white/20 transition-all duration-300 flex items-center gap-2 shadow-md hover:shadow-lg"
-            >
-              <FiPlay className="w-5 h-5" />
-              Visualizer
-            </motion.button>
-          </Link>
+
         </motion.div>
       </div>
 
@@ -113,7 +104,7 @@ export default function Hero() {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
       >
         <motion.div
-          animate={{ 
+          animate={{
             y: [0, 6, 0],
           }}
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
@@ -134,13 +125,13 @@ export default function Hero() {
           <div className="relative w-6 h-12 rounded-full border-2 border-gray-500 flex flex-col items-center justify-start p-1.5 bg-black/20 backdrop-blur-sm overflow-hidden">
             {/* Blue Dot at Top */}
             <motion.div
-              animate={{ 
+              animate={{
                 y: [0, 24, 0],
                 opacity: [1, 0.3, 1],
               }}
-              transition={{ 
-                duration: 2, 
-                repeat: Infinity, 
+              transition={{
+                duration: 2,
+                repeat: Infinity,
                 ease: 'easeInOut',
                 times: [0, 0.5, 1],
               }}
@@ -148,12 +139,12 @@ export default function Hero() {
             />
             {/* Animated Arrow */}
             <motion.div
-              animate={{ 
+              animate={{
                 opacity: [0.4, 1, 0.4],
                 y: [0, 2, 0],
               }}
-              transition={{ 
-                duration: 1.5, 
+              transition={{
+                duration: 1.5,
                 repeat: Infinity,
                 ease: 'easeInOut',
               }}

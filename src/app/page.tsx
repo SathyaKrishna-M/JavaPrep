@@ -54,7 +54,6 @@ const features = [
     gradientFrom: 'from-purple-400',
     gradientTo: 'to-pink-500',
   },
-
 ]
 
 export default function Home() {
