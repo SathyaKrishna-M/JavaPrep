@@ -10,11 +10,12 @@ import CircuitDiagram from '@/components/CircuitDiagram'
 import TruthTable from '@/components/TruthTable'
 import KMap from '@/components/KMap'
 import HomeAssignment from '@/components/HomeAssignment'
-import { 
-  FiArrowRight, 
-  FiCode, 
-  FiBook, 
-  FiTarget, 
+import Mermaid from '@/components/Mermaid'
+import {
+  FiArrowRight,
+  FiCode,
+  FiBook,
+  FiTarget,
   FiCheckCircle,
   FiAlertCircle,
   FiGitBranch,
@@ -53,6 +54,7 @@ export interface ExplanationSection {
   circuitDiagram?: CircuitDiagramData
   truthTable?: TruthTableData
   kMap?: KMapData
+  mermaid?: string
 }
 
 export interface PracticeQuestion {
@@ -64,6 +66,7 @@ export interface PracticeQuestion {
   circuitDiagram?: CircuitDiagramData
   truthTable?: TruthTableData
   kMap?: KMapData
+  mermaid?: string
 }
 
 export interface TopicContent {
@@ -125,7 +128,7 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
                 </h3>
               </div>
               <div className="prose prose-invert max-w-none">
-                <div 
+                <div
                   className="text-gray-300 whitespace-pre-line leading-relaxed mb-4"
                   dangerouslySetInnerHTML={{ __html: section.content || '' }}
                 />
@@ -151,6 +154,11 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
                     title={section.kMap.title}
                     highlightedGroups={section.kMap.highlightedGroups}
                   />
+                )}
+                {section.mermaid && (
+                  <div className="my-4">
+                    <Mermaid chart={section.mermaid} />
+                  </div>
                 )}
                 {section.code && (
                   <motion.div
@@ -179,7 +187,7 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
             Explanation
           </h2>
           <div className="prose prose-invert max-w-none">
-            <div 
+            <div
               className="text-gray-300 whitespace-pre-line leading-relaxed"
               dangerouslySetInnerHTML={{ __html: content.explanation || '' }}
             />
@@ -222,6 +230,7 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
               circuitDiagram: q.circuitDiagram,
               truthTable: q.truthTable,
               kMap: q.kMap,
+              mermaid: q.mermaid,
             }))}
           />
         </div>
@@ -332,20 +341,18 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
                           }
                         }}
                         disabled={showResults}
-                        className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
-                          isSelected
-                            ? showAnswer
-                              ? 'border-green-500 bg-green-500/20'
-                              : 'border-blue-500 bg-blue-500/20'
-                            : showAnswer
+                        className={`w-full text-left p-4 rounded-lg border-2 transition-all ${isSelected
+                          ? showAnswer
+                            ? 'border-green-500 bg-green-500/20'
+                            : 'border-blue-500 bg-blue-500/20'
+                          : showAnswer
                             ? 'border-green-500/50 bg-green-500/10'
                             : 'border-gray-700 hover:border-gray-600'
-                        } ${showResults ? 'cursor-default' : 'cursor-pointer'}`}
+                          } ${showResults ? 'cursor-default' : 'cursor-pointer'}`}
                       >
                         <div className="flex items-center gap-3">
-                          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${
-                            isSelected ? 'border-blue-400 bg-blue-400' : 'border-gray-500'
-                          }`}>
+                          <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${isSelected ? 'border-blue-400 bg-blue-400' : 'border-gray-500'
+                            }`}>
                             {isSelected && <FiCheckCircle className="w-3 h-3 text-white" />}
                           </div>
                           <span className="text-gray-300">{option}</span>
@@ -435,11 +442,10 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
                 setShowResults(false)
               }
             }}
-            className={`px-6 py-3 font-semibold transition-all relative flex items-center gap-2 whitespace-nowrap ${
-              activeTab === tab.id
-                ? 'text-blue-400'
-                : 'text-gray-400 hover:text-white'
-            }`}
+            className={`px-6 py-3 font-semibold transition-all relative flex items-center gap-2 whitespace-nowrap ${activeTab === tab.id
+              ? 'text-blue-400'
+              : 'text-gray-400 hover:text-white'
+              }`}
           >
             {tab.icon}
             {tab.label}

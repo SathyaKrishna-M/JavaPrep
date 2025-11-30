@@ -11,12 +11,12 @@ interface XORGateProps {
   hideWires?: boolean
 }
 
-export default function XORGate({ 
-  x, 
-  y, 
-  width = 60, 
-  height = 50, 
-  inputs = ['A', 'B'], 
+export default function XORGate({
+  x,
+  y,
+  width = 60,
+  height = 50,
+  inputs = ['A', 'B'],
   output = 'Y',
   showLabel = true,
   hideWires = false
@@ -27,22 +27,23 @@ export default function XORGate({
   return (
     <g>
       {/* XOR Gate Shape - OR gate with curved input line */}
+      {/* XOR Gate Shape - IEEE Standard */}
       <path
-        d={`M ${x} ${y - height/2} Q ${x + width/2} ${y - height/2} ${x + width} ${y} Q ${x + width/2} ${y + height/2} ${x} ${y + height/2} Q ${x + width/3} ${y} ${x} ${y - height/2}`}
-        fill="none"
+        d={`M ${x + 5} ${y - height / 2} Q ${x + width / 4 + 5} ${y} ${x + 5} ${y + height / 2} Q ${x + width / 2 + 5} ${y + height / 2} ${x + width} ${y} Q ${x + width / 2 + 5} ${y - height / 2} ${x + 5} ${y - height / 2} Z`}
+        fill="#0d1117"
         stroke="#00b4ff"
         strokeWidth="2"
         className="drop-shadow-[0_0_8px_rgba(0,180,255,0.5)]"
       />
-      
-      {/* Curved input line for XOR (second arc) */}
+
+      {/* Extra Curve */}
       <path
-        d={`M ${x - 8} ${y - height/2} Q ${x - 3} ${y - height/2 - 3} ${x} ${y - height/2}`}
+        d={`M ${x - 5} ${y - height / 2} Q ${x + width / 4 - 5} ${y} ${x - 5} ${y + height / 2}`}
         fill="none"
         stroke="#00b4ff"
         strokeWidth="2"
       />
-      
+
       {/* Input wires */}
       {!hideWires && inputs.map((label, i) => {
         if (!label) return null
@@ -78,7 +79,7 @@ export default function XORGate({
           </g>
         )
       })}
-      
+
       {/* Output wire */}
       {!hideWires && output && (
         <>
@@ -109,7 +110,7 @@ export default function XORGate({
           </text>
         </>
       )}
-      
+
       {/* Gate Label */}
       {showLabel && (
         <text

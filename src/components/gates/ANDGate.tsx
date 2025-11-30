@@ -11,12 +11,12 @@ interface ANDGateProps {
   hideWires?: boolean
 }
 
-export default function ANDGate({ 
-  x, 
-  y, 
-  width = 60, 
-  height = 50, 
-  inputs = ['A', 'B'], 
+export default function ANDGate({
+  x,
+  y,
+  width = 60,
+  height = 50,
+  inputs = ['A', 'B'],
   output = 'Y',
   showLabel = true,
   hideWires = false
@@ -26,15 +26,15 @@ export default function ANDGate({
 
   return (
     <g>
-      {/* AND Gate Shape - Curved rectangle with rounded right edge */}
+      {/* AND Gate Shape - IEEE Standard */}
       <path
-        d={`M ${x} ${y - height/2} L ${x + width - 15} ${y - height/2} Q ${x + width} ${y - height/2} ${x + width} ${y} Q ${x + width} ${y + height/2} ${x + width - 15} ${y + height/2} L ${x} ${y + height/2} Z`}
-        fill="none"
+        d={`M ${x} ${y - height / 2} L ${x + width / 2} ${y - height / 2} A ${height / 2} ${height / 2} 0 0 1 ${x + width / 2} ${y + height / 2} L ${x} ${y + height / 2} L ${x} ${y - height / 2} Z`}
+        fill="#0d1117"
         stroke="#00b4ff"
         strokeWidth="2"
         className="drop-shadow-[0_0_8px_rgba(0,180,255,0.5)]"
       />
-      
+
       {/* Input wires */}
       {!hideWires && inputs.map((label, i) => {
         if (!label) return null
@@ -69,7 +69,7 @@ export default function ANDGate({
           </g>
         )
       })}
-      
+
       {/* Output wire */}
       {!hideWires && output && (
         <>
@@ -100,7 +100,7 @@ export default function ANDGate({
           </text>
         </>
       )}
-      
+
       {/* Gate Label */}
       {showLabel && (
         <text

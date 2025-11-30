@@ -11,12 +11,12 @@ interface ORGateProps {
   hideWires?: boolean
 }
 
-export default function ORGate({ 
-  x, 
-  y, 
-  width = 60, 
-  height = 50, 
-  inputs = ['A', 'B'], 
+export default function ORGate({
+  x,
+  y,
+  width = 60,
+  height = 50,
+  inputs = ['A', 'B'],
   output = 'Y',
   showLabel = true,
   hideWires = false
@@ -26,15 +26,15 @@ export default function ORGate({
 
   return (
     <g>
-      {/* OR Gate Shape - Curved shape with convex left side */}
+      {/* OR Gate Shape - IEEE Standard */}
       <path
-        d={`M ${x} ${y - height/2} Q ${x + width/2} ${y - height/2} ${x + width} ${y} Q ${x + width/2} ${y + height/2} ${x} ${y + height/2} Q ${x + width/3} ${y} ${x} ${y - height/2}`}
-        fill="none"
+        d={`M ${x} ${y - height / 2} Q ${x + width / 4} ${y} ${x} ${y + height / 2} Q ${x + width / 2} ${y + height / 2} ${x + width} ${y} Q ${x + width / 2} ${y - height / 2} ${x} ${y - height / 2} Z`}
+        fill="#0d1117"
         stroke="#00b4ff"
         strokeWidth="2"
         className="drop-shadow-[0_0_8px_rgba(0,180,255,0.5)]"
       />
-      
+
       {/* Input wires */}
       {!hideWires && inputs.map((label, i) => {
         if (!label) return null
@@ -69,7 +69,7 @@ export default function ORGate({
           </g>
         )
       })}
-      
+
       {/* Output wire */}
       {!hideWires && output && (
         <>
@@ -100,7 +100,7 @@ export default function ORGate({
           </text>
         </>
       )}
-      
+
       {/* Gate Label */}
       {showLabel && (
         <text

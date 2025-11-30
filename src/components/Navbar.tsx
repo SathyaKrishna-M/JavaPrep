@@ -94,9 +94,7 @@ export default function Navbar() {
             >
               <FiSearch className="w-4 h-4 group-hover:text-blue-400 transition-colors" />
               <span className="text-sm font-medium">Search topics...</span>
-              <div className="absolute right-2 px-1.5 py-0.5 rounded text-[10px] bg-white/10 border border-white/5 text-gray-500 font-mono">
-                /
-              </div>
+
             </button>
           </div>
 

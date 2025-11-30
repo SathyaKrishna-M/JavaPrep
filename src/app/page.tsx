@@ -7,7 +7,7 @@ import Hero from '@/components/Hero'
 import SubjectCard from '@/components/SubjectCard'
 import FeatureCard from '@/components/FeatureCard'
 import { FaJava } from 'react-icons/fa'
-import { FiCpu, FiLayers, FiBook, FiCode, FiEye } from 'react-icons/fi'
+import { FiCpu, FiLayers, FiBook, FiCode, FiEye, FiActivity } from 'react-icons/fi'
 
 const subjects = [
   {
@@ -53,6 +53,13 @@ const features = [
     description: 'Practice with real coding examples and interactive exercises',
     gradientFrom: 'from-purple-400',
     gradientTo: 'to-pink-500',
+  },
+  {
+    icon: <FiActivity className="w-12 h-12" />,
+    title: 'Track Progress',
+    description: 'Monitor your learning journey and achieve your goals',
+    gradientFrom: 'from-green-400',
+    gradientTo: 'to-emerald-500',
   },
 ]
 

@@ -14,47 +14,40 @@ import Fuse from 'fuse.js'
 // Group topics by logical sections
 const groupTopics = (topics: DSDTopic[]) => {
   const sections = {
-    fundamentals: {
-      title: 'Fundamentals',
-      subtitle: 'Number systems, logic gates, and basic digital concepts',
-      topics: topics.filter(t => 
-        ['introduction', 'boolean-algebra'].includes(t.id)
-      ),
+    co1: {
+      title: 'CO1: Combinational Digital Logic Circuits',
+      subtitle: 'Boolean Algebra, Logic Gates, Optimization, Combinational Circuits, PLDs, CPLD & FPGA',
+      topics: topics.filter(t => t.co === 'CO1'),
     },
-    optimization: {
-      title: 'Optimization Techniques',
-      subtitle: 'K-maps, SOP/POS simplification, and circuit optimization',
-      topics: topics.filter(t => 
-        ['sop-pos-optimization'].includes(t.id)
-      ),
+    co2: {
+      title: 'CO2: Design of Sequential and Memory Circuits',
+      subtitle: 'Latches, Flip-Flops, Registers, Counters, RAM, and Memory Decoding',
+      topics: topics.filter(t => t.co === 'CO2'),
     },
-    combinationalCircuits: {
-      title: 'Combinational Circuits',
-      subtitle: 'Adders, subtractors, multiplexers, demultiplexers, encoders, and decoders',
-      topics: topics.filter(t => 
-        ['adders-subtractors', 'mux-demux', 'encoder-decoder'].includes(t.id)
-      ),
+    co3: {
+      title: 'CO3: Basic Computer Architecture and Instructions',
+      subtitle: 'Microcomputer Arch, Addressing Modes, Instruction Formats, CISC/RISC, Pipelining',
+      topics: topics.filter(t => t.co === 'CO3'),
     },
-    programmableDevices: {
-      title: 'Programmable Logic Devices',
-      subtitle: 'PLD, PROM, PLA, PAL, CPLD, and FPGA architectures',
-      topics: topics.filter(t => 
-        ['pld-prom', 'pla-pal', 'cpld-fpga'].includes(t.id)
-      ),
+    co4: {
+      title: 'CO4: Memory Architecture and I/O Organization',
+      subtitle: 'Memory Hierarchy, Cache, Virtual Memory, I/O Fundamentals',
+      topics: topics.filter(t => t.co === 'CO4'),
     },
-    advanced: {
-      title: 'Advanced Topics',
-      subtitle: 'Reversible gates and advanced digital design concepts',
-      topics: topics.filter(t => 
-        ['reversible-gates'].includes(t.id)
-      ),
+    co5: {
+      title: 'CO5: Superscalar, VLIW, Multicore & Low Power',
+      subtitle: 'Advanced Architectures, Low Power Techniques, HDL Basics',
+      topics: topics.filter(t => t.co === 'CO5'),
+    },
+    co6: {
+      title: 'CO6: Practical Applications',
+      subtitle: 'Real-world digital system applications',
+      topics: topics.filter(t => t.co === 'CO6'),
     },
     resources: {
       title: 'Additional Resources',
       subtitle: 'Practice questions and important problems',
-      topics: topics.filter(t => 
-        ['important-questions'].includes(t.id)
-      ),
+      topics: topics.filter(t => t.co === 'resources'),
     },
   }
 
@@ -138,7 +131,7 @@ export default function DigitalSystemDesignPage() {
         >
           {/* Glow orb behind title */}
           <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-full blur-3xl -z-10" />
-          
+
           <div className="flex items-center gap-4">
             <FiCpu className="w-12 h-12 md:w-16 md:h-16 text-blue-500" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent leading-tight">

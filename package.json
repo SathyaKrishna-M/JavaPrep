@@ -21,6 +21,7 @@
     "framer-motion": "^10.16.16",
     "fuse.js": "^7.1.0",
     "katex": "^0.16.25",
+    "mermaid": "^11.12.1",
     "monaco-editor": "^0.55.1",
     "next": "^14.2.33",
     "react": "^18.3.1",

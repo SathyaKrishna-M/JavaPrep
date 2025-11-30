@@ -5,6 +5,7 @@ export interface DSDTopic {
   icon: string
   href: string
   session: number
+  co?: string
 }
 
 export const dsdTopics: DSDTopic[] = [
@@ -15,6 +16,7 @@ export const dsdTopics: DSDTopic[] = [
     icon: '🔢',
     href: '/subjects/digital-system-design/topics/introduction',
     session: 1,
+    co: 'CO1',
   },
   {
     id: 'boolean-algebra',
@@ -23,6 +25,7 @@ export const dsdTopics: DSDTopic[] = [
     icon: '📐',
     href: '/subjects/digital-system-design/topics/boolean-algebra',
     session: 2,
+    co: 'CO1',
   },
   {
     id: 'sop-pos-optimization',
@@ -31,6 +34,16 @@ export const dsdTopics: DSDTopic[] = [
     icon: '🗺️',
     href: '/subjects/digital-system-design/topics/sop-pos-optimization',
     session: 3,
+    co: 'CO1',
+  },
+  {
+    id: 'comparators',
+    title: 'Comparators',
+    description: 'Magnitude comparators and equality checkers',
+    icon: '⚖️',
+    href: '/subjects/digital-system-design/topics/comparators',
+    session: 3,
+    co: 'CO1',
   },
   {
     id: 'adders-subtractors',
@@ -39,6 +52,7 @@ export const dsdTopics: DSDTopic[] = [
     icon: '➕',
     href: '/subjects/digital-system-design/topics/adders-subtractors',
     session: 4,
+    co: 'CO1',
   },
   {
     id: 'mux-demux',
@@ -47,6 +61,7 @@ export const dsdTopics: DSDTopic[] = [
     icon: '🔀',
     href: '/subjects/digital-system-design/topics/mux-demux',
     session: 5,
+    co: 'CO1',
   },
   {
     id: 'encoder-decoder',
@@ -55,6 +70,34 @@ export const dsdTopics: DSDTopic[] = [
     icon: '🔐',
     href: '/subjects/digital-system-design/topics/encoder-decoder',
     session: 6,
+    co: 'CO1',
+  },
+  {
+    id: 'latches-flip-flops',
+    title: 'Latches & Flip-Flops',
+    description: 'SR, JK, D, T Flip-flops and triggering methods',
+    icon: '🔄',
+    href: '/subjects/digital-system-design/topics/latches-flip-flops',
+    session: 7,
+    co: 'CO2',
+  },
+  {
+    id: 'registers-counters',
+    title: 'Registers & Counters',
+    description: 'Shift registers, Async/Sync counters, Ring & Johnson counters',
+    icon: '⏱️',
+    href: '/subjects/digital-system-design/topics/registers-counters',
+    session: 8,
+    co: 'CO2',
+  },
+  {
+    id: 'memory-units',
+    title: 'Memory Units',
+    description: 'RAM organization, Memory decoding, and ROM types',
+    icon: '💾',
+    href: '/subjects/digital-system-design/topics/memory-units',
+    session: 9,
+    co: 'CO2',
   },
   {
     id: 'pld-prom',
@@ -62,7 +105,8 @@ export const dsdTopics: DSDTopic[] = [
     description: 'Programmable Logic Devices and PROM',
     icon: '💾',
     href: '/subjects/digital-system-design/topics/pld-prom',
-    session: 7,
+    session: 10,
+    co: 'CO1',
   },
   {
     id: 'pla-pal',
@@ -70,7 +114,8 @@ export const dsdTopics: DSDTopic[] = [
     description: 'Advanced PLD comparison',
     icon: '⚡',
     href: '/subjects/digital-system-design/topics/pla-pal',
-    session: 8,
+    session: 11,
+    co: 'CO1',
   },
   {
     id: 'cpld-fpga',
@@ -78,7 +123,8 @@ export const dsdTopics: DSDTopic[] = [
     description: 'CPLD and FPGA architecture',
     icon: '🔧',
     href: '/subjects/digital-system-design/topics/cpld-fpga',
-    session: 9,
+    session: 23,
+    co: 'CO1',
   },
   {
     id: 'reversible-gates',
@@ -86,7 +132,26 @@ export const dsdTopics: DSDTopic[] = [
     description: 'Reversible logic gates',
     icon: '🔄',
     href: '/subjects/digital-system-design/topics/reversible-gates',
-    session: 11,
+    session: 25,
+    co: 'CO1',
+  },
+  {
+    id: 'cisc-risc',
+    title: 'CISC vs RISC',
+    description: 'Architecture comparison and features',
+    icon: '⚖️',
+    href: '/subjects/digital-system-design/topics/cisc-risc',
+    session: 12,
+    co: 'CO3',
+  },
+  {
+    id: 'multi-cycle-implementation',
+    title: 'Multi-cycle Implementation',
+    description: 'Breaking instruction execution into multiple clock cycles',
+    icon: '🔄',
+    href: '/subjects/digital-system-design/topics/multi-cycle-implementation',
+    session: 13,
+    co: 'CO3',
   },
   {
     id: 'microcomputer-architecture',
@@ -95,6 +160,16 @@ export const dsdTopics: DSDTopic[] = [
     icon: '💻',
     href: '/subjects/digital-system-design/topics/microcomputer-architecture',
     session: 12,
+    co: 'CO3',
+  },
+  {
+    id: 'control-unit-design',
+    title: 'Control Unit Design',
+    description: 'Hardwired vs Micro-programmed realization',
+    icon: '🎮',
+    href: '/subjects/digital-system-design/topics/control-unit-design',
+    session: 13,
+    co: 'CO3',
   },
   {
     id: 'operands-addressing-modes',
@@ -103,6 +178,7 @@ export const dsdTopics: DSDTopic[] = [
     icon: '📍',
     href: '/subjects/digital-system-design/topics/operands-addressing-modes',
     session: 13,
+    co: 'CO3',
   },
   {
     id: 'instruction-formats',
@@ -111,6 +187,7 @@ export const dsdTopics: DSDTopic[] = [
     icon: '📋',
     href: '/subjects/digital-system-design/topics/instruction-formats',
     session: 14,
+    co: 'CO3',
   },
   {
     id: 'instruction-set-machine-cycle',
@@ -119,6 +196,16 @@ export const dsdTopics: DSDTopic[] = [
     icon: '⚙️',
     href: '/subjects/digital-system-design/topics/instruction-set-machine-cycle',
     session: 15,
+    co: 'CO3',
+  },
+  {
+    id: 'instruction-level-parallelism',
+    title: 'Instruction Level Parallelism',
+    description: 'Concepts of ILP and its importance',
+    icon: '⚡',
+    href: '/subjects/digital-system-design/topics/instruction-level-parallelism',
+    session: 17,
+    co: 'CO3',
   },
   {
     id: 'subroutine-call-return',
@@ -127,6 +214,99 @@ export const dsdTopics: DSDTopic[] = [
     icon: '📞',
     href: '/subjects/digital-system-design/topics/subroutine-call-return',
     session: 16,
+    co: 'CO3',
+  },
+  {
+    id: 'pipelining-hazards',
+    title: 'Pipelining & Hazards',
+    description: 'Instruction pipelining, hazards, and parallelism',
+    icon: '🚀',
+    href: '/subjects/digital-system-design/topics/pipelining-hazards',
+    session: 17,
+    co: 'CO3',
+  },
+  {
+    id: 'memory-hierarchy-cache',
+    title: 'Memory Hierarchy & Cache',
+    description: 'Locality, Cache mapping, and replacement policies',
+    icon: '🧠',
+    href: '/subjects/digital-system-design/topics/memory-hierarchy-cache',
+    session: 18,
+    co: 'CO4',
+  },
+  {
+    id: 'storage-systems',
+    title: 'Storage Systems',
+    description: 'External storage, Magnetic disks, RAID, and Flash memory',
+    icon: '💾',
+    href: '/subjects/digital-system-design/topics/storage-systems',
+    session: 20,
+    co: 'CO4',
+  },
+  {
+    id: 'virtual-memory',
+    title: 'Virtual Memory',
+    description: 'Paging, TLB, and address translation',
+    icon: '📄',
+    href: '/subjects/digital-system-design/topics/virtual-memory',
+    session: 19,
+    co: 'CO4',
+  },
+  {
+    id: 'io-organization',
+    title: 'I/O Organization',
+    description: 'Handshaking, Interrupts, and DMA',
+    icon: '🔌',
+    href: '/subjects/digital-system-design/topics/io-organization',
+    session: 20,
+    co: 'CO4',
+  },
+  {
+    id: 'parallel-architectures',
+    title: 'Parallel Architectures',
+    description: 'Superscalar, VLIW, Multicore, and SIMD',
+    icon: '⚡',
+    href: '/subjects/digital-system-design/topics/parallel-architectures',
+    session: 21,
+    co: 'CO5',
+  },
+  {
+    id: 'low-power-techniques',
+    title: 'Low Power Techniques',
+    description: 'Clock gating and DVFS',
+    icon: '🔋',
+    href: '/subjects/digital-system-design/topics/low-power-techniques',
+    session: 22,
+    co: 'CO5',
+  },
+  {
+    id: 'processor-integration-project',
+    title: 'Mini-project: Processor Integration',
+    description: 'Integrating processor subsystems: ALU, CU, Memory, and I/O',
+    icon: '🏗️',
+    href: '/subjects/digital-system-design/topics/processor-integration-project',
+    session: 24,
+    co: 'CO5',
+  },
+
+  {
+    id: 'hdl-basics',
+    title: 'HDL Basics',
+    description: 'Introduction to Verilog and VHDL',
+    icon: '📝',
+    href: '/subjects/digital-system-design/topics/hdl-basics',
+    session: 24,
+    co: 'CO5',
+  },
+
+  {
+    id: 'digital-applications',
+    title: 'Real-world Applications',
+    description: 'LED control, Security systems, and Digital displays',
+    icon: '💡',
+    href: '/subjects/digital-system-design/topics/digital-applications',
+    session: 26,
+    co: 'CO6',
   },
   {
     id: 'important-questions',
@@ -135,6 +315,7 @@ export const dsdTopics: DSDTopic[] = [
     icon: '📚',
     href: '/subjects/digital-system-design/topics/important-questions',
     session: 0,
+    co: 'resources',
   },
 ]
 

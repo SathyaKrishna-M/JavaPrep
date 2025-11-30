@@ -89,7 +89,7 @@ const content = {
 
 <span class="text-lime-300 font-semibold">Result:</span>
 The resulting circuit effectively adds three input bits (A, B, and C<sub>in</sub>), producing a sum output (S) and a carry-out (C<sub>out</sub>). This arrangement allows for the construction of a full adder using only two half adders and an OR gate, making it a simple and efficient implementation of the full adder functionality.`,
-      circuitDiagram: { type: 'full-adder-half-adders', title: 'Full Adder using Two Half Adders and OR Gate', width: 700, height: 400 },
+      circuitDiagram: { type: 'full-adder-using-two-half-adders', title: 'Full Adder using Two Half Adders and OR Gate', width: 700, height: 400 },
     },
     {
       title: '📊 Ripple Carry Adder',
@@ -137,6 +137,7 @@ Cout   Cout   Cout   Cout
 <span class="text-lime-300 font-semibold">Logic Implementation:</span>
 • Difference requires 1 XOR gate
 • Borrow requires 1 AND gate (with A' input)`,
+      circuitDiagram: { type: 'half-subtractor', title: 'Half Subtractor Logic Diagram', width: 400, height: 250 },
       truthTable: {
         headers: ['A', 'B', 'D (Difference)', 'Bout (Borrow)'],
         rows: [
@@ -165,6 +166,7 @@ Cout   Cout   Cout   Cout
 Subtraction can also be performed using adders with 2's complement representation:
 • A - B = A + (-B) = A + (2's complement of B)
 • This method is more efficient and commonly used in digital systems.`,
+      circuitDiagram: { type: 'full-subtractor', title: 'Full Subtractor Logic Diagram', width: 750, height: 350 },
       truthTable: {
         headers: ['A', 'B', 'Bin', 'D', 'Bout'],
         rows: [
