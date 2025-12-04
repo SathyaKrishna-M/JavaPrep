@@ -5,8 +5,9 @@ export interface DMTopic {
   icon: string
   href: string
   session: number
-  co: 'CO-1' | 'CO-2'
+  co: 'CO-1' | 'CO-2' | 'CO-3' | 'CO-4' | 'Home Assignments'
 }
+
 
 export const dmTopics: DMTopic[] = [
   // CO-1 — Fundamentals of Discrete Mathematics
@@ -73,6 +74,24 @@ export const dmTopics: DMTopic[] = [
     session: 7,
     co: 'CO-1',
   },
+  {
+    id: 'inclusion-exclusion',
+    title: 'Inclusion-Exclusion Principle',
+    description: 'The principle of inclusion-exclusion for counting elements in unions of sets',
+    icon: '➕',
+    href: '/subjects/discrete-mathematics/topics/inclusion-exclusion',
+    session: 2,
+    co: 'CO-1',
+  },
+  {
+    id: 'computer-representation-of-sets',
+    title: 'Computer Representation of Sets',
+    description: 'Representing sets using bit strings and computer memory',
+    icon: '💻',
+    href: '/subjects/discrete-mathematics/topics/computer-representation-of-sets',
+    session: 2,
+    co: 'CO-1',
+  },
   // CO-2 — Logic, Logical Reasoning & Proof Methods
   {
     id: 'propositional-logic',
@@ -137,7 +156,77 @@ export const dmTopics: DMTopic[] = [
     session: 10,
     co: 'CO-2',
   },
+  {
+    id: 'negation-of-quantified-statements',
+    title: 'Negation of Quantified Statements',
+    description: 'De Morgan\'s laws for quantifiers and negating nested quantifiers',
+    icon: '❗',
+    href: '/subjects/discrete-mathematics/topics/negation-of-quantified-statements',
+    session: 11,
+    co: 'CO-2',
+  },
+
+  // CO-3 — Proof Methods & Counting
+  {
+    id: 'proof-methods',
+    title: 'Proof Methods',
+    description: 'Direct, Indirect, Contradiction, and Contraposition proof methods',
+    icon: '🛡️',
+    href: '/subjects/discrete-mathematics/topics/proof-methods',
+    session: 12,
+    co: 'CO-3',
+  },
+  {
+    id: 'counting-principles',
+    title: 'Counting Principles',
+    description: 'Basics of counting, Pigeonhole Principle, Permutations, and Combinations',
+    icon: '🔢',
+    href: '/subjects/discrete-mathematics/topics/counting-principles',
+    session: 13,
+    co: 'CO-3',
+  },
+  // CO-4 — Recurrence Relations & Graph Theory
+  {
+    id: 'recurrence-relations',
+    title: 'Recurrence Relations',
+    description: 'Linear recurrence relations, Generating functions, Characteristic roots method',
+    icon: '🔄',
+    href: '/subjects/discrete-mathematics/topics/recurrence-relations',
+    session: 14,
+    co: 'CO-4',
+  },
+  {
+    id: 'graph-theory',
+    title: 'Graph Theory',
+    description: 'Graph types, Isomorphism, Euler/Hamiltonian paths, Planar graphs, Coloring',
+    icon: '🕸️',
+    href: '/subjects/discrete-mathematics/topics/graph-theory',
+    session: 15,
+    co: 'CO-4',
+  },
+  // Home Assignments
+  {
+    id: 'home-assignments-co3',
+    title: 'CO-3 Home Assignments',
+    description: 'Solutions to home assignment problems for CO-3 (Proof Methods & Counting)',
+    icon: '📝',
+    href: '/subjects/discrete-mathematics/topics/home-assignments-co3',
+    session: 99,
+    co: 'Home Assignments',
+  },
+  {
+    id: 'home-assignments-co4',
+    title: 'CO-4 Home Assignments',
+    description: 'Solutions to home assignment problems for CO-4 (Recurrence Relations & Graph Theory)',
+    icon: '📝',
+    href: '/subjects/discrete-mathematics/topics/home-assignments-co4',
+    session: 100,
+    co: 'Home Assignments',
+  },
 ]
 
 export const co1Topics = dmTopics.filter(topic => topic.co === 'CO-1')
 export const co2Topics = dmTopics.filter(topic => topic.co === 'CO-2')
+export const co3Topics = dmTopics.filter(topic => topic.co === 'CO-3')
+export const co4Topics = dmTopics.filter(topic => topic.co === 'CO-4')
+export const homeAssignmentsTopics = dmTopics.filter(topic => topic.co === 'Home Assignments')

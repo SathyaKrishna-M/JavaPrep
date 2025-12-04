@@ -59,15 +59,11 @@ export default function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none"
+      className={`sticky top-0 z-50 w-full border-b border-white/10 transition-all duration-300 ${isScrolled ? 'bg-[#0d1117]/90 backdrop-blur-xl shadow-lg' : 'bg-[#0d1117]/50 backdrop-blur-md'
+        }`}
     >
-      <div
-        className={`pointer-events-auto w-full max-w-6xl rounded-full transition-all duration-500 ${isScrolled
-          ? 'glass shadow-glow-blue py-2 px-6'
-          : 'glass py-3 px-8 bg-white/5'
-          }`}
-      >
-        <div className="flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Left Side: Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
             <div className="relative">
@@ -290,7 +286,6 @@ export default function Navbar() {
           )}
         </AnimatePresence>
       </div>
-
       {/* Search Dropdown */}
       <SearchDropdown
         isOpen={isSearchOpen}

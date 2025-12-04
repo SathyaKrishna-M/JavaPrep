@@ -24,6 +24,16 @@ const groupTopics = (topics: DMTopic[]) => {
       subtitle: 'Propositional logic, truth tables, quantifiers, and proof techniques',
       topics: topics.filter(t => t.co === 'CO-2'),
     },
+    co3: {
+      title: 'CO-3 — Proof Methods & Counting',
+      subtitle: 'Direct, indirect proofs, and counting principles including permutations and combinations',
+      topics: topics.filter(t => t.co === 'CO-3'),
+    },
+    co4: {
+      title: 'CO-4 — Recurrence Relations & Graph Theory',
+      subtitle: 'Solving recurrence relations and exploring graph theory concepts',
+      topics: topics.filter(t => t.co === 'CO-4'),
+    },
   }
 
   return sections
@@ -106,7 +116,7 @@ export default function DiscreteMathematicsPage() {
         >
           {/* Glow orb behind title */}
           <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-full blur-3xl -z-10" />
-          
+
           <div className="flex items-center gap-4">
             <FiLayers className="w-12 h-12 md:w-16 md:h-16 text-purple-500" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent leading-tight">

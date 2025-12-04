@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { co1Topics, co2Topics } from '@/data/dm-topics'
+import { co1Topics, co2Topics, co3Topics, co4Topics, homeAssignmentsTopics } from '@/data/dm-topics'
 import { motion } from 'framer-motion'
 
 export default function DiscreteMathematicsLayout({
@@ -51,11 +51,10 @@ function DMSidebar() {
       >
         <Link
           href={topic.href}
-          className={`block px-4 py-2 rounded-lg transition-colors text-sm ${
-            isActive
-              ? 'bg-blue-600 text-white font-semibold'
-              : 'text-gray-300 hover:text-white hover:bg-blue-500/20'
-          }`}
+          className={`block px-4 py-2 rounded-lg transition-colors text-sm ${isActive
+            ? 'bg-blue-600 text-white font-semibold'
+            : 'text-gray-300 hover:text-white hover:bg-blue-500/20'
+            }`}
         >
           <span className="mr-2">{topic.icon}</span>
           {topic.title}
@@ -87,8 +86,37 @@ function DMSidebar() {
             {co2Topics.map((topic, index) => renderTopicLink(topic, co1Topics.length + index))}
           </div>
         </div>
+
+        {/* CO-3 Section */}
+        <div>
+          <h3 className="text-sm font-semibold text-emerald-400 mb-2 px-2">
+            CO-3 — Proof & Counting
+          </h3>
+          <div className="space-y-1">
+            {co3Topics.map((topic, index) => renderTopicLink(topic, co1Topics.length + co2Topics.length + index))}
+          </div>
+        </div>
+
+        {/* CO-4 Section */}
+        <div>
+          <h3 className="text-sm font-semibold text-amber-400 mb-2 px-2">
+            CO-4 — Recurrence & Graphs
+          </h3>
+          <div className="space-y-1">
+            {co4Topics.map((topic, index) => renderTopicLink(topic, co1Topics.length + co2Topics.length + co3Topics.length + index))}
+          </div>
+        </div>
+
+        {/* Home Assignments Section */}
+        <div>
+          <h3 className="text-sm font-semibold text-pink-400 mb-2 px-2">
+            Home Assignments
+          </h3>
+          <div className="space-y-1">
+            {homeAssignmentsTopics.map((topic, index) => renderTopicLink(topic, co1Topics.length + co2Topics.length + co3Topics.length + co4Topics.length + index))}
+          </div>
+        </div>
       </nav>
     </aside>
   )
 }
-
