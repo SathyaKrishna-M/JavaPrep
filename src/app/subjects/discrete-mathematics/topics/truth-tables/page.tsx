@@ -136,7 +136,7 @@ const content = {
             <p className="text-lime-300 font-semibold mb-2">Equivalent Forms:</p>
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li><MathRenderer math="p \rightarrow q \equiv \neg p \lor q" /></li>
-              <li>"If p then q" means "not p, or q"</li>
+              <li>&quot;If p then q&quot; means &quot;not p, or q&quot;</li>
             </ul>
           </div>
         </div>

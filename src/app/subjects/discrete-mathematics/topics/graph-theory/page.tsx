@@ -114,7 +114,7 @@ const content = {
           <p className="text-gray-300">
             <span className="text-cyan-400 font-semibold text-lg">Definition:</span> Two graphs <MathRenderer math="G_1 = (V_1, E_1)" /> and <MathRenderer math="G_2 = (V_2, E_2)" /> are <span className="text-white font-semibold">isomorphic</span> if there exists a bijection <MathRenderer math="f: V_1 \rightarrow V_2" /> such that vertices <MathRenderer math="u, v" /> are adjacent in <MathRenderer math="G_1" /> if and only if <MathRenderer math="f(u), f(v)" /> are adjacent in <MathRenderer math="G_2" />.
           </p>
-          <p className="text-gray-300">Basically, they are the "same" graph drawn differently.</p>
+          <p className="text-gray-300">Basically, they are the &quot;same&quot; graph drawn differently.</p>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
             <p className="text-amber-300 font-semibold mb-2">Isomorphism Invariants (Necessary Conditions):</p>
             <p className="text-gray-300">If <MathRenderer math="G_1 \cong G_2" />, they MUST have:</p>

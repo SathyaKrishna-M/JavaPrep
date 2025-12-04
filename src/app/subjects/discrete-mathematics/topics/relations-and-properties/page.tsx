@@ -181,7 +181,7 @@ const content = {
       ),
       solution: (
         <div className="space-y-4">
-          <p className="text-gray-300">This is the "congruence modulo 3" relation.</p>
+          <p className="text-gray-300">This is the &quot;congruence modulo 3&quot; relation.</p>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
             <p className="text-amber-300 font-semibold mb-2">Equivalence classes:</p>
             <ul className="list-disc list-inside text-gray-300 space-y-2">
@@ -196,7 +196,7 @@ const content = {
       formula: '[a] = \\{b \\in \\mathbb{Z} \\mid a \\equiv b \\pmod{3}\\}',
     },
     {
-      question: 'Prove that the relation "divides" (|) on positive integers is a partial order.',
+      question: 'Prove that the relation &quot;divides&quot; (|) on positive integers is a partial order.',
       solution: (
         <div className="space-y-4">
           <p className="text-gray-300">We need to show reflexivity, antisymmetry, and transitivity.</p>
@@ -209,7 +209,7 @@ const content = {
             <p className="text-gray-300">If <MathRenderer math="a \mid b" /> and <MathRenderer math="b \mid a" />, then there exist integers k, m such that:</p>
             <p className="text-gray-300"><MathRenderer math="b = ak" /> and <MathRenderer math="a = bm" /></p>
             <p className="text-gray-300">Substituting: <MathRenderer math="a = (ak)m = a(km)" /></p>
-            <p className="text-gray-300">Since <MathRenderer math="a \neq 0" />, we have <MathRenderer math="km = 1" />, so <MathRenderer math="k = m = 1" /> (or -1, but we're dealing with positive integers)</p>
+            <p className="text-gray-300">Since <MathRenderer math="a \neq 0" />, we have <MathRenderer math="km = 1" />, so <MathRenderer math="k = m = 1" /> (or -1, but we&apos;re dealing with positive integers)</p>
             <p className="text-green-400">Therefore, <MathRenderer math="a = b" />. ✓</p>
           </div>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
@@ -219,7 +219,7 @@ const content = {
             <p className="text-gray-300"><MathRenderer math="c = (ak)m = a(km)" /></p>
             <p className="text-green-400">Therefore, <MathRenderer math="a \mid c" />. ✓</p>
           </div>
-          <p className="text-gray-300">Since all three properties hold, "divides" is a partial order.</p>
+          <p className="text-gray-300">Since all three properties hold, &quot;divides&quot; is a partial order.</p>
         </div>
       ),
     },
@@ -260,7 +260,7 @@ const content = {
           </div>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
             <p className="text-cyan-300 font-semibold">Symmetric:</p>
-            <p className="text-gray-300">If student a is in the same class as student b, is b in the same class as a? Yes, "same class" is symmetric. ✓</p>
+            <p className="text-gray-300">If student a is in the same class as student b, is b in the same class as a? Yes, &quot;same class&quot; is symmetric. ✓</p>
           </div>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
             <p className="text-cyan-300 font-semibold">Transitive:</p>

@@ -56,23 +56,23 @@ const content = {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            <span className="text-blue-400 font-semibold">Universal Quantifier</span> (<MathRenderer math="\forall" />) means "for all" or "for every"
+            <span className="text-blue-400 font-semibold">Universal Quantifier</span> (<MathRenderer math="\forall" />) means &quot;for all&quot; or &quot;for every&quot;
           </p>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
             <p className="text-amber-300 font-semibold mb-2">Notation:</p>
             <p className="text-gray-300">
-              <MathRenderer math="\forall x P(x)" /> means "P(x) is true for all x in the domain"
+              <MathRenderer math="\forall x P(x)" /> means &quot;P(x) is true for all x in the domain&quot;
             </p>
           </div>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
             <p className="text-lime-300 font-semibold mb-2">Examples:</p>
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li>
-                <span className="text-cyan-300"><MathRenderer math="\forall x (x^2 \ge 0)" />:</span> "For all x, x squared is greater than or equal to 0"
+                <span className="text-cyan-300"><MathRenderer math="\forall x (x^2 \ge 0)" />:</span> &quot;For all x, x squared is greater than or equal to 0&quot;
                 <p className="ml-6 text-gray-400">- True (for real numbers)</p>
               </li>
               <li>
-                <span className="text-cyan-300"><MathRenderer math="\forall x (x > 0)" />:</span> "For all x, x is greater than 0"
+                <span className="text-cyan-300"><MathRenderer math="\forall x (x > 0)" />:</span> &quot;For all x, x is greater than 0&quot;
                 <p className="ml-6 text-gray-400">- False (x = -1 makes it false)</p>
               </li>
             </ul>
@@ -97,23 +97,23 @@ const content = {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            <span className="text-cyan-400 font-semibold">Existential Quantifier</span> (<MathRenderer math="\exists" />) means "there exists" or "for some"
+            <span className="text-cyan-400 font-semibold">Existential Quantifier</span> (<MathRenderer math="\exists" />) means &quot;there exists&quot; or &quot;for some&quot;
           </p>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
             <p className="text-amber-300 font-semibold mb-2">Notation:</p>
             <p className="text-gray-300">
-              <MathRenderer math="\exists x P(x)" /> means "There exists at least one x such that P(x) is true"
+              <MathRenderer math="\exists x P(x)" /> means &quot;There exists at least one x such that P(x) is true&quot;
             </p>
           </div>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
             <p className="text-lime-300 font-semibold mb-2">Examples:</p>
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li>
-                <span className="text-cyan-300"><MathRenderer math="\exists x (x^2 = 4)" />:</span> "There exists x such that x squared equals 4"
+                <span className="text-cyan-300"><MathRenderer math="\exists x (x^2 = 4)" />:</span> &quot;There exists x such that x squared equals 4&quot;
                 <p className="ml-6 text-gray-400">- True (x = 2 or x = -2)</p>
               </li>
               <li>
-                <span className="text-cyan-300"><MathRenderer math="\exists x (x < 0)" />:</span> "There exists x such that x is less than 0"
+                <span className="text-cyan-300"><MathRenderer math="\exists x (x < 0)" />:</span> &quot;There exists x such that x is less than 0&quot;
                 <p className="ml-6 text-gray-400">- True (x = -1 works)</p>
               </li>
             </ul>
@@ -137,7 +137,7 @@ const content = {
       icon: <FiSearch className="w-6 h-6" />,
       content: (
         <div className="space-y-4">
-          <p className="text-blue-400 font-semibold">De Morgan's Laws for Quantifiers:</p>
+          <p className="text-blue-400 font-semibold">De Morgan&apos;s Laws for Quantifiers:</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
               <p className="text-amber-300 font-semibold mb-2">Negation of Universal:</p>
@@ -145,7 +145,7 @@ const content = {
               <div className="mt-2">
                 <p className="text-lime-300 font-semibold">Example:</p>
                 <MathRenderer math="\neg(\forall x (x > 0)) \equiv \exists x (x \le 0)" />
-                <p className="text-gray-400 text-sm mt-1">"Not all x are positive" <MathRenderer math="\equiv" /> "There exists x that is not positive"</p>
+                <p className="text-gray-400 text-sm mt-1">&quot;Not all x are positive&quot; <MathRenderer math="\equiv" /> &quot;There exists x that is not positive&quot;</p>
               </div>
             </div>
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
@@ -154,7 +154,7 @@ const content = {
               <div className="mt-2">
                 <p className="text-lime-300 font-semibold">Example:</p>
                 <MathRenderer math="\neg(\exists x (x^2 < 0)) \equiv \forall x (x^2 \ge 0)" />
-                <p className="text-gray-400 text-sm mt-1">"There does not exist x such that x² {'<'} 0" <MathRenderer math="\equiv" /> "For all x, x² {'\\ge'} 0"</p>
+                <p className="text-gray-400 text-sm mt-1">&quot;There does not exist x such that x² {'<'} 0&quot; <MathRenderer math="\equiv" /> &quot;For all x, x² {'\\ge'} 0&quot;</p>
               </div>
             </div>
           </div>
@@ -174,28 +174,28 @@ const content = {
           <p className="text-cyan-400 font-semibold">Common Translations:</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
-              <p className="text-amber-300 font-semibold mb-2">"All students study":</p>
+              <p className="text-amber-300 font-semibold mb-2">&quot;All students study&quot;:</p>
               <MathRenderer display math="\forall x (\text{Student}(x) \rightarrow \text{Studies}(x))" />
             </div>
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
-              <p className="text-amber-300 font-semibold mb-2">"Some students study":</p>
+              <p className="text-amber-300 font-semibold mb-2">&quot;Some students study&quot;:</p>
               <MathRenderer display math="\exists x (\text{Student}(x) \land \text{Studies}(x))" />
             </div>
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
-              <p className="text-amber-300 font-semibold mb-2">"No student studies":</p>
+              <p className="text-amber-300 font-semibold mb-2">&quot;No student studies&quot;:</p>
               <MathRenderer display math="\forall x (\text{Student}(x) \rightarrow \neg \text{Studies}(x))" />
               <p className="text-gray-400 text-sm mt-1">or equivalently: <MathRenderer math="\neg \exists x (\text{Student}(x) \land \text{Studies}(x))" /></p>
             </div>
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
-              <p className="text-amber-300 font-semibold mb-2">"Not all students study":</p>
+              <p className="text-amber-300 font-semibold mb-2">&quot;Not all students study&quot;:</p>
               <MathRenderer display math="\exists x (\text{Student}(x) \land \neg \text{Studies}(x))" />
             </div>
           </div>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
             <p className="text-lime-300 font-semibold mb-2">Important:</p>
             <ul className="list-disc list-inside text-gray-300 space-y-1">
-              <li>"All A are B" <MathRenderer math="\to \forall x (A(x) \rightarrow B(x))" /></li>
-              <li>"Some A are B" <MathRenderer math="\to \exists x (A(x) \land B(x))" /></li>
+              <li>&quot;All A are B&quot; <MathRenderer math="\to \forall x (A(x) \rightarrow B(x))" /></li>
+              <li>&quot;Some A are B&quot; <MathRenderer math="\to \exists x (A(x) \land B(x))" /></li>
             </ul>
           </div>
         </div>
@@ -208,11 +208,11 @@ const content = {
       solution: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            Let <MathRenderer math="S(x)" /> = "x is a student"
+            Let <MathRenderer math="S(x)" /> = &quot;x is a student&quot;
             <br />
-            <MathRenderer math="P(x)" /> = "x studies"
+            <MathRenderer math="P(x)" /> = &quot;x studies&quot;
             <br />
-            <MathRenderer math="Q(x)" /> = "x passes"
+            <MathRenderer math="Q(x)" /> = &quot;x passes&quot;
           </p>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 my-2">
             <p className="font-semibold text-cyan-400">Translation:</p>
@@ -236,13 +236,13 @@ const content = {
       solution: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            Using De Morgan's law:
+            Using De Morgan&apos;s law:
           </p>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 my-2">
             <MathRenderer display math="\neg(\forall x (x > 0)) \equiv \exists x \neg(x > 0) \equiv \exists x (x \le 0)" />
           </div>
           <p className="text-gray-300">
-            Meaning: "There exists x such that x is not greater than 0"
+            Meaning: &quot;There exists x such that x is not greater than 0&quot;
           </p>
         </div>
       ),
@@ -253,11 +253,11 @@ const content = {
       solution: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            Let <MathRenderer math="S(x)" /> = "x is a student"
+            Let <MathRenderer math="S(x)" /> = &quot;x is a student&quot;
             <br />
-            <MathRenderer math="P(x)" /> = "x studies"
+            <MathRenderer math="P(x)" /> = &quot;x studies&quot;
             <br />
-            <MathRenderer math="Q(x)" /> = "x passes"
+            <MathRenderer math="Q(x)" /> = &quot;x passes&quot;
           </p>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 my-2">
             <p className="font-semibold text-cyan-400">Translation:</p>

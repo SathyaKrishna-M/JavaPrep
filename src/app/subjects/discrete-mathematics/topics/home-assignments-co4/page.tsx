@@ -417,7 +417,7 @@ const content = {
             question: '13. Connected planar graph has 20 edges, 12 regions. Find vertices.',
             solution: (
                 <div className="space-y-4">
-                    <p className="font-semibold text-cyan-400">Euler's Formula:</p>
+                    <p className="font-semibold text-cyan-400">Euler&apos;s Formula:</p>
                     <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 my-2">
                         <MathRenderer display math="r = e - v + 2" />
                         <MathRenderer display math="12 = 20 - v + 2" />
@@ -454,7 +454,7 @@ const content = {
         {
             question: (
                 <span>
-                    15. Apply Dijkstra's Algorithm to find shortest path from <MathRenderer math="a" /> to <MathRenderer math="z" />.
+                    15. Apply Dijkstra&apos;s Algorithm to find shortest path from <MathRenderer math="a" /> to <MathRenderer math="z" />.
                 </span>
             ),
             solution: (

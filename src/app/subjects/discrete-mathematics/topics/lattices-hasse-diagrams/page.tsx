@@ -82,7 +82,7 @@ const content = {
               <li><span className="text-cyan-300">Elements:</span> Represented as nodes (circles/points)</li>
               <li><span className="text-cyan-300">Relations:</span> Draw edge from a to b if <MathRenderer math="a < b" /> and there is no c such that <MathRenderer math="a < c < b" /></li>
               <li><span className="text-cyan-300">Direction:</span> Smaller elements are drawn below larger elements</li>
-              <li><span className="text-cyan-300">Transitivity:</span> Don't draw edges that can be inferred from transitivity</li>
+              <li><span className="text-cyan-300">Transitivity:</span> Don&apos;t draw edges that can be inferred from transitivity</li>
             </ul>
           </div>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">

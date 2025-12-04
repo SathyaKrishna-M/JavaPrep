@@ -27,17 +27,17 @@ const content = {
             <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
               <p className="text-green-400 font-semibold mb-2">Propositions:</p>
               <ul className="list-disc list-inside text-gray-300 space-y-1">
-                <li>"2 + 2 = 4" (True)</li>
-                <li>"The sky is blue" (True in normal conditions)</li>
-                <li>"Paris is the capital of France" (True)</li>
+                <li>&quot;2 + 2 = 4&quot; (True)</li>
+                <li>&quot;The sky is blue&quot; (True in normal conditions)</li>
+                <li>&quot;Paris is the capital of France&quot; (True)</li>
               </ul>
             </div>
             <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
               <p className="text-red-400 font-semibold mb-2">Not Propositions:</p>
               <ul className="list-disc list-inside text-gray-300 space-y-1">
-                <li>"What time is it?" (Question)</li>
-                <li>"Close the door!" (Command)</li>
-                <li>"x + 1 = 5" (Not a proposition until x is specified)</li>
+                <li>&quot;What time is it?&quot; (Question)</li>
+                <li>&quot;Close the door!&quot; (Command)</li>
+                <li>&quot;x + 1 = 5&quot; (Not a proposition until x is specified)</li>
               </ul>
             </div>
           </div>
@@ -65,11 +65,11 @@ const content = {
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
             <p className="text-lime-300 font-semibold mb-2">Notation:</p>
             <ul className="list-disc list-inside text-gray-300 space-y-1">
-              <li><MathRenderer math="p \land q" />: "p and q"</li>
-              <li><MathRenderer math="p \lor q" />: "p or q"</li>
-              <li><MathRenderer math="\neg p" />: "not p"</li>
-              <li><MathRenderer math="p \rightarrow q" />: "if p then q" or "p implies q"</li>
-              <li><MathRenderer math="p \leftrightarrow q" />: "p if and only if q"</li>
+              <li><MathRenderer math="p \land q" />: &quot;p and q&quot;</li>
+              <li><MathRenderer math="p \lor q" />: &quot;p or q&quot;</li>
+              <li><MathRenderer math="\neg p" />: &quot;not p&quot;</li>
+              <li><MathRenderer math="p \rightarrow q" />: &quot;if p then q&quot; or &quot;p implies q&quot;</li>
+              <li><MathRenderer math="p \leftrightarrow q" />: &quot;p if and only if q&quot;</li>
             </ul>
           </div>
         </div>
@@ -96,9 +96,9 @@ const content = {
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
             <p className="text-amber-300 font-semibold mb-2">Examples:</p>
             <ul className="list-disc list-inside text-gray-300 space-y-1">
-              <li><MathRenderer math="(p \land q) \rightarrow r" />: "If p and q, then r"</li>
-              <li><MathRenderer math="\neg(p \lor q)" />: "Not (p or q)" - equivalent to "neither p nor q"</li>
-              <li><MathRenderer math="(p \rightarrow q) \land (q \rightarrow p)" />: "p if and only if q"</li>
+              <li><MathRenderer math="(p \land q) \rightarrow r" />: &quot;If p and q, then r&quot;</li>
+              <li><MathRenderer math="\neg(p \lor q)" />: &quot;Not (p or q)&quot; - equivalent to &quot;neither p nor q&quot;</li>
+              <li><MathRenderer math="(p \rightarrow q) \land (q \rightarrow p)" />: &quot;p if and only if q&quot;</li>
             </ul>
           </div>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
@@ -125,14 +125,14 @@ const content = {
   ],
   practiceQuestions: [
     {
-      question: 'Which of the following are propositions? (a) "It is raining" (b) "What is your name?" (c) "2 + 3 = 5" (d) "x > 0"',
+      question: 'Which of the following are propositions? (a) &quot;It is raining&quot; (b) &quot;What is your name?&quot; (c) &quot;2 + 3 = 5&quot; (d) &quot;x > 0&quot;',
       solution: (
         <div className="space-y-4">
           <ul className="list-none space-y-2 text-gray-300">
-            <li>(a) "It is raining" - <span className="text-green-400">Proposition</span> (has truth value, depends on weather)</li>
-            <li>(b) "What is your name?" - <span className="text-red-400">Not a proposition</span> (question, not declarative)</li>
-            <li>(c) "2 + 3 = 5" - <span className="text-green-400">Proposition</span> (True)</li>
-            <li>(d) "x &gt; 0" - <span className="text-red-400">Not a proposition</span> (no truth value until x is specified)</li>
+            <li>(a) &quot;It is raining&quot; - <span className="text-green-400">Proposition</span> (has truth value, depends on weather)</li>
+            <li>(b) &quot;What is your name?&quot; - <span className="text-red-400">Not a proposition</span> (question, not declarative)</li>
+            <li>(c) &quot;2 + 3 = 5&quot; - <span className="text-green-400">Proposition</span> (True)</li>
+            <li>(d) &quot;x &gt; 0&quot; - <span className="text-red-400">Not a proposition</span> (no truth value until x is specified)</li>
           </ul>
         </div>
       ),
@@ -206,7 +206,7 @@ const content = {
   ],
   exampleProblems: [
     {
-      problem: 'Let p = "It is sunny" and q = "I go to the beach". Express "If it is sunny, then I go to the beach" and "I go to the beach if and only if it is sunny" in logical notation.',
+      problem: 'Let p = &quot;It is sunny&quot; and q = &quot;I go to the beach&quot;. Express &quot;If it is sunny, then I go to the beach&quot; and &quot;I go to the beach if and only if it is sunny&quot; in logical notation.',
       solution: (
         <div className="space-y-4">
           <p className="text-gray-300">
@@ -221,7 +221,7 @@ const content = {
           step: 'Identify propositions',
           explanation: (
             <span>
-              <MathRenderer math="p" /> = "It is sunny", <MathRenderer math="q" /> = "I go to the beach"
+              <MathRenderer math="p" /> = &quot;It is sunny&quot;, <MathRenderer math="q" /> = &quot;I go to the beach&quot;
             </span>
           ),
         },
@@ -229,7 +229,7 @@ const content = {
           step: 'Translate "if...then"',
           explanation: (
             <span>
-              "If p then q" is written as <MathRenderer math="p \rightarrow q" />
+              &quot;If p then q&quot; is written as <MathRenderer math="p \rightarrow q" />
             </span>
           ),
         },
@@ -237,7 +237,7 @@ const content = {
           step: 'Translate "if and only if"',
           explanation: (
             <span>
-              "q if and only if p" is written as <MathRenderer math="q \leftrightarrow p" />
+              &quot;q if and only if p&quot; is written as <MathRenderer math="q \leftrightarrow p" />
             </span>
           ),
         },

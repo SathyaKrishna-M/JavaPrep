@@ -8,7 +8,7 @@ const content = {
     title: 'Negation of Quantified Statements',
     explanationSections: [
         {
-            title: '❗ De Morgan\'s Laws for Quantifiers',
+            title: '❗ De Morgan&apos;s Laws for Quantifiers',
             icon: <FiAlertTriangle className="w-6 h-6" />,
             content: (
                 <div className="space-y-4">
@@ -20,11 +20,11 @@ const content = {
                         <div className="space-y-4">
                             <div>
                                 <MathRenderer display math="\neg \forall x P(x) \equiv \exists x \neg P(x)" />
-                                <p className="text-gray-300 ml-4">"Not all x have property P" is equivalent to "There exists an x that does not have property P".</p>
+                                <p className="text-gray-300 ml-4">&quot;Not all x have property P&quot; is equivalent to &quot;There exists an x that does not have property P&quot;.</p>
                             </div>
                             <div>
                                 <MathRenderer display math="\neg \exists x P(x) \equiv \forall x \neg P(x)" />
-                                <p className="text-gray-300 ml-4">"There does not exist an x with property P" is equivalent to "For all x, x does not have property P".</p>
+                                <p className="text-gray-300 ml-4">&quot;There does not exist an x with property P&quot; is equivalent to &quot;For all x, x does not have property P&quot;.</p>
                             </div>
                         </div>
                     </div>
@@ -55,12 +55,12 @@ const content = {
         {
             question: (
                 <span>
-                    Negate the statement: "Every student in this class has taken a course in Java."
+                    Negate the statement: &quot;Every student in this class has taken a course in Java.&quot;
                 </span>
             ),
             solution: (
                 <div className="space-y-4">
-                    <p className="text-gray-300">Let <MathRenderer math="S(x)" /> be "x is a student in this class" and <MathRenderer math="J(x)" /> be "x has taken a course in Java".</p>
+                    <p className="text-gray-300">Let <MathRenderer math="S(x)" /> be &quot;x is a student in this class&quot; and <MathRenderer math="J(x)" /> be &quot;x has taken a course in Java&quot;.</p>
                     <p className="text-gray-300">Original: <MathRenderer math="\forall x (S(x) \rightarrow J(x))" /></p>
                     <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
                         <p className="text-cyan-300 font-semibold">Negation:</p>
@@ -68,14 +68,14 @@ const content = {
                         <p className="text-gray-300"><MathRenderer math="\equiv \exists x \neg (S(x) \rightarrow J(x))" /></p>
                         <p className="text-gray-300"><MathRenderer math="\equiv \exists x (S(x) \land \neg J(x))" /></p>
                     </div>
-                    <p className="text-green-400 font-semibold">English: "There is a student in this class who has NOT taken a course in Java."</p>
+                    <p className="text-green-400 font-semibold">English: &quot;There is a student in this class who has NOT taken a course in Java.&quot;</p>
                 </div>
             ),
         },
         {
             question: (
                 <span>
-                    Negate: "There is a politician who is honest."
+                    Negate: &quot;There is a politician who is honest.&quot;
                 </span>
             ),
             solution: (
@@ -87,7 +87,7 @@ const content = {
                         <p className="text-gray-300"><MathRenderer math="\equiv \forall x \neg (P(x) \land H(x))" /></p>
                         <p className="text-gray-300"><MathRenderer math="\equiv \forall x (\neg P(x) \lor \neg H(x))" /></p>
                     </div>
-                    <p className="text-green-400 font-semibold">English: "For every person, they are either not a politician or not honest" (or "No politician is honest").</p>
+                    <p className="text-green-400 font-semibold">English: &quot;For every person, they are either not a politician or not honest&quot; (or &quot;No politician is honest&quot;).</p>
                 </div>
             ),
         },

@@ -120,7 +120,7 @@ const content = {
               <tr>
                 <th scope="col" className="px-6 py-4 text-cyan-400">Feature</th>
                 <th scope="col" className="px-6 py-4 text-cyan-400">Permutations (Order Matters)</th>
-                <th scope="col" className="px-6 py-4 text-cyan-400">Combinations (Order Doesn't Matter)</th>
+                <th scope="col" className="px-6 py-4 text-cyan-400">Combinations (Order Doesn&apos;t Matter)</th>
               </tr>
             </thead>
             <tbody>
@@ -225,7 +225,7 @@ const content = {
       solution: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            We need to choose 3 positions out of 8 to place the 1s. The order of selection doesn't matter (all 1s are identical).
+            We need to choose 3 positions out of 8 to place the 1s. The order of selection doesn&apos;t matter (all 1s are identical).
           </p>
         </div>
       ),

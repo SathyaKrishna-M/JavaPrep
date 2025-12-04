@@ -18,7 +18,7 @@ const content = {
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
             <p className="text-amber-300 font-semibold mb-2">Notation:</p>
             <p className="text-gray-300">
-              <MathRenderer math="p \equiv q" /> or <MathRenderer math="p \Leftrightarrow q" /> means "p is logically equivalent to q"
+              <MathRenderer math="p \equiv q" /> or <MathRenderer math="p \Leftrightarrow q" /> means &quot;p is logically equivalent to q&quot;
             </p>
           </div>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
@@ -96,7 +96,7 @@ const content = {
             </ul>
           </div>
           <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
-            <p className="text-amber-300 font-semibold mb-2">De Morgan's Laws:</p>
+            <p className="text-amber-300 font-semibold mb-2">De Morgan&apos;s Laws:</p>
             <ul className="list-disc list-inside text-gray-300 space-y-1">
               <li><MathRenderer math="\neg(p \land q) \equiv \neg p \lor \neg q" /></li>
               <li><MathRenderer math="\neg(p \lor q) \equiv \neg p \land \neg q" /></li>
@@ -131,24 +131,24 @@ const content = {
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
               <p className="text-amber-300 font-semibold">Original:</p>
               <MathRenderer display math="p \rightarrow q" />
-              <p className="text-cyan-300 text-sm mt-1">"If p then q"</p>
+              <p className="text-cyan-300 text-sm mt-1">&quot;If p then q&quot;</p>
             </div>
             <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
               <p className="text-amber-300 font-semibold">Converse:</p>
               <MathRenderer display math="q \rightarrow p" />
-              <p className="text-cyan-300 text-sm mt-1">"If q then p"</p>
+              <p className="text-cyan-300 text-sm mt-1">&quot;If q then p&quot;</p>
               <p className="text-red-400 text-xs mt-1">NOT equivalent to original</p>
             </div>
             <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
               <p className="text-amber-300 font-semibold">Inverse:</p>
               <MathRenderer display math="\neg p \rightarrow \neg q" />
-              <p className="text-cyan-300 text-sm mt-1">"If not p then not q"</p>
+              <p className="text-cyan-300 text-sm mt-1">&quot;If not p then not q&quot;</p>
               <p className="text-red-400 text-xs mt-1">NOT equivalent to original</p>
             </div>
             <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
               <p className="text-amber-300 font-semibold">Contrapositive:</p>
               <MathRenderer display math="\neg q \rightarrow \neg p" />
-              <p className="text-cyan-300 text-sm mt-1">"If not q then not p"</p>
+              <p className="text-cyan-300 text-sm mt-1">&quot;If not q then not p&quot;</p>
               <p className="text-green-400 text-xs mt-1">EQUIVALENT to original</p>
             </div>
           </div>
@@ -223,7 +223,7 @@ const content = {
     {
       question: (
         <span>
-          Prove De Morgan's Law: <MathRenderer math="\neg(p \land q) \equiv \neg p \lor \neg q" />
+          Prove De Morgan&apos;s Law: <MathRenderer math="\neg(p \land q) \equiv \neg p \lor \neg q" />
         </span>
       ),
       solution: (
@@ -273,13 +273,13 @@ const content = {
       solution: (
         <div className="space-y-4">
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
-            <p className="text-gray-300">Original: "If it rains, then I stay home"</p>
-            <p className="text-gray-300">Let <MathRenderer math="p" /> = "it rains", <MathRenderer math="q" /> = "I stay home"</p>
+            <p className="text-gray-300">Original: &quot;If it rains, then I stay home&quot;</p>
+            <p className="text-gray-300">Let <MathRenderer math="p" /> = &quot;it rains&quot;, <MathRenderer math="q" /> = &quot;I stay home&quot;</p>
             <p className="text-gray-300">Original: <MathRenderer math="p \rightarrow q" /></p>
           </div>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
             <p className="font-semibold text-green-400">Contrapositive: <MathRenderer math="\neg q \rightarrow \neg p" /></p>
-            <p className="text-gray-300">"If I do not stay home, then it does not rain"</p>
+            <p className="text-gray-300">&quot;If I do not stay home, then it does not rain&quot;</p>
             <p className="text-green-300 text-sm mt-2">This is logically equivalent to the original statement.</p>
           </div>
         </div>

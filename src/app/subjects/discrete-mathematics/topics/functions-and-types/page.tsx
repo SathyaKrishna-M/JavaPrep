@@ -26,8 +26,8 @@ const content = {
           </div>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
             <p className="text-lime-300 font-semibold mb-2">Notation:</p>
-            <p className="text-gray-300"><MathRenderer math="f: A \rightarrow B" /> means "f is a function from A to B"</p>
-            <p className="text-gray-300"><MathRenderer math="f(a) = b" /> means "f maps a to b"</p>
+            <p className="text-gray-300"><MathRenderer math="f: A \rightarrow B" /> means &quot;f is a function from A to B&quot;</p>
+            <p className="text-gray-300"><MathRenderer math="f(a) = b" /> means &quot;f maps a to b&quot;</p>
           </div>
         </div>
       ),

@@ -141,7 +141,7 @@ const content = {
         {
             question: (
                 <span>
-                    4. Prove "If <MathRenderer math="a + b = c" />, where <MathRenderer math="a, b, c" /> are integers, then at least one of <MathRenderer math="a, b, c" /> is even" using indirect proof by contrapositive.
+                    4. Prove &quot;If <MathRenderer math="a + b = c" />, where <MathRenderer math="a, b, c" /> are integers, then at least one of <MathRenderer math="a, b, c" /> is even&quot; using indirect proof by contrapositive.
                 </span>
             ),
             solution: (
@@ -181,13 +181,13 @@ const content = {
         {
             question: (
                 <span>
-                    5. Explain how to use proof by contradiction to prove "There is a real number <MathRenderer math="x" /> such that <MathRenderer math="x^3 + 3x + 1 = 0" />".
+                    5. Explain how to use proof by contradiction to prove &quot;There is a real number <MathRenderer math="x" /> such that <MathRenderer math="x^3 + 3x + 1 = 0" />&quot;.
                 </span>
             ),
             solution: (
                 <div className="space-y-4">
                     <p className="text-gray-300">
-                        Assume the negation: "For all real numbers <MathRenderer math="x" />, <MathRenderer math="x^3 + 3x + 1 \neq 0" />".
+                        Assume the negation: &quot;For all real numbers <MathRenderer math="x" />, <MathRenderer math="x^3 + 3x + 1 \neq 0" />&quot;.
                     </p>
                     <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 my-2">
                         <p className="text-gray-300">

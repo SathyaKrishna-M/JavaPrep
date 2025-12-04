@@ -134,7 +134,7 @@ const content = {
               <tr className="border-b border-slate-700">
                 <td className="px-6 py-4 font-medium text-white">Contraposition</td>
                 <td className="px-6 py-4 text-slate-300">Assume <MathRenderer math="\neg q" />, derive <MathRenderer math="\neg p" /></td>
-                <td className="px-6 py-4 text-slate-300">"Not <MathRenderer math="q" />" gives more info than <MathRenderer math="p" /></td>
+                <td className="px-6 py-4 text-slate-300">&quot;Not <MathRenderer math="q" />&quot; gives more info than <MathRenderer math="p" /></td>
               </tr>
               <tr className="border-b border-slate-700">
                 <td className="px-6 py-4 font-medium text-white">Contradiction</td>
@@ -173,10 +173,10 @@ const content = {
         <div className="space-y-4">
           <p className="text-cyan-400 font-semibold">Proof by Contraposition:</p>
           <p className="text-gray-300">
-            We want to prove <MathRenderer math="p \rightarrow q" /> where <MathRenderer math="p" />: "<MathRenderer math="n^2" /> is even" and <MathRenderer math="q" />: "<MathRenderer math="n" /> is even".
+            We want to prove <MathRenderer math="p \rightarrow q" /> where <MathRenderer math="p" />: &quot;<MathRenderer math="n^2" /> is even&quot; and <MathRenderer math="q" />: &quot;<MathRenderer math="n" /> is even&quot;.
           </p>
           <p className="text-gray-300">
-            Contrapositive: <MathRenderer math="\neg q \rightarrow \neg p" /> ("If <MathRenderer math="n" /> is odd, then <MathRenderer math="n^2" /> is odd").
+            Contrapositive: <MathRenderer math="\neg q \rightarrow \neg p" /> (&quot;If <MathRenderer math="n" /> is odd, then <MathRenderer math="n^2" /> is odd&quot;).
           </p>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 my-2">
             <p className="text-gray-300 mb-2">Assume <MathRenderer math="n" /> is odd.</p>

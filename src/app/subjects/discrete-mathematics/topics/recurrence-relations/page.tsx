@@ -138,7 +138,7 @@ const content = {
               <li>Ends in 0: Must end in 10. Preceding <MathRenderer math="n-2" /> bits valid (<MathRenderer math="a_{n-2}" />)</li>
             </ul>
             <p className="text-gray-300 mt-2">Total: <MathRenderer math="a_n = a_{n-1} + a_{n-2}" />.</p>
-            <p className="text-gray-300">Initial Conditions: <MathRenderer math="a_1 = 2" /> ("0", "1"), <MathRenderer math="a_2 = 3" /> ("01", "10", "11").</p>
+            <p className="text-gray-300">Initial Conditions: <MathRenderer math="a_1 = 2" /> (&quot;0&quot;, &quot;1&quot;), <MathRenderer math="a_2 = 3" /> (&quot;01&quot;, &quot;10&quot;, &quot;11&quot;).</p>
             <p className="text-green-400 font-semibold">This is related to the Fibonacci sequence!</p>
           </div>
         </div>

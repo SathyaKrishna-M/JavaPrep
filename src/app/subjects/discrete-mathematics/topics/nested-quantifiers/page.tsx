@@ -23,11 +23,11 @@ const content = {
             <p className="text-lime-300 font-semibold mb-2">Example:</p>
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li>
-                <MathRenderer math="\forall x \exists y P(x, y)" /> means "For every x, there exists a y such that P(x, y)"
+                <MathRenderer math="\forall x \exists y P(x, y)" /> means &quot;For every x, there exists a y such that P(x, y)&quot;
                 <p className="ml-6 text-gray-400">- y can depend on x</p>
               </li>
               <li>
-                <MathRenderer math="\exists y \forall x P(x, y)" /> means "There exists a y such that for all x, P(x, y)"
+                <MathRenderer math="\exists y \forall x P(x, y)" /> means &quot;There exists a y such that for all x, P(x, y)&quot;
                 <p className="ml-6 text-gray-400">- y must work for all x</p>
               </li>
             </ul>
@@ -49,7 +49,7 @@ const content = {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
               <p className="text-blue-400 font-semibold mb-2">Pattern 1: <MathRenderer math="\forall x \exists y" /></p>
-              <p className="text-gray-300">"For every x, there exists a y"</p>
+              <p className="text-gray-300">&quot;For every x, there exists a y&quot;</p>
               <div className="mt-2 text-sm text-gray-400">
                 <p>Example: <MathRenderer math="\forall x \exists y (x + y = 0)" /></p>
                 <p>- For every number x, there exists y = -x such that x + y = 0</p>
@@ -58,7 +58,7 @@ const content = {
             </div>
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
               <p className="text-blue-400 font-semibold mb-2">Pattern 2: <MathRenderer math="\exists y \forall x" /></p>
-              <p className="text-gray-300">"There exists a y such that for all x"</p>
+              <p className="text-gray-300">&quot;There exists a y such that for all x&quot;</p>
               <div className="mt-2 text-sm text-gray-400">
                 <p>Example: <MathRenderer math="\exists y \forall x (x + y = x)" /></p>
                 <p>- There exists y = 0 such that for all x, x + 0 = x</p>
@@ -67,7 +67,7 @@ const content = {
             </div>
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
               <p className="text-blue-400 font-semibold mb-2">Pattern 3: <MathRenderer math="\forall x \forall y" /></p>
-              <p className="text-gray-300">"For all x and for all y"</p>
+              <p className="text-gray-300">&quot;For all x and for all y&quot;</p>
               <div className="mt-2 text-sm text-gray-400">
                 <p>Example: <MathRenderer math="\forall x \forall y (x + y = y + x)" /></p>
                 <p>- Commutative property of addition</p>
@@ -76,7 +76,7 @@ const content = {
             </div>
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
               <p className="text-blue-400 font-semibold mb-2">Pattern 4: <MathRenderer math="\exists x \exists y" /></p>
-              <p className="text-gray-300">"There exists x and there exists y"</p>
+              <p className="text-gray-300">&quot;There exists x and there exists y&quot;</p>
               <div className="mt-2 text-sm text-gray-400">
                 <p>Example: <MathRenderer math="\exists x \exists y (x + y = 5)" /></p>
                 <p>- There exist numbers such that their sum is 5</p>
@@ -130,12 +130,12 @@ const content = {
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
               <p className="text-amber-300 font-semibold mb-2">Explicit Domain:</p>
               <MathRenderer display math="\forall x \in \mathbb{R} (x^2 \ge 0)" />
-              <p className="text-gray-300 text-sm mt-1">"For all real numbers x, x squared is greater than or equal to 0"</p>
+              <p className="text-gray-300 text-sm mt-1">&quot;For all real numbers x, x squared is greater than or equal to 0&quot;</p>
             </div>
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
               <p className="text-amber-300 font-semibold mb-2">Multiple Domains:</p>
               <MathRenderer display math="\forall x \in \mathbb{Z} \exists y \in \mathbb{Z} (y = x + 1)" />
-              <p className="text-gray-300 text-sm mt-1">"For every integer x, there exists an integer y such that y = x + 1"</p>
+              <p className="text-gray-300 text-sm mt-1">&quot;For every integer x, there exists an integer y such that y = x + 1&quot;</p>
             </div>
           </div>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
@@ -161,7 +161,7 @@ const content = {
       solution: (
         <div className="space-y-4">
           <p className="text-gray-300">
-            "For every integer x, there exists an integer y such that x is less than y"
+            &quot;For every integer x, there exists an integer y such that x is less than y&quot;
           </p>
           <p className="text-green-400">
             This is true. For any integer x, we can choose <MathRenderer math="y = x + 1" />.
@@ -180,7 +180,7 @@ const content = {
         <div className="space-y-4">
           <p className="text-red-400 font-semibold">No, this is false.</p>
           <p className="text-gray-300">
-            Translation: "There exists an integer y such that for all integers x, x is less than y"
+            Translation: &quot;There exists an integer y such that for all integers x, x is less than y&quot;
           </p>
           <p className="text-gray-300">
             This claims there is a largest integer, which is false. No matter what y we choose, we can find <MathRenderer math="x = y + 1" /> such that x is not less than y.
@@ -202,7 +202,7 @@ const content = {
             <MathRenderer display math="\neg(\forall x \exists y (x + y = 0)) \equiv \exists x \forall y \neg(x + y = 0) \equiv \exists x \forall y (x + y \neq 0)" />
           </div>
           <p className="text-gray-300">
-            Meaning: "There exists x such that for all y, x + y ≠ 0"
+            Meaning: &quot;There exists x such that for all y, x + y ≠ 0&quot;
           </p>
           <p className="text-red-400">
             This is false (counterexample: for any x, choose y = -x)
