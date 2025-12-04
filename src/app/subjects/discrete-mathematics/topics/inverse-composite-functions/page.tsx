@@ -2,6 +2,7 @@
 
 import DMTopicPage from '@/components/DMTopicPage'
 import { FiBook, FiTarget, FiGitBranch } from 'react-icons/fi'
+import MathRenderer from '@/components/MathRenderer'
 
 const content = {
   title: 'Inverse & Composite Functions',
@@ -9,106 +10,247 @@ const content = {
     {
       title: '🔄 Composite Functions',
       icon: <FiGitBranch className="w-6 h-6" />,
-      content: `<span class="text-cyan-400 font-semibold text-lg">The composition</span> of functions f: A → B and g: B → C is denoted (g ∘ f): A → C.
-
-<span class="text-amber-300 font-semibold">Definition:</span>
-(g ∘ f)(x) = g(f(x))
-
-<span class="text-lime-300 font-semibold">Properties:</span>
-
-• <span class="text-cyan-300">Associative:</span> (h ∘ g) ∘ f = h ∘ (g ∘ f)
-• <span class="text-cyan-300">Identity:</span> f ∘ I = I ∘ f = f, where I is the identity function
-• <span class="text-cyan-300">Composition of bijections:</span> If f and g are bijective, then g ∘ f is bijective
-
-<span class="text-pink-300 font-semibold">Note:</span>
-For composition to be defined, the codomain of f must match the domain of g.`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            <span className="text-cyan-400 font-semibold text-lg">The composition</span> of functions <MathRenderer math="f: A \rightarrow B" /> and <MathRenderer math="g: B \rightarrow C" /> is denoted <MathRenderer math="(g \circ f): A \rightarrow C" />.
+          </p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-amber-300 font-semibold mb-2">Definition:</p>
+            <MathRenderer display math="(g \circ f)(x) = g(f(x))" />
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Properties:</p>
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              <li><span className="text-cyan-300">Associative:</span> <MathRenderer math="(h \circ g) \circ f = h \circ (g \circ f)" /></li>
+              <li><span className="text-cyan-300">Identity:</span> <MathRenderer math="f \circ I = I \circ f = f" />, where I is the identity function</li>
+              <li><span className="text-cyan-300">Composition of bijections:</span> If f and g are bijective, then <MathRenderer math="g \circ f" /> is bijective</li>
+            </ul>
+          </div>
+          <div className="bg-pink-500/10 p-4 rounded-lg border border-pink-500/30">
+            <p className="text-pink-300 font-semibold mb-2">Note:</p>
+            <p className="text-gray-300">For composition to be defined, the codomain of f must match the domain of g.</p>
+          </div>
+        </div>
+      ),
       formula: '(g \\circ f)(x) = g(f(x))',
     },
     {
       title: '↩️ Inverse Functions',
       icon: <FiBook className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">The inverse</span> of a bijective function f: A → B is f⁻¹: B → A such that:
-
-f⁻¹(f(a)) = a for all a ∈ A
-f(f⁻¹(b)) = b for all b ∈ B
-
-<span class="text-amber-300 font-semibold">Existence:</span>
-A function has an inverse if and only if it is bijective (one-to-one and onto).
-
-<span class="text-lime-300 font-semibold">Properties:</span>
-
-• <span class="text-cyan-300">Uniqueness:</span> If an inverse exists, it is unique
-• <span class="text-cyan-300">Inverse of inverse:</span> (f⁻¹)⁻¹ = f
-• <span class="text-cyan-300">Inverse of composition:</span> (g ∘ f)⁻¹ = f⁻¹ ∘ g⁻¹`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            <span className="text-blue-400 font-semibold">The inverse</span> of a bijective function <MathRenderer math="f: A \rightarrow B" /> is <MathRenderer math="f^{-1}: B \rightarrow A" /> such that:
+          </p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              <li><MathRenderer math="f^{-1}(f(a)) = a" /> for all <MathRenderer math="a \in A" /></li>
+              <li><MathRenderer math="f(f^{-1}(b)) = b" /> for all <MathRenderer math="b \in B" /></li>
+            </ul>
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Existence:</p>
+            <p className="text-gray-300">A function has an inverse if and only if it is bijective (one-to-one and onto).</p>
+          </div>
+          <div className="bg-cyan-500/10 p-4 rounded-lg border border-cyan-500/30">
+            <p className="text-cyan-300 font-semibold mb-2">Properties:</p>
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              <li><span className="text-cyan-300">Uniqueness:</span> If an inverse exists, it is unique</li>
+              <li><span className="text-cyan-300">Inverse of inverse:</span> <MathRenderer math="(f^{-1})^{-1} = f" /></li>
+              <li><span className="text-cyan-300">Inverse of composition:</span> <MathRenderer math="(g \circ f)^{-1} = f^{-1} \circ g^{-1}" /></li>
+            </ul>
+          </div>
+        </div>
+      ),
       formula: 'f^{-1}(f(a)) = a, \\quad f(f^{-1}(b)) = b',
     },
     {
       title: '📐 Finding Inverses',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `<span class="text-cyan-400 font-semibold">Method to find inverse:</span>
-
-For a function f: A → B:
-
-1. Verify f is bijective
-2. Set y = f(x)
-3. Solve for x in terms of y
-4. Replace y with x to get f⁻¹(x)
-
-<span class="text-amber-300 font-semibold">Example:</span>
-f(x) = 2x + 3
-
-Step 1: f is bijective (linear function with non-zero slope)
-Step 2: y = 2x + 3
-Step 3: y - 3 = 2x, so x = (y - 3)/2
-Step 4: f⁻¹(x) = (x - 3)/2
-
-<span class="text-lime-300 font-semibold">Verification:</span>
-f⁻¹(f(x)) = f⁻¹(2x + 3) = ((2x + 3) - 3)/2 = x ✓`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            <span className="text-cyan-400 font-semibold">Method to find inverse:</span>
+          </p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-gray-300">For a function <MathRenderer math="f: A \rightarrow B" />:</p>
+            <ol className="list-decimal list-inside text-gray-300 space-y-1 mt-2">
+              <li>Verify f is bijective</li>
+              <li>Set <MathRenderer math="y = f(x)" /></li>
+              <li>Solve for x in terms of y</li>
+              <li>Replace y with x to get <MathRenderer math="f^{-1}(x)" /></li>
+            </ol>
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Example:</p>
+            <p className="text-gray-300"><MathRenderer math="f(x) = 2x + 3" /></p>
+            <ul className="list-disc list-inside text-gray-300 space-y-1 mt-2">
+              <li>Step 1: f is bijective (linear function with non-zero slope)</li>
+              <li>Step 2: <MathRenderer math="y = 2x + 3" /></li>
+              <li>Step 3: <MathRenderer math="y - 3 = 2x" />, so <MathRenderer math="x = (y - 3)/2" /></li>
+              <li>Step 4: <MathRenderer math="f^{-1}(x) = (x - 3)/2" /></li>
+            </ul>
+          </div>
+          <div className="bg-pink-500/10 p-4 rounded-lg border border-pink-500/30">
+            <p className="text-pink-300 font-semibold mb-2">Verification:</p>
+            <MathRenderer display math="f^{-1}(f(x)) = f^{-1}(2x + 3) = \frac{(2x + 3) - 3}{2} = x" />
+          </div>
+        </div>
+      ),
       formula: 'f(x) = 2x + 3 \\Rightarrow f^{-1}(x) = \\frac{x - 3}{2}',
     },
     {
       title: '🔗 Composition with Inverses',
       icon: <FiGitBranch className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Key Relationships:</span>
-
-• <span class="text-cyan-300">Identity:</span> f ∘ f⁻¹ = I_B and f⁻¹ ∘ f = I_A
-• <span class="text-cyan-300">Inverse of composition:</span> (g ∘ f)⁻¹ = f⁻¹ ∘ g⁻¹
-
-<span class="text-amber-300 font-semibold">Note the order reversal:</span>
-The inverse of g ∘ f is f⁻¹ ∘ g⁻¹ (not g⁻¹ ∘ f⁻¹)
-
-<span class="text-lime-300 font-semibold">Example:</span>
-If f(x) = x + 1 and g(x) = 2x, then:
-(g ∘ f)(x) = g(f(x)) = g(x + 1) = 2(x + 1) = 2x + 2
-
-(g ∘ f)⁻¹(x) = f⁻¹(g⁻¹(x)) = f⁻¹(x/2) = x/2 - 1
-
-Verification: (g ∘ f)⁻¹((g ∘ f)(x)) = (g ∘ f)⁻¹(2x + 2) = (2x + 2)/2 - 1 = x ✓`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-blue-400 font-semibold">Key Relationships:</p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <ul className="list-disc list-inside text-gray-300 space-y-2">
+              <li><span className="text-cyan-300">Identity:</span> <MathRenderer math="f \circ f^{-1} = I_B" /> and <MathRenderer math="f^{-1} \circ f = I_A" /></li>
+              <li><span className="text-cyan-300">Inverse of composition:</span> <MathRenderer math="(g \circ f)^{-1} = f^{-1} \circ g^{-1}" /></li>
+            </ul>
+          </div>
+          <div className="bg-pink-500/10 p-4 rounded-lg border border-pink-500/30">
+            <p className="text-pink-300 font-semibold mb-2">Note the order reversal:</p>
+            <p className="text-gray-300">The inverse of <MathRenderer math="g \circ f" /> is <MathRenderer math="f^{-1} \circ g^{-1}" /> (not <MathRenderer math="g^{-1} \circ f^{-1}" />)</p>
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Example:</p>
+            <p className="text-gray-300">If <MathRenderer math="f(x) = x + 1" /> and <MathRenderer math="g(x) = 2x" />, then:</p>
+            <MathRenderer display math="(g \circ f)(x) = g(f(x)) = g(x + 1) = 2(x + 1) = 2x + 2" />
+            <MathRenderer display math="(g \circ f)^{-1}(x) = f^{-1}(g^{-1}(x)) = f^{-1}(x/2) = x/2 - 1" />
+            <p className="text-gray-300 mt-2">Verification:</p>
+            <MathRenderer display math="(g \circ f)^{-1}((g \circ f)(x)) = (g \circ f)^{-1}(2x + 2) = (2x + 2)/2 - 1 = x" />
+          </div>
+        </div>
+      ),
     },
   ],
   practiceQuestions: [
     {
-      question: 'If f(x) = 3x - 2 and g(x) = x², find (g ∘ f)(x) and (f ∘ g)(x).',
-      solution: '(g ∘ f)(x) = g(f(x)) = g(3x - 2) = (3x - 2)² = 9x² - 12x + 4\n\n(f ∘ g)(x) = f(g(x)) = f(x²) = 3(x²) - 2 = 3x² - 2\n\nNote: (g ∘ f) ≠ (f ∘ g), so composition is not commutative.',
+      question: (
+        <span>
+          If <MathRenderer math="f(x) = 3x - 2" /> and <MathRenderer math="g(x) = x^2" />, find <MathRenderer math="(g \circ f)(x)" /> and <MathRenderer math="(f \circ g)(x)" />.
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <MathRenderer display math="(g \circ f)(x) = g(f(x)) = g(3x - 2) = (3x - 2)^2 = 9x^2 - 12x + 4" />
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <MathRenderer display math="(f \circ g)(x) = f(g(x)) = f(x^2) = 3(x^2) - 2 = 3x^2 - 2" />
+          </div>
+          <p className="text-gray-300">Note: <MathRenderer math="(g \circ f) \neq (f \circ g)" />, so composition is not commutative.</p>
+        </div>
+      ),
       formula: '(g \\circ f)(x) = 9x^2 - 12x + 4, \\quad (f \\circ g)(x) = 3x^2 - 2',
     },
     {
-      question: 'Find the inverse of f(x) = (2x + 1)/(x - 3), where x ≠ 3.',
-      solution: 'Step 1: Verify f is bijective (one-to-one and onto its range)\n\nStep 2: Set y = (2x + 1)/(x - 3)\n\nStep 3: Solve for x:\ny(x - 3) = 2x + 1\nyx - 3y = 2x + 1\nyx - 2x = 3y + 1\nx(y - 2) = 3y + 1\nx = (3y + 1)/(y - 2), where y ≠ 2\n\nStep 4: f⁻¹(x) = (3x + 1)/(x - 2), where x ≠ 2\n\nVerification:\nf⁻¹(f(x)) = f⁻¹((2x + 1)/(x - 3)) = (3(2x + 1)/(x - 3) + 1)/((2x + 1)/(x - 3) - 2)\nAfter simplification, this equals x. ✓',
+      question: (
+        <span>
+          Find the inverse of <MathRenderer math="f(x) = \frac{2x + 1}{x - 3}" />, where <MathRenderer math="x \neq 3" />.
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <p className="text-gray-300">Step 1: Verify f is bijective (one-to-one and onto its range)</p>
+          <p className="text-gray-300">Step 2: Set <MathRenderer math="y = \frac{2x + 1}{x - 3}" /></p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-gray-300">Step 3: Solve for x:</p>
+            <MathRenderer display math="y(x - 3) = 2x + 1" />
+            <MathRenderer display math="yx - 3y = 2x + 1" />
+            <MathRenderer display math="yx - 2x = 3y + 1" />
+            <MathRenderer display math="x(y - 2) = 3y + 1" />
+            <MathRenderer display math="x = \frac{3y + 1}{y - 2}, \text{ where } y \neq 2" />
+          </div>
+          <p className="text-green-400 font-semibold">Step 4: <MathRenderer math="f^{-1}(x) = \frac{3x + 1}{x - 2}, \text{ where } x \neq 2" /></p>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Verification:</p>
+            <MathRenderer display math="f^{-1}(f(x)) = f^{-1}\left(\frac{2x + 1}{x - 3}\right) = \frac{3(\frac{2x + 1}{x - 3}) + 1}{(\frac{2x + 1}{x - 3}) - 2}" />
+            <p className="text-gray-300">After simplification, this equals x. ✓</p>
+          </div>
+        </div>
+      ),
       formula: 'f^{-1}(x) = \\frac{3x + 1}{x - 2}, \\quad x \\neq 2',
     },
     {
-      question: 'If f: A → B and g: B → C are both bijective, prove that g ∘ f is bijective.',
-      solution: 'We need to show g ∘ f is both one-to-one and onto.\n\nOne-to-one (Injective):\nAssume (g ∘ f)(a₁) = (g ∘ f)(a₂)\nThen g(f(a₁)) = g(f(a₂))\nSince g is one-to-one, f(a₁) = f(a₂)\nSince f is one-to-one, a₁ = a₂\nTherefore, g ∘ f is one-to-one. ✓\n\nOnto (Surjective):\nLet c ∈ C. Since g is onto, there exists b ∈ B such that g(b) = c.\nSince f is onto, there exists a ∈ A such that f(a) = b.\nTherefore, (g ∘ f)(a) = g(f(a)) = g(b) = c\nSo g ∘ f is onto. ✓\n\nSince g ∘ f is both one-to-one and onto, it is bijective.',
+      question: (
+        <span>
+          If <MathRenderer math="f: A \rightarrow B" /> and <MathRenderer math="g: B \rightarrow C" /> are both bijective, prove that <MathRenderer math="g \circ f" /> is bijective.
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <p className="text-gray-300">We need to show <MathRenderer math="g \circ f" /> is both one-to-one and onto.</p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-cyan-300 font-semibold">One-to-one (Injective):</p>
+            <p className="text-gray-300">Assume <MathRenderer math="(g \circ f)(a_1) = (g \circ f)(a_2)" /></p>
+            <p className="text-gray-300">Then <MathRenderer math="g(f(a_1)) = g(f(a_2))" /></p>
+            <p className="text-gray-300">Since g is one-to-one, <MathRenderer math="f(a_1) = f(a_2)" /></p>
+            <p className="text-gray-300">Since f is one-to-one, <MathRenderer math="a_1 = a_2" /></p>
+            <p className="text-green-400">Therefore, <MathRenderer math="g \circ f" /> is one-to-one. ✓</p>
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-cyan-300 font-semibold">Onto (Surjective):</p>
+            <p className="text-gray-300">Let <MathRenderer math="c \in C" />. Since g is onto, there exists <MathRenderer math="b \in B" /> such that <MathRenderer math="g(b) = c" />.</p>
+            <p className="text-gray-300">Since f is onto, there exists <MathRenderer math="a \in A" /> such that <MathRenderer math="f(a) = b" />.</p>
+            <p className="text-gray-300">Therefore, <MathRenderer math="(g \circ f)(a) = g(f(a)) = g(b) = c" /></p>
+            <p className="text-green-400">So <MathRenderer math="g \circ f" /> is onto. ✓</p>
+          </div>
+          <p className="text-gray-300">Since <MathRenderer math="g \circ f" /> is both one-to-one and onto, it is bijective.</p>
+        </div>
+      ),
     },
     {
-      question: 'If f(x) = x + 5 and g(x) = 2x, find (f ∘ g)⁻¹(x).',
-      solution: 'Method 1: Find composition first, then inverse\n(f ∘ g)(x) = f(g(x)) = f(2x) = 2x + 5\n\nTo find inverse: y = 2x + 5, so x = (y - 5)/2\nTherefore, (f ∘ g)⁻¹(x) = (x - 5)/2\n\nMethod 2: Use (g ∘ f)⁻¹ = f⁻¹ ∘ g⁻¹\nf⁻¹(x) = x - 5\ng⁻¹(x) = x/2\n\n(f ∘ g)⁻¹(x) = g⁻¹(f⁻¹(x)) = g⁻¹(x - 5) = (x - 5)/2\n\nBoth methods give the same result.',
+      question: (
+        <span>
+          If <MathRenderer math="f(x) = x + 5" /> and <MathRenderer math="g(x) = 2x" />, find <MathRenderer math="(f \circ g)^{-1}(x)" />.
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-cyan-300 font-semibold">Method 1: Find composition first, then inverse</p>
+            <MathRenderer display math="(f \circ g)(x) = f(g(x)) = f(2x) = 2x + 5" />
+            <p className="text-gray-300">To find inverse: <MathRenderer math="y = 2x + 5" />, so <MathRenderer math="x = (y - 5)/2" /></p>
+            <p className="text-green-400">Therefore, <MathRenderer math="(f \circ g)^{-1}(x) = (x - 5)/2" /></p>
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-cyan-300 font-semibold">Method 2: Use <MathRenderer math="(g \circ f)^{-1} = f^{-1} \circ g^{-1}" /></p>
+            <p className="text-gray-300"><MathRenderer math="f^{-1}(x) = x - 5" /></p>
+            <p className="text-gray-300"><MathRenderer math="g^{-1}(x) = x/2" /></p>
+            <MathRenderer display math="(f \circ g)^{-1}(x) = g^{-1}(f^{-1}(x)) = g^{-1}(x - 5) = (x - 5)/2" />
+          </div>
+          <p className="text-gray-300">Both methods give the same result.</p>
+        </div>
+      ),
       formula: '(f \\circ g)^{-1}(x) = \\frac{x - 5}{2}',
     },
     {
-      question: 'Determine if f(x) = x² has an inverse on ℝ. If not, find a domain where it does.',
-      solution: 'f(x) = x² is not one-to-one on ℝ because f(2) = f(-2) = 4.\nTherefore, f does not have an inverse on ℝ.\n\nHowever, if we restrict the domain to [0, ∞) (non-negative reals), then f is one-to-one and onto [0, ∞).\n\nOn this restricted domain:\nf⁻¹(x) = √x (the positive square root)\n\nVerification:\nf⁻¹(f(x)) = f⁻¹(x²) = √(x²) = x for x ≥ 0 ✓\nf(f⁻¹(x)) = f(√x) = (√x)² = x for x ≥ 0 ✓',
+      question: (
+        <span>
+          Determine if <MathRenderer math="f(x) = x^2" /> has an inverse on <MathRenderer math="\mathbb{R}" />. If not, find a domain where it does.
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <p className="text-red-400"><MathRenderer math="f(x) = x^2" /> is not one-to-one on <MathRenderer math="\mathbb{R}" /> because <MathRenderer math="f(2) = f(-2) = 4" />.</p>
+          <p className="text-gray-300">Therefore, f does not have an inverse on <MathRenderer math="\mathbb{R}" />.</p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-gray-300">However, if we restrict the domain to <MathRenderer math="[0, \infty)" /> (non-negative reals), then f is one-to-one and onto <MathRenderer math="[0, \infty)" />.</p>
+            <p className="text-green-400 font-semibold">On this restricted domain:</p>
+            <MathRenderer display math="f^{-1}(x) = \sqrt{x} \text{ (the positive square root)}" />
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Verification:</p>
+            <p className="text-gray-300"><MathRenderer math="f^{-1}(f(x)) = f^{-1}(x^2) = \sqrt{x^2} = x" /> for <MathRenderer math="x \ge 0" /> ✓</p>
+            <p className="text-gray-300"><MathRenderer math="f(f^{-1}(x)) = f(\sqrt{x}) = (\sqrt{x})^2 = x" /> for <MathRenderer math="x \ge 0" /> ✓</p>
+          </div>
+        </div>
+      ),
       functionGraph: {
         type: 'quadratic' as const,
         title: 'Graph of f(x) = x²',
@@ -117,43 +259,79 @@ Verification: (g ∘ f)⁻¹((g ∘ f)(x)) = (g ∘ f)⁻¹(2x + 2) = (2x + 2)/2
   ],
   exampleProblems: [
     {
-      problem: 'Given f(x) = 2x + 1 and g(x) = x² - 3, find (f ∘ g)(x) and (g ∘ f)(x).',
-      solution: '(f ∘ g)(x) = 2x² - 5, (g ∘ f)(x) = 4x² + 4x - 2',
+      problem: (
+        <span>
+          Given <MathRenderer math="f(x) = 2x + 1" /> and <MathRenderer math="g(x) = x^2 - 3" />, find <MathRenderer math="(f \circ g)(x)" /> and <MathRenderer math="(g \circ f)(x)" />.
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <MathRenderer display math="(f \circ g)(x) = 2x^2 - 5, \quad (g \circ f)(x) = 4x^2 + 4x - 2" />
+        </div>
+      ),
       steps: [
         {
           step: 'Find (f ∘ g)(x)',
-          explanation: '(f ∘ g)(x) = f(g(x)) = f(x² - 3) = 2(x² - 3) + 1 = 2x² - 6 + 1 = 2x² - 5',
+          explanation: (
+            <MathRenderer math="(f \circ g)(x) = f(g(x)) = f(x^2 - 3) = 2(x^2 - 3) + 1 = 2x^2 - 6 + 1 = 2x^2 - 5" />
+          ),
         },
         {
           step: 'Find (g ∘ f)(x)',
-          explanation: '(g ∘ f)(x) = g(f(x)) = g(2x + 1) = (2x + 1)² - 3 = 4x² + 4x + 1 - 3 = 4x² + 4x - 2',
+          explanation: (
+            <MathRenderer math="(g \circ f)(x) = g(f(x)) = g(2x + 1) = (2x + 1)^2 - 3 = 4x^2 + 4x + 1 - 3 = 4x^2 + 4x - 2" />
+          ),
         },
         {
           step: 'Note',
-          explanation: 'Composition is not commutative: (f ∘ g) ≠ (g ∘ f)',
+          explanation: (
+            <MathRenderer math="\text{Composition is not commutative: } (f \circ g) \neq (g \circ f)" />
+          ),
         },
       ],
       formula: '(f \\circ g)(x) = 2x^2 - 5, \\quad (g \\circ f)(x) = 4x^2 + 4x - 2',
     },
     {
-      problem: 'Find the inverse of f(x) = (x + 2)/(x - 1), where x ≠ 1.',
-      solution: 'f⁻¹(x) = (x + 2)/(x - 1), where x ≠ 1',
+      problem: (
+        <span>
+          Find the inverse of <MathRenderer math="f(x) = \frac{x + 2}{x - 1}" />, where <MathRenderer math="x \neq 1" />.
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <MathRenderer display math="f^{-1}(x) = \frac{x + 2}{x - 1}, \text{ where } x \neq 1" />
+        </div>
+      ),
       steps: [
         {
           step: 'Set y = f(x)',
-          explanation: 'y = (x + 2)/(x - 1)',
+          explanation: (
+            <MathRenderer math="y = \frac{x + 2}{x - 1}" />
+          ),
         },
         {
           step: 'Solve for x',
-          explanation: 'y(x - 1) = x + 2\nyx - y = x + 2\nyx - x = y + 2\nx(y - 1) = y + 2\nx = (y + 2)/(y - 1), where y ≠ 1',
+          explanation: (
+            <div className="space-y-2">
+              <MathRenderer display math="y(x - 1) = x + 2" />
+              <MathRenderer display math="yx - y = x + 2" />
+              <MathRenderer display math="yx - x = y + 2" />
+              <MathRenderer display math="x(y - 1) = y + 2" />
+              <MathRenderer display math="x = \frac{y + 2}{y - 1}, \text{ where } y \neq 1" />
+            </div>
+          ),
         },
         {
           step: 'Replace y with x',
-          explanation: 'f⁻¹(x) = (x + 2)/(x - 1), where x ≠ 1',
+          explanation: (
+            <MathRenderer math="f^{-1}(x) = \frac{x + 2}{x - 1}, \text{ where } x \neq 1" />
+          ),
         },
         {
           step: 'Verify',
-          explanation: 'f⁻¹(f(x)) = f⁻¹((x + 2)/(x - 1)) = x ✓',
+          explanation: (
+            <MathRenderer math="f^{-1}(f(x)) = f^{-1}\left(\frac{x + 2}{x - 1}\right) = x" />
+          ),
         },
       ],
       formula: 'f^{-1}(x) = \\frac{x + 2}{x - 1}, \\quad x \\neq 1',
@@ -164,4 +342,3 @@ Verification: (g ∘ f)⁻¹((g ∘ f)(x)) = (g ∘ f)⁻¹(2x + 2) = (2x + 2)/2
 export default function InverseAndCompositeFunctionsPage() {
   return <DMTopicPage content={content} />
 }
-

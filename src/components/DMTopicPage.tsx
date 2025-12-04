@@ -8,9 +8,9 @@ import DMVennDiagram from '@/components/DMVennDiagram'
 import FunctionGraph from '@/components/FunctionGraph'
 import DMHasseDiagram from '@/components/DMHasseDiagram'
 import TruthTable from '@/components/TruthTable'
-import { 
-  FiArrowRight, 
-  FiBook, 
+import {
+  FiArrowRight,
+  FiBook,
   FiTarget,
   FiAlertCircle,
   FiHelpCircle,
@@ -42,7 +42,7 @@ export interface TruthTableData {
 
 export interface ExplanationSection {
   title: string
-  content: string
+  content: string | React.ReactNode
   icon?: React.ReactNode
   vennDiagram?: VennDiagramData
   functionGraph?: FunctionGraphData
@@ -53,8 +53,8 @@ export interface ExplanationSection {
 }
 
 export interface PracticeQuestion {
-  question: string
-  solution: string
+  question: string | React.ReactNode
+  solution: string | React.ReactNode
   vennDiagram?: VennDiagramData
   functionGraph?: FunctionGraphData
   hasseDiagram?: HasseDiagramData
@@ -63,9 +63,9 @@ export interface PracticeQuestion {
 }
 
 export interface ExampleProblem {
-  problem: string
-  solution: string
-  steps: Array<{ step: string; explanation: string }>
+  problem: string | React.ReactNode
+  solution: string | React.ReactNode
+  steps: Array<{ step: string; explanation: string | React.ReactNode }>
   vennDiagram?: VennDiagramData
   functionGraph?: FunctionGraphData
   hasseDiagram?: HasseDiagramData
@@ -85,9 +85,9 @@ interface DMTopicPageProps {
   subjectHref?: string
 }
 
-export default function DMTopicPage({ 
-  content, 
-  subjectHref = '/subjects/discrete-mathematics' 
+export default function DMTopicPage({
+  content,
+  subjectHref = '/subjects/discrete-mathematics'
 }: DMTopicPageProps) {
   const [activeTab, setActiveTab] = useState<'explanation' | 'practice' | 'examples'>(
     'explanation'
@@ -123,11 +123,14 @@ export default function DMTopicPage({
                 </h3>
               </div>
               <div className="prose prose-invert max-w-none">
-                <div 
-                  className="text-gray-300 whitespace-pre-line leading-relaxed mb-4"
-                  dangerouslySetInnerHTML={{ __html: section.content || '' }}
-                />
-                
+                <div className="text-gray-300 whitespace-pre-line leading-relaxed mb-4">
+                  {typeof section.content === 'string' ? (
+                    <div dangerouslySetInnerHTML={{ __html: section.content || '' }} />
+                  ) : (
+                    section.content
+                  )}
+                </div>
+
                 {section.formula && (
                   <div className="my-4 p-4 bg-black/30 rounded-lg">
                     <MathRenderer math={section.formula} display={false} />
@@ -211,20 +214,9 @@ export default function DMTopicPage({
           </div>
           <Accordion
             items={content.practiceQuestions.map((q) => {
-              let solutionContent = q.solution
-              
-              // Add diagrams to solution if present
-              if (q.vennDiagram || q.functionGraph || q.hasseDiagram || q.formula) {
-                solutionContent += '\n\n'
-                
-                if (q.formula) {
-                  solutionContent += `\n\nFormula: ${q.formula}`
-                }
-              }
-
               return {
                 question: q.question,
-                solution: solutionContent,
+                solution: q.solution,
                 customContent: (
                   <div className="mt-4 space-y-4">
                     {q.formula && (
@@ -415,11 +407,10 @@ export default function DMTopicPage({
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-6 py-3 font-semibold transition-all relative flex items-center gap-2 whitespace-nowrap ${
-              activeTab === tab.id
-                ? 'text-blue-400'
-                : 'text-gray-400 hover:text-white'
-            }`}
+            className={`px-6 py-3 font-semibold transition-all relative flex items-center gap-2 whitespace-nowrap ${activeTab === tab.id
+              ? 'text-blue-400'
+              : 'text-gray-400 hover:text-white'
+              }`}
           >
             {tab.icon}
             {tab.label}

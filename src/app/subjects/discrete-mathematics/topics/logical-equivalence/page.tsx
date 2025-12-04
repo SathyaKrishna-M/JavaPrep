@@ -2,6 +2,7 @@
 
 import DMTopicPage, { TruthTableData } from '@/components/DMTopicPage'
 import { FiBook, FiTarget, FiGitBranch } from 'react-icons/fi'
+import MathRenderer from '@/components/MathRenderer'
 
 const content = {
   title: 'Logical Equivalence',
@@ -9,84 +10,155 @@ const content = {
     {
       title: '⚖️ Definition of Logical Equivalence',
       icon: <FiBook className="w-6 h-6" />,
-      content: `<span class="text-cyan-400 font-semibold text-lg">Two propositions</span> are logically equivalent if they have the same truth value in every possible case.
-
-<span class="text-amber-300 font-semibold">Notation:</span>
-p ≡ q or p ⇔ q means "p is logically equivalent to q"
-
-<span class="text-lime-300 font-semibold">Method to Prove:</span>
-Construct truth tables for both propositions. If all rows match, they are equivalent.
-
-<span class="text-pink-300 font-semibold">Example:</span>
-p → q is equivalent to ¬p ∨ q`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            <span className="text-cyan-400 font-semibold text-lg">Two propositions</span> are logically equivalent if they have the same truth value in every possible case.
+          </p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-amber-300 font-semibold mb-2">Notation:</p>
+            <p className="text-gray-300">
+              <MathRenderer math="p \equiv q" /> or <MathRenderer math="p \Leftrightarrow q" /> means "p is logically equivalent to q"
+            </p>
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Method to Prove:</p>
+            <p className="text-gray-300">
+              Construct truth tables for both propositions. If all rows match, they are equivalent.
+            </p>
+          </div>
+          <div className="bg-pink-500/10 p-4 rounded-lg border border-pink-500/30">
+            <p className="text-pink-300 font-semibold mb-2">Example:</p>
+            <p className="text-gray-300">
+              <MathRenderer math="p \rightarrow q" /> is equivalent to <MathRenderer math="\neg p \lor q" />
+            </p>
+          </div>
+        </div>
+      ),
       formula: 'p \\equiv q \\text{ if } p \\leftrightarrow q \\text{ is a tautology}',
     },
     {
       title: '📐 Laws of Logical Equivalence',
       icon: <FiGitBranch className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Fundamental Laws:</span>
-
-<span class="text-amber-300 font-semibold">Identity Laws:</span>
-• p ∧ T ≡ p
-• p ∨ F ≡ p
-
-<span class="text-amber-300 font-semibold">Domination Laws:</span>
-• p ∨ T ≡ T
-• p ∧ F ≡ F
-
-<span class="text-amber-300 font-semibold">Idempotent Laws:</span>
-• p ∨ p ≡ p
-• p ∧ p ≡ p
-
-<span class="text-amber-300 font-semibold">Double Negation:</span>
-• ¬(¬p) ≡ p
-
-<span class="text-amber-300 font-semibold">Commutative Laws:</span>
-• p ∨ q ≡ q ∨ p
-• p ∧ q ≡ q ∧ p
-
-<span class="text-amber-300 font-semibold">Associative Laws:</span>
-• (p ∨ q) ∨ r ≡ p ∨ (q ∨ r)
-• (p ∧ q) ∧ r ≡ p ∧ (q ∧ r)
-
-<span class="text-amber-300 font-semibold">Distributive Laws:</span>
-• p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)
-• p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)
-
-<span class="text-amber-300 font-semibold">De Morgan's Laws:</span>
-• ¬(p ∧ q) ≡ ¬p ∨ ¬q
-• ¬(p ∨ q) ≡ ¬p ∧ ¬q
-
-<span class="text-amber-300 font-semibold">Absorption Laws:</span>
-• p ∨ (p ∧ q) ≡ p
-• p ∧ (p ∨ q) ≡ p
-
-<span class="text-amber-300 font-semibold">Negation Laws:</span>
-• p ∨ ¬p ≡ T
-• p ∧ ¬p ≡ F`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-blue-400 font-semibold">Fundamental Laws:</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+              <p className="text-amber-300 font-semibold mb-2">Identity Laws:</p>
+              <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <li><MathRenderer math="p \land T \equiv p" /></li>
+                <li><MathRenderer math="p \lor F \equiv p" /></li>
+              </ul>
+            </div>
+            <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+              <p className="text-amber-300 font-semibold mb-2">Domination Laws:</p>
+              <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <li><MathRenderer math="p \lor T \equiv T" /></li>
+                <li><MathRenderer math="p \land F \equiv F" /></li>
+              </ul>
+            </div>
+            <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+              <p className="text-amber-300 font-semibold mb-2">Idempotent Laws:</p>
+              <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <li><MathRenderer math="p \lor p \equiv p" /></li>
+                <li><MathRenderer math="p \land p \equiv p" /></li>
+              </ul>
+            </div>
+            <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+              <p className="text-amber-300 font-semibold mb-2">Double Negation:</p>
+              <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <li><MathRenderer math="\neg(\neg p) \equiv p" /></li>
+              </ul>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-purple-500/10 p-4 rounded-lg border border-purple-500/30">
+              <p className="text-amber-300 font-semibold mb-2">Commutative Laws:</p>
+              <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <li><MathRenderer math="p \lor q \equiv q \lor p" /></li>
+                <li><MathRenderer math="p \land q \equiv q \land p" /></li>
+              </ul>
+            </div>
+            <div className="bg-purple-500/10 p-4 rounded-lg border border-purple-500/30">
+              <p className="text-amber-300 font-semibold mb-2">Associative Laws:</p>
+              <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <li><MathRenderer math="(p \lor q) \lor r \equiv p \lor (q \lor r)" /></li>
+                <li><MathRenderer math="(p \land q) \land r \equiv p \land (q \land r)" /></li>
+              </ul>
+            </div>
+          </div>
+          <div className="bg-orange-500/10 p-4 rounded-lg border border-orange-500/30">
+            <p className="text-amber-300 font-semibold mb-2">Distributive Laws:</p>
+            <ul className="list-disc list-inside text-gray-300 space-y-1">
+              <li><MathRenderer math="p \lor (q \land r) \equiv (p \lor q) \land (p \lor r)" /></li>
+              <li><MathRenderer math="p \land (q \lor r) \equiv (p \land q) \lor (p \land r)" /></li>
+            </ul>
+          </div>
+          <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
+            <p className="text-amber-300 font-semibold mb-2">De Morgan's Laws:</p>
+            <ul className="list-disc list-inside text-gray-300 space-y-1">
+              <li><MathRenderer math="\neg(p \land q) \equiv \neg p \lor \neg q" /></li>
+              <li><MathRenderer math="\neg(p \lor q) \equiv \neg p \land \neg q" /></li>
+            </ul>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-teal-500/10 p-4 rounded-lg border border-teal-500/30">
+              <p className="text-amber-300 font-semibold mb-2">Absorption Laws:</p>
+              <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <li><MathRenderer math="p \lor (p \land q) \equiv p" /></li>
+                <li><MathRenderer math="p \land (p \lor q) \equiv p" /></li>
+              </ul>
+            </div>
+            <div className="bg-teal-500/10 p-4 rounded-lg border border-teal-500/30">
+              <p className="text-amber-300 font-semibold mb-2">Negation Laws:</p>
+              <ul className="list-disc list-inside text-gray-300 space-y-1">
+                <li><MathRenderer math="p \lor \neg p \equiv T" /></li>
+                <li><MathRenderer math="p \land \neg p \equiv F" /></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
       title: '🔄 Converse, Inverse, Contrapositive',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `<span class="text-cyan-400 font-semibold">For the conditional p → q:</span>
-
-<span class="text-amber-300 font-semibold">Original:</span> p → q
-<span class="text-cyan-300">"If p then q"</span>
-
-<span class="text-amber-300 font-semibold">Converse:</span> q → p
-<span class="text-cyan-300">"If q then p"</span>
-<span class="text-red-400">NOT equivalent to original</span>
-
-<span class="text-amber-300 font-semibold">Inverse:</span> ¬p → ¬q
-<span class="text-cyan-300">"If not p then not q"</span>
-<span class="text-red-400">NOT equivalent to original</span>
-
-<span class="text-amber-300 font-semibold">Contrapositive:</span> ¬q → ¬p
-<span class="text-cyan-300">"If not q then not p"</span>
-<span class="text-green-400">EQUIVALENT to original</span>
-
-<span class="text-lime-300 font-semibold">Key Result:</span>
-p → q ≡ ¬q → ¬p (Contrapositive is always equivalent)`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-cyan-400 font-semibold">For the conditional <MathRenderer math="p \rightarrow q" />:</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+              <p className="text-amber-300 font-semibold">Original:</p>
+              <MathRenderer display math="p \rightarrow q" />
+              <p className="text-cyan-300 text-sm mt-1">"If p then q"</p>
+            </div>
+            <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
+              <p className="text-amber-300 font-semibold">Converse:</p>
+              <MathRenderer display math="q \rightarrow p" />
+              <p className="text-cyan-300 text-sm mt-1">"If q then p"</p>
+              <p className="text-red-400 text-xs mt-1">NOT equivalent to original</p>
+            </div>
+            <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
+              <p className="text-amber-300 font-semibold">Inverse:</p>
+              <MathRenderer display math="\neg p \rightarrow \neg q" />
+              <p className="text-cyan-300 text-sm mt-1">"If not p then not q"</p>
+              <p className="text-red-400 text-xs mt-1">NOT equivalent to original</p>
+            </div>
+            <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+              <p className="text-amber-300 font-semibold">Contrapositive:</p>
+              <MathRenderer display math="\neg q \rightarrow \neg p" />
+              <p className="text-cyan-300 text-sm mt-1">"If not q then not p"</p>
+              <p className="text-green-400 text-xs mt-1">EQUIVALENT to original</p>
+            </div>
+          </div>
+          <div className="bg-lime-500/10 p-4 rounded-lg border border-lime-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Key Result:</p>
+            <MathRenderer display math="p \rightarrow q \equiv \neg q \rightarrow \neg p" />
+            <p className="text-gray-300 text-center">(Contrapositive is always equivalent)</p>
+          </div>
+        </div>
+      ),
       truthTable: {
         headers: ['p', 'q', 'p → q', 'q → p', '¬p → ¬q', '¬q → ¬p'],
         rows: [
@@ -102,8 +174,40 @@ p → q ≡ ¬q → ¬p (Contrapositive is always equivalent)`,
   ],
   practiceQuestions: [
     {
-      question: 'Prove using truth tables that p → q is equivalent to ¬p ∨ q',
-      solution: 'Construct truth tables for both:\n\np | q | p → q | ¬p | ¬p ∨ q\n--|---|-------|-----|--------\nT | T |   T   |  F  |   T\nT | F |   F   |  F  |   F\nF | T |   T   |  T  |   T\nF | F |   T   |  T  |   T\n\nSince p → q and ¬p ∨ q have identical truth values in all rows, they are equivalent.',
+      question: (
+        <span>
+          Prove using truth tables that <MathRenderer math="p \rightarrow q" /> is equivalent to <MathRenderer math="\neg p \lor q" />
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            Construct truth tables for both:
+          </p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 my-2 overflow-x-auto">
+            <table className="min-w-full text-center text-gray-300">
+              <thead>
+                <tr className="border-b border-gray-600">
+                  <th className="px-4 py-2">p</th>
+                  <th className="px-4 py-2">q</th>
+                  <th className="px-4 py-2"><MathRenderer math="p \rightarrow q" /></th>
+                  <th className="px-4 py-2"><MathRenderer math="\neg p" /></th>
+                  <th className="px-4 py-2"><MathRenderer math="\neg p \lor q" /></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>T</td><td>T</td><td>T</td><td>F</td><td>T</td></tr>
+                <tr><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+                <tr><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr>
+                <tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-green-400">
+            Since <MathRenderer math="p \rightarrow q" /> and <MathRenderer math="\neg p \lor q" /> have identical truth values in all rows, they are equivalent.
+          </p>
+        </div>
+      ),
       truthTable: {
         headers: ['p', 'q', 'p → q', '¬p', '¬p ∨ q'],
         rows: [
@@ -117,8 +221,42 @@ p → q ≡ ¬q → ¬p (Contrapositive is always equivalent)`,
       formula: 'p \\rightarrow q \\equiv \\neg p \\lor q',
     },
     {
-      question: 'Prove De Morgan\'s Law: ¬(p ∧ q) ≡ ¬p ∨ ¬q',
-      solution: 'Construct truth tables:\n\np | q | p ∧ q | ¬(p ∧ q) | ¬p | ¬q | ¬p ∨ ¬q\n--|---|-------|----------|-----|-----|----------\nT | T |   T   |    F     |  F  |  F  |    F\nT | F |   F   |    T     |  F  |  T  |    T\nF | T |   F   |    T     |  T  |  F  |    T\nF | F |   F   |    T     |  T  |  T  |    T\n\nSince ¬(p ∧ q) and ¬p ∨ ¬q match in all rows, they are equivalent.',
+      question: (
+        <span>
+          Prove De Morgan's Law: <MathRenderer math="\neg(p \land q) \equiv \neg p \lor \neg q" />
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            Construct truth tables:
+          </p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 my-2 overflow-x-auto">
+            <table className="min-w-full text-center text-gray-300">
+              <thead>
+                <tr className="border-b border-gray-600">
+                  <th className="px-4 py-2">p</th>
+                  <th className="px-4 py-2">q</th>
+                  <th className="px-4 py-2"><MathRenderer math="p \land q" /></th>
+                  <th className="px-4 py-2"><MathRenderer math="\neg(p \land q)" /></th>
+                  <th className="px-4 py-2"><MathRenderer math="\neg p" /></th>
+                  <th className="px-4 py-2"><MathRenderer math="\neg q" /></th>
+                  <th className="px-4 py-2"><MathRenderer math="\neg p \lor \neg q" /></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>T</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+                <tr><td>T</td><td>F</td><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+                <tr><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td><td>F</td><td>T</td></tr>
+                <tr><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-green-400">
+            Since <MathRenderer math="\neg(p \land q)" /> and <MathRenderer math="\neg p \lor \neg q" /> match in all rows, they are equivalent.
+          </p>
+        </div>
+      ),
       truthTable: {
         headers: ['p', 'q', 'p ∧ q', '¬(p ∧ q)', '¬p', '¬q', '¬p ∨ ¬q'],
         rows: [
@@ -132,26 +270,55 @@ p → q ≡ ¬q → ¬p (Contrapositive is always equivalent)`,
     },
     {
       question: 'Find the contrapositive of "If it rains, then I stay home"',
-      solution: 'Original: "If it rains, then I stay home"\nLet p = "it rains", q = "I stay home"\nOriginal: p → q\n\nContrapositive: ¬q → ¬p\n"If I do not stay home, then it does not rain"\n\nThis is logically equivalent to the original statement.',
+      solution: (
+        <div className="space-y-4">
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-gray-300">Original: "If it rains, then I stay home"</p>
+            <p className="text-gray-300">Let <MathRenderer math="p" /> = "it rains", <MathRenderer math="q" /> = "I stay home"</p>
+            <p className="text-gray-300">Original: <MathRenderer math="p \rightarrow q" /></p>
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="font-semibold text-green-400">Contrapositive: <MathRenderer math="\neg q \rightarrow \neg p" /></p>
+            <p className="text-gray-300">"If I do not stay home, then it does not rain"</p>
+            <p className="text-green-300 text-sm mt-2">This is logically equivalent to the original statement.</p>
+          </div>
+        </div>
+      ),
       formula: 'p \\rightarrow q \\equiv \\neg q \\rightarrow \\neg p',
     },
   ],
   exampleProblems: [
     {
-      problem: 'Simplify the expression: (p ∨ q) ∧ (p ∨ ¬q)',
-      solution: '(p ∨ q) ∧ (p ∨ ¬q) ≡ p',
+      problem: (
+        <span>
+          Simplify the expression: <MathRenderer math="(p \lor q) \land (p \lor \neg q)" />
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <MathRenderer display math="(p \lor q) \land (p \lor \neg q) \equiv p" />
+        </div>
+      ),
       steps: [
         {
           step: 'Apply distributive law',
-          explanation: '(p ∨ q) ∧ (p ∨ ¬q) = p ∨ (q ∧ ¬q)',
+          explanation: (
+            <MathRenderer math="(p \lor q) \land (p \lor \neg q) = p \lor (q \land \neg q)" />
+          ),
         },
         {
           step: 'Apply negation law',
-          explanation: 'q ∧ ¬q = F, so p ∨ (q ∧ ¬q) = p ∨ F',
+          explanation: (
+            <span>
+              <MathRenderer math="q \land \neg q = F" />, so <MathRenderer math="p \lor (q \land \neg q) = p \lor F" />
+            </span>
+          ),
         },
         {
           step: 'Apply identity law',
-          explanation: 'p ∨ F = p',
+          explanation: (
+            <MathRenderer math="p \lor F = p" />
+          ),
         },
       ],
       formula: '(p \\lor q) \\land (p \\lor \\neg q) \\equiv p',

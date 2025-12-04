@@ -2,6 +2,7 @@
 
 import DMTopicPage from '@/components/DMTopicPage'
 import { FiPlus, FiMinus, FiUsers } from 'react-icons/fi'
+import MathRenderer from '@/components/MathRenderer'
 
 const content = {
   title: 'Inclusion-Exclusion Principle',
@@ -9,36 +10,62 @@ const content = {
     {
       title: '➕ Introduction',
       icon: <FiPlus className="w-6 h-6" />,
-      content: `<span class="text-cyan-400 font-semibold text-lg">The Inclusion-Exclusion Principle</span> is a counting technique which generalizes the familiar method of obtaining the number of elements in the union of two finite sets.
-      
-For two sets A and B:
-|A ∪ B| = |A| + |B| - |A ∩ B|
-
-<span class="text-amber-300 font-semibold">Why subtract?</span>
-When we sum |A| and |B|, we count the elements in the intersection |A ∩ B| twice. Subtracting it once corrects this overcounting.`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            <span className="text-cyan-400 font-semibold text-lg">The Inclusion-Exclusion Principle</span> is a counting technique which generalizes the familiar method of obtaining the number of elements in the union of two finite sets.
+          </p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-gray-300">For two sets A and B:</p>
+            <MathRenderer display math="|A \cup B| = |A| + |B| - |A \cap B|" />
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Why subtract?</p>
+            <p className="text-gray-300">
+              When we sum <MathRenderer math="|A|" /> and <MathRenderer math="|B|" />, we count the elements in the intersection <MathRenderer math="|A \cap B|" /> twice. Subtracting it once corrects this overcounting.
+            </p>
+          </div>
+        </div>
+      ),
       formula: '|A \\cup B| = |A| + |B| - |A \\cap B|',
     },
     {
       title: '🔢 Three Sets',
       icon: <FiUsers className="w-6 h-6" />,
-      content: `For three sets A, B, and C, the principle extends as follows:
-      
-|A ∪ B ∪ C| = |A| + |B| + |C|
-- (|A ∩ B| + |A ∩ C| + |B ∩ C|)
-+ |A ∩ B ∩ C|
-
-<span class="text-lime-300 font-semibold">General Rule:</span>
-1. Include (add) cardinalities of single sets.
-2. Exclude (subtract) cardinalities of pairwise intersections.
-3. Include (add) cardinalities of triple intersections.
-4. Continue alternating signs...`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">For three sets A, B, and C, the principle extends as follows:</p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <MathRenderer display math="|A \cup B \cup C| = |A| + |B| + |C| - (|A \cap B| + |A \cap C| + |B \cap C|) + |A \cap B \cap C|" />
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">General Rule:</p>
+            <ol className="list-decimal list-inside text-gray-300 space-y-1">
+              <li>Include (add) cardinalities of single sets.</li>
+              <li>Exclude (subtract) cardinalities of pairwise intersections.</li>
+              <li>Include (add) cardinalities of triple intersections.</li>
+              <li>Continue alternating signs...</li>
+            </ol>
+          </div>
+        </div>
+      ),
       formula: '|A \\cup B \\cup C| = \\sum |A_i| - \\sum |A_i \\cap A_j| + |A \\cap B \\cap C|',
     },
   ],
   practiceQuestions: [
     {
       question: 'In a class of 50 students, 30 take Math, 25 take Physics, and 10 take both. How many take at least one?',
-      solution: 'Using Inclusion-Exclusion:\n|M ∪ P| = |M| + |P| - |M ∩ P|\n|M ∪ P| = 30 + 25 - 10\n|M ∪ P| = 45\n\nSo, 45 students take at least one subject.',
+      solution: (
+        <div className="space-y-4">
+          <p className="text-gray-300">Using Inclusion-Exclusion:</p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <MathRenderer display math="|M \cup P| = |M| + |P| - |M \cap P|" />
+            <MathRenderer display math="|M \cup P| = 30 + 25 - 10" />
+            <MathRenderer display math="|M \cup P| = 45" />
+          </div>
+          <p className="text-green-400 font-semibold">So, 45 students take at least one subject.</p>
+        </div>
+      ),
       vennDiagram: {
         sets: [
           { label: 'Math', color: '#3b82f6' },
@@ -54,24 +81,53 @@ When we sum |A| and |B|, we count the elements in the intersection |A ∩ B| twi
   ],
   exampleProblems: [
     {
-      problem: 'Find the number of positive integers ≤ 100 divisible by 2, 3, or 5.',
-      solution: 'Total = 74',
+      problem: (
+        <span>
+          Find the number of positive integers <MathRenderer math="\le 100" /> divisible by 2, 3, or 5.
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <p className="text-green-400 font-semibold">Total = 74</p>
+        </div>
+      ),
       steps: [
         {
           step: 'Define Sets',
-          explanation: 'Let A, B, C be sets of numbers divisible by 2, 3, 5 respectively.\n|A| = ⌊100/2⌋ = 50\n|B| = ⌊100/3⌋ = 33\n|C| = ⌊100/5⌋ = 20',
+          explanation: (
+            <div className="space-y-2">
+              <p>Let A, B, C be sets of numbers divisible by 2, 3, 5 respectively.</p>
+              <p><MathRenderer math="|A| = \lfloor 100/2 \rfloor = 50" /></p>
+              <p><MathRenderer math="|B| = \lfloor 100/3 \rfloor = 33" /></p>
+              <p><MathRenderer math="|C| = \lfloor 100/5 \rfloor = 20" /></p>
+            </div>
+          ),
         },
         {
           step: 'Pairwise Intersections',
-          explanation: '|A ∩ B| (div by 6) = ⌊100/6⌋ = 16\n|A ∩ C| (div by 10) = ⌊100/10⌋ = 10\n|B ∩ C| (div by 15) = ⌊100/15⌋ = 6',
+          explanation: (
+            <div className="space-y-2">
+              <p><MathRenderer math="|A \cap B|" /> (div by 6) <MathRenderer math="= \lfloor 100/6 \rfloor = 16" /></p>
+              <p><MathRenderer math="|A \cap C|" /> (div by 10) <MathRenderer math="= \lfloor 100/10 \rfloor = 10" /></p>
+              <p><MathRenderer math="|B \cap C|" /> (div by 15) <MathRenderer math="= \lfloor 100/15 \rfloor = 6" /></p>
+            </div>
+          ),
         },
         {
           step: 'Triple Intersection',
-          explanation: '|A ∩ B ∩ C| (div by 30) = ⌊100/30⌋ = 3',
+          explanation: (
+            <p><MathRenderer math="|A \cap B \cap C|" /> (div by 30) <MathRenderer math="= \lfloor 100/30 \rfloor = 3" /></p>
+          ),
         },
         {
           step: 'Apply Formula',
-          explanation: '50 + 33 + 20 - (16 + 10 + 6) + 3\n= 103 - 32 + 3\n= 74',
+          explanation: (
+            <div className="space-y-2">
+              <MathRenderer display math="50 + 33 + 20 - (16 + 10 + 6) + 3" />
+              <MathRenderer display math="= 103 - 32 + 3" />
+              <MathRenderer display math="= 74" />
+            </div>
+          ),
         },
       ],
     },

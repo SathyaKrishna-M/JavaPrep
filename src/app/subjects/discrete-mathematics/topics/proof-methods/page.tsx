@@ -2,6 +2,7 @@
 
 import DMTopicPage from '@/components/DMTopicPage'
 import { FiShield, FiAlertTriangle, FiRepeat, FiCheckCircle } from 'react-icons/fi'
+import MathRenderer from '@/components/MathRenderer'
 
 const content = {
   title: 'Proof Methods',
@@ -9,34 +10,60 @@ const content = {
     {
       title: '🛡️ Direct Proof',
       icon: <FiShield className="w-6 h-6" />,
-      content: `<span class="text-cyan-400 font-semibold text-lg">Direct Proof</span> is the most common form of proof. It assumes that the hypothesis <i>p</i> is true and shows that the conclusion <i>q</i> must also be true.
-      
-<span class="text-amber-300 font-semibold">Structure:</span>
-1. Assume <i>p</i> is true.
-2. Use axioms, definitions, and previously proven theorems.
-3. Deduce that <i>q</i> is true.
-
-<span class="text-lime-300 font-semibold">Example:</span>
-Prove that if <i>n</i> is an odd integer, then <i>n²</i> is odd.
-<span class="text-gray-400 italic">Proof:</span> Assume <i>n</i> is odd. Then <i>n = 2k + 1</i> for some integer <i>k</i>.
-<i>n² = (2k + 1)² = 4k² + 4k + 1 = 2(2k² + 2k) + 1</i>.
-Since <i>2k² + 2k</i> is an integer, <i>n²</i> is odd.`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            <span className="text-cyan-400 font-semibold text-lg">Direct Proof</span> is the most common form of proof. It assumes that the hypothesis <MathRenderer math="p" /> is true and shows that the conclusion <MathRenderer math="q" /> must also be true.
+          </p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-amber-300 font-semibold mb-2">Structure:</p>
+            <ol className="list-decimal list-inside text-gray-300 space-y-1">
+              <li>Assume <MathRenderer math="p" /> is true.</li>
+              <li>Use axioms, definitions, and previously proven theorems.</li>
+              <li>Deduce that <MathRenderer math="q" /> is true.</li>
+            </ol>
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Example:</p>
+            <p className="text-gray-300">Prove that if <MathRenderer math="n" /> is an odd integer, then <MathRenderer math="n^2" /> is odd.</p>
+            <div className="mt-2 text-gray-300">
+              <span className="text-gray-400 italic">Proof:</span> Assume <MathRenderer math="n" /> is odd. Then <MathRenderer math="n = 2k + 1" /> for some integer <MathRenderer math="k" />.
+              <div className="my-2 pl-4 border-l-2 border-gray-600">
+                <MathRenderer display math="n^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1" />
+              </div>
+              Since <MathRenderer math="2k^2 + 2k" /> is an integer, <MathRenderer math="n^2" /> is odd.
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
       title: '⚠️ Proof by Contraposition',
       icon: <FiRepeat className="w-6 h-6" />,
-      content: `<span class="text-cyan-400 font-semibold text-lg">Proof by Contraposition</span> is an indirect proof method. To prove <i>p &rarr; q</i>, we prove its contrapositive <i>&not;q &rarr; &not;p</i>.
-      
-<span class="text-amber-300 font-semibold">Logic:</span>
-<i>p &rarr; q &equiv; &not;q &rarr; &not;p</i>
-
-<span class="text-lime-300 font-semibold">Example:</span>
-Prove that if <i>3n + 2</i> is odd, then <i>n</i> is odd.
-<span class="text-gray-400 italic">Proof (by Contraposition):</span> Assume <i>n</i> is even (negation of conclusion).
-Then <i>n = 2k</i>.
-<i>3n + 2 = 3(2k) + 2 = 6k + 2 = 2(3k + 1)</i>.
-This is even, which contradicts the hypothesis that <i>3n + 2</i> is odd? No, we showed that if <i>n</i> is even, then <i>3n+2</i> is even.
-Thus, <i>&not;q &rarr; &not;p</i> is true, so <i>p &rarr; q</i> is true.`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            <span className="text-cyan-400 font-semibold text-lg">Proof by Contraposition</span> is an indirect proof method. To prove <MathRenderer math="p \rightarrow q" />, we prove its contrapositive <MathRenderer math="\neg q \rightarrow \neg p" />.
+          </p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-amber-300 font-semibold mb-2">Logic:</p>
+            <MathRenderer display math="p \rightarrow q \equiv \neg q \rightarrow \neg p" />
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Example:</p>
+            <p className="text-gray-300">Prove that if <MathRenderer math="3n + 2" /> is odd, then <MathRenderer math="n" /> is odd.</p>
+            <div className="mt-2 text-gray-300">
+              <span className="text-gray-400 italic">Proof (by Contraposition):</span> Assume <MathRenderer math="n" /> is even (negation of conclusion).
+              <p className="mt-1">Then <MathRenderer math="n = 2k" />.</p>
+              <div className="my-2 pl-4 border-l-2 border-gray-600">
+                <MathRenderer display math="3n + 2 = 3(2k) + 2 = 6k + 2 = 2(3k + 1)" />
+              </div>
+              <p>This is even, which contradicts the hypothesis that <MathRenderer math="3n + 2" /> is odd? No, we showed that if <MathRenderer math="n" /> is even, then <MathRenderer math="3n+2" /> is even.</p>
+              <p className="mt-1">Thus, <MathRenderer math="\neg q \rightarrow \neg p" /> is true, so <MathRenderer math="p \rightarrow q" /> is true.</p>
+            </div>
+          </div>
+        </div>
+      ),
       truthTable: {
         title: 'Truth Table: Contrapositive Equivalence',
         headers: ['p', 'q', 'p → q', '¬q', '¬p', '¬q → ¬p'],
@@ -51,89 +78,179 @@ Thus, <i>&not;q &rarr; &not;p</i> is true, so <i>p &rarr; q</i> is true.`,
     {
       title: '🚫 Proof by Contradiction',
       icon: <FiAlertTriangle className="w-6 h-6" />,
-      content: `<span class="text-cyan-400 font-semibold text-lg">Proof by Contradiction</span> (Reductio ad Absurdum) assumes the statement to be proven is false and shows that this assumption leads to a contradiction (a statement that is always false, like <i>1=0</i> or <i>r &land; &not;r</i>).
-      
-<span class="text-amber-300 font-semibold">Structure:</span>
-1. Assume <i>&not;p</i> is true.
-2. Derive a contradiction <i>q &land; &not;q</i>.
-3. Conclude that <i>&not;p</i> is false, so <i>p</i> must be true.
-
-<span class="text-lime-300 font-semibold">Example:</span>
-Prove that &radic;2 is irrational.
-<span class="text-gray-400 italic">Proof:</span> Assume &radic;2 is rational. Then &radic;2 = <i>a/b</i> where <i>a, b</i> have no common factors.
-<i>2 = a²/b² &implies; 2b² = a²</i>. So <i>a²</i> is even, implying <i>a</i> is even (<i>a=2k</i>).
-<i>2b² = (2k)² = 4k² &implies; b² = 2k²</i>. So <i>b²</i> is even, implying <i>b</i> is even.
-Contradiction: <i>a</i> and <i>b</i> have a common factor of 2.
-Thus, &radic;2 is irrational.`,
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            <span className="text-cyan-400 font-semibold text-lg">Proof by Contradiction</span> (Reductio ad Absurdum) assumes the statement to be proven is false and shows that this assumption leads to a contradiction (a statement that is always false, like <MathRenderer math="1=0" /> or <MathRenderer math="r \land \neg r" />).
+          </p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-amber-300 font-semibold mb-2">Structure:</p>
+            <ol className="list-decimal list-inside text-gray-300 space-y-1">
+              <li>Assume <MathRenderer math="\neg p" /> is true.</li>
+              <li>Derive a contradiction <MathRenderer math="q \land \neg q" />.</li>
+              <li>Conclude that <MathRenderer math="\neg p" /> is false, so <MathRenderer math="p" /> must be true.</li>
+            </ol>
+          </div>
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Example:</p>
+            <p className="text-gray-300">Prove that <MathRenderer math="\sqrt{2}" /> is irrational.</p>
+            <div className="mt-2 text-gray-300">
+              <span className="text-gray-400 italic">Proof:</span> Assume <MathRenderer math="\sqrt{2}" /> is rational. Then <MathRenderer math="\sqrt{2} = a/b" /> where <MathRenderer math="a, b" /> have no common factors.
+              <div className="my-2 pl-4 border-l-2 border-gray-600">
+                <MathRenderer display math="2 = a^2/b^2 \implies 2b^2 = a^2" />
+              </div>
+              <p>So <MathRenderer math="a^2" /> is even, implying <MathRenderer math="a" /> is even (<MathRenderer math="a=2k" />).</p>
+              <div className="my-2 pl-4 border-l-2 border-gray-600">
+                <MathRenderer display math="2b^2 = (2k)^2 = 4k^2 \implies b^2 = 2k^2" />
+              </div>
+              <p>So <MathRenderer math="b^2" /> is even, implying <MathRenderer math="b" /> is even.</p>
+              <p className="text-red-400 mt-2 font-semibold">Contradiction:</p>
+              <p><MathRenderer math="a" /> and <MathRenderer math="b" /> have a common factor of 2.</p>
+              <p className="mt-1">Thus, <MathRenderer math="\sqrt{2}" /> is irrational.</p>
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
       title: '✅ Comparison of Methods',
       icon: <FiCheckCircle className="w-6 h-6" />,
-      content: `
-<div class="overflow-x-auto">
-  <table class="min-w-full text-left text-sm whitespace-nowrap">
-    <thead class="uppercase tracking-wider border-b-2 border-slate-700">
-      <tr>
-        <th scope="col" class="px-6 py-4 text-cyan-400">Method</th>
-        <th scope="col" class="px-6 py-4 text-cyan-400">Strategy</th>
-        <th scope="col" class="px-6 py-4 text-cyan-400">Use When</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="border-b border-slate-700">
-        <td class="px-6 py-4 font-medium text-white">Direct Proof</td>
-        <td class="px-6 py-4 text-slate-300">Assume <i>p</i>, derive <i>q</i></td>
-        <td class="px-6 py-4 text-slate-300">Direct implication is clear</td>
-      </tr>
-      <tr class="border-b border-slate-700">
-        <td class="px-6 py-4 font-medium text-white">Contraposition</td>
-        <td class="px-6 py-4 text-slate-300">Assume <i>&not;q</i>, derive <i>&not;p</i></td>
-        <td class="px-6 py-4 text-slate-300">"Not <i>q</i>" gives more info than <i>p</i></td>
-      </tr>
-      <tr class="border-b border-slate-700">
-        <td class="px-6 py-4 font-medium text-white">Contradiction</td>
-        <td class="px-6 py-4 text-slate-300">Assume <i>&not;p</i>, derive contradiction</td>
-        <td class="px-6 py-4 text-slate-300">Proving non-existence or irrationality</td>
-      </tr>
-    </tbody>
-  </table>
-</div>`,
+      content: (
+        <div className="overflow-x-auto">
+          <table className="min-w-full text-left text-sm whitespace-nowrap">
+            <thead className="uppercase tracking-wider border-b-2 border-slate-700">
+              <tr>
+                <th scope="col" className="px-6 py-4 text-cyan-400">Method</th>
+                <th scope="col" className="px-6 py-4 text-cyan-400">Strategy</th>
+                <th scope="col" className="px-6 py-4 text-cyan-400">Use When</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-slate-700">
+                <td className="px-6 py-4 font-medium text-white">Direct Proof</td>
+                <td className="px-6 py-4 text-slate-300">Assume <MathRenderer math="p" />, derive <MathRenderer math="q" /></td>
+                <td className="px-6 py-4 text-slate-300">Direct implication is clear</td>
+              </tr>
+              <tr className="border-b border-slate-700">
+                <td className="px-6 py-4 font-medium text-white">Contraposition</td>
+                <td className="px-6 py-4 text-slate-300">Assume <MathRenderer math="\neg q" />, derive <MathRenderer math="\neg p" /></td>
+                <td className="px-6 py-4 text-slate-300">"Not <MathRenderer math="q" />" gives more info than <MathRenderer math="p" /></td>
+              </tr>
+              <tr className="border-b border-slate-700">
+                <td className="px-6 py-4 font-medium text-white">Contradiction</td>
+                <td className="px-6 py-4 text-slate-300">Assume <MathRenderer math="\neg p" />, derive contradiction</td>
+                <td className="px-6 py-4 text-slate-300">Proving non-existence or irrationality</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ),
     },
   ],
   practiceQuestions: [
     {
       question: 'Prove that the sum of two odd integers is even.',
-      solution: 'Direct Proof:\nLet m and n be two odd integers.\nBy definition, m = 2k + 1 and n = 2j + 1 for some integers k, j.\nm + n = (2k + 1) + (2j + 1)\n= 2k + 2j + 2\n= 2(k + j + 1)\nSince k + j + 1 is an integer, 2(k + j + 1) is even.\nTherefore, the sum of two odd integers is even.',
+      solution: (
+        <div className="space-y-4">
+          <p className="text-cyan-400 font-semibold">Direct Proof:</p>
+          <p className="text-gray-300">Let <MathRenderer math="m" /> and <MathRenderer math="n" /> be two odd integers.</p>
+          <p className="text-gray-300">By definition, <MathRenderer math="m = 2k + 1" /> and <MathRenderer math="n = 2j + 1" /> for some integers <MathRenderer math="k, j" />.</p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 my-2">
+            <MathRenderer display math="\begin{aligned} m + n &= (2k + 1) + (2j + 1) \\ &= 2k + 2j + 2 \\ &= 2(k + j + 1) \end{aligned}" />
+          </div>
+          <p className="text-gray-300">Since <MathRenderer math="k + j + 1" /> is an integer, <MathRenderer math="2(k + j + 1)" /> is even.</p>
+          <p className="text-green-400">Therefore, the sum of two odd integers is even.</p>
+        </div>
+      ),
     },
     {
-      question: 'Prove that if n² is even, then n is even.',
-      solution: 'Proof by Contraposition:\nWe want to prove p → q where p: "n² is even" and q: "n is even".\nContrapositive: ¬q → ¬p ("If n is odd, then n² is odd").\n\nAssume n is odd.\nThen n = 2k + 1.\nn² = (2k + 1)² = 4k² + 4k + 1 = 2(2k² + 2k) + 1.\nThis is in the form 2m + 1, so n² is odd.\n\nSince we proved the contrapositive, the original statement is true.',
+      question: (
+        <span>
+          Prove that if <MathRenderer math="n^2" /> is even, then <MathRenderer math="n" /> is even.
+        </span>
+      ),
+      solution: (
+        <div className="space-y-4">
+          <p className="text-cyan-400 font-semibold">Proof by Contraposition:</p>
+          <p className="text-gray-300">
+            We want to prove <MathRenderer math="p \rightarrow q" /> where <MathRenderer math="p" />: "<MathRenderer math="n^2" /> is even" and <MathRenderer math="q" />: "<MathRenderer math="n" /> is even".
+          </p>
+          <p className="text-gray-300">
+            Contrapositive: <MathRenderer math="\neg q \rightarrow \neg p" /> ("If <MathRenderer math="n" /> is odd, then <MathRenderer math="n^2" /> is odd").
+          </p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 my-2">
+            <p className="text-gray-300 mb-2">Assume <MathRenderer math="n" /> is odd.</p>
+            <p className="text-gray-300 mb-2">Then <MathRenderer math="n = 2k + 1" />.</p>
+            <MathRenderer display math="n^2 = (2k + 1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1" />
+          </div>
+          <p className="text-gray-300">This is in the form <MathRenderer math="2m + 1" />, so <MathRenderer math="n^2" /> is odd.</p>
+          <p className="text-green-400">Since we proved the contrapositive, the original statement is true.</p>
+        </div>
+      ),
     },
     {
       question: 'Prove that there is no largest prime number.',
-      solution: 'Proof by Contradiction:\nAssume there is a largest prime number, say P.\nLet S be the set of all primes {p₁, p₂, ..., P}.\nConsider the number N = (p₁ × p₂ × ... × P) + 1.\n\nN is clearly larger than P.\nN is not divisible by any prime in S (it leaves a remainder of 1 when divided by any pᵢ).\nTherefore, N is either prime itself or divisible by a prime larger than P.\nIn either case, there exists a prime larger than P.\n\nContradiction! Our assumption that P is the largest prime is false.\nTherefore, there is no largest prime number.',
+      solution: (
+        <div className="space-y-4">
+          <p className="text-cyan-400 font-semibold">Proof by Contradiction:</p>
+          <p className="text-gray-300">Assume there is a largest prime number, say <MathRenderer math="P" />.</p>
+          <p className="text-gray-300">Let <MathRenderer math="S" /> be the set of all primes <MathRenderer math="\{p_1, p_2, ..., P\}" />.</p>
+          <p className="text-gray-300">Consider the number <MathRenderer math="N = (p_1 \times p_2 \times ... \times P) + 1" />.</p>
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30 my-2">
+            <ul className="list-disc list-inside text-gray-300 space-y-1">
+              <li><MathRenderer math="N" /> is clearly larger than <MathRenderer math="P" />.</li>
+              <li><MathRenderer math="N" /> is not divisible by any prime in <MathRenderer math="S" /> (it leaves a remainder of 1 when divided by any <MathRenderer math="p_i" />).</li>
+            </ul>
+          </div>
+          <p className="text-gray-300">Therefore, <MathRenderer math="N" /> is either prime itself or divisible by a prime larger than <MathRenderer math="P" />.</p>
+          <p className="text-gray-300">In either case, there exists a prime larger than <MathRenderer math="P" />.</p>
+          <p className="text-red-400 font-semibold mt-2">Contradiction!</p>
+          <p className="text-gray-300">Our assumption that <MathRenderer math="P" /> is the largest prime is false.</p>
+          <p className="text-green-400">Therefore, there is no largest prime number.</p>
+        </div>
+      ),
     },
   ],
   exampleProblems: [
     {
       problem: 'Prove that for all integers n, if 3n + 2 is even, then n is even.',
-      solution: 'We will use proof by contraposition.',
+      solution: (
+        <div className="space-y-4">
+          <p className="text-gray-300">We will use proof by contraposition.</p>
+        </div>
+      ),
       steps: [
         {
           step: 'State the contrapositive',
-          explanation: 'Original: If 3n + 2 is even (p), then n is even (q).\nContrapositive: If n is odd (¬q), then 3n + 2 is odd (¬p).',
+          explanation: (
+            <span>
+              Original: If <MathRenderer math="3n + 2" /> is even (<MathRenderer math="p" />), then <MathRenderer math="n" /> is even (<MathRenderer math="q" />).
+              <br />
+              Contrapositive: If <MathRenderer math="n" /> is odd (<MathRenderer math="\neg q" />), then <MathRenderer math="3n + 2" /> is odd (<MathRenderer math="\neg p" />).
+            </span>
+          ),
         },
         {
           step: 'Assume hypothesis of contrapositive',
-          explanation: 'Assume n is odd. So n = 2k + 1 for some integer k.',
+          explanation: (
+            <span>
+              Assume <MathRenderer math="n" /> is odd. So <MathRenderer math="n = 2k + 1" /> for some integer <MathRenderer math="k" />.
+            </span>
+          ),
         },
         {
           step: 'Substitute and simplify',
-          explanation: '3n + 2 = 3(2k + 1) + 2 = 6k + 3 + 2 = 6k + 5 = 6k + 4 + 1 = 2(3k + 2) + 1.',
+          explanation: (
+            <MathRenderer display math="3n + 2 = 3(2k + 1) + 2 = 6k + 3 + 2 = 6k + 5 = 6k + 4 + 1 = 2(3k + 2) + 1" />
+          ),
         },
         {
           step: 'Conclusion',
-          explanation: '2(3k + 2) + 1 is an odd integer. Thus, 3n + 2 is odd. Since the contrapositive is true, the original statement is true.',
+          explanation: (
+            <span>
+              <MathRenderer math="2(3k + 2) + 1" /> is an odd integer. Thus, <MathRenderer math="3n + 2" /> is odd. Since the contrapositive is true, the original statement is true.
+            </span>
+          ),
         },
       ],
     },
