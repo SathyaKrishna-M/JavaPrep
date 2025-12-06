@@ -8,6 +8,7 @@ import DMVennDiagram from '@/components/DMVennDiagram'
 import FunctionGraph from '@/components/FunctionGraph'
 import DMHasseDiagram from '@/components/DMHasseDiagram'
 import TruthTable from '@/components/TruthTable'
+import Mermaid from '@/components/Mermaid'
 import {
   FiArrowRight,
   FiBook,
@@ -48,6 +49,7 @@ export interface ExplanationSection {
   functionGraph?: FunctionGraphData
   hasseDiagram?: HasseDiagramData
   truthTable?: TruthTableData
+  mermaid?: string
   formula?: string
   blockFormula?: string
 }
@@ -59,6 +61,7 @@ export interface PracticeQuestion {
   functionGraph?: FunctionGraphData
   hasseDiagram?: HasseDiagramData
   truthTable?: TruthTableData
+  mermaid?: string
   formula?: string
 }
 
@@ -70,6 +73,7 @@ export interface ExampleProblem {
   functionGraph?: FunctionGraphData
   hasseDiagram?: HasseDiagramData
   truthTable?: TruthTableData
+  mermaid?: string
   formula?: string
 }
 
@@ -181,6 +185,12 @@ export default function DMTopicPage({
                     />
                   </div>
                 )}
+
+                {section.mermaid && (
+                  <div className="my-6">
+                    <Mermaid chart={section.mermaid} />
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}
@@ -251,6 +261,7 @@ export default function DMTopicPage({
                         title={q.truthTable.title}
                       />
                     )}
+                    {q.mermaid && <Mermaid chart={q.mermaid} />}
                   </div>
                 ),
               }
@@ -349,6 +360,12 @@ export default function DMTopicPage({
                       rows={example.truthTable.rows}
                       title={example.truthTable.title}
                     />
+                  </div>
+                )}
+
+                {example.mermaid && (
+                  <div className="mt-4">
+                    <Mermaid chart={example.mermaid} />
                   </div>
                 )}
 

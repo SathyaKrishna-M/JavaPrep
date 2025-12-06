@@ -91,6 +91,22 @@ const content = {
               </table>
             </div>
           </div>
+          <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700 mt-4">
+            <p className="text-gray-300 mb-2">Solving Pipeline:</p>
+            <div className="mermaid">
+              {`%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart TD
+    A[Recurrence Relation] --> B[Characteristic Equation]
+    B --> C[Find Roots]
+    C --> D[General Solution]
+    D --> E[Apply Initial Conditions]
+    style A fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style B fill:#1e293b,stroke:#10b981,stroke-width:2px
+    style C fill:#1e293b,stroke:#ec4899,stroke-width:2px
+    style D fill:#1e293b,stroke:#f59e0b,stroke-width:2px
+    style E fill:#1e293b,stroke:#8b5cf6,stroke-width:2px`}
+            </div>
+          </div>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
             <p className="text-lime-300 font-semibold mb-2">Generating Functions:</p>
             <p className="text-gray-300">Generating functions transform problems about sequences into problems about functions.</p>
@@ -107,6 +123,17 @@ const content = {
               <li><MathRenderer math="1/(1-x)^2 = \sum (n+1)x^n" /></li>
               <li><MathRenderer math="(1+x)^n = \sum C(n,k)x^k" /> (Binomial Theorem)</li>
             </ul>
+            <div className="mermaid mt-4">
+              {`%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart TD
+    A[Sequence a0, a1, a2...] --> B[Convert to G(x)]
+    B --> C[Manipulate Algebraically]
+    C --> D[Solve or Extract Coefficients]
+    style A fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style B fill:#1e293b,stroke:#10b981,stroke-width:2px
+    style C fill:#1e293b,stroke:#ec4899,stroke-width:2px
+    style D fill:#1e293b,stroke:#f59e0b,stroke-width:2px`}
+            </div>
           </div>
         </div>
       ),

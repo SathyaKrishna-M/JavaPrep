@@ -28,6 +28,12 @@ const content = {
         </div>
       ),
       formula: '|A \\cup B| = |A| + |B| - |A \\cap B|',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    A((A)):::set
+    B((B)):::set
+    A --- B
+    classDef set fill:#3b82f6,stroke:#333,stroke-width:1px,fill-opacity:0.3;`,
     },
     {
       title: '🔢 Three Sets',
@@ -50,6 +56,17 @@ const content = {
         </div>
       ),
       formula: '|A \\cup B \\cup C| = \\sum |A_i| - \\sum |A_i \\cap A_j| + |A \\cap B \\cap C|',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    A((A)):::setA
+    B((B)):::setB
+    C((C)):::setC
+    A --- B
+    B --- C
+    A --- C
+    classDef setA fill:#3b82f6,stroke:#333,stroke-width:1px,fill-opacity:0.3;
+    classDef setB fill:#10b981,stroke:#333,stroke-width:1px,fill-opacity:0.3;
+    classDef setC fill:#ec4899,stroke:#333,stroke-width:1px,fill-opacity:0.3;`,
     },
   ],
   practiceQuestions: [
@@ -66,17 +83,13 @@ const content = {
           <p className="text-green-400 font-semibold">So, 45 students take at least one subject.</p>
         </div>
       ),
-      vennDiagram: {
-        sets: [
-          { label: 'Math', color: '#3b82f6' },
-          { label: 'Physics', color: '#10b981' },
-        ],
-        regions: [
-          { label: '20', sets: ['Math'] },
-          { label: '10', sets: ['Math', 'Physics'] },
-          { label: '15', sets: ['Physics'] },
-        ],
-      },
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    M((Math)):::setM
+    P((Physics)):::setP
+    M --- P
+    classDef setM fill:#3b82f6,stroke:#333,stroke-width:1px,fill-opacity:0.3;
+    classDef setP fill:#10b981,stroke:#333,stroke-width:1px,fill-opacity:0.3;`,
     },
   ],
   exampleProblems: [

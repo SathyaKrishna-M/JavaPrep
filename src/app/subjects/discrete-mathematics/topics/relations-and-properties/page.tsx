@@ -35,6 +35,20 @@ const content = {
         </div>
       ),
       formula: 'R \\subseteq A \\times B',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    subgraph SetA [Set A]
+    A1((a))
+    A2((c))
+    end
+    subgraph SetB [Set B]
+    B1((b))
+    B2((d))
+    end
+    A1 -->|R| B1
+    A2 -->|R| B2
+    style SetA fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style SetB fill:#1e293b,stroke:#10b981,stroke-width:2px`,
     },
     {
       title: '⚙️ Functions',
@@ -87,6 +101,28 @@ const content = {
         </div>
       ),
       formula: '[a] = \\{x \\in A \\mid x \\sim a\\}',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart TD
+    subgraph Class1 [Equivalence Class 1]
+    a1((a))
+    a2((b))
+    a3((c))
+    a1 <--> a2
+    a2 <--> a3
+    a1 <--> a3
+    a1 --> a1
+    a2 --> a2
+    a3 --> a3
+    end
+    subgraph Class2 [Equivalence Class 2]
+    b1((d))
+    b2((e))
+    b1 <--> b2
+    b1 --> b1
+    b2 --> b2
+    end
+    style Class1 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style Class2 fill:#1e293b,stroke:#10b981,stroke-width:2px`,
     },
     {
       title: '📊 Partial Orders',
@@ -118,6 +154,18 @@ const content = {
           </div>
         </div>
       ),
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart TD
+    subgraph Hasse Diagram
+    a((a)) --> b((b))
+    b --> c((c))
+    a --> c
+    d((d))
+    end
+    style a fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style b fill:#1e293b,stroke:#10b981,stroke-width:2px
+    style c fill:#1e293b,stroke:#ec4899,stroke-width:2px
+    style d fill:#1e293b,stroke:#f59e0b,stroke-width:2px`,
     },
   ],
   practiceQuestions: [
@@ -148,6 +196,18 @@ const content = {
           <p className="text-green-400 font-semibold">Since R is reflexive, symmetric, and transitive, it is an equivalence relation.</p>
         </div>
       ),
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart TD
+    1((1))
+    2((2))
+    3((3))
+    1 <--> 2
+    1 --> 1
+    2 --> 2
+    3 --> 3
+    style 1 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 2 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 3 fill:#1e293b,stroke:#10b981,stroke-width:2px`,
     },
     {
       question: (

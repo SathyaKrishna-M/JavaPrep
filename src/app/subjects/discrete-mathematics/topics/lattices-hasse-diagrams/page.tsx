@@ -121,27 +121,27 @@ const content = {
           </div>
         </div>
       ),
-      hasseDiagram: {
-        elements: [
-          { id: '1', label: '1' },
-          { id: '2', label: '2' },
-          { id: '3', label: '3' },
-          { id: '4', label: '4' },
-          { id: '6', label: '6' },
-          { id: '12', label: '12' },
-        ],
-        relations: [
-          { from: '1', to: '2' },
-          { from: '1', to: '3' },
-          { from: '2', to: '4' },
-          { from: '2', to: '6' },
-          { from: '3', to: '6' },
-          { from: '4', to: '12' },
-          { from: '6', to: '12' },
-        ],
-        highlightLeast: true,
-        highlightGreatest: true,
-      },
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart BT
+    1((1))
+    2((2))
+    3((3))
+    4((4))
+    6((6))
+    12((12))
+    1 --> 2
+    1 --> 3
+    2 --> 4
+    2 --> 6
+    3 --> 6
+    4 --> 12
+    6 --> 12
+    style 1 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 2 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 3 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 4 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 6 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 12 fill:#1e293b,stroke:#3b82f6,stroke-width:2px`,
     },
     {
       title: '🔢 Lattice Examples',
@@ -209,25 +209,26 @@ const content = {
           <p className="text-gray-300">Note: 4 and 6 are maximal elements (nothing above them).</p>
         </div>
       ),
-      hasseDiagram: {
-        elements: [
-          { id: '1', label: '1' },
-          { id: '2', label: '2' },
-          { id: '3', label: '3' },
-          { id: '4', label: '4' },
-          { id: '5', label: '5' },
-          { id: '6', label: '6' },
-        ],
-        relations: [
-          { from: '1', to: '2' },
-          { from: '1', to: '3' },
-          { from: '1', to: '5' },
-          { from: '2', to: '4' },
-          { from: '2', to: '6' },
-          { from: '3', to: '6' },
-        ],
-        highlightLeast: true,
-      },
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart BT
+    1((1))
+    2((2))
+    3((3))
+    4((4))
+    5((5))
+    6((6))
+    1 --> 2
+    1 --> 3
+    1 --> 5
+    2 --> 4
+    2 --> 6
+    3 --> 6
+    style 1 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 2 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 3 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 4 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 5 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 6 fill:#1e293b,stroke:#3b82f6,stroke-width:2px`,
     },
     {
       question: (
@@ -279,27 +280,27 @@ const content = {
           <p className="text-gray-300">Least element: 1, Greatest element: 12</p>
         </div>
       ),
-      hasseDiagram: {
-        elements: [
-          { id: '1', label: '1' },
-          { id: '2', label: '2' },
-          { id: '3', label: '3' },
-          { id: '4', label: '4' },
-          { id: '6', label: '6' },
-          { id: '12', label: '12' },
-        ],
-        relations: [
-          { from: '1', to: '2' },
-          { from: '1', to: '3' },
-          { from: '2', to: '4' },
-          { from: '2', to: '6' },
-          { from: '3', to: '6' },
-          { from: '4', to: '12' },
-          { from: '6', to: '12' },
-        ],
-        highlightLeast: true,
-        highlightGreatest: true,
-      },
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart BT
+    1((1))
+    2((2))
+    3((3))
+    4((4))
+    6((6))
+    12((12))
+    1 --> 2
+    1 --> 3
+    2 --> 4
+    2 --> 6
+    3 --> 6
+    4 --> 12
+    6 --> 12
+    style 1 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 2 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 3 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 4 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 6 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 12 fill:#1e293b,stroke:#3b82f6,stroke-width:2px`,
     },
     {
       question: (
@@ -327,30 +328,31 @@ const content = {
           <p className="text-gray-300">Note: In a poset, there can be multiple minimal and maximal elements.</p>
         </div>
       ),
-      hasseDiagram: {
-        elements: [
-          { id: '2', label: '2' },
-          { id: '3', label: '3' },
-          { id: '4', label: '4' },
-          { id: '6', label: '6' },
-          { id: '8', label: '8' },
-          { id: '12', label: '12' },
-          { id: '24', label: '24' },
-        ],
-        relations: [
-          { from: '2', to: '4' },
-          { from: '2', to: '6' },
-          { from: '2', to: '8' },
-          { from: '3', to: '6' },
-          { from: '4', to: '8' },
-          { from: '4', to: '12' },
-          { from: '6', to: '12' },
-          { from: '8', to: '24' },
-          { from: '12', to: '24' },
-        ],
-        highlightLeast: true,
-        highlightGreatest: true,
-      },
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart BT
+    2((2))
+    3((3))
+    4((4))
+    6((6))
+    8((8))
+    12((12))
+    24((24))
+    2 --> 4
+    2 --> 6
+    2 --> 8
+    3 --> 6
+    4 --> 8
+    4 --> 12
+    6 --> 12
+    8 --> 24
+    12 --> 24
+    style 2 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 3 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 4 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 6 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 8 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 12 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 24 fill:#1e293b,stroke:#3b82f6,stroke-width:2px`,
     },
     {
       question: (
@@ -380,22 +382,20 @@ const content = {
           </div>
         </div>
       ),
-      hasseDiagram: {
-        elements: [
-          { id: 'empty', label: '∅' },
-          { id: 'x', label: '{x}' },
-          { id: 'y', label: '{y}' },
-          { id: 'xy', label: '{x,y}' },
-        ],
-        relations: [
-          { from: 'empty', to: 'x' },
-          { from: 'empty', to: 'y' },
-          { from: 'x', to: 'xy' },
-          { from: 'y', to: 'xy' },
-        ],
-        highlightLeast: true,
-        highlightGreatest: true,
-      },
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart BT
+    empty((∅))
+    x(({x}))
+    y(({y}))
+    xy(({x,y}))
+    empty --> x
+    empty --> y
+    x --> xy
+    y --> xy
+    style empty fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style x fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style y fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style xy fill:#1e293b,stroke:#3b82f6,stroke-width:2px`,
     },
   ],
   exampleProblems: [
@@ -428,27 +428,27 @@ const content = {
           explanation: '12 is divisible by all other elements, so it is the greatest element.',
         },
       ],
-      hasseDiagram: {
-        elements: [
-          { id: '1', label: '1' },
-          { id: '2', label: '2' },
-          { id: '3', label: '3' },
-          { id: '4', label: '4' },
-          { id: '6', label: '6' },
-          { id: '12', label: '12' },
-        ],
-        relations: [
-          { from: '1', to: '2' },
-          { from: '1', to: '3' },
-          { from: '2', to: '4' },
-          { from: '2', to: '6' },
-          { from: '3', to: '6' },
-          { from: '4', to: '12' },
-          { from: '6', to: '12' },
-        ],
-        highlightLeast: true,
-        highlightGreatest: true,
-      },
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart BT
+    1((1))
+    2((2))
+    3((3))
+    4((4))
+    6((6))
+    12((12))
+    1 --> 2
+    1 --> 3
+    2 --> 4
+    2 --> 6
+    3 --> 6
+    4 --> 12
+    6 --> 12
+    style 1 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 2 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 3 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 4 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 6 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 12 fill:#1e293b,stroke:#3b82f6,stroke-width:2px`,
     },
     {
       problem: (

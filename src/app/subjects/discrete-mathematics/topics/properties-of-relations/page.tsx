@@ -35,6 +35,22 @@ const content = {
         </div>
       ),
       formula: '[a] = \\{x \\in A \\mid x \\sim a\\}',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart TD
+    subgraph Equivalence Relation
+    1((1))
+    2((2))
+    3((3))
+    1 --> 1
+    2 --> 2
+    3 --> 3
+    1 <--> 2
+    2 <--> 3
+    1 <--> 3
+    end
+    style 1 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 2 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 3 fill:#1e293b,stroke:#3b82f6,stroke-width:2px`,
     },
     {
       title: '📐 Partial Order Relations',
@@ -67,6 +83,22 @@ const content = {
         </div>
       ),
       formula: 'a \\leq b \\text{ if } a \\mid b',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart BT
+    subgraph Partial Order (Divisibility)
+    1((1))
+    2((2))
+    3((3))
+    6((6))
+    1 --> 2
+    1 --> 3
+    2 --> 6
+    3 --> 6
+    end
+    style 1 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 2 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 3 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style 6 fill:#1e293b,stroke:#3b82f6,stroke-width:2px`,
     },
     {
       title: '🔗 Posets (Partially Ordered Sets)',
@@ -120,6 +152,23 @@ const content = {
           </div>
         </div>
       ),
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart BT
+    subgraph Chain
+    c1((1)) --> c2((2)) --> c3((3)) --> c4((4))
+    end
+    subgraph Antichain
+    a1((1))
+    a2((2))
+    a3((3))
+    end
+    style c1 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style c2 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style c3 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style c4 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style a1 fill:#1e293b,stroke:#10b981,stroke-width:2px
+    style a2 fill:#1e293b,stroke:#10b981,stroke-width:2px
+    style a3 fill:#1e293b,stroke:#10b981,stroke-width:2px`,
     },
   ],
   practiceQuestions: [

@@ -34,6 +34,23 @@ const content = {
         </div>
       ),
       formula: '(g \\circ f)(x) = g(f(x))',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    subgraph Set A
+    a1((x))
+    end
+    subgraph Set B
+    b1((f(x)))
+    end
+    subgraph Set C
+    c1((g(f(x))))
+    end
+    a1 -- f --> b1
+    b1 -- g --> c1
+    a1 -- g o f --> c1
+    style a1 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style b1 fill:#1e293b,stroke:#10b981,stroke-width:2px
+    style c1 fill:#1e293b,stroke:#ec4899,stroke-width:2px`,
     },
     {
       title: '↩️ Inverse Functions',
@@ -64,6 +81,18 @@ const content = {
         </div>
       ),
       formula: 'f^{-1}(f(a)) = a, \\quad f(f^{-1}(b)) = b',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    subgraph Domain A
+    a1((a))
+    end
+    subgraph Codomain B
+    b1((y))
+    end
+    a1 -- f --> b1
+    b1 -- f⁻¹ --> a1
+    style a1 fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style b1 fill:#1e293b,stroke:#10b981,stroke-width:2px`,
     },
     {
       title: '📐 Finding Inverses',

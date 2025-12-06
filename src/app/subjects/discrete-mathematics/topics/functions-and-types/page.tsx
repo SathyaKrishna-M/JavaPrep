@@ -32,6 +32,23 @@ const content = {
         </div>
       ),
       formula: 'f: A \\rightarrow B, \\quad \\forall a \\in A, \\exists! b \\in B: f(a) = b',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    subgraph A [Domain]
+    a1((a₁))
+    a2((a₂))
+    a3((a₃))
+    end
+    subgraph B [Codomain]
+    b1((b₁))
+    b2((b₂))
+    b3((b₃))
+    end
+    a1 --> b1
+    a2 --> b2
+    a3 --> b1
+    style A fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style B fill:#1e293b,stroke:#10b981,stroke-width:2px`,
     },
     {
       title: '🔍 Injective (One-to-One) Functions',
@@ -61,6 +78,24 @@ const content = {
         </div>
       ),
       formula: '\\forall a_1, a_2 \\in A: f(a_1) = f(a_2) \\Rightarrow a_1 = a_2',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    subgraph A [Domain]
+    a1((1))
+    a2((2))
+    a3((3))
+    end
+    subgraph B [Codomain]
+    b1((a))
+    b2((b))
+    b3((c))
+    b4((d))
+    end
+    a1 --> b1
+    a2 --> b3
+    a3 --> b4
+    style A fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style B fill:#1e293b,stroke:#10b981,stroke-width:2px`,
     },
     {
       title: '📤 Surjective (Onto) Functions',
@@ -90,6 +125,25 @@ const content = {
         </div>
       ),
       formula: '\\forall b \\in B, \\exists a \\in A: f(a) = b',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    subgraph A [Domain]
+    a1((1))
+    a2((2))
+    a3((3))
+    a4((4))
+    end
+    subgraph B [Codomain]
+    b1((a))
+    b2((b))
+    b3((c))
+    end
+    a1 --> b1
+    a2 --> b2
+    a3 --> b3
+    a4 --> b2
+    style A fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style B fill:#1e293b,stroke:#10b981,stroke-width:2px`,
     },
     {
       title: '🎯 Bijective Functions',
@@ -122,6 +176,23 @@ const content = {
         </div>
       ),
       formula: 'f \\text{ is bijective } \\Leftrightarrow f \\text{ is injective and surjective}',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    subgraph A [Domain]
+    a1((1))
+    a2((2))
+    a3((3))
+    end
+    subgraph B [Codomain]
+    b1((a))
+    b2((b))
+    b3((c))
+    end
+    a1 --> b1
+    a2 --> b3
+    a3 --> b2
+    style A fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style B fill:#1e293b,stroke:#10b981,stroke-width:2px`,
     },
     {
       title: '📊 Many-One and Into Functions',
@@ -151,6 +222,29 @@ const content = {
           </div>
         </div>
       ),
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    subgraph ManyOne [Many-One]
+    m1((1))
+    m2((2))
+    m3((3))
+    r1((a))
+    r2((b))
+    m1 --> r1
+    m2 --> r1
+    m3 --> r2
+    end
+    subgraph Into [Into]
+    i1((1))
+    i2((2))
+    o1((a))
+    o2((b))
+    o3((c))
+    i1 --> o1
+    i2 --> o2
+    end
+    style ManyOne fill:#1e293b,stroke:#f59e0b,stroke-width:2px
+    style Into fill:#1e293b,stroke:#ec4899,stroke-width:2px`,
     },
   ],
   practiceQuestions: [

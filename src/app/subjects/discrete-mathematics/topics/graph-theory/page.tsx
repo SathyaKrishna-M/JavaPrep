@@ -45,21 +45,21 @@ const content = {
           </div>
         </div>
       ),
-      hasseDiagram: {
-        elements: [
-          { id: 'a', label: 'A' },
-          { id: 'b', label: 'B' },
-          { id: 'c', label: 'C' },
-          { id: 'd', label: 'D' },
-        ],
-        relations: [
-          { from: 'a', to: 'b' },
-          { from: 'b', to: 'c' },
-          { from: 'c', to: 'd' },
-          { from: 'd', to: 'a' },
-          { from: 'a', to: 'c' },
-        ],
-      },
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    A((A))
+    B((B))
+    C((C))
+    D((D))
+    A --- B
+    B --- C
+    C --- D
+    D --- A
+    A --- C
+    style A fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style B fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style C fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style D fill:#1e293b,stroke:#3b82f6,stroke-width:2px`,
       formula: '\\sum \\deg(v) = 2|E|',
     },
     {
@@ -105,6 +105,39 @@ const content = {
           </table>
         </div>
       ),
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    subgraph K5 [Complete Graph K5]
+    k1((1)) --- k2((2))
+    k1 --- k3((3))
+    k1 --- k4((4))
+    k1 --- k5((5))
+    k2 --- k3
+    k2 --- k4
+    k2 --- k5
+    k3 --- k4
+    k3 --- k5
+    k4 --- k5
+    end
+    subgraph K33 [Bipartite K3,3]
+    u1((u1))
+    u2((u2))
+    u3((u3))
+    v1((v1))
+    v2((v2))
+    v3((v3))
+    u1 --- v1
+    u1 --- v2
+    u1 --- v3
+    u2 --- v1
+    u2 --- v2
+    u2 --- v3
+    u3 --- v1
+    u3 --- v2
+    u3 --- v3
+    end
+    style K5 fill:none,stroke:none
+    style K33 fill:none,stroke:none`,
     },
     {
       title: '🔄 Graph Isomorphism',
@@ -132,6 +165,22 @@ const content = {
         </div>
       ),
       formula: 'G_1 \\cong G_2 \\iff \\exists f: V_1 \\to V_2',
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    subgraph G1 [Graph 1]
+    a1((a)) --- b1((b))
+    b1 --- c1((c))
+    c1 --- d1((d))
+    d1 --- a1
+    end
+    subgraph G2 ["Graph 2 (Isomorphic)"]
+    a2((1)) --- c2((3))
+    c2 --- b2((2))
+    b2 --- d2((4))
+    d2 --- a2
+    end
+    style G1 fill:none,stroke:none
+    style G2 fill:none,stroke:none`,
     },
     {
       title: '🚶 Euler & Hamiltonian Graphs',
@@ -164,6 +213,26 @@ const content = {
           </div>
         </div>
       ),
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    subgraph Euler Circuit Example
+    A((A)) --- B((B))
+    B --- C((C))
+    C --- A
+    end
+    subgraph Hamilton Path Example
+    H1((1)) --> H2((2))
+    H2 --> H3((3))
+    H3 --> H4((4))
+    H4 --> H1
+    end
+    style A fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style B fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style C fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style H1 fill:#1e293b,stroke:#10b981,stroke-width:2px
+    style H2 fill:#1e293b,stroke:#10b981,stroke-width:2px
+    style H3 fill:#1e293b,stroke:#10b981,stroke-width:2px
+    style H4 fill:#1e293b,stroke:#10b981,stroke-width:2px`,
     },
     {
       title: '🛣️ Shortest Path Algorithms',
@@ -193,6 +262,17 @@ const content = {
           </div>
         </div>
       ),
+      mermaid: `%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+flowchart LR
+    A((A)) -->|4| B((B))
+    A -->|2| C((C))
+    B -->|5| D((D))
+    C -->|8| D
+    C -->|10| E((E))
+    D -->|2| Z((Z))
+    E -->|3| Z
+    style A fill:#1e293b,stroke:#3b82f6,stroke-width:2px
+    style Z fill:#1e293b,stroke:#10b981,stroke-width:2px`,
     },
     {
       title: '🎨 Planar Graphs & Coloring',
