@@ -20,6 +20,7 @@
     "firebase": "^12.6.0",
     "framer-motion": "^10.16.16",
     "fuse.js": "^7.1.0",
+    "graphviz-react": "^1.2.5",
     "katex": "^0.16.25",
     "mermaid": "^11.12.1",
     "monaco-editor": "^0.55.1",
