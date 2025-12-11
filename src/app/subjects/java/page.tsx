@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FiHome, FiChevronRight } from 'react-icons/fi'
 import { FaJava } from 'react-icons/fa'
-import { topics, Topic } from '@/data/topics'
+import { topics, Topic } from '@/data/java-topics'
 import TopicListItem from '@/components/TopicListItem'
 import SectionHeader from '@/components/SectionHeader'
 import GradientDivider from '@/components/GradientDivider'
@@ -18,66 +18,66 @@ const groupTopics = (topics: Topic[]) => {
     fundamentals: {
       title: 'Fundamentals',
       subtitle: 'Essential building blocks of Java programming - syntax, data types, operators, and basic control flow',
-      topics: topics.filter(t => 
+      topics: topics.filter(t =>
         ['variables-data-types', 'operators', 'type-casting', 'input-output'].includes(t.id)
       ),
     },
     controlFlow: {
       title: 'Control Flow',
       subtitle: 'Conditionals, loops, and program flow control structures',
-      topics: topics.filter(t => 
+      topics: topics.filter(t =>
         ['conditionals', 'loops', 'nested-loops'].includes(t.id)
       ),
     },
     problemSolving: {
       title: 'Problem Solving & Algorithms',
       subtitle: 'Systematic approaches to problem-solving, debugging, and pattern recognition',
-      topics: topics.filter(t => 
-        ['problem-solving-methodology', 'flowchart-design', 'dry-run-flow-tracing', 
-         'debugging-techniques', 'patterns'].includes(t.id)
+      topics: topics.filter(t =>
+        ['problem-solving-methodology', 'flowchart-design', 'dry-run-flow-tracing',
+          'debugging-techniques', 'patterns'].includes(t.id)
       ),
     },
     coreJava: {
       title: 'Core Java Concepts',
       subtitle: 'Arrays, searching, sorting, recursion, strings, and bit manipulation',
-      topics: topics.filter(t => 
-        ['arrays-memory-model', 'arrays1d', 'arrays2d', 'searching-algorithms', 
-         'sorting-algorithms', 'matrix-algorithms', 'prefix-sum-sliding-window',
-         'two-pointer-technique', 'competitive-programming', 'recursion-basics',
-         'recursive-problems', 'bitwise-operators', 'bit-manipulation-tricks',
-         'strings-immutability', 'stringbuilder-stringbuffer', 'string-problems',
-         'regex-pattern-matching', 'quantitative-logic-problems'].includes(t.id)
+      topics: topics.filter(t =>
+        ['arrays-memory-model', 'arrays1d', 'arrays2d', 'searching-algorithms',
+          'sorting-algorithms', 'matrix-algorithms', 'prefix-sum-sliding-window',
+          'two-pointer-technique', 'competitive-programming', 'recursion-basics',
+          'recursive-problems', 'bitwise-operators', 'bit-manipulation-tricks',
+          'strings-immutability', 'stringbuilder-stringbuffer', 'string-problems',
+          'regex-pattern-matching', 'quantitative-logic-problems'].includes(t.id)
       ),
     },
     oopFoundations: {
       title: 'OOP Foundations',
       subtitle: 'Object-oriented programming basics - classes, objects, methods, and encapsulation',
-      topics: topics.filter(t => 
+      topics: topics.filter(t =>
         ['classes-objects', 'constructors-this', 'methods', 'static-members',
-         'encapsulation', 'abstraction', 'modular-program-structure',
-         'analyzing-class-design'].includes(t.id)
+          'encapsulation', 'abstraction', 'modular-program-structure',
+          'analyzing-class-design'].includes(t.id)
       ),
     },
     advancedOOP: {
       title: 'Advanced OOP & Architecture',
       subtitle: 'Inheritance, polymorphism, interfaces, design patterns, and system modeling',
-      topics: topics.filter(t => 
+      topics: topics.filter(t =>
         ['inheritance', 'method-overriding-super-final', 'interfaces', 'abstract-classes',
-         'polymorphism', 'reflection-api', 'design-patterns', 'domain-system-modeling'].includes(t.id)
+          'polymorphism', 'reflection-api', 'design-patterns', 'domain-system-modeling'].includes(t.id)
       ),
     },
     javaEcosystem: {
       title: 'Java Ecosystem & Modern Java',
       subtitle: 'Exception handling, file I/O, generics, collections, lambdas, and streams',
-      topics: topics.filter(t => 
+      topics: topics.filter(t =>
         ['exception-handling', 'custom-exceptions', 'file-io-streams', 'serialization',
-         'generics', 'collections-framework', 'lambda-expressions', 'stream-api'].includes(t.id)
+          'generics', 'collections-framework', 'lambda-expressions', 'stream-api'].includes(t.id)
       ),
     },
     other: {
       title: 'Additional Resources',
       subtitle: 'Practice questions and additional learning materials',
-      topics: topics.filter(t => 
+      topics: topics.filter(t =>
         ['important-questions'].includes(t.id)
       ),
     },
@@ -163,7 +163,7 @@ export default function JavaPage() {
         >
           {/* Glow orb behind title */}
           <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-cyan-500/20 rounded-full blur-3xl -z-10" />
-          
+
           <div className="flex items-center gap-4">
             <FaJava className="w-12 h-12 md:w-16 md:h-16 text-orange-500" />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent leading-tight">

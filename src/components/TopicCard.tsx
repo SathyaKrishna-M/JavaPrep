@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Topic } from '@/data/topics'
+import { Topic } from '@/data/java-topics'
 
 interface TopicCardProps {
   topic: Topic

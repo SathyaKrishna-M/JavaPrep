@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { Topic } from '@/data/topics'
+import { Topic } from '@/data/java-topics'
 
 interface EnhancedTopicCardProps {
   topic: Topic
@@ -43,20 +43,20 @@ export default function EnhancedTopicCard({ topic, index = 0 }: EnhancedTopicCar
           className="relative p-[2px] rounded-2xl bg-gradient-to-br bg-opacity-60 hover:bg-opacity-90 transition-all duration-300 group"
           style={{
             background: `linear-gradient(to bottom right, 
-              ${topic.co === 'CO1' ? 'rgba(59, 130, 246, 0.6)' : 
+              ${topic.co === 'CO1' ? 'rgba(59, 130, 246, 0.6)' :
                 topic.co === 'CO2' ? 'rgba(168, 85, 247, 0.6)' :
-                topic.co === 'CO3' ? 'rgba(6, 182, 212, 0.6)' :
-                topic.co === 'CO4' ? 'rgba(99, 102, 241, 0.6)' :
-                topic.co === 'CO5' ? 'rgba(139, 92, 246, 0.6)' :
-                topic.co === 'CO6' ? 'rgba(217, 70, 239, 0.6)' :
-                'rgba(59, 130, 246, 0.6)'}, 
-              ${topic.co === 'CO1' ? 'rgba(37, 99, 235, 0.6)' : 
+                  topic.co === 'CO3' ? 'rgba(6, 182, 212, 0.6)' :
+                    topic.co === 'CO4' ? 'rgba(99, 102, 241, 0.6)' :
+                      topic.co === 'CO5' ? 'rgba(139, 92, 246, 0.6)' :
+                        topic.co === 'CO6' ? 'rgba(217, 70, 239, 0.6)' :
+                          'rgba(59, 130, 246, 0.6)'}, 
+              ${topic.co === 'CO1' ? 'rgba(37, 99, 235, 0.6)' :
                 topic.co === 'CO2' ? 'rgba(147, 51, 234, 0.6)' :
-                topic.co === 'CO3' ? 'rgba(8, 145, 178, 0.6)' :
-                topic.co === 'CO4' ? 'rgba(79, 70, 229, 0.6)' :
-                topic.co === 'CO5' ? 'rgba(124, 58, 237, 0.6)' :
-                topic.co === 'CO6' ? 'rgba(192, 38, 211, 0.6)' :
-                'rgba(37, 99, 235, 0.6)'})`,
+                  topic.co === 'CO3' ? 'rgba(8, 145, 178, 0.6)' :
+                    topic.co === 'CO4' ? 'rgba(79, 70, 229, 0.6)' :
+                      topic.co === 'CO5' ? 'rgba(124, 58, 237, 0.6)' :
+                        topic.co === 'CO6' ? 'rgba(192, 38, 211, 0.6)' :
+                          'rgba(37, 99, 235, 0.6)'})`,
           }}
         >
           {/* Inner glass panel */}
@@ -104,13 +104,13 @@ export default function EnhancedTopicCard({ topic, index = 0 }: EnhancedTopicCar
             className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
             style={{
               background: `radial-gradient(circle at center, 
-                ${topic.co === 'CO1' ? 'rgba(59, 130, 246, 0.2)' : 
+                ${topic.co === 'CO1' ? 'rgba(59, 130, 246, 0.2)' :
                   topic.co === 'CO2' ? 'rgba(168, 85, 247, 0.2)' :
-                  topic.co === 'CO3' ? 'rgba(6, 182, 212, 0.2)' :
-                  topic.co === 'CO4' ? 'rgba(99, 102, 241, 0.2)' :
-                  topic.co === 'CO5' ? 'rgba(139, 92, 246, 0.2)' :
-                  topic.co === 'CO6' ? 'rgba(217, 70, 239, 0.2)' :
-                  'rgba(59, 130, 246, 0.2)'}, 
+                    topic.co === 'CO3' ? 'rgba(6, 182, 212, 0.2)' :
+                      topic.co === 'CO4' ? 'rgba(99, 102, 241, 0.2)' :
+                        topic.co === 'CO5' ? 'rgba(139, 92, 246, 0.2)' :
+                          topic.co === 'CO6' ? 'rgba(217, 70, 239, 0.2)' :
+                            'rgba(59, 130, 246, 0.2)'}, 
                 transparent 70%)`,
               filter: 'blur(20px)',
             }}

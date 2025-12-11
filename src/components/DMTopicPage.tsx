@@ -9,6 +9,7 @@ import FunctionGraph from '@/components/FunctionGraph'
 import DMHasseDiagram from '@/components/DMHasseDiagram'
 import TruthTable from '@/components/TruthTable'
 import Mermaid from '@/components/Mermaid'
+import CodeBlock from '@/components/CodeBlock'
 import {
   FiArrowRight,
   FiBook,
@@ -52,11 +53,13 @@ export interface ExplanationSection {
   mermaid?: string
   formula?: string
   blockFormula?: string
+  code?: string
 }
 
 export interface PracticeQuestion {
   question: string | React.ReactNode
   solution: string | React.ReactNode
+  solutionCode?: string
   vennDiagram?: VennDiagramData
   functionGraph?: FunctionGraphData
   hasseDiagram?: HasseDiagramData
@@ -75,6 +78,7 @@ export interface ExampleProblem {
   truthTable?: TruthTableData
   mermaid?: string
   formula?: string
+  code?: string
 }
 
 export interface TopicContent {
@@ -87,11 +91,13 @@ export interface TopicContent {
 interface DMTopicPageProps {
   content: TopicContent
   subjectHref?: string
+  subjectName?: string
 }
 
 export default function DMTopicPage({
   content,
-  subjectHref = '/subjects/discrete-mathematics'
+  subjectHref = '/subjects/discrete-mathematics',
+  subjectName = 'Discrete Mathematics'
 }: DMTopicPageProps) {
   const [activeTab, setActiveTab] = useState<'explanation' | 'practice' | 'examples'>(
     'explanation'
@@ -134,6 +140,12 @@ export default function DMTopicPage({
                     section.content
                   )}
                 </div>
+
+                {section.code && (
+                  <div className="my-6">
+                    <CodeBlock code={section.code} />
+                  </div>
+                )}
 
                 {section.formula && (
                   <div className="my-4 p-4 bg-black/30 rounded-lg">
@@ -227,6 +239,7 @@ export default function DMTopicPage({
               return {
                 question: q.question,
                 solution: q.solution,
+                solutionCode: q.solutionCode,
                 customContent: (
                   <div className="mt-4 space-y-4">
                     {q.formula && (
@@ -318,6 +331,12 @@ export default function DMTopicPage({
                   </div>
                 ))}
 
+                {example.code && (
+                  <div className="my-6">
+                    <CodeBlock code={example.code} />
+                  </div>
+                )}
+
                 {example.formula && (
                   <div className="mt-4 p-4 bg-black/30 rounded-lg">
                     <MathRenderer math={example.formula} display={true} />
@@ -404,7 +423,7 @@ export default function DMTopicPage({
           className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors mb-4"
         >
           <FiArrowRight className="w-4 h-4 rotate-180" />
-          Back to Discrete Mathematics
+          Back to {subjectName}
         </Link>
       </motion.div>
 
@@ -460,4 +479,3 @@ export default function DMTopicPage({
     </div>
   )
 }
-

@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { topics as javaTopics } from '@/data/topics'
+import { topics as javaTopics } from '@/data/java-topics'
 import { dsdTopics } from '@/data/dsd-topics'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useMemo, useEffect } from 'react'
