@@ -10,17 +10,17 @@ const content = {
     {
       title: 'Array Declaration and Initialization',
       icon: <FiList className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Arrays</span> store multiple values of the same type in a single variable.
+      content: `<span className="text-blue-400 font-semibold">Arrays</span> store multiple values of the same type in a single variable.
 
 Declaration Methods:
-→ <span class="text-cyan-300">int[] arr;</span> or <span class="text-cyan-300">int arr[];</span> (declaration only)
-→ <span class="text-cyan-300">int[] arr = new int[5];</span> (size <span class="text-cyan-300">5</span>, default values are <span class="text-cyan-300">0</span>)
-→ <span class="text-cyan-300">int[] arr = {1, 2, 3, 4, 5};</span> (initialized with values)
+→ <span className="text-cyan-300">int[] arr;</span> or <span className="text-cyan-300">int arr[];</span> (declaration only)
+→ <span className="text-cyan-300">int[] arr = new int[5];</span> (size <span className="text-cyan-300">5</span>, default values are <span className="text-cyan-300">0</span>)
+→ <span className="text-cyan-300">int[] arr = {1, 2, 3, 4, 5};</span> (initialized with values)
 
 Key Points:
-→ Arrays are <span class="text-blue-400">zero-indexed</span> (first element at index <span class="text-cyan-300">0</span>)
-→ Last element is at index <span class="text-cyan-300">length-1</span>
-→ <span class="text-amber-300">Length is fixed</span> after creation`,
+→ Arrays are <span className="text-blue-400">zero-indexed</span> (first element at index <span className="text-cyan-300">0</span>)
+→ Last element is at index <span className="text-cyan-300">length-1</span>
+→ <span className="text-amber-300">Length is fixed</span> after creation`,
       code: `public class ArrayDeclaration {
     public static void main(String[] args) {
         // Method 1: Declaration and initialization
@@ -43,15 +43,15 @@ Key Points:
     {
       title: 'Array Indexing and Access',
       icon: <FiHash className="w-6 h-6" />,
-      content: `Accessing array elements using <span class="text-blue-400 font-semibold">indices</span>.
+      content: `Accessing array elements using <span className="text-blue-400 font-semibold">indices</span>.
 
 Key Concepts:
-→ Arrays are <span class="text-blue-400">zero-indexed</span> (start from <span class="text-cyan-300">0</span>)
-→ Access elements: <span class="text-cyan-300">arr[index]</span>
-→ Valid indices: <span class="text-cyan-300">0</span> to <span class="text-cyan-300">length-1</span>
-→ <span class="text-amber-300">ArrayIndexOutOfBoundsException</span> occurs for invalid indices
+→ Arrays are <span className="text-blue-400">zero-indexed</span> (start from <span className="text-cyan-300">0</span>)
+→ Access elements: <span className="text-cyan-300">arr[index]</span>
+→ Valid indices: <span className="text-cyan-300">0</span> to <span className="text-cyan-300">length-1</span>
+→ <span className="text-amber-300">ArrayIndexOutOfBoundsException</span> occurs for invalid indices
 
-<span class="text-amber-300">Important:</span> Always check bounds before accessing array elements.`,
+<span className="text-amber-300">Important:</span> Always check bounds before accessing array elements.`,
       code: `public class ArrayAccess {
     public static void main(String[] args) {
         int[] arr = {10, 20, 30, 40, 50};
@@ -72,13 +72,13 @@ Key Concepts:
       content: `Iterating through all elements of an array.
 
 Methods:
-→ <span class="text-cyan-300">Traditional for loop:</span> <span class="text-blue-400">for</span> (int i = 0; i < arr.length; i++)
-→ <span class="text-cyan-300">Enhanced for loop:</span> <span class="text-blue-400">for</span> (int num : arr)
+→ <span className="text-cyan-300">Traditional for loop:</span> <span className="text-blue-400">for</span> (int i = 0; i < arr.length; i++)
+→ <span className="text-cyan-300">Enhanced for loop:</span> <span className="text-blue-400">for</span> (int num : arr)
 
 Use Cases:
 → Printing all elements
 → Searching for a value
-→ <span class="text-amber-300">Processing each element</span>`,
+→ <span className="text-amber-300">Processing each element</span>`,
       code: `public class ArrayTraversal {
     public static void main(String[] args) {
         int[] arr = {10, 20, 30, 40, 50};
@@ -101,14 +101,14 @@ Use Cases:
     {
       title: 'Finding Maximum and Minimum',
       icon: <FiMaximize className="w-6 h-6" />,
-      content: `Finding the <span class="text-blue-400 font-semibold">largest or smallest</span> element in an array.
+      content: `Finding the <span className="text-blue-400 font-semibold">largest or smallest</span> element in an array.
 
 Algorithm:
-→ Initialize <span class="text-cyan-300">max/min</span> with first element
+→ Initialize <span className="text-cyan-300">max/min</span> with first element
 → Traverse array and compare each element
-→ Update <span class="text-cyan-300">max/min</span> if current element is larger/smaller
+→ Update <span className="text-cyan-300">max/min</span> if current element is larger/smaller
 
-<span class="text-amber-300">Time Complexity:</span> <span class="text-blue-400">O(n)</span> - linear time`,
+<span className="text-amber-300">Time Complexity:</span> <span className="text-blue-400">O(n)</span> - linear time`,
       code: `public class FindMaxMin {
     public static void main(String[] args) {
         int[] arr = {10, 25, 8, 32, 15};
@@ -135,15 +135,15 @@ Algorithm:
     },
     {
       title: 'Common Array Operations',
-      content: `<span class="text-blue-400 font-semibold">Essential operations</span> for working with arrays.
+      content: `<span className="text-blue-400 font-semibold">Essential operations</span> for working with arrays.
 
 Operations:
-→ <span class="text-cyan-300">Sum of all elements:</span> Traverse and add each element
-→ <span class="text-cyan-300">Average:</span> Sum divided by length
-→ <span class="text-cyan-300">Search:</span> Linear search through array
-→ <span class="text-cyan-300">Count:</span> Count elements matching a condition
+→ <span className="text-cyan-300">Sum of all elements:</span> Traverse and add each element
+→ <span className="text-cyan-300">Average:</span> Sum divided by length
+→ <span className="text-cyan-300">Search:</span> Linear search through array
+→ <span className="text-cyan-300">Count:</span> Count elements matching a condition
 
-<span class="text-amber-300">Important:</span> Arrays have fixed size and cannot be resized.`,
+<span className="text-amber-300">Important:</span> Arrays have fixed size and cannot be resized.`,
       code: `public class ArrayOperations {
     public static void main(String[] args) {
         int[] arr = {10, 20, 30, 40, 50};

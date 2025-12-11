@@ -12,13 +12,13 @@ const content = {
             content: (
                 <div className="space-y-4">
                     <p>
-                        <span className="text-blue-400 font-semibold">Polymorphism</span> means "Many Forms".
+                        <span className="text-blue-400 font-semibold">Polymorphism</span> means &quot;Many Forms&quot;.
                         Think of a <span className="text-cyan-400 font-bold">Universal Remote Control</span>.
                     </p>
                     <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
                             <li>
-                                <span className="text-yellow-400 font-semibold">One Interface:</span> The remote has a "Power" button.
+                                <span className="text-yellow-400 font-semibold">One Interface:</span> The remote has a &quot;Power&quot; button.
                             </li>
                             <li>
                                 <span className="text-yellow-400 font-semibold">Many Forms:</span>
@@ -149,7 +149,7 @@ public class Main {
         },
         {
             question: 'Can you override static methods?',
-            solution: 'No. Static methods belong to the Class, not the Object. If you redefine a static method in a child, it is called "Method Hiding", not overriding.',
+            solution: 'No. Static methods belong to the Class, not the Object. If you redefine a static method in a child, it is called &quot;Method Hiding&quot;, not overriding.',
             solutionCode: `class Parent {
     static void show() { System.out.println("Parent"); }
 }

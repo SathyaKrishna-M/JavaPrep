@@ -39,7 +39,7 @@ const content = {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="bg-black/30 p-4 rounded-lg border border-gray-800">
                             <h5 className="text-green-400 font-mono mb-2">implements Serializable</h5>
-                            <p className="text-xs text-gray-400 mb-2">A <b>Marker Interface</b>. It has NO methods. It serves as a "permission stamp" telling Java "This object is safe to freeze-dry".</p>
+                            <p className="text-xs text-gray-400 mb-2">A <b>Marker Interface</b>. It has NO methods. It serves as a &quot;permission stamp&quot; telling Java &quot;This object is safe to freeze-dry&quot;.</p>
                         </div>
                         <div className="bg-black/30 p-4 rounded-lg border border-gray-800">
                             <h5 className="text-red-400 font-mono mb-2">transient</h5>
@@ -88,7 +88,7 @@ public class Main {
         {
             title: 'Common Pitfalls',
             icon: <FiAlertTriangle className="w-6 h-6" />,
-            content: '<p class="text-gray-300"><b>NotSerializableException:</b> Happens if you try to serialize an object that doesn\'t implement Serializable. ALSO happens if a Serializable object contains a field (like another object) that is NOT Serializable.</p>',
+            content: '<p className="text-gray-300"><b>NotSerializableException:</b> Happens if you try to serialize an object that doesn&apos;t implement Serializable. ALSO happens if a Serializable object contains a field (like another object) that is NOT Serializable.</p>',
             code: `class Engine { } // Not Serializable!
 class Car implements Serializable {
     Engine engine = new Engine(); // This causes crash!

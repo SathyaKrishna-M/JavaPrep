@@ -2,7 +2,7 @@
 
 import DMTopicPage, { ExplanationSection, PracticeQuestion, ExampleProblem } from '@/components/DMTopicPage'
 import { DryRunStep } from '@/components/DryRunVisualizer'
-import { FiAlertTriangle, FiCpu, FiTerminal, FiTool, FiBug, FiSearch } from 'react-icons/fi'
+import { FiAlertTriangle, FiCpu, FiTerminal, FiTool, FiAlertCircle, FiSearch } from 'react-icons/fi'
 
 const content = {
   title: 'Debugging Techniques',
@@ -37,13 +37,13 @@ const content = {
       icon: <FiAlertTriangle className="w-6 h-6" />,
       content: `Not all errors are the same. identifying the type is half the battle.
 
-1. <span class="text-red-400 font-semibold">Syntax Errors (Compile-Time):</span> The code grammar is wrong. The car won't even start.
+1. <span className="text-red-400 font-semibold">Syntax Errors (Compile-Time):</span> The code grammar is wrong. The car won't even start.
    - <em>Example:</em> Missing semicolon \`;\`, mismatched brackets \`{}\`.
 
-2. <span class="text-orange-400 font-semibold">Runtime Errors (Exceptions):</span> The car crashes while driving.
-   - <em>Example:</em> <span class="text-cyan-300">DivisionByZero</span>, <span class="text-cyan-300">NullPointerException</span>, <span class="text-cyan-300">ArrayIndexOutOfBounds</span>.
+2. <span className="text-orange-400 font-semibold">Runtime Errors (Exceptions):</span> The car crashes while driving.
+   - <em>Example:</em> <span className="text-cyan-300">DivisionByZero</span>, <span className="text-cyan-300">NullPointerException</span>, <span className="text-cyan-300">ArrayIndexOutOfBounds</span>.
 
-3. <span class="text-yellow-400 font-semibold">Logical Errors:</span> The car drives perfectly but to the wrong destination.
+3. <span className="text-yellow-400 font-semibold">Logical Errors:</span> The car drives perfectly but to the wrong destination.
    - <em>Example:</em> Calculating \`area = length + width\` instead of \`length * width\`.`,
       code: `public class ErrorTypes {
     public static void main(String[] args) {
@@ -61,12 +61,12 @@ const content = {
     },
     {
       title: 'Tools of the Trade',
-      icon: <FiBug className="w-6 h-6" />,
+      icon: <FiAlertCircle className="w-6 h-6" />,
       content: `How to find the bug:
 
-→ <span class="text-cyan-300">Print Debugging:</span> Add \`System.out.println()\` to check variable values at different points.
-→ <span class="text-cyan-300">Rubber Ducking:</span> Explain your code line-by-line to a rubber duck (or friend). You'll often find the bug just by saying it aloud.
-→ <span class="text-cyan-300">IDE Debugger:</span> Use breakpoints to pause code and inspect values memory.`,
+→ <span className="text-cyan-300">Print Debugging:</span> Add \`System.out.println()\` to check variable values at different points.
+→ <span className="text-cyan-300">Rubber Ducking:</span> Explain your code line-by-line to a rubber duck (or friend). You'll often find the bug just by saying it aloud.
+→ <span className="text-cyan-300">IDE Debugger:</span> Use breakpoints to pause code and inspect values memory.`,
       code: `// Print Debugging Example
 public class FixMe {
     public static void main(String[] args) {

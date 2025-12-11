@@ -9,15 +9,15 @@ const content = {
     {
       title: 'Common Bit Tricks',
       icon: <FiZap className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Bit Tricks</span> solve problems efficiently using bit operations.
+      content: `<span className="text-blue-400 font-semibold">Bit Tricks</span> solve problems efficiently using bit operations.
 
 Tricks:
-→ <span class="text-cyan-300">Even/Odd:</span> n & 1 == 0 (even)
-→ <span class="text-cyan-300">Power of 2:</span> (n & (n-1)) == 0
-→ <span class="text-cyan-300">Set bit:</span> n | (1 << i)
-→ <span class="text-cyan-300">Clear bit:</span> n & ~(1 << i)
-→ <span class="text-cyan-300">Toggle bit:</span> n ^ (1 << i)
-→ <span class="text-cyan-300">Check bit:</span> (n >> i) & 1`,
+→ <span className="text-cyan-300">Even/Odd:</span> n & 1 == 0 (even)
+→ <span className="text-cyan-300">Power of 2:</span> (n & (n-1)) == 0
+→ <span className="text-cyan-300">Set bit:</span> n | (1 << i)
+→ <span className="text-cyan-300">Clear bit:</span> n & ~(1 << i)
+→ <span className="text-cyan-300">Toggle bit:</span> n ^ (1 << i)
+→ <span className="text-cyan-300">Check bit:</span> (n >> i) & 1`,
       code: `public class BitTricks {
     // Check if even
     public static boolean isEven(int n) {

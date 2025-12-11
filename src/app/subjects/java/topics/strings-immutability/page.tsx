@@ -34,11 +34,11 @@ const content = {
       icon: <FiTarget className="w-6 h-6" />,
       content: `Java saves memory by storing string literals in a special pool.
 
-1. <span class="text-blue-400 font-semibold">String s1 = "Hello";</span>
+1. <span className="text-blue-400 font-semibold">String s1 = "Hello";</span>
    - Checks SCP. If "Hello" exists, reuses it.
-2. <span class="text-blue-400 font-semibold">String s2 = "Hello";</span>
+2. <span className="text-blue-400 font-semibold">String s2 = "Hello";</span>
    - Finds "Hello", points s2 to the SAME address.
-3. <span class="text-blue-400 font-semibold">String s3 = new String("Hello");</span>
+3. <span className="text-blue-400 font-semibold">String s3 = new String("Hello");</span>
    - Forces creation of a NEW object in Heap (outside pool).`,
       code: `public class StringPool {
     public static void main(String[] args) {
@@ -60,9 +60,9 @@ const content = {
       icon: <FiLock className="w-6 h-6" />,
       content: `Why can't we change Strings?
 
-1. <span class="text-cyan-300">Security:</span> Database URLs, usernames, etc. can't be changed accidentally or maliciously once passed.
-2. <span class="text-cyan-300">Caching:</span> HashCodes can be cached (great for HashMaps).
-3. <span class="text-cyan-300">Thread Safety:</span> Multiple threads can read the same String without locking.`
+1. <span className="text-cyan-300">Security:</span> Database URLs, usernames, etc. can't be changed accidentally or maliciously once passed.
+2. <span className="text-cyan-300">Caching:</span> HashCodes can be cached (great for HashMaps).
+3. <span className="text-cyan-300">Thread Safety:</span> Multiple threads can read the same String without locking.`
     }
   ] as ExplanationSection[],
   exampleProblems: [

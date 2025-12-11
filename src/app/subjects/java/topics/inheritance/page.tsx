@@ -18,10 +18,10 @@ const content = {
                     <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
                             <li>
-                                <span className="text-yellow-400 font-semibold">The Parent (Super Class):</span> You inherit your eye color from your parent. You didn't "code" that yourself; you got it for free.
+                                <span className="text-yellow-400 font-semibold">The Parent (Super Class):</span> You inherit your eye color from your parent. You didn&apos;t &quot;code&quot; that yourself; you got it for free.
                             </li>
                             <li>
-                                <span className="text-yellow-400 font-semibold">The Child (Sub Class):</span> You have your parent's features + your own new skills (e.g., coding Java).
+                                <span className="text-yellow-400 font-semibold">The Child (Sub Class):</span> You have your parent&apos;s features + your own new skills (e.g., coding Java).
                             </li>
                             <li>
                                 <span className="text-blue-400 font-semibold">The Goal:</span> <span className="text-green-400">Reusability</span>. Why rewrite common code? Just inherit it!

@@ -85,7 +85,7 @@ public class Main {
             content: (
                 <div className="space-y-4">
                     <p className="text-gray-300">
-                        Sometimes you want strict types (e.g., "Any type that is a subclass of Number"). We use <b>Bounded Wildcards</b>.
+                        Sometimes you want strict types (e.g., &quot;Any type that is a subclass of Number&quot;). We use <b>Bounded Wildcards</b>.
                     </p>
                     <ul className="list-disc list-inside text-gray-300 text-sm">
                         <li><code>&lt;T extends Number&gt;</code>: T must be Number or its child (Integer, Double).</li>
@@ -121,7 +121,7 @@ public class WildcardDemo {
         {
             title: 'Type Erasure',
             icon: <FiAlertCircle className="w-6 h-6" />,
-            content: '<p class="text-gray-300"><b>Note:</b> Java Generics are a compile-time feature. The JVM doesn\'t know about <code>&lt;String&gt;</code>. During compilation, Java "erases" all type parameters and replaces them with <code>Object</code> (or the bound). This ensures backward compatibility with older Java versions.</p>',
+            content: '<p className="text-gray-300"><b>Note:</b> Java Generics are a compile-time feature. The JVM doesn&apos;t know about <code>&lt;String&gt;</code>. During compilation, Java &quot;erases&quot; all type parameters and replaces them with <code>Object</code> (or the bound). This ensures backward compatibility with older Java versions.</p>',
             code: `// Your Code:
 // List<String> list = new ArrayList<>();
 // list.add("Hi");

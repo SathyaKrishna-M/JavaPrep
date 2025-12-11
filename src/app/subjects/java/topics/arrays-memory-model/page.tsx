@@ -9,18 +9,18 @@ const content = {
     {
       title: 'Array Memory Layout',
       icon: <FiCpu className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Arrays</span> are stored as contiguous blocks of memory.
+      content: `<span className="text-blue-400 font-semibold">Arrays</span> are stored as contiguous blocks of memory.
 
 Memory Model:
-→ <span class="text-cyan-300">Contiguous:</span> Elements stored next to each other
-→ <span class="text-cyan-300">Index-based:</span> Access via index (0 to length-1)
-→ <span class="text-cyan-300">Reference:</span> Array variable holds reference to memory
-→ <span class="text-cyan-300">Heap:</span> Arrays stored in heap memory
+→ <span className="text-cyan-300">Contiguous:</span> Elements stored next to each other
+→ <span className="text-cyan-300">Index-based:</span> Access via index (0 to length-1)
+→ <span className="text-cyan-300">Reference:</span> Array variable holds reference to memory
+→ <span className="text-cyan-300">Heap:</span> Arrays stored in heap memory
 
 Example:
-→ <span class="text-blue-400">int[] arr = new int[5];</span>
-→ <span class="text-cyan-300">Creates:</span> 5 consecutive int locations
-→ <span class="text-cyan-300">Default values:</span> 0 for integers`,
+→ <span className="text-blue-400">int[] arr = new int[5];</span>
+→ <span className="text-cyan-300">Creates:</span> 5 consecutive int locations
+→ <span className="text-cyan-300">Default values:</span> 0 for integers`,
       code: `public class ArrayMemory {
     public static void main(String[] args) {
         // Array declaration and memory allocation
@@ -47,18 +47,18 @@ Example:
     {
       title: 'Array References',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Array References</span> point to memory locations.
+      content: `<span className="text-blue-400 font-semibold">Array References</span> point to memory locations.
 
 Key Points:
-→ <span class="text-cyan-300">Reference variable:</span> Holds address, not values
-→ <span class="text-cyan-300">Assignment:</span> Copies reference, not array
-→ <span class="text-cyan-300">Multiple references:</span> Can point to same array
-→ <span class="text-cyan-300">Null:</span> Reference can be null
+→ <span className="text-cyan-300">Reference variable:</span> Holds address, not values
+→ <span className="text-cyan-300">Assignment:</span> Copies reference, not array
+→ <span className="text-cyan-300">Multiple references:</span> Can point to same array
+→ <span className="text-cyan-300">Null:</span> Reference can be null
 
 Example:
-→ <span class="text-blue-400">int[] arr1 = {1, 2, 3};</span>
-→ <span class="text-blue-400">int[] arr2 = arr1;</span>
-→ <span class="text-cyan-300">Both point to same array</span>`,
+→ <span className="text-blue-400">int[] arr1 = {1, 2, 3};</span>
+→ <span className="text-blue-400">int[] arr2 = arr1;</span>
+→ <span className="text-cyan-300">Both point to same array</span>`,
       code: `public class ArrayReferences {
     public static void main(String[] args) {
         int[] arr1 = {10, 20, 30};

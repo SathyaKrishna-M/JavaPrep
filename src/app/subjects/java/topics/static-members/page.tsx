@@ -35,9 +35,9 @@ const content = {
       content: `Use \`static\` when you want to share data across all objects.
 
 Characteristics:
-→ <span class="text-cyan-300">Memory:</span> Allocated only ONCE when the class is loaded.
-→ <span class="text-cyan-300">Access:</span> Through Class Name (e.g., \`Student.schoolName\`).
-→ <span class="text-blue-400">Common Use:</span> Counters, Constants, Configuration.`,
+→ <span className="text-cyan-300">Memory:</span> Allocated only ONCE when the class is loaded.
+→ <span className="text-cyan-300">Access:</span> Through Class Name (e.g., \`Student.schoolName\`).
+→ <span className="text-blue-400">Common Use:</span> Counters, Constants, Configuration.`,
       code: `public class Counter {
     static int count = 0; // Shared
     
@@ -58,11 +58,11 @@ Characteristics:
     {
       title: 'Static Methods',
       icon: <FiUsers className="w-6 h-6" />,
-      content: `Methods that can run <span class="text-blue-400 font-semibold">without creating an object</span>.
+      content: `Methods that can run <span className="text-blue-400 font-semibold">without creating an object</span>.
 
 Rules:
-→ <span class="text-cyan-300">Can Access:</span> Only other static members.
-→ <span class="text-red-300">Cannot Access:</span> Instance variables or \`this\` keyword (because 'this' refers to an object, and static methods don't care about objects).
+→ <span className="text-cyan-300">Can Access:</span> Only other static members.
+→ <span className="text-red-300">Cannot Access:</span> Instance variables or \`this\` keyword (because 'this' refers to an object, and static methods don't care about objects).
 
 Example: \`Math.sqrt()\`, \`System.out.println()\`.`,
       code: `public class MathUtils {

@@ -9,16 +9,16 @@ const content = {
     {
       title: 'Prefix Sum',
       icon: <FiLayers className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Prefix Sum</span> stores cumulative sum for range queries.
+      content: `<span className="text-blue-400 font-semibold">Prefix Sum</span> stores cumulative sum for range queries.
 
 Concept:
-→ <span class="text-cyan-300">prefix[i]:</span> Sum of elements from 0 to i
-→ <span class="text-cyan-300">Range sum:</span> prefix[j] - prefix[i-1] for sum from i to j
-→ <span class="text-cyan-300">Efficient:</span> O(1) range queries after O(n) preprocessing
+→ <span className="text-cyan-300">prefix[i]:</span> Sum of elements from 0 to i
+→ <span className="text-cyan-300">Range sum:</span> prefix[j] - prefix[i-1] for sum from i to j
+→ <span className="text-cyan-300">Efficient:</span> O(1) range queries after O(n) preprocessing
 
 Use Cases:
-→ <span class="text-amber-300">Range sum queries</span>
-→ <span class="text-amber-300">Subarray problems</span>`,
+→ <span className="text-amber-300">Range sum queries</span>
+→ <span className="text-amber-300">Subarray problems</span>`,
       code: `public class PrefixSum {
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5};
@@ -39,16 +39,16 @@ Use Cases:
     {
       title: 'Sliding Window',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Sliding Window</span> maintains a window of elements.
+      content: `<span className="text-blue-400 font-semibold">Sliding Window</span> maintains a window of elements.
 
 Technique:
-→ <span class="text-cyan-300">Fixed window:</span> Window of size k
-→ <span class="text-cyan-300">Variable window:</span> Window size changes
-→ <span class="text-cyan-300">Efficient:</span> O(n) instead of O(n²)
+→ <span className="text-cyan-300">Fixed window:</span> Window of size k
+→ <span className="text-cyan-300">Variable window:</span> Window size changes
+→ <span className="text-cyan-300">Efficient:</span> O(n) instead of O(n²)
 
 Use Cases:
-→ <span class="text-amber-300">Maximum sum subarray of size k</span>
-→ <span class="text-amber-300">Longest substring with condition</span>`,
+→ <span className="text-amber-300">Maximum sum subarray of size k</span>
+→ <span className="text-amber-300">Longest substring with condition</span>`,
       code: `public class SlidingWindow {
     // Maximum sum of subarray of size k
     public static int maxSum(int[] arr, int k) {

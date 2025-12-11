@@ -35,16 +35,16 @@ const content = {
     {
       title: 'For Loop',
       icon: <FiRepeat className="w-6 h-6" />,
-      content: `The <span class="text-blue-400 font-semibold">for</span> loop is used when you know the number of iterations in advance.
+      content: `The <span className="text-blue-400 font-semibold">for</span> loop is used when you know the number of iterations in advance.
 
 Structure:
-→ <span class="text-cyan-300">Syntax:</span> <span class="text-blue-400">for</span> (initialization; condition; update) { ... }
+→ <span className="text-cyan-300">Syntax:</span> <span className="text-blue-400">for</span> (initialization; condition; update) { ... }
 → All three parts are optional but semicolons are required
-→ <span class="text-blue-400">Initialization:</span> executed once at the start
-→ <span class="text-blue-400">Condition:</span> checked before each iteration
-→ <span class="text-blue-400">Update:</span> executed after each iteration
+→ <span className="text-blue-400">Initialization:</span> executed once at the start
+→ <span className="text-blue-400">Condition:</span> checked before each iteration
+→ <span className="text-blue-400">Update:</span> executed after each iteration
 
-<span class="text-amber-300">Perfect for:</span> Iterating a known number of times, like printing numbers from 1 to 10.`,
+<span className="text-amber-300">Perfect for:</span> Iterating a known number of times, like printing numbers from 1 to 10.`,
       code: `public class ForLoop {
     public static void main(String[] args) {
         // Print numbers from 1 to 5
@@ -58,15 +58,15 @@ Structure:
     {
       title: 'While Loop',
       icon: <FiRotateCw className="w-6 h-6" />,
-      content: `The <span class="text-blue-400 font-semibold">while</span> loop is used when the condition is checked before execution.
+      content: `The <span className="text-blue-400 font-semibold">while</span> loop is used when the condition is checked before execution.
 
 Key Points:
-→ <span class="text-cyan-300">Syntax:</span> <span class="text-blue-400">while</span> (condition) { ... }
-→ May execute zero times if condition is <span class="text-cyan-300">false</span> initially
+→ <span className="text-cyan-300">Syntax:</span> <span className="text-blue-400">while</span> (condition) { ... }
+→ May execute zero times if condition is <span className="text-cyan-300">false</span> initially
 → Condition is checked before each iteration
-→ <span class="text-amber-300">Important:</span> Must ensure condition becomes <span class="text-cyan-300">false</span> to avoid infinite loops
+→ <span className="text-amber-300">Important:</span> Must ensure condition becomes <span className="text-cyan-300">false</span> to avoid infinite loops
 
-<span class="text-amber-300">Use when:</span> You don't know the exact number of iterations, like reading input until a sentinel value.`,
+<span className="text-amber-300">Use when:</span> You don't know the exact number of iterations, like reading input until a sentinel value.`,
       code: `public class WhileLoop {
     public static void main(String[] args) {
         int i = 1;
@@ -81,15 +81,15 @@ Key Points:
     {
       title: 'Do-While Loop',
       icon: <FiRefreshCw className="w-6 h-6" />,
-      content: `The <span class="text-blue-400 font-semibold">do-while</span> loop executes at least once, even if the condition is <span class="text-cyan-300">false</span>.
+      content: `The <span className="text-blue-400 font-semibold">do-while</span> loop executes at least once, even if the condition is <span className="text-cyan-300">false</span>.
 
 Structure:
-→ <span class="text-cyan-300">Syntax:</span> <span class="text-blue-400">do</span> { ... } <span class="text-blue-400">while</span> (condition);
-→ Condition is checked <span class="text-amber-300">after</span> execution
-→ <span class="text-amber-300">Guarantees:</span> At least one execution
+→ <span className="text-cyan-300">Syntax:</span> <span className="text-blue-400">do</span> { ... } <span className="text-blue-400">while</span> (condition);
+→ Condition is checked <span className="text-amber-300">after</span> execution
+→ <span className="text-amber-300">Guarantees:</span> At least one execution
 → Useful for menu-driven programs
 
-<span class="text-amber-300">Use when:</span> You need to execute the loop body at least once, like displaying a menu.`,
+<span className="text-amber-300">Use when:</span> You need to execute the loop body at least once, like displaying a menu.`,
       code: `public class DoWhileLoop {
     public static void main(String[] args) {
         int i = 1;
@@ -104,15 +104,15 @@ Structure:
     {
       title: 'Enhanced For Loop (For-Each)',
       icon: <FiArrowRight className="w-6 h-6" />,
-      content: `The <span class="text-blue-400 font-semibold">enhanced for loop</span> (for-each) is used to iterate over arrays and collections.
+      content: `The <span className="text-blue-400 font-semibold">enhanced for loop</span> (for-each) is used to iterate over arrays and collections.
 
 Benefits:
-→ <span class="text-cyan-300">Syntax:</span> <span class="text-blue-400">for</span> (type variable : array) { ... }
-→ Simpler syntax than traditional <span class="text-blue-400">for</span> loop
+→ <span className="text-cyan-300">Syntax:</span> <span className="text-blue-400">for</span> (type variable : array) { ... }
+→ Simpler syntax than traditional <span className="text-blue-400">for</span> loop
 → Automatically handles iteration
-→ <span class="text-amber-300">No index management needed</span>
+→ <span className="text-amber-300">No index management needed</span>
 
-<span class="text-amber-300">Use when:</span> You need to iterate through all elements of an array or collection.`,
+<span className="text-amber-300">Use when:</span> You need to iterate through all elements of an array or collection.`,
       code: `public class EnhancedForLoop {
     public static void main(String[] args) {
         int[] numbers = {10, 20, 30, 40, 50};
@@ -126,14 +126,14 @@ Benefits:
     },
     {
       title: 'Loop Control Statements',
-      content: `Java provides <span class="text-blue-400 font-semibold">control statements</span> to manage loop execution:
+      content: `Java provides <span className="text-blue-400 font-semibold">control statements</span> to manage loop execution:
 
-→ <span class="text-blue-400">break:</span> Exits the loop immediately
-→ <span class="text-blue-400">continue:</span> Skips the current iteration and continues
-→ <span class="text-amber-300">Important:</span> Avoid infinite loops by ensuring condition becomes <span class="text-cyan-300">false</span>
-→ <span class="text-cyan-300">Loop variables</span> are only accessible within loop scope (<span class="text-blue-400">for</span> loop)
+→ <span className="text-blue-400">break:</span> Exits the loop immediately
+→ <span className="text-blue-400">continue:</span> Skips the current iteration and continues
+→ <span className="text-amber-300">Important:</span> Avoid infinite loops by ensuring condition becomes <span className="text-cyan-300">false</span>
+→ <span className="text-cyan-300">Loop variables</span> are only accessible within loop scope (<span className="text-blue-400">for</span> loop)
 
-<span class="text-amber-300">Benefit:</span> These control statements give you fine-grained control over loop execution.`,
+<span className="text-amber-300">Benefit:</span> These control statements give you fine-grained control over loop execution.`,
       code: `public class LoopControl {
     public static void main(String[] args) {
         // Using break

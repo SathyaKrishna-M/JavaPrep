@@ -32,13 +32,13 @@ const content = {
     {
       title: 'Scanner Class',
       icon: <FiTerminal className="w-6 h-6" />,
-      content: `The <span class="text-blue-400 font-semibold">Scanner</span> class is the tool we use to "listen" to keyboard input.
+      content: `The <span className="text-blue-400 font-semibold">Scanner</span> class is the tool we use to "listen" to keyboard input.
 
 Key Features:
-→ <span class="text-cyan-300">Import required:</span> <span class="text-blue-400">import java.util.Scanner;</span>
-→ <span class="text-cyan-300">Create Scanner object:</span> <span class="text-blue-400">Scanner sc = new Scanner(System.in);</span>
-→ Read different data types: <span class="text-cyan-300">nextInt()</span>, <span class="text-cyan-300">nextDouble()</span>, <span class="text-cyan-300">nextLine()</span>
-→ <span class="text-amber-300">Always close</span> the scanner when done: <span class="text-cyan-300">sc.close();</span>`,
+→ <span className="text-cyan-300">Import required:</span> <span className="text-blue-400">import java.util.Scanner;</span>
+→ <span className="text-cyan-300">Create Scanner object:</span> <span className="text-blue-400">Scanner sc = new Scanner(System.in);</span>
+→ Read different data types: <span className="text-cyan-300">nextInt()</span>, <span className="text-cyan-300">nextDouble()</span>, <span className="text-cyan-300">nextLine()</span>
+→ <span className="text-amber-300">Always close</span> the scanner when done: <span className="text-cyan-300">sc.close();</span>`,
       code: `import java.util.Scanner;
 
 public class ScannerExample {
@@ -53,9 +53,9 @@ public class ScannerExample {
       content: `How we display information to the user.
 
 Methods:
-→ <span class="text-cyan-300">System.out.println()</span> - Prints and moves cursor to the <span class="text-amber-300">next line</span>.
-→ <span class="text-cyan-300">System.out.print()</span> - Prints stays on the <span class="text-amber-300">same line</span>.
-→ <span class="text-cyan-300">System.out.printf()</span> - Formatted print (e.g., controlling decimal places).`,
+→ <span className="text-cyan-300">System.out.println()</span> - Prints and moves cursor to the <span className="text-amber-300">next line</span>.
+→ <span className="text-cyan-300">System.out.print()</span> - Prints stays on the <span className="text-amber-300">same line</span>.
+→ <span className="text-cyan-300">System.out.printf()</span> - Formatted print (e.g., controlling decimal places).`,
       code: `public class OutputExample {
     public static void main(String[] args) {
         String name = "Java";
@@ -71,11 +71,11 @@ Methods:
     {
       title: 'BufferedReader (Advanced)',
       icon: <FiFileText className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">BufferedReader</span> is an older, slightly faster way to read input, mostly used in competitive programming.
+      content: `<span className="text-blue-400 font-semibold">BufferedReader</span> is an older, slightly faster way to read input, mostly used in competitive programming.
 
 Comparison:
-→ <span class="text-green-300">Scanner</span>: Easier to use, parses text (nextInt, nextDouble). Slower.
-→ <span class="text-amber-300">BufferedReader</span>: Fast. Reads entire lines. Must parse numbers manually (Integer.parseInt).`,
+→ <span className="text-green-300">Scanner</span>: Easier to use, parses text (nextInt, nextDouble). Slower.
+→ <span className="text-amber-300">BufferedReader</span>: Fast. Reads entire lines. Must parse numbers manually (Integer.parseInt).`,
       code: `import java.io.BufferedReader;
 import java.io.InputStreamReader;
 

@@ -9,17 +9,17 @@ const content = {
     {
       title: 'Introduction to Interfaces',
       icon: <FiLink className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Interface</span> defines contract that classes must implement.
+      content: `<span className="text-blue-400 font-semibold">Interface</span> defines contract that classes must implement.
 
 Features:
-→ <span class="text-cyan-300">Abstract methods:</span> No implementation
-→ <span class="text-cyan-300">Multiple inheritance:</span> Class can implement multiple interfaces
-→ <span class="text-cyan-300">Default methods:</span> Java 8+ (with implementation)
-→ <span class="text-cyan-300">Static methods:</span> Java 8+ (with implementation)
+→ <span className="text-cyan-300">Abstract methods:</span> No implementation
+→ <span className="text-cyan-300">Multiple inheritance:</span> Class can implement multiple interfaces
+→ <span className="text-cyan-300">Default methods:</span> Java 8+ (with implementation)
+→ <span className="text-cyan-300">Static methods:</span> Java 8+ (with implementation)
 
 Syntax:
-→ <span class="text-blue-400">interface InterfaceName { ... }</span>
-→ <span class="text-blue-400">class ClassName implements InterfaceName { ... }</span>`,
+→ <span className="text-blue-400">interface InterfaceName { ... }</span>
+→ <span className="text-blue-400">class ClassName implements InterfaceName { ... }</span>`,
       code: `interface Drawable {
     void draw();  // Abstract method
     

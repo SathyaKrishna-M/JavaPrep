@@ -19,7 +19,7 @@ const content = {
                     <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
                             <li>
-                                <span className="text-yellow-400 font-semibold">The Grid:</span> Your console is a 2D grid. The Outer Loop controls <span class="text-amber-300">Rows</span> (Y-axis). The Inner Loop controls <span class="text-amber-300">Columns</span> (X-axis).
+                                <span className="text-yellow-400 font-semibold">The Grid:</span> Your console is a 2D grid. The Outer Loop controls <span className="text-amber-300">Rows</span> (Y-axis). The Inner Loop controls <span className="text-amber-300">Columns</span> (X-axis).
                             </li>
                             <li>
                                 <span className="text-yellow-400 font-semibold">The Logic:</span> You decide what to print at each coordinate (row, col). A star? A number? A space?
@@ -32,16 +32,16 @@ const content = {
         {
             title: 'Triangle Patterns',
             icon: <FiTriangle className="w-6 h-6" />,
-            content: `The most common patterns. Use the relationship between <span class="text-cyan-300">i</span> (row) and <span class="text-cyan-300">j</span> (col).
+            content: `The most common patterns. Use the relationship between <span className="text-cyan-300">i</span> (row) and <span className="text-cyan-300">j</span> (col).
 
-1. <span class="text-blue-400 font-semibold">Right-Angled Triangle:</span>
+1. <span className="text-blue-400 font-semibold">Right-Angled Triangle:</span>
    - Logic: Print star if \`j <= i\`
    - Result:
      *
      **
      ***
 
-2. <span class="text-blue-400 font-semibold">Inverted Triangle:</span>
+2. <span className="text-blue-400 font-semibold">Inverted Triangle:</span>
    - Logic: Outer loop counts down (n to 1) OR Inner loop \`j <= (n - i + 1)\`
    - Result:
      ***
@@ -61,11 +61,11 @@ const content = {
         {
             title: 'Pyramid Patterns (Advanced)',
             icon: <FiStar className="w-6 h-6" />,
-            content: `A pyramid needs <span class="text-blue-400 font-semibold">Spaces</span> before Stars.
+            content: `A pyramid needs <span className="text-blue-400 font-semibold">Spaces</span> before Stars.
 
 Logic for Row \`i\` (assuming Total Rows \`n\`):
-1. Print <span class="text-cyan-300">n - i</span> spaces.
-2. Print <span class="text-cyan-300">2*i - 1</span> stars.
+1. Print <span className="text-cyan-300">n - i</span> spaces.
+2. Print <span className="text-cyan-300">2*i - 1</span> stars.
 
 Example (n=3):
 Row 1: 2 spaces, 1 star  (  *  )

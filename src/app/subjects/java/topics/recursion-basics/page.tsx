@@ -22,10 +22,10 @@ const content = {
                 <span className="text-yellow-400 font-semibold">Recursive Step (Opening a Doll):</span> You open a big doll to find a slightly smaller one inside. The process repeats.
               </li>
               <li>
-                <span className="text-yellow-400 font-semibold">Base Case (The Smallest Doll):</span> Eventually, you reach a tiny solid doll that <span class="text-amber-300">cannot</span> be opened. This stops the process.
+                <span className="text-yellow-400 font-semibold">Base Case (The Smallest Doll):</span> Eventually, you reach a tiny solid doll that <span className="text-amber-300">cannot</span> be opened. This stops the process.
               </li>
               <li>
-                <span className="text-red-400 font-semibold">Stack Overflow:</span> If the smallest doll didn't exist, you'd be opening dolls forever until you ran out of space (StackOverflowError).
+                <span className="text-red-400 font-semibold">Stack Overflow:</span> If the smallest doll didn&apos;t exist, you&apos;d be opening dolls forever until you ran out of space (StackOverflowError).
               </li>
             </ul>
           </div>
@@ -37,12 +37,12 @@ const content = {
       icon: <FiLayers className="w-6 h-6" />,
       content: `Every recursive function NEEDS two parts:
 
-1. <span class="text-green-400 font-semibold">Base Case:</span> The stopping condition.
-   - <em>"If n is 1, stop."</em>
+1. <span className="text-green-400 font-semibold">Base Case:</span> The stopping condition.
+   - <em>&quot;If n is 1, stop.&quot;</em>
    - Without this, the code loops infinitely.
 
-2. <span class="text-blue-400 font-semibold">Recursive Case:</span> The logic that calls the function again with a <em>smaller</em> input.
-   - <em>"Return n multiplied by factorial of (n-1)."</em>`,
+2. <span className="text-blue-400 font-semibold">Recursive Case:</span> The logic that calls the function again with a <em>smaller</em> input.
+   - <em>&quot;Return n multiplied by factorial of (n-1).&quot;</em>`,
       code: `public class Factorial {
     public static int fact(int n) {
         // 1. BASE CASE
@@ -67,7 +67,7 @@ const content = {
       steps: [
         {
           step: '1. Base Case',
-          explanation: 'If n is 0, print "Blastoff!" and stops.'
+          explanation: 'If n is 0, print &quot;Blastoff!&quot; and stops.'
         },
         {
           step: '2. Recursive Step',

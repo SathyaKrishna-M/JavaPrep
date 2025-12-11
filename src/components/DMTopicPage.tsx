@@ -1,6 +1,18 @@
 'use client'
 
 import { useState } from 'react'
+import { DryRunStep } from './DryRunVisualizer'
+
+// ... existing imports
+
+export interface TopicContent {
+  title: string
+  explanationSections?: ExplanationSection[]
+  practiceQuestions?: PracticeQuestion[]
+  exampleProblems?: ExampleProblem[]
+  dryRunCode?: string
+  dryRunSteps?: DryRunStep[]
+}
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import Accordion from '@/components/Accordion'
@@ -66,6 +78,8 @@ export interface PracticeQuestion {
   truthTable?: TruthTableData
   mermaid?: string
   formula?: string
+  dryRunCode?: string
+  dryRunSteps?: DryRunStep[]
 }
 
 export interface ExampleProblem {

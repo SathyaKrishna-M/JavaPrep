@@ -18,7 +18,7 @@ const content = {
           <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li>
-                <span className="text-yellow-400 font-semibold">Cohesion (The Specialist):</span> A class should represent <em>one single concept</em>. A "Swiss Army Knife" class is bad design.
+                <span className="text-yellow-400 font-semibold">Cohesion (The Specialist):</span> A class should represent <em>one single concept</em>. A &quot;Swiss Army Knife&quot; class is bad design.
               </li>
               <li>
                 <span className="text-yellow-400 font-semibold">Coupling (The Dependency):</span> If Class A breaks every time Class B changes, they are <em>tightly coupled</em>. We want them to be loosely connected.
@@ -37,7 +37,7 @@ const content = {
             <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
               <h5 className="text-green-300 font-semibold mb-2">High Cohesion (Good)</h5>
               <p className="text-sm text-gray-300">
-                A `Printer` class only prints. It doesn't calculate taxes or cook coffee.
+                A `Printer` class only prints. It doesn&apos;t calculate taxes or cook coffee.
               </p>
               <code className="text-xs text-green-200 mt-2 block">class Printer &#123; print(data); &#125;</code>
             </div>

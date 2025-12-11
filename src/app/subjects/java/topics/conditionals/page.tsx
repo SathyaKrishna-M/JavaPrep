@@ -35,17 +35,17 @@ const content = {
         {
             title: 'if Statement',
             icon: <FiCheckCircle className="w-6 h-6" />,
-            content: `The <span class="text-blue-400 font-semibold">if</span> statement executes a code block if the condition is <span class="text-cyan-300">true</span>.
+            content: `The <span className="text-blue-400 font-semibold">if</span> statement executes a code block if the condition is <span className="text-cyan-300">true</span>.
 
 Syntax:
-→ <span class="text-cyan-300">if (condition) { ... }</span>
+→ <span className="text-cyan-300">if (condition) { ... }</span>
 
 Key Points:
-→ Condition must evaluate to <span class="text-cyan-300">boolean</span> (<span class="text-cyan-300">true</span> or <span class="text-cyan-300">false</span>)
-→ Use <span class="text-cyan-300">{}</span> for multiple statements
+→ Condition must evaluate to <span className="text-cyan-300">boolean</span> (<span className="text-cyan-300">true</span> or <span className="text-cyan-300">false</span>)
+→ Use <span className="text-cyan-300">{}</span> for multiple statements
 → Optional for single statement
 
-<span class="text-amber-300">Use when:</span> You need to execute code only when a condition is true.`,
+<span className="text-amber-300">Use when:</span> You need to execute code only when a condition is true.`,
             code: `public class IfStatement {
     public static void main(String[] args) {
         int age = 18;
@@ -59,17 +59,17 @@ Key Points:
         {
             title: 'if-else Statement',
             icon: <FiArrowRight className="w-6 h-6" />,
-            content: `The <span class="text-blue-400 font-semibold">if-else</span> statement executes one block if condition is <span class="text-cyan-300">true</span>, another if <span class="text-cyan-300">false</span>.
+            content: `The <span className="text-blue-400 font-semibold">if-else</span> statement executes one block if condition is <span className="text-cyan-300">true</span>, another if <span className="text-cyan-300">false</span>.
 
 Syntax:
-→ <span class="text-cyan-300">if (condition) { ... } else { ... }</span>
+→ <span className="text-cyan-300">if (condition) { ... } else { ... }</span>
 
 Key Points:
 → Always executes one of the two blocks
-→ <span class="text-cyan-300">else</span> block executes when condition is <span class="text-cyan-300">false</span>
+→ <span className="text-cyan-300">else</span> block executes when condition is <span className="text-cyan-300">false</span>
 → Useful for binary decisions
 
-<span class="text-amber-300">Use when:</span> You need to handle both true and false cases.`,
+<span className="text-amber-300">Use when:</span> You need to handle both true and false cases.`,
             code: `public class IfElse {
     public static void main(String[] args) {
         int num = 5;
@@ -85,18 +85,18 @@ Key Points:
         {
             title: 'if-else-if Ladder',
             icon: <FiLayers className="w-6 h-6" />,
-            content: `The <span class="text-blue-400 font-semibold">if-else-if</span> ladder checks multiple conditions in sequence.
+            content: `The <span className="text-blue-400 font-semibold">if-else-if</span> ladder checks multiple conditions in sequence.
 
 Syntax:
-→ <span class="text-cyan-300">if (condition1) { ... } else if (condition2) { ... } else { ... }</span>
+→ <span className="text-cyan-300">if (condition1) { ... } else if (condition2) { ... } else { ... }</span>
 
 Key Points:
-→ Conditions are checked <span class="text-amber-300">top to bottom</span>
-→ First <span class="text-cyan-300">true</span> condition executes its block
-→ <span class="text-cyan-300">else</span> block is optional
+→ Conditions are checked <span className="text-amber-300">top to bottom</span>
+→ First <span className="text-cyan-300">true</span> condition executes its block
+→ <span className="text-cyan-300">else</span> block is optional
 → Only one block executes
 
-<span class="text-amber-300">Use when:</span> You have multiple mutually exclusive conditions.`,
+<span className="text-amber-300">Use when:</span> You have multiple mutually exclusive conditions.`,
             code: `public class IfElseIf {
     public static void main(String[] args) {
         int score = 85;
@@ -116,15 +116,15 @@ Key Points:
         {
             title: 'Nested if',
             icon: <FiLayers className="w-6 h-6" />,
-            content: `<span class="text-blue-400 font-semibold">Nested if</span> statements are if statements inside other if statements.
+            content: `<span className="text-blue-400 font-semibold">Nested if</span> statements are if statements inside other if statements.
 
 Key Points:
 → Allows checking multiple conditions in sequence
-→ Inner <span class="text-cyan-300">if</span> executes only if outer <span class="text-cyan-300">if</span> is <span class="text-cyan-300">true</span>
+→ Inner <span className="text-cyan-300">if</span> executes only if outer <span className="text-cyan-300">if</span> is <span className="text-cyan-300">true</span>
 → Can nest multiple levels deep
 → Useful for complex decision trees
 
-<span class="text-amber-300">Use when:</span> You need to check conditions that depend on previous conditions.`,
+<span className="text-amber-300">Use when:</span> You need to check conditions that depend on previous conditions.`,
             code: `public class NestedIf {
     public static void main(String[] args) {
         int age = 20;
@@ -145,18 +145,18 @@ Key Points:
         {
             title: 'switch Statement',
             icon: <FiCode className="w-6 h-6" />,
-            content: `The <span class="text-blue-400 font-semibold">switch</span> statement is an alternative to if-else-if for multiple conditions.
+            content: `The <span className="text-blue-400 font-semibold">switch</span> statement is an alternative to if-else-if for multiple conditions.
 
 Syntax:
-→ <span class="text-cyan-300">switch (variable) { case value1: ... break; default: ... }</span>
+→ <span className="text-cyan-300">switch (variable) { case value1: ... break; default: ... }</span>
 
 Key Points:
-→ Compares variable against multiple <span class="text-cyan-300">case</span> values
-→ Use <span class="text-cyan-300">break</span> to prevent fall-through
-→ <span class="text-cyan-300">default</span> case is optional but recommended
-→ Can use <span class="text-cyan-300">String</span> (Java 7+), <span class="text-cyan-300">int</span>, <span class="text-cyan-300">char</span>, etc.
+→ Compares variable against multiple <span className="text-cyan-300">case</span> values
+→ Use <span className="text-cyan-300">break</span> to prevent fall-through
+→ <span className="text-cyan-300">default</span> case is optional but recommended
+→ Can use <span className="text-cyan-300">String</span> (Java 7+), <span className="text-cyan-300">int</span>, <span className="text-cyan-300">char</span>, etc.
 
-<span class="text-amber-300">Use when:</span> You have multiple values to compare against a single variable.`,
+<span className="text-amber-300">Use when:</span> You have multiple values to compare against a single variable.`,
             code: `public class SwitchStatement {
     public static void main(String[] args) {
         int day = 3;

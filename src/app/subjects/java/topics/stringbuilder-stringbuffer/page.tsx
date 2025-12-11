@@ -34,12 +34,12 @@ const content = {
       icon: <FiTool className="w-6 h-6" />,
       content: `Both classes provide the same API for string manipulation. The difference is thread safety.
 
-1. <span class="text-blue-400 font-semibold">StringBuilder (Fast):</span>
+1. <span className="text-blue-400 font-semibold">StringBuilder (Fast):</span>
    - Not thread-safe.
    - Use in single-threaded environments (most common).
-   - <span class="text-green-400">Preferred Choice.</span>
+   - <span className="text-green-400">Preferred Choice.</span>
 
-2. <span class="text-blue-400 font-semibold">StringBuffer (Safe):</span>
+2. <span className="text-blue-400 font-semibold">StringBuffer (Safe):</span>
    - Thread-safe (Synchronized).
    - Slower due to locking overhead.
    - Use only when multiple threads modify the same string.`,

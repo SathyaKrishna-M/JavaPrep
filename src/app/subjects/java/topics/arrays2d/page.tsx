@@ -10,19 +10,19 @@ const content = {
     {
       title: 'Introduction to 2D Arrays',
       icon: <FiGrid className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">2D arrays</span> are arrays of arrays, representing a <span class="text-cyan-300">matrix</span> or <span class="text-cyan-300">table</span> structure.
+      content: `<span className="text-blue-400 font-semibold">2D arrays</span> are arrays of arrays, representing a <span className="text-cyan-300">matrix</span> or <span className="text-cyan-300">table</span> structure.
 
 Key Concepts:
-→ Think of it as <span class="text-blue-400">rows</span> and <span class="text-blue-400">columns</span>
-→ First index is <span class="text-cyan-300">row</span>, second index is <span class="text-cyan-300">column</span>
-→ <span class="text-cyan-300">matrix[row][column]</span> to access elements
-→ <span class="text-cyan-300">matrix.length</span> gives number of rows
-→ <span class="text-cyan-300">matrix[i].length</span> gives columns in row i
+→ Think of it as <span className="text-blue-400">rows</span> and <span className="text-blue-400">columns</span>
+→ First index is <span className="text-cyan-300">row</span>, second index is <span className="text-cyan-300">column</span>
+→ <span className="text-cyan-300">matrix[row][column]</span> to access elements
+→ <span className="text-cyan-300">matrix.length</span> gives number of rows
+→ <span className="text-cyan-300">matrix[i].length</span> gives columns in row i
 
 Use Cases:
 → Matrices in mathematics
 → Grid-based games
-→ <span class="text-amber-300">Tables of data</span>`,
+→ <span className="text-amber-300">Tables of data</span>`,
       code: `public class TwoDArrayIntro {
     public static void main(String[] args) {
         // Declaration
@@ -43,14 +43,14 @@ Use Cases:
     {
       title: 'Accessing 2D Array Elements',
       icon: <FiTable className="w-6 h-6" />,
-      content: `Accessing elements in a 2D array using <span class="text-blue-400 font-semibold">row and column indices</span>.
+      content: `Accessing elements in a 2D array using <span className="text-blue-400 font-semibold">row and column indices</span>.
 
 Syntax:
-→ <span class="text-cyan-300">matrix[row][column]</span>
-→ First index: <span class="text-cyan-300">row number</span> (0 to rows-1)
-→ Second index: <span class="text-cyan-300">column number</span> (0 to columns-1)
+→ <span className="text-cyan-300">matrix[row][column]</span>
+→ First index: <span className="text-cyan-300">row number</span> (0 to rows-1)
+→ Second index: <span className="text-cyan-300">column number</span> (0 to columns-1)
 
-<span class="text-amber-300">Important:</span> Always check bounds for both row and column indices.`,
+<span className="text-amber-300">Important:</span> Always check bounds for both row and column indices.`,
       code: `public class Access2DArray {
     public static void main(String[] args) {
         int[][] matrix = {
@@ -73,15 +73,15 @@ Syntax:
     {
       title: 'Traversing 2D Arrays',
       icon: <FiLayers className="w-6 h-6" />,
-      content: `Iterating through all elements of a 2D array using <span class="text-blue-400 font-semibold">nested loops</span>.
+      content: `Iterating through all elements of a 2D array using <span className="text-blue-400 font-semibold">nested loops</span>.
 
 Methods:
-→ <span class="text-cyan-300">Traditional nested loops:</span> <span class="text-blue-400">for</span> (int i = 0; i < matrix.length; i++)
-→ <span class="text-cyan-300">Enhanced for loop:</span> <span class="text-blue-400">for</span> (int[] row : matrix)
+→ <span className="text-cyan-300">Traditional nested loops:</span> <span className="text-blue-400">for</span> (int i = 0; i < matrix.length; i++)
+→ <span className="text-cyan-300">Enhanced for loop:</span> <span className="text-blue-400">for</span> (int[] row : matrix)
 
 Pattern:
-→ <span class="text-blue-400">Outer loop:</span> iterate through rows
-→ <span class="text-blue-400">Inner loop:</span> iterate through columns in each row`,
+→ <span className="text-blue-400">Outer loop:</span> iterate through rows
+→ <span className="text-blue-400">Inner loop:</span> iterate through columns in each row`,
       code: `public class Traverse2D {
     public static void main(String[] args) {
         int[][] matrix = {
@@ -113,15 +113,15 @@ Pattern:
     {
       title: 'Matrix Operations',
       icon: <FiPlus className="w-6 h-6" />,
-      content: `Performing <span class="text-blue-400 font-semibold">operations</span> on 2D arrays like addition, subtraction, and multiplication.
+      content: `Performing <span className="text-blue-400 font-semibold">operations</span> on 2D arrays like addition, subtraction, and multiplication.
 
 Common Operations:
-→ <span class="text-cyan-300">Matrix Addition:</span> Add corresponding elements
-→ <span class="text-cyan-300">Matrix Subtraction:</span> Subtract corresponding elements
-→ <span class="text-cyan-300">Matrix Multiplication:</span> Dot product of rows and columns
-→ <span class="text-cyan-300">Transpose:</span> Swap rows and columns
+→ <span className="text-cyan-300">Matrix Addition:</span> Add corresponding elements
+→ <span className="text-cyan-300">Matrix Subtraction:</span> Subtract corresponding elements
+→ <span className="text-cyan-300">Matrix Multiplication:</span> Dot product of rows and columns
+→ <span className="text-cyan-300">Transpose:</span> Swap rows and columns
 
-<span class="text-amber-300">Important:</span> For addition/subtraction, matrices must have same dimensions.`,
+<span className="text-amber-300">Important:</span> For addition/subtraction, matrices must have same dimensions.`,
       code: `public class MatrixOperations {
     public static void main(String[] args) {
         int[][] a = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};

@@ -40,20 +40,20 @@ const content = {
       icon: <FiZap className="w-6 h-6" />,
       content: `Let's look at A = 5 (0101) and B = 3 (0011).
 
-1. <span class="text-blue-400 font-semibold">& (AND):</span> \`0101 & 0011 = 0001 (1)\`
+1. <span className="text-blue-400 font-semibold">& (AND):</span> \`0101 & 0011 = 0001 (1)\`
    - Only the last bit is 1 in both.
 
-2. <span class="text-blue-400 font-semibold">| (OR):</span> \`0101 | 0011 = 0111 (7)\`
+2. <span className="text-blue-400 font-semibold">| (OR):</span> \`0101 | 0011 = 0111 (7)\`
    - Any bit that is 1 results in 1.
 
-3. <span class="text-blue-400 font-semibold">^ (XOR):</span> \`0101 ^ 0011 = 0110 (6)\`
+3. <span className="text-blue-400 font-semibold">^ (XOR):</span> \`0101 ^ 0011 = 0110 (6)\`
    - Bits that are different become 1.
 
-4. <span class="text-blue-400 font-semibold">~ (NOT):</span> \`~0101 = 1010\`
+4. <span className="text-blue-400 font-semibold">~ (NOT):</span> \`~0101 = 1010\`
    - Flips every bit.
 
-5. <span class="text-blue-400 font-semibold"><< (Left Shift):</span> shifts bits to left (multiply by 2).
-6. <span class="text-blue-400 font-semibold">>> (Right Shift):</span> shifts bits to right (divide by 2).`,
+5. <span className="text-blue-400 font-semibold"><< (Left Shift):</span> shifts bits to left (multiply by 2).
+6. <span className="text-blue-400 font-semibold">>> (Right Shift):</span> shifts bits to right (divide by 2).`,
       code: `public class BitwiseHelp {
     public static void main(String[] args) {
         int a = 5; // 0101

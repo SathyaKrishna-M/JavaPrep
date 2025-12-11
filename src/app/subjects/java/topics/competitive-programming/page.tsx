@@ -9,19 +9,19 @@ const content = {
     {
       title: 'Competitive Programming Strategies',
       icon: <FiAward className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Competitive Programming</span> requires efficient problem-solving.
+      content: `<span className="text-blue-400 font-semibold">Competitive Programming</span> requires efficient problem-solving.
 
 Strategies:
-→ <span class="text-cyan-300">Read carefully:</span> Understand constraints
-→ <span class="text-cyan-300">Think algorithm:</span> Choose right approach
-→ <span class="text-cyan-300">Optimize:</span> Consider time/space complexity
-→ <span class="text-cyan-300">Test:</span> Check edge cases
+→ <span className="text-cyan-300">Read carefully:</span> Understand constraints
+→ <span className="text-cyan-300">Think algorithm:</span> Choose right approach
+→ <span className="text-cyan-300">Optimize:</span> Consider time/space complexity
+→ <span className="text-cyan-300">Test:</span> Check edge cases
 
 Common Patterns:
-→ <span class="text-amber-300">Two pointers</span>
-→ <span class="text-amber-300">Sliding window</span>
-→ <span class="text-amber-300">Prefix sum</span>
-→ <span class="text-amber-300">Greedy algorithms</span>`,
+→ <span className="text-amber-300">Two pointers</span>
+→ <span className="text-amber-300">Sliding window</span>
+→ <span className="text-amber-300">Prefix sum</span>
+→ <span className="text-amber-300">Greedy algorithms</span>`,
       code: `// Example: Find maximum subarray sum
 public class CompetitiveProgramming {
     public static int maxSubarraySum(int[] arr) {

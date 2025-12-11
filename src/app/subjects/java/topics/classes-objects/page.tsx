@@ -19,10 +19,10 @@ const content = {
           <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li>
-                <span className="text-yellow-400 font-semibold">The Class (Blueprint):</span> It's just a design on paper. It defines that a house <em>should</em> have walls, windows, and doors. It takes up no space in the real world (memory).
+                <span className="text-yellow-400 font-semibold">The Class (Blueprint):</span> It&apos;s just a design on paper. It defines that a house <em>should</em> have walls, windows, and doors. It takes up no space in the real world (memory).
               </li>
               <li>
-                <span className="text-yellow-400 font-semibold">The Object (House):</span> It's the physical construction based on the blueprint. You can build <span class="text-amber-300">multiple houses</span> (objects) from <span class="text-amber-300">one blueprint</span> (class). Each house takes up real space (heap memory).
+                <span className="text-yellow-400 font-semibold">The Object (House):</span> It&apos;s the physical construction based on the blueprint. You can build <span className="text-amber-300">multiple houses</span> (objects) from <span className="text-amber-300">one blueprint</span> (class). Each house takes up real space (heap memory).
               </li>
             </ul>
           </div>
@@ -35,9 +35,9 @@ const content = {
       content: `A class is a template that defines the state (fields) and behavior (methods) of an object.
 
 Structure:
-→ <span class="text-cyan-300">Fields (Variables):</span> What the object <em>knows</em> (e.g., color, size).
-→ <span class="text-cyan-300">Methods:</span> What the object <em>does</em> (e.g., open door, turn on lights).
-→ <span class="text-blue-400">Syntax:</span> \`class ClassName { ... }\``,
+→ <span className="text-cyan-300">Fields (Variables):</span> What the object <em>knows</em> (e.g., color, size).
+→ <span className="text-cyan-300">Methods:</span> What the object <em>does</em> (e.g., open door, turn on lights).
+→ <span className="text-blue-400">Syntax:</span> \`class ClassName { ... }\``,
       code: `public class Car {
     // Fields (State)
     String color;
@@ -53,13 +53,13 @@ Structure:
     {
       title: 'Creating Objects (Instantiation)',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `Creating an object is called <span class="text-blue-400 font-semibold">Instantiation</span>.
+      content: `Creating an object is called <span className="text-blue-400 font-semibold">Instantiation</span>.
 
 Mechanism:
-→ <span class="text-blue-400">new Keyword:</span> Forces Java to allocate memory in the Heap for the object.
-→ <span class="text-cyan-300">Reference Variable:</span> Holds the <em>address</em> of the object in memory.
-
-<span class="text-amber-300">Syntax:</span> \`ClassName refName = new ClassName();\``,
+→ <span className="text-blue-400">new Keyword:</span> Forces Java to allocate memory in the Heap for the object.
+→ <span className="text-cyan-300">Reference Variable:</span> Holds the <em>address</em> of the object in memory.
+ 
+<span className="text-amber-300">Syntax:</span> \`ClassName refName = new ClassName();\``,
       code: `public class Main {
     public static void main(String[] args) {
         // 'myCar' is a reference variable

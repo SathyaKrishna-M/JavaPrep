@@ -9,13 +9,13 @@ const content = {
     {
       title: 'Number Series',
       icon: <FiHash className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Number Series</span> problems find patterns in sequences.
+      content: `<span className="text-blue-400 font-semibold">Number Series</span> problems find patterns in sequences.
 
 Common Patterns:
-→ <span class="text-cyan-300">Arithmetic:</span> Add/subtract constant
-→ <span class="text-cyan-300">Geometric:</span> Multiply/divide constant
-→ <span class="text-cyan-300">Fibonacci:</span> Sum of previous two
-→ <span class="text-cyan-300">Prime:</span> Prime numbers sequence`,
+→ <span className="text-cyan-300">Arithmetic:</span> Add/subtract constant
+→ <span className="text-cyan-300">Geometric:</span> Multiply/divide constant
+→ <span className="text-cyan-300">Fibonacci:</span> Sum of previous two
+→ <span className="text-cyan-300">Prime:</span> Prime numbers sequence`,
       code: `public class NumberSeries {
     // Generate arithmetic series
     public static void arithmeticSeries(int start, int diff, int n) {
@@ -41,12 +41,12 @@ Common Patterns:
     {
       title: 'Prime Numbers',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Prime Numbers</span> are divisible only by 1 and itself.
+      content: `<span className="text-blue-400 font-semibold">Prime Numbers</span> are divisible only by 1 and itself.
 
 Algorithm:
-→ <span class="text-cyan-300">Check divisibility:</span> From 2 to sqrt(n)
-→ <span class="text-cyan-300">If divisible:</span> Not prime
-→ <span class="text-cyan-300">Otherwise:</span> Prime`,
+→ <span className="text-cyan-300">Check divisibility:</span> From 2 to sqrt(n)
+→ <span className="text-cyan-300">If divisible:</span> Not prime
+→ <span className="text-cyan-300">Otherwise:</span> Prime`,
       code: `public class PrimeNumbers {
     public static boolean isPrime(int n) {
         if (n <= 1) return false;

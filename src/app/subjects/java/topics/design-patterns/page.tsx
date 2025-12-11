@@ -9,17 +9,17 @@ const content = {
     {
       title: 'Common Design Patterns',
       icon: <FiLayers className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Design Patterns</span> are reusable solutions to common problems.
+      content: `<span className="text-blue-400 font-semibold">Design Patterns</span> are reusable solutions to common problems.
 
 Types:
-→ <span class="text-cyan-300">Creational:</span> Object creation (Factory, Singleton)
-→ <span class="text-cyan-300">Structural:</span> Object composition (Adapter, Decorator)
-→ <span class="text-cyan-300">Behavioral:</span> Object interaction (Strategy, Observer)
+→ <span className="text-cyan-300">Creational:</span> Object creation (Factory, Singleton)
+→ <span className="text-cyan-300">Structural:</span> Object composition (Adapter, Decorator)
+→ <span className="text-cyan-300">Behavioral:</span> Object interaction (Strategy, Observer)
 
 Singleton Pattern:
-→ <span class="text-amber-300">One instance:</span> Only one object exists
-→ <span class="text-amber-300">Private constructor:</span> Prevent instantiation
-→ <span class="text-amber-300">Static method:</span> Get instance`,
+→ <span className="text-amber-300">One instance:</span> Only one object exists
+→ <span className="text-amber-300">Private constructor:</span> Prevent instantiation
+→ <span className="text-amber-300">Static method:</span> Get instance`,
       code: `// Singleton Pattern
 class Singleton {
     private static Singleton instance;

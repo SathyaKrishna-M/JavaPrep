@@ -9,18 +9,18 @@ const content = {
     {
       title: 'Linear Search',
       icon: <FiSearch className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Linear Search</span> checks each element sequentially.
+      content: `<span className="text-blue-400 font-semibold">Linear Search</span> checks each element sequentially.
 
 Algorithm:
-→ <span class="text-cyan-300">Start:</span> From first element
-→ <span class="text-cyan-300">Compare:</span> Each element with target
-→ <span class="text-cyan-300">Found:</span> Return index
-→ <span class="text-cyan-300">Not found:</span> Return -1
+→ <span className="text-cyan-300">Start:</span> From first element
+→ <span className="text-cyan-300">Compare:</span> Each element with target
+→ <span className="text-cyan-300">Found:</span> Return index
+→ <span className="text-cyan-300">Not found:</span> Return -1
 
 Time Complexity:
-→ <span class="text-amber-300">Best:</span> O(1) - first element
-→ <span class="text-amber-300">Average:</span> O(n)
-→ <span class="text-amber-300">Worst:</span> O(n) - last element or not found
+→ <span className="text-amber-300">Best:</span> O(1) - first element
+→ <span className="text-amber-300">Average:</span> O(n)
+→ <span className="text-amber-300">Worst:</span> O(n) - last element or not found
 
 Space Complexity: O(1)`,
       code: `public class LinearSearch {
@@ -49,19 +49,19 @@ Space Complexity: O(1)`,
     {
       title: 'Binary Search',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Binary Search</span> works on sorted arrays by dividing search space.
+      content: `<span className="text-blue-400 font-semibold">Binary Search</span> works on sorted arrays by dividing search space.
 
 Algorithm:
-→ <span class="text-cyan-300">Requirement:</span> Array must be sorted
-→ <span class="text-cyan-300">Compare:</span> Target with middle element
-→ <span class="text-cyan-300">Left half:</span> If target < middle
-→ <span class="text-cyan-300">Right half:</span> If target > middle
-→ <span class="text-cyan-300">Repeat:</span> Until found or search space empty
+→ <span className="text-cyan-300">Requirement:</span> Array must be sorted
+→ <span className="text-cyan-300">Compare:</span> Target with middle element
+→ <span className="text-cyan-300">Left half:</span> If target < middle
+→ <span className="text-cyan-300">Right half:</span> If target > middle
+→ <span className="text-cyan-300">Repeat:</span> Until found or search space empty
 
 Time Complexity:
-→ <span class="text-amber-300">Best:</span> O(1) - middle element
-→ <span class="text-amber-300">Average:</span> O(log n)
-→ <span class="text-amber-300">Worst:</span> O(log n)
+→ <span className="text-amber-300">Best:</span> O(1) - middle element
+→ <span className="text-amber-300">Average:</span> O(log n)
+→ <span className="text-amber-300">Worst:</span> O(log n)
 
 Space Complexity: O(1)`,
       code: `public class BinarySearch {

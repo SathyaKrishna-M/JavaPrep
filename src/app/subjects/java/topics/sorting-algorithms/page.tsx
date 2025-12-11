@@ -9,17 +9,17 @@ const content = {
     {
       title: 'Bubble Sort',
       icon: <FiMove className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Bubble Sort</span> repeatedly swaps adjacent elements if in wrong order.
+      content: `<span className="text-blue-400 font-semibold">Bubble Sort</span> repeatedly swaps adjacent elements if in wrong order.
 
 Algorithm:
-→ <span class="text-cyan-300">Compare:</span> Adjacent elements
-→ <span class="text-cyan-300">Swap:</span> If out of order
-→ <span class="text-cyan-300">Repeat:</span> Until no swaps needed
+→ <span className="text-cyan-300">Compare:</span> Adjacent elements
+→ <span className="text-cyan-300">Swap:</span> If out of order
+→ <span className="text-cyan-300">Repeat:</span> Until no swaps needed
 
 Time Complexity:
-→ <span class="text-amber-300">Best:</span> O(n) - already sorted
-→ <span class="text-amber-300">Average:</span> O(n²)
-→ <span class="text-amber-300">Worst:</span> O(n²)
+→ <span className="text-amber-300">Best:</span> O(n) - already sorted
+→ <span className="text-amber-300">Average:</span> O(n²)
+→ <span className="text-amber-300">Worst:</span> O(n²)
 
 Space Complexity: O(1)`,
       code: `public class BubbleSort {
@@ -47,12 +47,12 @@ Space Complexity: O(1)`,
     {
       title: 'Selection Sort',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Selection Sort</span> finds minimum and places at beginning.
+      content: `<span className="text-blue-400 font-semibold">Selection Sort</span> finds minimum and places at beginning.
 
 Algorithm:
-→ <span class="text-cyan-300">Find minimum:</span> In unsorted portion
-→ <span class="text-cyan-300">Swap:</span> With first unsorted element
-→ <span class="text-cyan-300">Repeat:</span> For remaining elements
+→ <span className="text-cyan-300">Find minimum:</span> In unsorted portion
+→ <span className="text-cyan-300">Swap:</span> With first unsorted element
+→ <span className="text-cyan-300">Repeat:</span> For remaining elements
 
 Time Complexity: O(n²) for all cases
 Space Complexity: O(1)`,
@@ -83,16 +83,16 @@ Space Complexity: O(1)`,
     {
       title: 'Quick Sort',
       icon: <FiCode className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Quick Sort</span> uses divide and conquer with pivot.
+      content: `<span className="text-blue-400 font-semibold">Quick Sort</span> uses divide and conquer with pivot.
 
 Algorithm:
-→ <span class="text-cyan-300">Choose pivot:</span> Usually last element
-→ <span class="text-cyan-300">Partition:</span> Elements < pivot left, > pivot right
-→ <span class="text-cyan-300">Recurse:</span> Sort left and right partitions
+→ <span className="text-cyan-300">Choose pivot:</span> Usually last element
+→ <span className="text-cyan-300">Partition:</span> Elements < pivot left, > pivot right
+→ <span className="text-cyan-300">Recurse:</span> Sort left and right partitions
 
 Time Complexity:
-→ <span class="text-amber-300">Best/Average:</span> O(n log n)
-→ <span class="text-amber-300">Worst:</span> O(n²) - already sorted
+→ <span className="text-amber-300">Best/Average:</span> O(n log n)
+→ <span className="text-amber-300">Worst:</span> O(n²) - already sorted
 
 Space Complexity: O(log n)`,
       code: `public class QuickSort {

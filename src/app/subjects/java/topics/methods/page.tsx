@@ -35,15 +35,15 @@ const content = {
         {
             title: 'Anatomy of a Method',
             icon: <FiSettings className="w-6 h-6" />,
-            content: `A method definition tells the bot <span class="text-blue-400 font-semibold">what to do</span> and <span class="text-blue-400 font-semibold">how to do it</span>.
+            content: `A method definition tells the bot <span className="text-blue-400 font-semibold">what to do</span> and <span className="text-blue-400 font-semibold">how to do it</span>.
 
 Syntax:
 \`accessModifier returnType methodName(parameterList) { ... }\`
 
 Breakdown:
-→ <span class="text-cyan-300">void:</span> Returns nothing (just does work).
-→ <span class="text-cyan-300">int/String/etc.:</span> Returns a specific value.
-→ <span class="text-cyan-300">Parameters:</span> Variables you pass IN.`,
+→ <span className="text-cyan-300">void:</span> Returns nothing (just does work).
+→ <span className="text-cyan-300">int/String/etc.:</span> Returns a specific value.
+→ <span className="text-cyan-300">Parameters:</span> Variables you pass IN.`,
             code: `public class Calculator {
     
     // Method Definition
@@ -65,14 +65,14 @@ Breakdown:
             icon: <FiLayers className="w-6 h-6" />,
             content: `There are two types of bots:
 
-1. <span class="text-blue-400 font-semibold">Static Methods (Shared Bots):</span>
+1. <span className="text-blue-400 font-semibold">Static Methods (Shared Bots):</span>
    - Belong to the Class itself.
-   - <span class="text-amber-300">No object required</span> to call them.
+   - <span className="text-amber-300">No object required</span> to call them.
    - Example: \`Math.sqrt()\`, \`main()\`.
 
-2. <span class="text-blue-400 font-semibold">Instance Methods (Private Bots):</span>
+2. <span className="text-blue-400 font-semibold">Instance Methods (Private Bots):</span>
    - Belong to a specific Object.
-   - <span class="text-amber-300">Must create an object</span> (new) to call them.
+   - <span className="text-amber-300">Must create an object</span> (new) to call them.
    - Can access the object's private data (fields).`,
             code: `public class Example {
     static void sayHello() {

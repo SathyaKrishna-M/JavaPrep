@@ -22,7 +22,7 @@ const content = {
                 <span className="text-yellow-400 font-semibold">Outer Loop (Hours):</span> Moves slowly (0 to 23).
               </li>
               <li>
-                <span className="text-yellow-400 font-semibold">Inner Loop (Minutes):</span> Must complete 60 iterations (0 to 59) for <span class="text-amber-300">every single</span> iteration of the Hour loop.
+                <span className="text-yellow-400 font-semibold">Inner Loop (Minutes):</span> Must complete 60 iterations (0 to 59) for <span className="text-amber-300">every single</span> iteration of the Hour loop.
               </li>
               <li>
                 <span className="text-purple-400">Result:</span> The minute hand spins continuously while the hour hand ticks step-by-step.
@@ -35,14 +35,14 @@ const content = {
     {
       title: 'Basic Structure',
       icon: <FiLayers className="w-6 h-6" />,
-      content: `The <span class="text-blue-400 font-semibold">inner loop</span> completes all its iterations for each single iteration of the <span class="text-blue-400">outer loop</span>.
+      content: `The <span className="text-blue-400 font-semibold">inner loop</span> completes all its iterations for each single iteration of the <span className="text-blue-400">outer loop</span>.
 
 Common Uses:
-→ Working with <span class="text-cyan-300">2D arrays</span> (Rows & Columns)
+→ Working with <span className="text-cyan-300">2D arrays</span> (Rows & Columns)
 → Printing patterns (Stars, Pyramids)
 → Generating combinations
 
-<span class="text-amber-300">Key rule:</span> Does the inner loop depend on the outer loop index? (e.g., in a triangle pattern, yes; in a rectangle, no).`,
+<span className="text-amber-300">Key rule:</span> Does the inner loop depend on the outer loop index? (e.g., in a triangle pattern, yes; in a rectangle, no).`,
       code: `public class NestedLoopsIntro {
     public static void main(String[] args) {
         // Outer loop: rows
@@ -64,15 +64,15 @@ Common Uses:
       content: `Print patterns where the number of elements increases or decreases per row.
 
 Pattern:
-<span class="text-cyan-300">*
+<span className="text-cyan-300">*
 **
 ***
 ****</span>
 
 Key Points:
-→ <span class="text-blue-400">Outer loop (i)</span> controls the number of rows.
-→ <span class="text-blue-400">Inner loop (j)</span> runs <span class="text-cyan-300">i</span> times.
-→ <span class="text-amber-300">Dependency:</span> The limit of j depends on i.`,
+→ <span className="text-blue-400">Outer loop (i)</span> controls the number of rows.
+→ <span className="text-blue-400">Inner loop (j)</span> runs <span className="text-cyan-300">i</span> times.
+→ <span className="text-amber-300">Dependency:</span> The limit of j depends on i.`,
       code: `public class RightTriangle {
     public static void main(String[] args) {
         int n = 4;
@@ -88,17 +88,17 @@ Key Points:
     {
       title: 'Pattern Printing - Rectangle',
       icon: <FiBox className="w-6 h-6" />,
-      content: `Print <span class="text-blue-400 font-semibold">rectangular patterns</span> where each row has the same number of elements.
+      content: `Print <span className="text-blue-400 font-semibold">rectangular patterns</span> where each row has the same number of elements.
 
 Pattern:
-<span class="text-cyan-300">****
+<span className="text-cyan-300">****
 ****
 ****</span>
 
 Key Points:
 → Same number of columns in each row.
-→ Both loops have <span class="text-cyan-300">fixed limits</span>.
-→ <span class="text-amber-300">No Dependency:</span> Inner loop runs a fixed number of times regardless of outer loop.`,
+→ Both loops have <span className="text-cyan-300">fixed limits</span>.
+→ <span className="text-amber-300">No Dependency:</span> Inner loop runs a fixed number of times regardless of outer loop.`,
       code: `public class Rectangle {
     public static void main(String[] args) {
         int rows = 3, cols = 4;
@@ -117,10 +117,10 @@ Key Points:
       content: `Nested loops multiply the number of operations.
 
 Analysis:
-→ <span class="text-cyan-300">Two nested loops:</span> <span class="text-blue-400">O(n²)</span> (Quadratic)
-→ <span class="text-cyan-300">Three nested loops:</span> <span class="text-blue-400">O(n³)</span> (Cubic)
+→ <span className="text-cyan-300">Two nested loops:</span> <span className="text-blue-400">O(n²)</span> (Quadratic)
+→ <span className="text-cyan-300">Three nested loops:</span> <span className="text-blue-400">O(n³)</span> (Cubic)
 
-<span class="text-red-300">Calculate iterations:</span> Outer Limit × Inner Limit.
+<span className="text-red-300">Calculate iterations:</span> Outer Limit × Inner Limit.
 Example: 5 rows × 3 columns = 15 total iterations.`,
       code: `public class Complexity {
     public static void main(String[] args) {

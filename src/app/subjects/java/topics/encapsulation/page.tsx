@@ -81,7 +81,7 @@ const content = {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="bg-black/30 p-4 rounded-lg border border-gray-800">
                             <h5 className="text-green-400 font-mono mb-2">Setter (Validation)</h5>
-                            <p className="text-xs text-gray-400 mb-2">Teller ensures you don't deposit negative money.</p>
+                            <p className="text-xs text-gray-400 mb-2">Teller ensures you don&apos;t deposit negative money.</p>
                             <pre className="text-xs bg-gray-900 p-2 rounded text-gray-300">
                                 {`public void setBalance(double amount) {
     if(amount > 0) { // Validation
@@ -92,7 +92,7 @@ const content = {
                         </div>
                         <div className="bg-black/30 p-4 rounded-lg border border-gray-800">
                             <h5 className="text-blue-400 font-mono mb-2">Getter (View)</h5>
-                            <p className="text-xs text-gray-400 mb-2">Teller tells you your balance but doesn't let you grab the cash.</p>
+                            <p className="text-xs text-gray-400 mb-2">Teller tells you your balance but doesn&apos;t let you grab the cash.</p>
                             <pre className="text-xs bg-gray-900 p-2 rounded text-gray-300">
                                 {`public double getBalance() {
     return this.balance;

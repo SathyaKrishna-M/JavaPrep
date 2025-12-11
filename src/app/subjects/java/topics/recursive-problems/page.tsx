@@ -9,14 +9,14 @@ const content = {
     {
       title: 'Fibonacci Sequence',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Fibonacci</span> sequence: F(n) = F(n-1) + F(n-2).
+      content: `<span className="text-blue-400 font-semibold">Fibonacci</span> sequence: F(n) = F(n-1) + F(n-2).
 
 Base Cases:
-→ <span class="text-cyan-300">F(0) = 0</span>
-→ <span class="text-cyan-300">F(1) = 1</span>
+→ <span className="text-cyan-300">F(0) = 0</span>
+→ <span className="text-cyan-300">F(1) = 1</span>
 
 Recursive Case:
-→ <span class="text-cyan-300">F(n) = F(n-1) + F(n-2)</span>`,
+→ <span className="text-cyan-300">F(n) = F(n-1) + F(n-2)</span>`,
       code: `public class Fibonacci {
     public static int fibonacci(int n) {
         // Base cases
@@ -38,12 +38,12 @@ Recursive Case:
     {
       title: 'Tower of Hanoi',
       icon: <FiRepeat className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Tower of Hanoi</span> moves disks from source to destination.
+      content: `<span className="text-blue-400 font-semibold">Tower of Hanoi</span> moves disks from source to destination.
 
 Algorithm:
-→ <span class="text-cyan-300">Move n-1:</span> From source to auxiliary
-→ <span class="text-cyan-300">Move 1:</span> From source to destination
-→ <span class="text-cyan-300">Move n-1:</span> From auxiliary to destination`,
+→ <span className="text-cyan-300">Move n-1:</span> From source to auxiliary
+→ <span className="text-cyan-300">Move 1:</span> From source to destination
+→ <span className="text-cyan-300">Move n-1:</span> From auxiliary to destination`,
       code: `public class TowerOfHanoi {
     public static void hanoi(int n, char source, char dest, char aux) {
         if (n == 1) {

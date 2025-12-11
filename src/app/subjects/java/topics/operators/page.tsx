@@ -40,13 +40,13 @@ const content = {
             content: `Perform mathematical operations on numeric values.
 
 Operators:
-→ <span class="text-blue-400 font-semibold">+</span> (addition) - Adds two values
-→ <span class="text-blue-400 font-semibold">-</span> (subtraction) - Subtracts second value from first
-→ <span class="text-blue-400 font-semibold">*</span> (multiplication) - Multiplies two values
-→ <span class="text-blue-400 font-semibold">/</span> (division) - Divides first value by second
-→ <span class="text-blue-400 font-semibold">%</span> (modulus) - Returns remainder after division
+→ <span className="text-blue-400 font-semibold">+</span> (addition) - Adds two values
+→ <span className="text-blue-400 font-semibold">-</span> (subtraction) - Subtracts second value from first
+→ <span className="text-blue-400 font-semibold">*</span> (multiplication) - Multiplies two values
+→ <span className="text-blue-400 font-semibold">/</span> (division) - Divides first value by second
+→ <span className="text-blue-400 font-semibold">%</span> (modulus) - Returns remainder after division
 
-<span class="text-amber-300">Note:</span> These operators work with integers, floating-point numbers, and can be used in expressions.`,
+<span className="text-amber-300">Note:</span> These operators work with integers, floating-point numbers, and can be used in expressions.`,
             code: `public class ArithmeticOperators {
     public static void main(String[] args) {
         int a = 10, b = 3;
@@ -62,17 +62,17 @@ Operators:
         {
             title: 'Relational Operators',
             icon: <FiArrowRight className="w-6 h-6" />,
-            content: `Compare two values and return a <span class="text-cyan-300">boolean</span> result (<span class="text-cyan-300">true</span> or <span class="text-cyan-300">false</span>).
+            content: `Compare two values and return a <span className="text-cyan-300">boolean</span> result (<span className="text-cyan-300">true</span> or <span className="text-cyan-300">false</span>).
 
 Operators:
-→ <span class="text-blue-400 font-semibold">==</span> (equal to) - Checks if two values are equal
-→ <span class="text-blue-400 font-semibold">!=</span> (not equal to) - Checks if two values are not equal
-→ <span class="text-blue-400 font-semibold">&gt;</span> (greater than) - Checks if first value is greater
-→ <span class="text-blue-400 font-semibold">&lt;</span> (less than) - Checks if first value is smaller
-→ <span class="text-blue-400 font-semibold">&gt;=</span> (greater/equal) - Checks if first value is greater or equal
-→ <span class="text-blue-400 font-semibold">&lt;=</span> (less/equal) - Checks if first value is smaller or equal
+→ <span className="text-blue-400 font-semibold">==</span> (equal to) - Checks if two values are equal
+→ <span className="text-blue-400 font-semibold">!=</span> (not equal to) - Checks if two values are not equal
+→ <span className="text-blue-400 font-semibold">&gt;</span> (greater than) - Checks if first value is greater
+→ <span className="text-blue-400 font-semibold">&lt;</span> (less than) - Checks if first value is smaller
+→ <span className="text-blue-400 font-semibold">&gt;=</span> (greater/equal) - Checks if first value is greater or equal
+→ <span className="text-blue-400 font-semibold">&lt;=</span> (less/equal) - Checks if first value is smaller or equal
 
-<span class="text-amber-300">Used in:</span> Conditional statements and loops to make decisions.`,
+<span className="text-amber-300">Used in:</span> Conditional statements and loops to make decisions.`,
             code: `public class RelationalOperators {
     public static void main(String[] args) {
         int a = 10, b = 5;
@@ -86,14 +86,14 @@ Operators:
         {
             title: 'Logical Operators',
             icon: <FiCheckCircle className="w-6 h-6" />,
-            content: `Combine or negate <span class="text-cyan-300">boolean</span> expressions.
+            content: `Combine or negate <span className="text-cyan-300">boolean</span> expressions.
 
 Operators:
-→ <span class="text-blue-400 font-semibold">&&</span> (logical AND) - Returns <span class="text-cyan-300">true</span> only if **both** conditions are <span class="text-cyan-300">true</span>
-→ <span class="text-blue-400 font-semibold">||</span> (logical OR) - Returns <span class="text-cyan-300">true</span> if **at least one** condition is <span class="text-cyan-300">true</span>
-→ <span class="text-blue-400 font-semibold">!</span> (logical NOT) - Reverses the boolean value
+→ <span className="text-blue-400 font-semibold">&&</span> (logical AND) - Returns <span className="text-cyan-300">true</span> only if **both** conditions are <span className="text-cyan-300">true</span>
+→ <span className="text-blue-400 font-semibold">||</span> (logical OR) - Returns <span className="text-cyan-300">true</span> if **at least one** condition is <span className="text-cyan-300">true</span>
+→ <span className="text-blue-400 font-semibold">!</span> (logical NOT) - Reverses the boolean value
 
-<span class="text-amber-300">Essential for:</span> Complex conditional logic and decision-making in programs.`,
+<span className="text-amber-300">Essential for:</span> Complex conditional logic and decision-making in programs.`,
             code: `public class LogicalOperators {
     public static void main(String[] args) {
         boolean hasLicense = true;
@@ -116,14 +116,14 @@ Operators:
         {
             title: 'Ternary Operator',
             icon: <FiBook className="w-6 h-6" />,
-            content: `A shorthand for <span class="text-cyan-300">if-else</span> statements that returns a value.
+            content: `A shorthand for <span className="text-cyan-300">if-else</span> statements that returns a value.
 
 Syntax:
-→ <span class="text-blue-400 font-semibold">condition ? valueIfTrue : valueIfFalse</span>
+→ <span className="text-blue-400 font-semibold">condition ? valueIfTrue : valueIfFalse</span>
 
 The ternary operator evaluates the condition:
-→ If <span class="text-cyan-300">true</span>, returns <span class="text-cyan-300">valueIfTrue</span>
-→ If <span class="text-cyan-300">false</span>, returns <span class="text-cyan-300">valueIfFalse</span>`,
+→ If <span className="text-cyan-300">true</span>, returns <span className="text-cyan-300">valueIfTrue</span>
+→ If <span className="text-cyan-300">false</span>, returns <span className="text-cyan-300">valueIfFalse</span>`,
             code: `public class TernaryOperator {
     public static void main(String[] args) {
         int age = 18;
@@ -137,17 +137,17 @@ The ternary operator evaluates the condition:
             icon: <FiArrowUp className="w-6 h-6" />,
             content: `The order in which operators are evaluated. Like BODMAS in math.
 
-1. <span class="text-blue-400">()</span> Parentheses
-2. <span class="text-blue-400">++, --, !</span> (Unary)
-3. <span class="text-blue-400">*, /, %</span> (Multiplicative)
-4. <span class="text-blue-400">+, -</span> (Additive)
-5. <span class="text-blue-400">&gt;, &lt;, &gt;=, &lt;=</span> (Relational)
-6. <span class="text-blue-400">==, !=</span> (Equality)
-7. <span class="text-blue-400">&&</span> (Logical AND)
-8. <span class="text-blue-400">||</span> (Logical OR)
-9. <span class="text-blue-400">=</span> (Assignment)
+1. <span className="text-blue-400">()</span> Parentheses
+2. <span className="text-blue-400">++, --, !</span> (Unary)
+3. <span className="text-blue-400">*, /, %</span> (Multiplicative)
+4. <span className="text-blue-400">+, -</span> (Additive)
+5. <span className="text-blue-400">&gt;, &lt;, &gt;=, &lt;=</span> (Relational)
+6. <span className="text-blue-400">==, !=</span> (Equality)
+7. <span className="text-blue-400">&&</span> (Logical AND)
+8. <span className="text-blue-400">||</span> (Logical OR)
+9. <span className="text-blue-400">=</span> (Assignment)
 
-<span class="text-amber-300">Tip:</span> When in doubt, use parentheses to ensure correct order!`,
+<span className="text-amber-300">Tip:</span> When in doubt, use parentheses to ensure correct order!`,
         }
     ] as ExplanationSection[],
     exampleProblems: [

@@ -22,7 +22,7 @@ const content = {
                 <span className="text-yellow-400 font-semibold">Map out logic:</span> See the path of execution clearly.
               </li>
               <li>
-                <span className="text-yellow-400 font-semibold">Catch errors early:</span> Find "dead ends" or infinite loops before writing a single line of code.
+                <span className="text-yellow-400 font-semibold">Catch errors early:</span> Find &quot;dead ends&quot; or infinite loops before writing a single line of code.
               </li>
               <li>
                 <span className="text-yellow-400 font-semibold">Communicate:</span> Explain your algorithm to others easily.
@@ -38,11 +38,11 @@ const content = {
       content: `We use specific shapes to represent different actions.
 
 Shapes:
-→ <span class="text-cyan-300">Oval (Start/Stop):</span> Represents the beginning and end of the program.
-→ <span class="text-cyan-300">Parallelogram (Input/Output):</span> Getting data (Scanner) or printing results (System.out).
-→ <span class="text-cyan-300">Rectangle (Process):</span> Calculations, variable assignments (e.g., sum = a + b).
-→ <span class="text-cyan-300">Diamond (Decision):</span> Yes/No questions (if-else, loops). Splits the path.
-→ <span class="text-cyan-300">Arrows:</span> Show the direction of flow.`,
+→ <span className="text-cyan-300">Oval (Start/Stop):</span> Represents the beginning and end of the program.
+→ <span className="text-cyan-300">Parallelogram (Input/Output):</span> Getting data (Scanner) or printing results (System.out).
+→ <span className="text-cyan-300">Rectangle (Process):</span> Calculations, variable assignments (e.g., sum = a + b).
+→ <span className="text-cyan-300">Diamond (Decision):</span> Yes/No questions (if-else, loops). Splits the path.
+→ <span className="text-cyan-300">Arrows:</span> Show the direction of flow.`,
       code: `// Symbol Mapping Example:
 // Oval: Start
 // Parallelogram: Input x
@@ -57,9 +57,9 @@ Shapes:
       icon: <FiCornerDownRight className="w-6 h-6" />,
       content: `How to represent basic logic:
 
-1. <span class="text-blue-400">Sequence:</span> Arrows connect shapes in a straight line (Step A → Step B).
-2. <span class="text-blue-400">Selection (If-Else):</span> A Diamond splits into two paths (True/False) which eventually merge back.
-3. <span class="text-blue-400">Iteration (Loops):</span> An arrow from the end of a block points BACK to a previous Decision Diamond (creating a cycle).`,
+1. <span className="text-blue-400">Sequence:</span> Arrows connect shapes in a straight line (Step A → Step B).
+2. <span className="text-blue-400">Selection (If-Else):</span> A Diamond splits into two paths (True/False) which eventually merge back.
+3. <span className="text-blue-400">Iteration (Loops):</span> An arrow from the end of a block points BACK to a previous Decision Diamond (creating a cycle).`,
       code: `// Loop Flowchart Logic:
 // 1. Initialize i = 0 (Rectangle)
 // 2. Is i < 5? (Diamond)

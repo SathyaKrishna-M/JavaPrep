@@ -14,7 +14,7 @@ const content = {
                 <div className="space-y-4">
                     <p>
                         Solving a programming problem is like <span className="text-cyan-400 font-bold">cooking a meal</span>.
-                        You don't just throw everything in a pot and hope for the best!
+                        You don&apos;t just throw everything in a pot and hope for the best!
                     </p>
                     <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
@@ -40,10 +40,10 @@ const content = {
             icon: <FiTarget className="w-6 h-6" />,
             content: `Before coding, ask these questions:
 
-→ <span class="text-amber-300">Input:</span> What is the data? (Integer, String, Array?)
-→ <span class="text-amber-300">Output:</span> What is the result? (Print to screen, return a value?)
-→ <span class="text-amber-300">Constraints:</span> Are there limits? (Only positive numbers? Max value?)
-→ <span class="text-amber-300">Edge Cases:</span> What about 0? Negative numbers? Null?`,
+→ <span className="text-amber-300">Input:</span> What is the data? (Integer, String, Array?)
+→ <span className="text-amber-300">Output:</span> What is the result? (Print to screen, return a value?)
+→ <span className="text-amber-300">Constraints:</span> Are there limits? (Only positive numbers? Max value?)
+→ <span className="text-amber-300">Edge Cases:</span> What about 0? Negative numbers? Null?`,
             code: `// Problem: Find the maximum of three numbers.
 // Input: 3 integers (a, b, c) -> 5, 10, 3
 // Output: 1 integer (max) -> 10
@@ -52,7 +52,7 @@ const content = {
         {
             title: 'Step 2: Plan (Algorithm)',
             icon: <FiLayers className="w-6 h-6" />,
-            content: `Create a logical path. This can be <span class="text-blue-400 font-semibold">Pseudocode</span> (plain English steps) or a <span class="text-blue-400 font-semibold">Flowchart</span>.
+            content: `Create a logical path. This can be <span className="text-blue-400 font-semibold">Pseudocode</span> (plain English steps) or a <span className="text-blue-400 font-semibold">Flowchart</span>.
 
 Example Plan:
 1. Compare A and B. Let's say Max is the larger one.
@@ -82,12 +82,12 @@ Example Plan:
             icon: <FiAlertCircle className="w-6 h-6" />,
             content: `Verify your solution.
       
-→ <span class="text-cyan-300">Dry Run:</span> Manually trace the code with a value (e.g., a=5, b=10, c=3).
-→ <span class="text-cyan-300">Test Cases:</span>
+→ <span className="text-cyan-300">Dry Run:</span> Manually trace the code with a value (e.g., a=5, b=10, c=3).
+→ <span className="text-cyan-300">Test Cases:</span>
   - Normal: 1, 2, 3
   - Edge: 0, 0, 0
   - Negative: -1, -5, -2
-→ <span class="text-cyan-300">Debug:</span> If output is wrong, check logic flow, not just syntax.`,
+→ <span className="text-cyan-300">Debug:</span> If output is wrong, check logic flow, not just syntax.`,
         }
     ] as ExplanationSection[],
     exampleProblems: [
@@ -103,7 +103,7 @@ Example Plan:
                     step: '2. Plan',
                     explanation: (
                         <div className="font-mono text-sm">
-              Loop while number > 0:<br />
+                            Loop while number &gt; 0:<br />
                             &nbsp;&nbsp;1. Extract last digit (num % 10)<br />
                             &nbsp;&nbsp;2. Add to sum<br />
                             &nbsp;&nbsp;3. Remove last digit (num / 10)

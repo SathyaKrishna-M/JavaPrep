@@ -85,7 +85,7 @@ public class StreamOps {
     {
       title: 'Parallel Streams',
       icon: <FiCopy className="w-6 h-6" />,
-      content: '<p class="text-gray-300">Use <code>parallelStream()</code> to split work across multiple CPU cores. Great for huge datasets, but overhead might slow down small tasks.</p>',
+      content: '<p className="text-gray-300">Use <code>parallelStream()</code> to split work across multiple CPU cores. Great for huge datasets, but overhead might slow down small tasks.</p>',
       code: `List<Integer> bigList = Arrays.asList(1, 2, 3, 4, 5);
 
 bigList.parallelStream().forEach(n -> {
@@ -136,7 +136,7 @@ public class SumSquares {
   practiceQuestions: [
     {
       question: 'Can you reuse a Stream?',
-      solution: 'No! Once a terminal operation is called, the stream is "closed". You must create a new stream from the source to process it again.',
+      solution: 'No! Once a terminal operation is called, the stream is &quot;closed&quot;. You must create a new stream from the source to process it again.',
       solutionCode: `Stream<String> s = list.stream();
 s.forEach(System.out::println);
 // s.count(); // EXCEPTION: Stream has already been operated upon or closed.`

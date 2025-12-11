@@ -13,18 +13,18 @@ const content = {
                 <div className="space-y-4">
                     <p>
                         <span className="text-blue-400 font-semibold">Modular Programming</span> is like organizing a massive library.
-                        You don't pile all books in one room. You split them into <strong>Sections</strong> (Packages).
+                        You don&apos;t pile all books in one room. You split them into <strong>Sections</strong> (Packages).
                     </p>
                     <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
                             <li>
-                                <span className="text-yellow-400 font-semibold">Packages:</span> Like "Science", "Fiction", "History". In Java, these are folders grouping related classes.
+                                <span className="text-yellow-400 font-semibold">Packages:</span> Like &quot;Science&quot;, &quot;Fiction&quot;, &quot;History&quot;. In Java, these are folders grouping related classes.
                             </li>
                             <li>
                                 <span className="text-yellow-400 font-semibold">Classes:</span> The Books themselves.
                             </li>
                             <li>
-                                <span className="text-blue-400 font-semibold">Access:</span> Some sections are "Staff Only" (private/default), others are "Public".
+                                <span className="text-blue-400 font-semibold">Access:</span> Some sections are &quot;Staff Only&quot; (private/default), others are &quot;Public&quot;.
                             </li>
                         </ul>
                     </div>

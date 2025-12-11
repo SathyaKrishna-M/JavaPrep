@@ -21,7 +21,7 @@ const content = {
                                 <span className="text-yellow-400 font-semibold">Final Variable:</span> Value cannot be changed (Constant). Like <code>PI = 3.14</code>.
                             </li>
                             <li>
-                                <span className="text-yellow-400 font-semibold">Final Method:</span> Cannot be overridden by child classes. (Parent's word is law).
+                                <span className="text-yellow-400 font-semibold">Final Method:</span> Cannot be overridden by child classes. (Parent&apos;s word is law).
                             </li>
                             <li>
                                 <span className="text-yellow-400 font-semibold">Final Class:</span> Cannot be inherited (Sterile). No children allowed.
@@ -109,7 +109,7 @@ public class Main {
     practiceQuestions: [
         {
             question: 'Can a constructor be final?',
-            solution: 'No. Constructors are specialized methods for object creation and are not inherited, so "overriding" doesn\'t apply to them anyway.',
+            solution: 'No. Constructors are specialized methods for object creation and are not inherited, so &quot;overriding&quot; doesn&apos;t apply to them anyway.',
             solutionCode: `// ERROR:
 /*
 class Test {

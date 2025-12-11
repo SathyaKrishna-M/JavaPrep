@@ -19,13 +19,13 @@ const content = {
           <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li>
-                <span className="text-yellow-400 font-semibold">The Job:</span> When a car (object) rolls off the line, it shouldn't be empty. It needs an engine, wheels, and paint.
+                <span className="text-yellow-400 font-semibold">The Job:</span> When a car (object) rolls off the line, it shouldn&apos;t be empty. It needs an engine, wheels, and paint.
               </li>
               <li>
-                <span className="text-yellow-400 font-semibold">Automatic:</span> The factory (Constructor) runs <span class="text-amber-300">automatically</span> as soon as you say \`new Car()\`.
+                <span className="text-yellow-400 font-semibold">Automatic:</span> The factory (Constructor) runs <span className="text-amber-300">automatically</span> as soon as you say \`new Car()\`.
               </li>
               <li>
-                <span className="text-yellow-400 font-semibold">No Return:</span> It doesn't return a value; it returns the object itself (implicitly).
+                <span className="text-yellow-400 font-semibold">No Return:</span> It doesn&apos;t return a value; it returns the object itself (implicitly).
               </li>
             </ul>
           </div>
@@ -35,12 +35,12 @@ const content = {
     {
       title: 'Types of Constructors',
       icon: <FiBox className="w-6 h-6" />,
-      content: `1. <span class="text-blue-400 font-semibold">Default Constructor:</span>
+      content: `1. <span className="text-blue-400 font-semibold">Default Constructor:</span>
    - Takes no parameters.
    - Sets standard values (e.g., all cars are White by default).
    - If you don't write <em>any</em> constructor, Java gives you an empty one for free.
 
-2. <span class="text-blue-400 font-semibold">Parameterized Constructor:</span>
+2. <span className="text-blue-400 font-semibold">Parameterized Constructor:</span>
    - Takes arguments.
    - Allows custom options (e.g., Red car with Sunroof).`,
       code: `public class Car {
@@ -65,9 +65,9 @@ const content = {
     {
       title: 'The `this` Keyword',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">this</span> refers to the <span class="text-cyan-300">current object</span> calling the method.
+      content: `<span className="text-blue-400 font-semibold">this</span> refers to the <span className="text-cyan-300">current object</span> calling the method.
       
-Common Problem: <span class="text-red-300">Shadowing</span>.
+Common Problem: <span className="text-red-300">Shadowing</span>.
 When a parameter name matches a field name, Java is confused. \`name = name\` does nothing useful!
 
 Solution:
@@ -188,8 +188,8 @@ Solution:
     }
 }`,
   dryRunSteps: [
-    { line: 3, vars: { 'Parameter name': '"Alice"' }, output: '', description: 'Constructor called with "Alice"' },
-    { line: 4, vars: { 'this.name': '"Alice"', 'Parameter name': '"Alice"' }, output: '', description: 'this.name (Field) gets value from Parameter name.' },
+    { line: 3, vars: { 'Parameter name': '&quot;Alice&quot;' }, output: '', description: 'Constructor called with &quot;Alice&quot;' },
+    { line: 4, vars: { 'this.name': '&quot;Alice&quot;', 'Parameter name': '&quot;Alice&quot;' }, output: '', description: 'this.name (Field) gets value from Parameter name.' },
     { line: 7, vars: { p1: 'ObjRef' }, output: '', description: 'Object created and assigned to p1.' },
   ] as DryRunStep[]
 }

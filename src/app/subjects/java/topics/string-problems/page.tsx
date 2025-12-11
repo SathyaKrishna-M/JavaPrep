@@ -9,12 +9,12 @@ const content = {
     {
       title: 'Palindrome Check',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Palindrome</span> reads same forwards and backwards.
+      content: `<span className="text-blue-400 font-semibold">Palindrome</span> reads same forwards and backwards.
 
 Algorithm:
-→ <span class="text-cyan-300">Compare:</span> Characters from start and end
-→ <span class="text-cyan-300">Two pointers:</span> Move towards center
-→ <span class="text-cyan-300">Check:</span> All characters match
+→ <span className="text-cyan-300">Compare:</span> Characters from start and end
+→ <span className="text-cyan-300">Two pointers:</span> Move towards center
+→ <span className="text-cyan-300">Check:</span> All characters match
 
 Time Complexity: O(n)
 Space Complexity: O(1)`,
@@ -42,12 +42,12 @@ Space Complexity: O(1)`,
     {
       title: 'Anagram Check',
       icon: <FiCode className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Anagram</span> has same characters in different order.
+      content: `<span className="text-blue-400 font-semibold">Anagram</span> has same characters in different order.
 
 Algorithm:
-→ <span class="text-cyan-300">Count frequency:</span> Count each character
-→ <span class="text-cyan-300">Compare:</span> Frequencies must match
-→ <span class="text-cyan-300">Alternative:</span> Sort and compare
+→ <span className="text-cyan-300">Count frequency:</span> Count each character
+→ <span className="text-cyan-300">Compare:</span> Frequencies must match
+→ <span className="text-cyan-300">Alternative:</span> Sort and compare
 
 Time Complexity: O(n)
 Space Complexity: O(1)`,

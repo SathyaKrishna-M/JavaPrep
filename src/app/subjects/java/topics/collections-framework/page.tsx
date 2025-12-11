@@ -58,7 +58,7 @@ const content = {
               <h5 className="text-purple-400 font-mono mb-2">Map: HashMap vs TreeMap</h5>
               <ul className="list-disc list-inside text-xs text-gray-400 space-y-1">
                 <li><b>HashMap:</b> Fast lookup (O(1)). Unordered keys.</li>
-                <li><b>TreeMap:</b> Sorted keys. Great for "Rangemap" operations.</li>
+                <li><b>TreeMap:</b> Sorted keys. Great for &quot;Rangemap&quot; operations.</li>
               </ul>
             </div>
           </div>
@@ -98,7 +98,7 @@ public class Main {
     {
       title: 'Iterating Collections',
       icon: <FiList className="w-6 h-6" />,
-      content: '<p class="text-gray-300">You can loop through collections using the enhanced for-loop or an Iterator.</p>',
+      content: '<p className="text-gray-300">You can loop through collections using the enhanced for-loop or an Iterator.</p>',
       code: `List<String> list = Arrays.asList("A", "B", "C");
 
 // 1. Enhanced For-Loop (Read only)
@@ -118,7 +118,7 @@ while(it.hasNext()) {
     {
       title: 'Utility Class: Collections',
       icon: <FiCheckSquare className="w-6 h-6" />,
-      content: '<p class="text-gray-300">The <code>Collections</code> class (plural) contains static helper methods.</p>',
+      content: '<p className="text-gray-300">The <code>Collections</code> class (plural) contains static helper methods.</p>',
       code: `List<Integer> nums = new ArrayList<>(Arrays.asList(3, 1, 2));
 
 Collections.sort(nums);      // [1, 2, 3]

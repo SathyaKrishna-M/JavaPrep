@@ -78,15 +78,15 @@ const content = {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="bg-gray-800/50 p-3 rounded">
             <h5 className="text-blue-400 font-bold">try</h5>
-            <p className="text-xs text-gray-400">The "Risk Zone". Code that might throw an error goes here.</p>
+            <p className="text-xs text-gray-400">The &quot;Risk Zone&quot;. Code that might throw an error goes here.</p>
           </div>
           <div className="bg-gray-800/50 p-3 rounded">
             <h5 className="text-green-400 font-bold">catch</h5>
-            <p className="text-xs text-gray-400">The "Handler". Catches specific exceptions thrown in the try block.</p>
+            <p className="text-xs text-gray-400">The &quot;Handler&quot;. Catches specific exceptions thrown in the try block.</p>
           </div>
           <div className="bg-gray-800/50 p-3 rounded">
             <h5 className="text-purple-400 font-bold">finally</h5>
-            <p className="text-xs text-gray-400">The "Cleanup Crew". Executes ALWAYS, whether an exception occurred or not.</p>
+            <p className="text-xs text-gray-400">The &quot;Cleanup Crew&quot;. Executes ALWAYS, whether an exception occurred or not.</p>
           </div>
         </div>
       ),
@@ -109,7 +109,7 @@ const content = {
     {
       title: 'throw vs throws',
       icon: <FiRepeat className="w-6 h-6" />,
-      content: '<p class="text-gray-300"><b>throw:</b> Used <i>inside</i> a method to explicitly throw an exception object.<br/><b>throws:</b> Used in the <i>method signature</i> to declare that this method <i>might</i> throw an exception, forcing the caller to handle it.</p>',
+      content: '<p className="text-gray-300"><b>throw:</b> Used <i>inside</i> a method to explicitly throw an exception object.<br/><b>throws:</b> Used in the <i>method signature</i> to declare that this method <i>might</i> throw an exception, forcing the caller to handle it.</p>',
       code: `// 'throws' warns the caller
 static void checkAge(int age) throws ArithmeticException {
     if (age < 18) {
@@ -142,7 +142,7 @@ public static void main(String[] args) {
         },
         {
           step: '2. Generic Catch',
-          explanation: 'Catch `Exception` at the end to handle any other unforeseen errors. This is the "catch-all" bucket.'
+          explanation: 'Catch `Exception` at the end to handle any other unforeseen errors. This is the &quot;catch-all&quot; bucket.'
         }
       ],
       code: `public class MultipleCatch {
@@ -169,7 +169,7 @@ public static void main(String[] args) {
   practiceQuestions: [
     {
       question: 'What happens if you put catch(Exception e) before catch(ArithmeticException e)?',
-      solution: 'Compile-time error! "Unreachable code". Child exceptions must be caught before Parent exceptions. Since Exception catches everything, the specialized block underneath would never be reached.',
+      solution: 'Compile-time error! &quot;Unreachable code&quot;. Child exceptions must be caught before Parent exceptions. Since Exception catches everything, the specialized block underneath would never be reached.',
       solutionCode: `// ERROR: Unreachable code
 /*
 try {

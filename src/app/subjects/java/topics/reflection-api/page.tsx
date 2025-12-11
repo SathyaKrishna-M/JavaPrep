@@ -9,18 +9,18 @@ const content = {
     {
       title: 'Introduction to Reflection',
       icon: <FiSearch className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Reflection API</span> inspects classes, methods, fields at runtime.
+      content: `<span className="text-blue-400 font-semibold">Reflection API</span> inspects classes, methods, fields at runtime.
 
 Capabilities:
-→ <span class="text-cyan-300">Inspect classes:</span> Get class information
-→ <span class="text-cyan-300">Access fields:</span> Get/set field values
-→ <span class="text-cyan-300">Invoke methods:</span> Call methods dynamically
-→ <span class="text-cyan-300">Create objects:</span> Instantiate classes dynamically
+→ <span className="text-cyan-300">Inspect classes:</span> Get class information
+→ <span className="text-cyan-300">Access fields:</span> Get/set field values
+→ <span className="text-cyan-300">Invoke methods:</span> Call methods dynamically
+→ <span className="text-cyan-300">Create objects:</span> Instantiate classes dynamically
 
 Use Cases:
-→ <span class="text-amber-300">Frameworks:</span> Spring, Hibernate
-→ <span class="text-amber-300">Testing:</span> JUnit
-→ <span class="text-amber-300">Debugging:</span> Inspect objects`,
+→ <span className="text-amber-300">Frameworks:</span> Spring, Hibernate
+→ <span className="text-amber-300">Testing:</span> JUnit
+→ <span className="text-amber-300">Debugging:</span> Inspect objects`,
       code: `import java.lang.reflect.*;
 
 class Student {

@@ -19,7 +19,7 @@ const content = {
           <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li>
-                <span className="text-yellow-400 font-semibold">See the invisible:</span> Code runs fast. Dry runs freeze time so you can see <span class="text-amber-300">every single change</span>.
+                <span className="text-yellow-400 font-semibold">See the invisible:</span> Code runs fast. Dry runs freeze time so you can see <span className="text-amber-300">every single change</span>.
               </li>
               <li>
                 <span className="text-yellow-400 font-semibold">Find the Bug:</span> Did a loop run one too many times? Did a variable not update? A dry run catches this.
@@ -35,13 +35,13 @@ const content = {
     {
       title: 'How to Trace Flow',
       icon: <FiList className="w-6 h-6" />,
-      content: `Use a <span class="text-blue-400 font-semibold">Trace Table</span> to track execution.
+      content: `Use a <span className="text-blue-400 font-semibold">Trace Table</span> to track execution.
 
 Columns:
-→ <span class="text-cyan-300">Line #:</span> The number of the line being executed.
-→ <span class="text-cyan-300">Variables:</span> One column for each variable (x, y, i, sum).
-→ <span class="text-cyan-300">Output:</span> What is printed to the console?
-→ <span class="text-cyan-300">Comments:</span> Notes on logic (True/False checks).`,
+→ <span className="text-cyan-300">Line #:</span> The number of the line being executed.
+→ <span className="text-cyan-300">Variables:</span> One column for each variable (x, y, i, sum).
+→ <span className="text-cyan-300">Output:</span> What is printed to the console?
+→ <span className="text-cyan-300">Comments:</span> Notes on logic (True/False checks).`,
       code: `// Example Code:
 // 1. int x = 5;
 // 2. int y = 2;
@@ -61,8 +61,8 @@ Columns:
       content: `Loops are the most common place for bugs (Off-by-one errors). Tracing them requires patience.
 
 Key Strategy:
-→ Update the loop variable <span class="text-amber-300">row by row</span>.
-→ Check the condition <span class="text-amber-300">every iteration</span>.
+→ Update the loop variable <span className="text-amber-300">row by row</span>.
+→ Check the condition <span className="text-amber-300">every iteration</span>.
 → Mark when the loop exits.`,
       code: `public class LoopTrace {
     public static void main(String[] args) {

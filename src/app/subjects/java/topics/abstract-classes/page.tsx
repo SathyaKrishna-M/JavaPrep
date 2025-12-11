@@ -4,22 +4,22 @@ import TopicPage, { ExplanationSection, PracticeQuestion } from '@/components/To
 import { FiFile, FiTarget } from 'react-icons/fi'
 
 const content = {
-  title: 'Abstract Classes',
-  explanationSections: [
-    {
-      title: 'Introduction to Abstract Classes',
-      icon: <FiFile className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Abstract Class</span> cannot be instantiated, must be extended.
+    title: 'Abstract Classes',
+    explanationSections: [
+        {
+            title: 'Introduction to Abstract Classes',
+            icon: <FiFile className="w-6 h-6" />,
+            content: `<span className="text-blue-400 font-semibold">Abstract Class</span> cannot be instantiated, must be extended.
 
 Features:
-→ <span class="text-cyan-300">Abstract methods:</span> No implementation, must override
-→ <span class="text-cyan-300">Concrete methods:</span> Can have implementation
-→ <span class="text-cyan-300">Partial abstraction:</span> Mix of abstract and concrete
-→ <span class="text-cyan-300">Cannot instantiate:</span> Must use child class
+→ <span className="text-cyan-300">Abstract methods:</span> No implementation, must override
+→ <span className="text-cyan-300">Concrete methods:</span> Can have implementation
+→ <span className="text-cyan-300">Partial abstraction:</span> Mix of abstract and concrete
+→ <span className="text-cyan-300">Cannot instantiate:</span> Must use child class
 
 Syntax:
-→ <span class="text-blue-400">abstract class ClassName { ... }</span>`,
-      code: `abstract class Shape {
+→ <span className="text-blue-400">abstract class ClassName { ... }</span>`,
+            code: `abstract class Shape {
     abstract double area();  // Abstract method
     
     void display() {  // Concrete method
@@ -46,9 +46,9 @@ public class AbstractClassDemo {
         s.display();
     }
 }`,
-    },
-  ],
-  exampleCode: `abstract class Shape {
+        },
+    ],
+    exampleCode: `abstract class Shape {
     abstract double area();  // Abstract method
     
     void display() {  // Concrete method
@@ -90,11 +90,11 @@ public class AbstractClassDemo {
         s2.display();  // Area: 153.93804002589985
     }
 }`,
-  practiceQuestions: [
-    {
-      question: 'Create an abstract class Animal with abstract method makeSound(). Create Dog class extending it.',
-      solution: 'Define abstract class with abstract method, implement in subclass.',
-      solutionCode: `abstract class Animal {
+    practiceQuestions: [
+        {
+            question: 'Create an abstract class Animal with abstract method makeSound(). Create Dog class extending it.',
+            solution: 'Define abstract class with abstract method, implement in subclass.',
+            solutionCode: `abstract class Animal {
     abstract void makeSound();
 }
 
@@ -110,11 +110,11 @@ public class AbstractExample {
         a.makeSound();
     }
 }`,
-    },
-  ],
+        },
+    ],
 }
 
 export default function AbstractClassesPage() {
-  return <TopicPage content={content} />
+    return <TopicPage content={content} />
 }
 

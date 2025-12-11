@@ -1,7 +1,7 @@
 'use client'
 
 import DMTopicPage, { ExplanationSection, PracticeQuestion, ExampleProblem } from '@/components/DMTopicPage'
-import { DryRunStep } from '@/components/DryRunVisualizer'
+
 import { FiSearch, FiCheckCircle, FiShield, FiFilter } from 'react-icons/fi'
 
 const content = {
@@ -19,13 +19,13 @@ const content = {
           <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li>
-                <span className="text-yellow-400 font-semibold">Exact Match:</span> "Apple" matches only "Apple".
+                <span className="text-yellow-400 font-semibold">Exact Match:</span> &quot;Apple&quot; matches only &quot;Apple&quot;.
               </li>
               <li>
-                <span className="text-yellow-400 font-semibold">Pattern Match:</span> "\d{3}" matches ANY 3 digits (123, 999, 007).
+                <span className="text-yellow-400 font-semibold">Pattern Match:</span> &quot;\d&#123;3&#125;&quot; matches ANY 3 digits (123, 999, 007).
               </li>
               <li>
-                <span className="text-yellow-400 font-semibold">Wildcards:</span> "C.t" matches Cat, Cut, Cot, etc.
+                <span className="text-yellow-400 font-semibold">Wildcards:</span> &quot;C.t&quot; matches Cat, Cut, Cot, etc.
               </li>
             </ul>
           </div>
@@ -37,19 +37,19 @@ const content = {
       icon: <FiFilter className="w-6 h-6" />,
       content: `Basic building blocks of Regex:
 
-1. <span class="text-blue-400 font-semibold">Quantifiers:</span>
+1. <span className="text-blue-400 font-semibold">Quantifiers:</span>
    - \`*\`: 0 or more
    - \`+\`: 1 or more
    - \`?\`: 0 or 1
    - \`{n}\`: Exactly n times
 
-2. <span class="text-blue-400 font-semibold">Character Classes:</span>
+2. <span className="text-blue-400 font-semibold">Character Classes:</span>
    - \`\\d\`: Digit [0-9]
    - \`\\w\`: Word char [a-zA-Z0-9_]
    - \`\\s\`: Whitespace
    - \`.\`: Any character
 
-3. <span class="text-blue-400 font-semibold">Anchors:</span>
+3. <span className="text-blue-400 font-semibold">Anchors:</span>
    - \`^\`: Start of line
    - \`$\`: End of line`,
       code: `import java.util.regex.*;
@@ -126,26 +126,7 @@ public class PhoneValidator {
 }`
     }
   ] as PracticeQuestion[],
-  dryRunCode: `public class Main {
-    public static void main(String[] args) {
-        String txt = "A1 B2";
-        // Find digit
-        Pattern p = Pattern.compile("\\\\d");
-        Matcher m = p.matcher(txt);
-        while(m.find()) {
-            System.out.println(m.group());
-        }
-    }
-}`,
-  dryRunSteps: [
-    { line: 5, vars: { p: 'Pattern(\\d)' }, output: '', description: 'Compiles regex \\d (Digit).' },
-    { line: 6, vars: { m: 'Matcher' }, output: '', description: 'Creates matcher for "A1 B2".' },
-    { line: 7, vars: { 'm.find()': true }, output: '', description: 'find() scans... Skips "A", finds "1" at index 1.' },
-    { line: 8, vars: { 'm.group()': '"1"' }, output: '1\\n', description: 'Prints match.' },
-    { line: 7, vars: { 'm.find()': true }, output: '', description: 'find() resumes... Skips " ", Skips "B", finds "2" at index 4.' },
-    { line: 8, vars: { 'm.group()': '"2"' }, output: '2\\n', description: 'Prints match.' },
-    { line: 7, vars: { 'm.find()': false }, output: '', description: 'find() resumes... End of string. Returns false.' },
-  ] as DryRunStep[]
+
 }
 
 export default function RegexPatternMatchingPage() {

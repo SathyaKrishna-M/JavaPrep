@@ -12,19 +12,19 @@ const content = {
             content: (
                 <div className="space-y-4">
                     <p>
-                        Java provides many standard standard exceptions (e.g., <code>NullPointerException</code>), but sometimes they aren&apos;t enough.
+                        Java provides many standard exceptions (e.g., <code>NullPointerException</code>), but sometimes they aren&apos;t enough.
                         Think of <span className="text-blue-400 font-semibold">Custom Exceptions</span> as highly specific <span className="text-cyan-400 font-bold">Warning Signs</span> tailored to your business rules.
                     </p>
                     <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
                             <li>
-                                <span className="text-yellow-400 font-semibold">Standard Exception:</span> A generic "STOP" sign. It stops you, but doesn&apos;t tell you why (bad weather? construction? accident?).
+                                <span className="text-yellow-400 font-semibold">Standard Exception:</span> A generic &quot;STOP&quot; sign. It stops you, but doesn&apos;t tell you why (bad weather? construction? accident?).
                             </li>
                             <li>
-                                <span className="text-green-400 font-semibold">Custom Exception:</span> A sign saying "DANGER: HIGH VOLTAGE". It tells the user <em>exactly what</em> went wrong in your specific application context.
+                                <span className="text-green-400 font-semibold">Custom Exception:</span> A sign saying &quot;DANGER: HIGH VOLTAGE&quot;. It tells the user <em>exactly what</em> went wrong in your specific application context.
                             </li>
                             <li>
-                                <span className="text-blue-400 font-semibold">Why use them?</span> To make your code more readable, debuggable, and to handle domain-specific errors (like "insufficient funds" or "invalid email") distinctly.
+                                <span className="text-blue-400 font-semibold">Why use them?</span> To make your code more readable, debuggable, and to handle domain-specific errors (like &quot;insufficient funds&quot; or &quot;invalid email&quot;) distinctly.
                             </li>
                         </ul>
                     </div>
@@ -43,12 +43,12 @@ const content = {
                         <div className="bg-black/30 p-4 rounded-lg border border-gray-800">
                             <h5 className="text-orange-400 font-mono mb-2">Checked Exception</h5>
                             <p className="text-xs text-gray-400 mb-2">Extend <code>Exception</code>.</p>
-                            <p className="text-xs text-gray-500">Forces the programmer to handle it (try-catch) or declare it (throws). Use this for recoverable errors (e.g., "Invalid Login").</p>
+                            <p className="text-xs text-gray-500">Forces the programmer to handle it (try-catch) or declare it (throws). Use this for recoverable errors (e.g., &quot;Invalid Login&quot;).</p>
                         </div>
                         <div className="bg-black/30 p-4 rounded-lg border border-gray-800">
                             <h5 className="text-red-400 font-mono mb-2">Unchecked Exception</h5>
                             <p className="text-xs text-gray-400 mb-2">Extend <code>RuntimeException</code>.</p>
-                            <p className="text-xs text-gray-500">Optional handling. Use this for logic errors or unrecoverable states (e.g., "Configuration Missing").</p>
+                            <p className="text-xs text-gray-500">Optional handling. Use this for logic errors or unrecoverable states (e.g., &quot;Configuration Missing&quot;).</p>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ public class Main {
         {
             title: 'Advanced: Chaining Exceptions',
             icon: <FiPlusCircle className="w-6 h-6" />,
-            content: '<p class="text-gray-300">You can also wrap an underlying exception inside your custom exception using <code>super(message, cause)</code>. This preserves the original stack trace.</p>',
+            content: '<p className="text-gray-300">You can also wrap an underlying exception inside your custom exception using <code>super(message, cause)</code>. This preserves the original stack trace.</p>',
             code: `class DatabaseException extends Exception {
     public DatabaseException(String msg, Throwable cause) {
         super(msg, cause);

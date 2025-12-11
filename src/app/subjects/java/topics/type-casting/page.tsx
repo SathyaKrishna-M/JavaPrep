@@ -2,6 +2,7 @@
 
 import DMTopicPage, { ExplanationSection, PracticeQuestion, ExampleProblem } from '@/components/DMTopicPage'
 import { FiRefreshCw, FiTarget, FiCode, FiCpu } from 'react-icons/fi'
+import CodeBlock from '@/components/CodeBlock'
 
 const content = {
   title: 'Type Casting',
@@ -36,9 +37,9 @@ const content = {
       content: `Converting a smaller type to a larger type size. Done automatically by Java.
 
 Order:
-<span class="text-cyan-300">byte</span> → <span class="text-cyan-300">short</span> → <span class="text-cyan-300">int</span> → <span class="text-cyan-300">long</span> → <span class="text-cyan-300">float</span> → <span class="text-cyan-300">double</span>
+<span className="text-cyan-300">byte</span> → <span className="text-cyan-300">short</span> → <span className="text-cyan-300">int</span> → <span className="text-cyan-300">long</span> → <span className="text-cyan-300">float</span> → <span className="text-cyan-300">double</span>
 
-<span class="text-amber-300">Why safe?</span> The target type is large enough to hold the source value without losing information.`,
+<span className="text-amber-300">Why safe?</span> The target type is large enough to hold the source value without losing information.`,
       code: `public class WideningCasting {
     public static void main(String[] args) {
         int myInt = 9;
@@ -55,9 +56,9 @@ Order:
       content: `Converting a larger type to a smaller size type. Must be done manually by placing the type in parentheses \`()\`.
 
 Syntax:
-<span class="text-blue-400">(targetType) value</span>
+<span className="text-blue-400">(targetType) value</span>
 
-<span class="text-red-300">Warning:</span> This strips away the fractional part for floating-point numbers (truncation) or overflows if the number is too big for the target type.`,
+<span className="text-red-300">Warning:</span> This strips away the fractional part for floating-point numbers (truncation) or overflows if the number is too big for the target type.`,
       code: `public class NarrowingCasting {
     public static void main(String[] args) {
         double myDouble = 9.78d;
@@ -74,10 +75,10 @@ Syntax:
       content: `When evaluating expressions, Java automatically promotes smaller types to larger types to ensure precision.
 
 Rules:
-1. If one operand is <code class="text-pink-400">double</code>, the result is <code class="text-pink-400">double</code>.
-2. If one is <code class="text-pink-400">float</code>, the result is <code class="text-pink-400">float</code>.
-3. If one is <code class="text-pink-400">long</code>, the result is <code class="text-pink-400">long</code>.
-4. Otherwise, all <code class="text-pink-400">byte</code>, <code class="text-pink-400">short</code>, and <code class="text-pink-400">char</code> operands are promoted to <code class="text-pink-400">int</code>.`,
+1. If one operand is <code className="text-pink-400">double</code>, the result is <code className="text-pink-400">double</code>.
+2. If one is <code className="text-pink-400">float</code>, the result is <code className="text-pink-400">float</code>.
+3. If one is <code className="text-pink-400">long</code>, the result is <code className="text-pink-400">long</code>.
+4. Otherwise, all <code className="text-pink-400">byte</code>, <code className="text-pink-400">short</code>, and <code className="text-pink-400">char</code> operands are promoted to <code className="text-pink-400">int</code>.`,
       code: `byte a = 10;
 byte b = 30;
 // byte c = a * b; // Error! Result is promoted to int
@@ -96,12 +97,13 @@ int c = a * b;    // Correct: 300`
         {
           step: '2. Implementation',
           explanation: (
-            <div className="font-mono text-sm">
-              double price = 99.99; <br />
-                      // Explicitly cast double to int to truncate .99 <br />
-              int points = (int) price; <br />
-              System.out.println("Points earned: " + points); // 99 points
-            </div>
+            <CodeBlock
+              code={`double price = 99.99;
+// Explicitly cast double to int to truncate .99
+int points = (int) price;
+System.out.println("Points earned: " + points); // 99 points`}
+              language="java"
+            />
           )
         }
       ]

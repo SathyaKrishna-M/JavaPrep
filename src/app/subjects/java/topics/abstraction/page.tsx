@@ -21,10 +21,10 @@ const content = {
                                 <span className="text-yellow-400 font-semibold">What You See:</span> Steering wheel, pedals, speedometer. You know <em>what</em> they do.
                             </li>
                             <li>
-                                <span className="text-yellow-400 font-semibold">What is Hidden:</span> Engine combustion, gear mechanisms, fuel injection. You don't need to know <em>how</em> they work to drive.
+                                <span className="text-yellow-400 font-semibold">What is Hidden:</span> Engine combustion, gear mechanisms, fuel injection. You don&apos;t need to know <em>how</em> they work to drive.
                             </li>
                             <li>
-                                <span className="text-blue-400 font-semibold">Concept:</span> Abstraction focuses on the <strong>"What"</strong> rather than the <strong>"How"</strong>.
+                                <span className="text-blue-400 font-semibold">Concept:</span> Abstraction focuses on the <strong>&quot;What&quot;</strong> rather than the <strong>&quot;How&quot;</strong>.
                             </li>
                         </ul>
                     </div>
@@ -45,7 +45,7 @@ const content = {
                             <ul className="list-disc list-inside text-xs text-gray-400 space-y-1">
                                 <li>Can have abstract & concrete methods.</li>
                                 <li>Use <code className="text-purple-300">extends</code>.</li>
-                                <li>"is-a" relationship (Car is a Vehicle).</li>
+                                <li>&quot;is-a&quot; relationship (Car is a Vehicle).</li>
                             </ul>
                         </div>
                         <div className="bg-black/30 p-4 rounded-lg border border-gray-800">
@@ -53,7 +53,7 @@ const content = {
                             <ul className="list-disc list-inside text-xs text-gray-400 space-y-1">
                                 <li>Only abstract methods (mostly).</li>
                                 <li>Use <code className="text-orange-300">implements</code>.</li>
-                                <li>"can-do" relationship (Car can-do Fly... wait no).</li>
+                                <li>&quot;can-do&quot; relationship (Car can-do Fly... wait no).</li>
                             </ul>
                         </div>
                     </div>

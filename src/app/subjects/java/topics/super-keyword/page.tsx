@@ -18,13 +18,13 @@ const content = {
                     <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
                             <li>
-                                <span className="text-yellow-400 font-semibold">super.variable:</span> "Mom, I need *your* car key, not mine." (Access parent's field).
+                                <span className="text-yellow-400 font-semibold">super.variable:</span> &quot;Mom, I need *your* car key, not mine.&quot; (Access parent&apos;s field).
                             </li>
                             <li>
-                                <span className="text-yellow-400 font-semibold">super.method():</span> "Dad, how do you fix this?" (Call parent's method).
+                                <span className="text-yellow-400 font-semibold">super.method():</span> &quot;Dad, how do you fix this?&quot; (Call parent&apos;s method).
                             </li>
                             <li>
-                                <span className="text-yellow-400 font-semibold">super():</span> "Parents, initialize me." (Call parent constructor).
+                                <span className="text-yellow-400 font-semibold">super():</span> &quot;Parents, initialize me.&quot; (Call parent constructor).
                             </li>
                         </ul>
                     </div>
@@ -136,7 +136,7 @@ public class Main {
     practiceQuestions: [
         {
             question: 'Can you use "super" in a static method?',
-            solution: 'No. "super" refers to the parent object instance. Static methods belong to the class, not an instance.',
+            solution: 'No. &quot;super&quot; refers to the parent object instance. Static methods belong to the class, not an instance.',
             solutionCode: `class Parent { 
     int x = 10; 
 }
@@ -149,7 +149,7 @@ class Child extends Parent {
         },
         {
             question: 'What happens if you don\'t write super() in a constructor?',
-            solution: 'Java compiler automatically inserts "super()" (no-args) as the first line. If Parent doesn\'t have a no-args constructor, you get a compile error.',
+            solution: 'Java compiler automatically inserts &quot;super()&quot; (no-args) as the first line. If Parent doesn&apos;t have a no-args constructor, you get a compile error.',
             solutionCode: `class A {
     A() { System.out.println("A created"); }
 }

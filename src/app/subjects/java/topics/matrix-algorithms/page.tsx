@@ -9,12 +9,12 @@ const content = {
     {
       title: 'Matrix Transpose',
       icon: <FiGrid className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Transpose</span> swaps rows and columns.
+      content: `<span className="text-blue-400 font-semibold">Transpose</span> swaps rows and columns.
 
 Algorithm:
-→ <span class="text-cyan-300">Swap:</span> matrix[i][j] with matrix[j][i]
-→ <span class="text-cyan-300">Diagonal:</span> Elements on diagonal stay same
-→ <span class="text-cyan-300">Result:</span> Rows become columns
+→ <span className="text-cyan-300">Swap:</span> matrix[i][j] with matrix[j][i]
+→ <span className="text-cyan-300">Diagonal:</span> Elements on diagonal stay same
+→ <span className="text-cyan-300">Result:</span> Rows become columns
 
 Time Complexity: O(n²)
 Space Complexity: O(1) for in-place`,
@@ -41,12 +41,12 @@ Space Complexity: O(1) for in-place`,
     {
       title: 'Matrix Rotation',
       icon: <FiTarget className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Matrix Rotation</span> rotates matrix by 90 degrees.
+      content: `<span className="text-blue-400 font-semibold">Matrix Rotation</span> rotates matrix by 90 degrees.
 
 Algorithm:
-→ <span class="text-cyan-300">Transpose:</span> First transpose matrix
-→ <span class="text-cyan-300">Reverse rows:</span> Reverse each row
-→ <span class="text-cyan-300">Result:</span> 90° clockwise rotation
+→ <span className="text-cyan-300">Transpose:</span> First transpose matrix
+→ <span className="text-cyan-300">Reverse rows:</span> Reverse each row
+→ <span className="text-cyan-300">Result:</span> 90° clockwise rotation
 
 Time Complexity: O(n²)
 Space Complexity: O(1)`,

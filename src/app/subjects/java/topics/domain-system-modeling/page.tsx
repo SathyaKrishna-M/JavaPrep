@@ -9,18 +9,18 @@ const content = {
     {
       title: 'System Modeling',
       icon: <FiMap className="w-6 h-6" />,
-      content: `<span class="text-blue-400 font-semibold">Domain Modeling</span> represents real-world entities and relationships.
+      content: `<span className="text-blue-400 font-semibold">Domain Modeling</span> represents real-world entities and relationships.
 
 Process:
-→ <span class="text-cyan-300">Identify entities:</span> Find main objects
-→ <span class="text-cyan-300">Define relationships:</span> How entities relate
-→ <span class="text-cyan-300">Create classes:</span> Map entities to classes
-→ <span class="text-cyan-300">Add attributes:</span> Properties of entities
-→ <span class="text-cyan-300">Add methods:</span> Behaviors of entities
+→ <span className="text-cyan-300">Identify entities:</span> Find main objects
+→ <span className="text-cyan-300">Define relationships:</span> How entities relate
+→ <span className="text-cyan-300">Create classes:</span> Map entities to classes
+→ <span className="text-cyan-300">Add attributes:</span> Properties of entities
+→ <span className="text-cyan-300">Add methods:</span> Behaviors of entities
 
 Example Domain: Library System
-→ <span class="text-amber-300">Entities:</span> Book, Member, Loan
-→ <span class="text-amber-300">Relationships:</span> Member borrows Book`,
+→ <span className="text-amber-300">Entities:</span> Book, Member, Loan
+→ <span className="text-amber-300">Relationships:</span> Member borrows Book`,
       code: `// Library System Domain Model
 class Book {
     private String isbn;

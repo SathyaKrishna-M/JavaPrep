@@ -81,7 +81,7 @@ public class WriteDemo {
         {
             title: 'Reading Files: Scanner vs BufferedReader',
             icon: <FiFileText className="w-6 h-6" />,
-            content: '<p class="text-gray-300"><b>Scanner:</b> Best for parsing types (int, double) and tokens.<br/><b>BufferedReader:</b> Best for reading huge chunks of text (fastest).</p>',
+            content: '<p className="text-gray-300"><b>Scanner:</b> Best for parsing types (int, double) and tokens.<br/><b>BufferedReader:</b> Best for reading huge chunks of text (fastest).</p>',
             code: `// Method 1: BufferedReader (Fast for lines)
 try (BufferedReader br = new BufferedReader(new FileReader("input.txt"))) {
     String line;
@@ -101,7 +101,7 @@ try (Scanner sc = new Scanner(new File("numbers.txt"))) {
         {
             title: 'The File Class',
             icon: <FiFolder className="w-6 h-6" />,
-            content: '<p class="text-gray-300">The <code>File</code> class represents the file/directory itself (metadata), not the content.</p>',
+            content: '<p className="text-gray-300">The <code>File</code> class represents the file/directory itself (metadata), not the content.</p>',
             code: `File f = new File("data/report.txt");
 
 if (f.exists()) {
@@ -166,7 +166,7 @@ public class FileCopy {
         },
         {
             question: 'Can FileReader read an image file?',
-            solution: 'Technically yes, but it will corrupt it. Images rely on exact byte sequences. FileReader tries to interpret bytes as characters (using default encoding), changing values that aren\'t valid text. Use FileInputStream instead.',
+            solution: 'Technically yes, but it will corrupt it. Images rely on exact byte sequences. FileReader tries to interpret bytes as characters (using default encoding), changing values that aren&apos;t valid text. Use FileInputStream instead.',
             solutionCode: `// Use FileInputStream for images!`
         }
     ] as PracticeQuestion[]

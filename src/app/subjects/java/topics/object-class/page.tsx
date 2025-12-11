@@ -13,7 +13,7 @@ const content = {
                 <div className="space-y-4">
                     <p>
                         In Java, <span className="text-blue-400 font-semibold">Object</span> is the root of the class hierarchy.
-                        Every class has <code>Object</code> as a superclass. It's like <span className="text-cyan-400 font-bold">The Original Ancestor</span> from whom everyone descends.
+                        Every class has <code>Object</code> as a superclass. It&apos;s like <span className="text-cyan-400 font-bold">The Original Ancestor</span> from whom everyone descends.
                     </p>
                     <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
                         <ul className="list-disc list-inside text-gray-300 space-y-2">
@@ -36,7 +36,7 @@ const content = {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="bg-black/30 p-4 rounded-lg border border-gray-800">
                             <h5 className="text-green-400 font-mono mb-2">toString()</h5>
-                            <p className="text-xs text-gray-400 mb-2">Returns string representation. Default is "ClassName@HexHash". Override it for readable output!</p>
+                            <p className="text-xs text-gray-400 mb-2">Returns string representation. Default is &quot;ClassName@HexHash&quot;. Override it for readable output!</p>
                         </div>
                         <div className="bg-black/30 p-4 rounded-lg border border-gray-800">
                             <h5 className="text-blue-400 font-mono mb-2">equals(Object obj)</h5>

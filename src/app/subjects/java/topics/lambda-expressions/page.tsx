@@ -18,7 +18,7 @@ const content = {
           <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-700">
             <ul className="list-disc list-inside text-gray-300 space-y-2">
               <li>
-                <span className="text-yellow-400 font-semibold">Anonymous Class (Formal Letter):</span> You write a whole class definition just to pass one small action. "Dear Compiler, I hereby declare a class that implements..."
+                <span className="text-yellow-400 font-semibold">Anonymous Class (Formal Letter):</span> You write a whole class definition just to pass one small action. &quot;Dear Compiler, I hereby declare a class that implements...&quot;
               </li>
               <li>
                 <span className="text-green-400 font-semibold">Lambda (Sticky Note):</span> You just scribble the action. <code>(a, b) -&gt; a + b</code>. Short, sweet, to the point.
@@ -86,13 +86,13 @@ public class StandardInterfaces {
     {
       title: 'Variable Capture',
       icon: <FiZap className="w-6 h-6" />,
-      content: '<p class="text-gray-300">Lambdas can access local variables from the enclosure, but those variables must be <b>Effectively Final</b> (never changed after initialization).</p>',
+      content: '<p className="text-gray-300">Lambdas can access local variables from the enclosure, but those variables must be <b>Effectively Final</b> (never changed after initialization).</p>',
       code: `int factor = 10;
 // factor = 20; // Uncommenting this breaks logic below
 
 Function<Integer, Integer> multiplier = n -> n * factor; 
 // If 'factor' changes, the lambda assumes inconsistent state.
-// Compiler Error: "Local variable defined in an enclosing scope must be final or effectively final"`
+// Compiler Error: &quot;Local variable defined in an enclosing scope must be final or effectively final&quot;`
     }
   ] as ExplanationSection[],
   exampleProblems: [
