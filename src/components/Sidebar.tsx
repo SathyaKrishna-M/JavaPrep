@@ -80,7 +80,7 @@ export default function Sidebar() {
   }, [currentTopics])
 
   return (
-    <aside className="glass-card h-[calc(100vh-8rem)] sticky top-28 ml-4 overflow-y-auto custom-scrollbar animate-float-slow">
+    <aside className="glass-card h-[calc(100vh-8rem)] sticky top-28 ml-4 overflow-y-auto custom-scrollbar">
       <div className="mb-6 pb-4 border-b border-white/10">
         <h2 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
           {subjectTitle}
@@ -123,6 +123,7 @@ export default function Sidebar() {
                     <div className="pl-3 space-y-1 mt-2 mb-2 border-l border-white/5 ml-3">
                       {coTopics.map((topic, index) => {
                         const isActive = pathname === topic.href
+                        const isImportant = topic.id.includes('important-questions')
                         return (
                           <motion.div
                             key={topic.id}
@@ -133,8 +134,10 @@ export default function Sidebar() {
                             <Link
                               href={topic.href}
                               className={`block px-3 py-2 rounded-lg transition-all duration-200 text-sm relative overflow-hidden group/link ${isActive
-                                ? 'text-white font-medium bg-gradient-to-r from-blue-600/20 to-transparent border-l-2 border-blue-500'
-                                : 'text-gray-400 hover:text-white hover:bg-white/5 border-l-2 border-transparent'
+                                  ? 'text-white font-medium bg-gradient-to-r from-blue-600/20 to-transparent border-l-2 border-blue-500'
+                                  : isImportant
+                                    ? 'text-yellow-200 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 hover:from-yellow-500/20 hover:to-orange-500/20 border-l-2 border-yellow-500/50'
+                                    : 'text-gray-400 hover:text-white hover:bg-white/5 border-l-2 border-transparent'
                                 }`}
                             >
                               <div className="flex items-center relative z-10">

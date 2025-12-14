@@ -105,6 +105,14 @@ export const topics: Topic[] = [
         href: '/subjects/java/topics/patterns',
         co: 'CO1',
     },
+    {
+        id: 'important-questions-co1',
+        title: 'Important Questions',
+        description: 'Solutions for 19 important practice questions for CO1',
+        icon: '⭐',
+        href: '/subjects/java/topics/important-questions-co1',
+        co: 'CO1',
+    },
 
     // CO2 — Arrays & Algorithmic Problem Solving (BTL-2 → BTL-4)
     {
@@ -155,6 +163,7 @@ export const topics: Topic[] = [
         href: '/subjects/java/topics/matrix-algorithms',
         co: 'CO2',
     },
+
     {
         id: 'prefix-sum-sliding-window',
         title: 'Prefix Sum & Sliding Window',
@@ -177,6 +186,14 @@ export const topics: Topic[] = [
         description: 'Quantitative array problems and competitive programming strategies',
         icon: '🏆',
         href: '/subjects/java/topics/competitive-programming',
+        co: 'CO2',
+    },
+    {
+        id: 'important-questions-co2',
+        title: 'Important Questions',
+        description: 'Solutions for 12 important practice questions for CO2 (Arrays)',
+        icon: '⭐',
+        href: '/subjects/java/topics/important-questions-co2',
         co: 'CO2',
     },
 
@@ -253,6 +270,14 @@ export const topics: Topic[] = [
         href: '/subjects/java/topics/quantitative-logic-problems',
         co: 'CO3',
     },
+    {
+        id: 'important-questions-co3',
+        title: 'Important Questions',
+        description: 'Solutions for 12 important practice questions for CO3 (Strings, Recursion, Bitwise)',
+        icon: '⭐',
+        href: '/subjects/java/topics/important-questions-co3',
+        co: 'CO3',
+    },
 
     // CO4 — OOP Foundations & Modularization (BTL-2 → BTL-4)
     {
@@ -319,6 +344,15 @@ export const topics: Topic[] = [
         href: '/subjects/java/topics/analyzing-class-design',
         co: 'CO4',
     },
+    {
+        id: 'important-questions-co4',
+        title: 'Important Questions',
+        description: 'Solutions for 12 important practice questions for CO4 (Classes, Objects, Methods)',
+        icon: '⭐',
+        href: '/subjects/java/topics/important-questions-co4',
+        co: 'CO4',
+    },
+
 
     // CO5 — Advanced OOP & System Architecture (BTL-2 → BTL-5)
     {
@@ -401,6 +435,14 @@ export const topics: Topic[] = [
         href: '/subjects/java/topics/domain-system-modeling',
         co: 'CO5',
     },
+    {
+        id: 'important-questions-co5',
+        title: 'Important Questions',
+        description: 'Solutions for 12 important practice questions for CO5 (Inheritance, Interfaces)',
+        icon: '⭐',
+        href: '/subjects/java/topics/important-questions-co5',
+        co: 'CO5',
+    },
 
     // CO6 — Robust & Scalable Java Applications (BTL-2 → BTL-4)
     {
@@ -473,6 +515,14 @@ export const topics: Topic[] = [
         description: 'Comprehensive project integrating File I/O, Collections, and Exception Handling',
         icon: '🏆',
         href: '/subjects/java/topics/capstone-project',
+        co: 'CO6',
+    },
+    {
+        id: 'important-questions-co6',
+        title: 'Important Questions',
+        description: 'Solutions for 10 important practice questions for CO6 (Exceptions, File I/O)',
+        icon: '⭐',
+        href: '/subjects/java/topics/important-questions-co6',
         co: 'CO6',
     },
 

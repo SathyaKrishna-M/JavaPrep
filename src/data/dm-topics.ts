@@ -223,6 +223,15 @@ export const dmTopics: DMTopic[] = [
     session: 100,
     co: 'Home Assignments',
   },
+  {
+    id: 'tutorials',
+    title: 'Tutorials',
+    description: 'Detailed solutions for Tutorial 7, 8, 9, 10, 11, and 12',
+    icon: '📚',
+    href: '/subjects/discrete-mathematics/topics/tutorials',
+    session: 101,
+    co: 'Home Assignments',
+  },
 ]
 
 export const co1Topics = dmTopics.filter(topic => topic.co === 'CO-1')
