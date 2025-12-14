@@ -807,7 +807,7 @@ public class Fibonacci {
 
                     {/* Pattern 3 */}
                     <div className="border border-white/10 rounded-xl p-4 bg-white/5">
-                        <h4 className="text-lg font-bold text-blue-400 mb-2">Pattern 3: Floyd's Triangle</h4>
+                        <h4 className="text-lg font-bold text-blue-400 mb-2">Pattern 3: Floyd&apos;s Triangle</h4>
                         <CodeBlock code={`public class Pattern3 {
     public static void main(String[] args) {
         int n = 5;
