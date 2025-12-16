@@ -528,6 +528,13 @@ export const topics: Topic[] = [
 
     // General/Other
     {
+        id: 'javamcqs',
+        title: 'Java MCQs',
+        description: 'Practice Multiple Choice Questions for all COs',
+        icon: '✅',
+        href: '/subjects/java/topics/mcqs',
+    },
+    {
         id: 'important-questions',
         title: 'Important Questions',
         description: 'PSTJ important practice questions',
