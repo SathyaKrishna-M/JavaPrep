@@ -78,7 +78,7 @@ const groupTopics = (topics: Topic[]) => {
       title: 'Additional Resources',
       subtitle: 'Practice questions and additional learning materials',
       topics: topics.filter(t =>
-        ['important-questions'].includes(t.id)
+        ['important-questions', 'advanced-questions'].includes(t.id)
       ),
     },
   }

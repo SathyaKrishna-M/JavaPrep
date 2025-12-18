@@ -535,6 +535,13 @@ export const topics: Topic[] = [
         href: '/subjects/java/topics/mcqs',
     },
     {
+        id: 'advanced-questions',
+        title: 'Advanced Questions',
+        description: 'Complex, mixed-topic coding challenges (OOP, Arrays, Recursion)',
+        icon: '🚀',
+        href: '/subjects/java/topics/advanced-questions',
+    },
+    {
         id: 'important-questions',
         title: 'Important Questions',
         description: 'PSTJ important practice questions',
