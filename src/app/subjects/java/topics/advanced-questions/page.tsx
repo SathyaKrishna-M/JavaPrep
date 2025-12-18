@@ -36,7 +36,7 @@ const content = {
             solution: (
                 <div className="space-y-4">
                     <p className="text-gray-300 text-sm italic">
-                        <strong>Logic:</strong> This problem is best solved using <strong>recursion</strong> or a <strong>stack</strong>. We need to parse the integer 'k', then recursively decode the content inside the brackets '[]', and repeat it 'k' times.
+                        <strong>Logic:</strong> This problem is best solved using <strong>recursion</strong> or a <strong>stack</strong>. We need to parse the integer &apos;k&apos;, then recursively decode the content inside the brackets &apos;[]&apos;, and repeat it &apos;k&apos; times.
                     </p>
                     <CodeBlock code={`class DecodeString {
     private int pos = 0;
