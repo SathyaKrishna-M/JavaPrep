@@ -3,6 +3,7 @@
 import DMTopicPage from '@/components/DMTopicPage'
 import { FiRefreshCw, FiActivity, FiLayers } from 'react-icons/fi'
 import MathRenderer from '@/components/MathRenderer'
+import Mermaid from '@/components/Mermaid'
 
 const content = {
   title: 'Recurrence Relations',
@@ -87,25 +88,72 @@ const content = {
                     <td className="px-6 py-4 text-slate-300">Repeated Real Roots (<MathRenderer math="r_1" /> with multiplicity <MathRenderer math="m" />)</td>
                     <td className="px-6 py-4 text-slate-300"><MathRenderer math="a_n = (\alpha_1 + \alpha_2 n + ... + \alpha_m n^{m-1})r_1^n" /></td>
                   </tr>
+                  <tr className="border-b border-slate-700">
+                    <td className="px-6 py-4 font-medium text-white">3</td>
+                    <td className="px-6 py-4 text-slate-300">
+                      <p>3rd Order Cases:</p>
+                      <ul className="list-disc list-inside mt-1 space-y-1">
+                        <li>Distinct: <MathRenderer math="r_1 \neq r_2 \neq r_3" /></li>
+                        <li>All Equal: <MathRenderer math="r_1 = r_2 = r_3" /></li>
+                        <li>Two Equal: <MathRenderer math="r_1 = r_2 \neq r_3" /></li>
+                      </ul>
+                    </td>
+                    <td className="px-6 py-4 text-slate-300">
+                      <div className="space-y-2">
+                        <p><MathRenderer math="a_n = A_1 r_1^n + A_2 r_2^n + A_3 r_3^n" /></p>
+                        <p><MathRenderer math="a_n = (A_1 + nA_2 + n^2 A_3)r_1^n" /></p>
+                        <p><MathRenderer math="a_n = (A_1 + nA_2)r_1^n + A_3 r_3^n" /></p>
+                      </div>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
           <div className="bg-gray-900/50 p-4 rounded-lg border border-gray-700 mt-4">
             <p className="text-gray-300 mb-2">Solving Pipeline:</p>
-            <div className="mermaid">
-              {`%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+            <Mermaid
+              chart={`%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
 flowchart TD
-    A[Recurrence Relation] --> B[Characteristic Equation]
-    B --> C[Find Roots]
-    C --> D[General Solution]
-    D --> E[Apply Initial Conditions]
+    A["Recurrence Relation"] --> B["Characteristic Equation"]
+    B --> C["Find Roots"]
+    C --> D["General Solution"]
+    D --> E["Apply Initial Conditions"]
     style A fill:#1e293b,stroke:#3b82f6,stroke-width:2px
     style B fill:#1e293b,stroke:#10b981,stroke-width:2px
     style C fill:#1e293b,stroke:#ec4899,stroke-width:2px
     style D fill:#1e293b,stroke:#f59e0b,stroke-width:2px
     style E fill:#1e293b,stroke:#8b5cf6,stroke-width:2px`}
-            </div>
+            />
+          </div>
+          <div className="bg-purple-500/10 p-4 rounded-lg border border-purple-500/30 mt-4">
+            <p className="text-purple-300 font-semibold mb-2">Detailed Example (Characteristic Roots):</p>
+            <p className="text-gray-300"><span className="text-white font-semibold">Problem:</span> Solve <MathRenderer math="a_n - 5a_{n-1} + 6a_{n-2} = 0" /> with initial conditions <MathRenderer math="a_0 = 2, a_1 = 5" />.</p>
+
+            <p className="text-cyan-300 mt-3 font-medium">Step 1: Form Characteristic Equation</p>
+            <p className="text-gray-400 ml-4">Rewrite as <MathRenderer math="a_n - 5a_{n-1} + 6a_{n-2} = 0" />. The characteristic equation is:</p>
+            <MathRenderer display math="r^2 - 5r + 6 = 0" />
+
+            <p className="text-cyan-300 mt-3 font-medium">Step 2: Find Roots</p>
+            <p className="text-gray-400 ml-4">Factor the quadratic equation:</p>
+            <MathRenderer display math="(r - 2)(r - 3) = 0" />
+            <p className="text-gray-400 ml-4">So, the roots are <MathRenderer math="r_1 = 2" /> and <MathRenderer math="r_2 = 3" /> (Distinct Real Roots).</p>
+
+            <p className="text-cyan-300 mt-3 font-medium">Step 3: General Solution</p>
+            <p className="text-gray-400 ml-4">Since roots are distinct, the form is <MathRenderer math="a_n = \alpha_1 (2)^n + \alpha_2 (3)^n" />.</p>
+
+            <p className="text-cyan-300 mt-3 font-medium">Step 4: Apply Initial Conditions</p>
+            <ul className="list-disc list-inside ml-4 text-gray-400 space-y-1">
+              <li>For <MathRenderer math="n=0" />: <MathRenderer math="\alpha_1 + \alpha_2 = 2" /> (Eq 1)</li>
+              <li>For <MathRenderer math="n=1" />: <MathRenderer math="2\alpha_1 + 3\alpha_2 = 5" /> (Eq 2)</li>
+            </ul>
+            <p className="text-gray-400 ml-4 mt-2">Solving system:</p>
+            <p className="text-gray-400 ml-4">From Eq 1: <MathRenderer math="\alpha_1 = 2 - \alpha_2" />. Substitute into Eq 2:</p>
+            <MathRenderer display math="2(2 - \alpha_2) + 3\alpha_2 = 5 \implies 4 - 2\alpha_2 + 3\alpha_2 = 5 \implies \alpha_2 = 1" />
+            <p className="text-gray-400 ml-4">Then <MathRenderer math="\alpha_1 = 2 - 1 = 1" />.</p>
+
+            <p className="text-green-400 mt-3 font-semibold">Final Solution:</p>
+            <MathRenderer display math="a_n = 1 \cdot 2^n + 1 \cdot 3^n = 2^n + 3^n" />
           </div>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
             <p className="text-lime-300 font-semibold mb-2">Generating Functions:</p>
@@ -123,21 +171,125 @@ flowchart TD
               <li><MathRenderer math="1/(1-x)^2 = \sum (n+1)x^n" /></li>
               <li><MathRenderer math="(1+x)^n = \sum C(n,k)x^k" /> (Binomial Theorem)</li>
             </ul>
-            <div className="mermaid mt-4">
-              {`%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
+            <div className="mt-4">
+              <Mermaid
+                chart={`%%{init: {'flowchart': {'defaultRenderer': 'elk', 'curve': 'linear'}, 'graph': {'curve': 'linear'}}}%%
 flowchart TD
-    A[Sequence a0, a1, a2...] --> B[Convert to G(x)]
-    B --> C[Manipulate Algebraically]
-    C --> D[Solve or Extract Coefficients]
+    A["Sequence a0, a1, a2..."] --> B["Convert to G(x)"]
+    B --> C["Manipulate Algebraically"]
+    C --> D["Solve or Extract Coefficients"]
     style A fill:#1e293b,stroke:#3b82f6,stroke-width:2px
     style B fill:#1e293b,stroke:#10b981,stroke-width:2px
     style C fill:#1e293b,stroke:#ec4899,stroke-width:2px
     style D fill:#1e293b,stroke:#f59e0b,stroke-width:2px`}
+              />
             </div>
+          </div>
+          <div className="bg-purple-500/10 p-4 rounded-lg border border-purple-500/30 mt-4">
+            <p className="text-purple-300 font-semibold mb-2">Detailed Example (Generating Functions):</p>
+            <p className="text-gray-300"><span className="text-white font-semibold">Problem:</span> Solve <MathRenderer math="a_n - 3a_{n-1} = 2" /> for <MathRenderer math="n \ge 1" /> with <MathRenderer math="a_0 = 1" />.</p>
+
+            <p className="text-cyan-300 mt-3 font-medium">Step 1: Multiply and Sum</p>
+            <p className="text-gray-400 ml-4">Multiply by <MathRenderer math="x^n" /> and sum from <MathRenderer math="n=1" /> to <MathRenderer math="\infty" />:</p>
+            <MathRenderer display math="\sum_{n=1}^{\infty} a_n x^n - 3 \sum_{n=1}^{\infty} a_{n-1} x^n = \sum_{n=1}^{\infty} 2 x^n" />
+
+            <p className="text-cyan-300 mt-3 font-medium">Step 2: Convert to G(x)</p>
+            <p className="text-gray-400 ml-4">Let <MathRenderer math="G(x) = \sum_{n=0}^{\infty} a_n x^n" />.</p>
+            <ul className="list-disc list-inside ml-4 text-gray-400">
+              <li><MathRenderer math="\sum_{n=1}^{\infty} a_n x^n = G(x) - a_0 = G(x) - 1" /></li>
+              <li><MathRenderer math="\sum_{n=1}^{\infty} a_{n-1} x^n = x \sum_{n=1}^{\infty} a_{n-1} x^{n-1} = xG(x)" /></li>
+              <li><MathRenderer math="\sum_{n=1}^{\infty} 2 x^n = 2 \left( \frac{1}{1-x} - 1 \right) = \frac{2x}{1-x}" /> (Geometric Series)</li>
+            </ul>
+            <p className="text-gray-400 ml-4 mt-2">Substitute back:</p>
+            <MathRenderer display math="(G(x) - 1) - 3xG(x) = \frac{2x}{1-x}" />
+
+            <p className="text-cyan-300 mt-3 font-medium">Step 3: Solve for G(x)</p>
+            <MathRenderer display math="G(x)(1 - 3x) = 1 + \frac{2x}{1-x} = \frac{1-x+2x}{1-x} = \frac{1+x}{1-x}" />
+            <MathRenderer display math="G(x) = \frac{1+x}{(1-x)(1-3x)}" />
+
+            <p className="text-cyan-300 mt-3 font-medium">Step 4: Partial Fractions</p>
+            <p className="text-gray-400 ml-4">Decompose <MathRenderer math="\frac{1+x}{(1-x)(1-3x)}" /> into <MathRenderer math="\frac{A}{1-x} + \frac{B}{1-3x}" />.</p>
+            <p className="text-gray-400 ml-4">Solving gives <MathRenderer math="A = -1" /> and <MathRenderer math="B = 2" />.</p>
+            <MathRenderer display math="G(x) = \frac{2}{1-3x} - \frac{1}{1-x}" />
+
+            <p className="text-cyan-300 mt-3 font-medium">Step 5: Extract Coefficients</p>
+            <p className="text-gray-400 ml-4">Expand both terms as series:</p>
+            <MathRenderer display math="2 \sum (3x)^n - \sum x^n = \sum (2 \cdot 3^n - 1) x^n" />
+            <p className="text-green-400 mt-2 font-semibold">Final Solution:</p>
+            <MathRenderer display math="a_n = 2 \cdot 3^n - 1" />
           </div>
         </div>
       ),
       formula: 'G(x) = \\sum_{n=0}^{\\infty} a_n x^n',
+    },
+    {
+      title: '⚡ Linear Non-Homogeneous Recurrence Relations',
+      icon: <FiActivity className="w-6 h-6" />,
+      content: (
+        <div className="space-y-4">
+          <p className="text-gray-300">
+            <span className="text-cyan-400 font-semibold text-lg">General Form:</span> <MathRenderer math="c_0 a_n + c_1 a_{n-1} + ... + c_k a_{n-k} = \phi(n)" />
+          </p>
+          <ul className="list-disc list-inside text-gray-300 space-y-2">
+            <li>If <MathRenderer math="\phi(n) = 0" />, it is <span className="text-white">Homogeneous</span>.</li>
+            <li>If <MathRenderer math="\phi(n) \neq 0" />, it is <span className="text-white">Non-Homogeneous</span>.</li>
+          </ul>
+
+          <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
+            <p className="text-amber-300 font-semibold mb-2">General Solution Structure:</p>
+            <MathRenderer display math="a_n = CF + PI" />
+            <p className="text-gray-300">Where:</p>
+            <ul className="list-disc list-inside text-gray-400 ml-4">
+              <li><span className="text-white">CF (Complementary Function):</span> Solution to the associated homogeneous relation (<MathRenderer math="\phi(n)=0" />). Found using Characteristic Roots.</li>
+              <li><span className="text-white">PI (Particular Integral):</span> A specific solution satisfying the non-homogeneous part.</li>
+            </ul>
+          </div>
+
+          <div className="bg-pink-500/10 p-4 rounded-lg border border-pink-500/30">
+            <p className="text-amber-300 font-semibold mb-2">Method to Find PI:</p>
+            <p className="text-gray-300 mb-2">Suppose <MathRenderer math="\phi(n) = (b_0 + b_1 n + ... + b_k n^k)s^n" />.</p>
+            <ul className="list-decimal list-inside text-gray-300 space-y-2">
+              <li>
+                <span className="text-cyan-300">Case 1:</span> If <MathRenderer math="s" /> is <strong>not</strong> a root of the Characteristic Equation:
+                <div className="ml-4 mt-1 bg-black/20 p-2 rounded">
+                  <MathRenderer math="PI = (P_0 + P_1 n + ... + P_k n^k)s^n" />
+                </div>
+              </li>
+              <li>
+                <span className="text-cyan-300">Case 2:</span> If <MathRenderer math="s" /> <strong>is</strong> a root of the Characteristic Equation with multiplicity <MathRenderer math="m" />:
+                <div className="ml-4 mt-1 bg-black/20 p-2 rounded">
+                  <MathRenderer math="PI = n^m (P_0 + P_1 n + ... + P_k n^k)s^n" />
+                </div>
+              </li>
+            </ul>
+            <p className="text-gray-400 text-sm mt-2">Where <MathRenderer math="P_0, P_1..." /> are constants to be determined.</p>
+          </div>
+
+          <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
+            <p className="text-lime-300 font-semibold mb-2">Example Problem from Notes:</p>
+            <p className="text-gray-300"><span className="text-white font-semibold">Problem:</span> Solve <MathRenderer math="a_n = 3a_{n-1}" /> for <MathRenderer math="n \ge 1" /> with <MathRenderer math="a_0 = -1" />.</p>
+
+            <div className="mt-2 space-y-2">
+              <p className="text-gray-300">Rewrite: <MathRenderer math="a_n - 3a_{n-1} = 0" /></p>
+              <p className="text-gray-300">This is Homogeneous, so <MathRenderer math="PI = 0" />.</p>
+
+              <p className="text-cyan-300 font-medium">Step 1: Characteristic Equation</p>
+              <MathRenderer display math="r - 3 = 0 \implies r = 3" />
+
+              <p className="text-cyan-300 font-medium">Step 2: General Solution (CF)</p>
+              <MathRenderer math="CF = A_1 (3)^n" />
+              <p className="text-gray-300">So, <MathRenderer math="a_n = A_1 3^n" /> (since <MathRenderer math="PI=0" />)</p>
+
+              <p className="text-cyan-300 font-medium">Step 3: Initial Conditions</p>
+              <p className="text-gray-300">Given <MathRenderer math="a_0 = -1" />:</p>
+              <MathRenderer math="-1 = A_1 (3)^0 \implies A_1 = -1" />
+
+              <p className="text-green-400 font-semibold mt-2">Final Particular Solution:</p>
+              <MathRenderer display math="a_n = (-1)3^n" />
+            </div>
+          </div>
+        </div>
+      ),
     },
     {
       title: '🏗️ Applications & Examples',
