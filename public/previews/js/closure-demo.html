@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closure Demo</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #0f172a;
+            color: white;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #38bdf8;
+            text-align: center;
+        }
+
+        p {
+            color: #94a3b8;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .demo-box {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .counter-display {
+            font-size: 4rem;
+            font-weight: bold;
+            color: #4ade80;
+            font-family: monospace;
+            background: #0f172a;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: 2px solid #22c55e;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.2);
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-inc {
+            background: #3b82f6;
+        }
+
+        .btn-inc:hover {
+            background: #2563eb;
+        }
+
+        .btn-dec {
+            background: #ef4444;
+        }
+
+        .btn-dec:hover {
+            background: #dc2626;
+        }
+
+        .explanation {
+            background: #334155;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            margin-top: 1rem;
+            border-left: 4px solid #f59e0b;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 4px;
+            rounded: 4px;
+            font-family: monospace;
+            color: #fbbf24;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Understanding Closures</h1>
+        <p>A "Closure" gives you access to an outer function's scope from an inner function.</p>
+
+        <div class="demo-box">
+            <div id="display" class="counter-display">0</div>
+
+            <div class="controls">
+                <button class="btn-dec" onclick="myCounter.decrement()">- Decrease</button>
+                <button class="btn-inc" onclick="myCounter.increment()">+ Increase</button>
+            </div>
+
+            <div class="explanation">
+                <strong>How it works:</strong>
+                <br>
+                The variable <code>count</code> is NOT global. It lives inside a function, but the buttons can still
+                change it because they remember the environment where they were created. This is a
+                <strong>closure</strong>.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createCounter() {
+            let count = 0; // Private variable
+
+            return {
+                increment: () => {
+                    count++;
+                    updateUI();
+                },
+                decrement: () => {
+                    count--;
+                    updateUI();
+                },
+                getValue: () => count
+            };
+
+            function updateUI() {
+                const el = document.getElementById('display');
+                el.innerText = count;
+                // Visual pop effect
+                el.style.transform = 'scale(1.2)';
+                setTimeout(() => el.style.transform = 'scale(1)', 100);
+            }
+        }
+
+        const myCounter = createCounter();
+    </script>
+</body>
+
+</html>

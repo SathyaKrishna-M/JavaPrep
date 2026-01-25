@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Preview Tool</title>
+    <style>
+        body {
+            font-family: arial, sans-serif;
+            background: #fff;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .editor {
+            width: 100%;
+            max-width: 600px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #dadce0;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #3c4043;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        /* Google Result Style */
+        .google-card {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .g-link {
+            color: #202124;
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .g-icon {
+            width: 26px;
+            height: 26px;
+            background: #f1f3f4;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .g-title {
+            color: #1a0dab;
+            font-size: 20px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .g-title:hover {
+            text-decoration: underline;
+        }
+
+        .g-desc {
+            color: #4d5156;
+            font-size: 14px;
+            line-height: 1.58;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="editor">
+        <h3>Edit Metadata</h3>
+        <div class="input-group">
+            <label>Title Tag (50-60 chars)</label>
+            <input type="text" id="titleIn" value="Best Web Development Course 2025 | Learn Code" oninput="update()">
+        </div>
+        <div class="input-group">
+            <label>Meta Description (150-160 chars)</label>
+            <textarea id="descIn" rows="3"
+                oninput="update()">Master HTML, CSS, and JavaScript with our comprehensive guide. Perfect for beginners starting their coding journey today.</textarea>
+        </div>
+    </div>
+
+    <div class="google-card">
+        <div class="g-link">
+            <div class="g-icon"></div>
+            <span>www.example.com > courses > web-dev</span>
+        </div>
+        <a href="#" class="g-title" id="gTitle">Best Web Development Course 2025 | Learn Code</a>
+        <div class="g-desc" id="gDesc">Master HTML, CSS, and JavaScript with our comprehensive guide. Perfect for
+            beginners starting their coding journey today.</div>
+    </div>
+
+    <script>
+        function update() {
+            document.getElementById('gTitle').innerText = document.getElementById('titleIn').value;
+            document.getElementById('gDesc').innerText = document.getElementById('descIn').value;
+        }
+    </script>
+
+</body>
+
+</html>

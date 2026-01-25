@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Tree Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #fff1f2;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #be123c;
+        }
+
+        .node {
+            border: 2px solid #fda4af;
+            background: white;
+            padding: 1rem;
+            margin: 10px 0;
+            border-radius: 8px;
+            margin-left: 20px;
+            /* Indent to show hierarchy */
+            transition: all 0.3s;
+        }
+
+        .node:hover {
+            background: #fff0f5;
+            border-color: #be123c;
+            transform: translateX(5px);
+        }
+
+        .tag {
+            color: #be123c;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        .text {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- VISUAL PRESENTATION OF DOM -->
+    <h1>DOM Tree Visualizer</h1>
+    <p>Hover over the nodes to see the structure.</p>
+
+    <div class="node">
+        <span class="tag">&lt;html&gt;</span> (Root)
+
+        <div class="node">
+            <span class="tag">&lt;head&gt;</span>
+            <div class="node" style="font-size: 0.8rem">
+                <span class="tag">&lt;title&gt;</span> DOM Tree Demo
+            </div>
+        </div>
+
+        <div class="node">
+            <span class="tag">&lt;body&gt;</span>
+
+            <div class="node">
+                <span class="tag">&lt;h1&gt;</span> <span class="text">"DOM Tree Visualizer"</span>
+            </div>
+
+            <div class="node">
+                <span class="tag">&lt;p&gt;</span> <span class="text">"Hover over nodes..."</span>
+            </div>
+
+            <div class="node">
+                <span class="tag">&lt;div id="container"&gt;</span> ...
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

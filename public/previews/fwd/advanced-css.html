@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced CSS Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #111827;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* 1. Pseudo-classes (:hover, :focus, :nth-child) */
+        ul {
+            list-style: none;
+            padding: 0;
+            width: 300px;
+        }
+
+        li {
+            background: #1f2937;
+            margin: 5px 0;
+            padding: 15px;
+            border-radius: 8px;
+            transition: 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Hover effect */
+        li:hover {
+            background: #374151;
+            padding-left: 25px;
+            /* Move text */
+        }
+
+        /* Select every even item */
+        li:nth-child(even) {
+            border-left: 4px solid #3b82f6;
+            /* Blue border */
+        }
+
+        /* Select every odd item */
+        li:nth-child(odd) {
+            border-left: 4px solid #ec4899;
+            /* Pink border */
+        }
+
+        /* 2. Pseudo-elements (::before) */
+        li:hover::before {
+            content: "👉";
+            position: absolute;
+            left: 5px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Interactive List</h2>
+    <p>Hover over items to see pseudo-classes & elements in action.</p>
+
+    <ul>
+        <li>Item 1 (Odd - Pink)</li>
+        <li>Item 2 (Even - Blue)</li>
+        <li>Item 3 (Odd - Pink)</li>
+        <li>Item 4 (Even - Blue)</li>
+        <li>Item 5 (Odd - Pink)</li>
+    </ul>
+
+</body>
+
+</html>

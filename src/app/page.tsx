@@ -6,7 +6,7 @@ import Footer from '@/components/Footer'
 import Hero from '@/components/Hero'
 import SubjectCard from '@/components/SubjectCard'
 import FeatureCard from '@/components/FeatureCard'
-import { FaJava } from 'react-icons/fa'
+import { FaJava, FaDatabase } from 'react-icons/fa'
 import { FiCpu, FiLayers, FiBook, FiCode, FiEye, FiActivity } from 'react-icons/fi'
 
 const subjects = [
@@ -36,6 +36,15 @@ const subjects = [
     href: '/subjects/discrete-mathematics',
     gradientFrom: 'from-purple-400',
     gradientTo: 'to-pink-600',
+  },
+  {
+    id: 'data-structures',
+    title: 'Data Structures in Java',
+    description: 'Master data structures including arrays, linked lists, and algorithms with complexity analysis.',
+    icon: <FaDatabase className="w-12 h-12" />,
+    href: '/subjects/data-structures',
+    gradientFrom: 'from-green-400',
+    gradientTo: 'to-emerald-600',
   },
 ]
 

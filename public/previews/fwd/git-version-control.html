@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Simulator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f8fafc;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 600px;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #e2e8f0;
+        }
+
+        .commit {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 50px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.5s;
+        }
+
+        .commit.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dot {
+            position: absolute;
+            left: 14px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+
+        .message-box {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #cbd5e1;
+            box-shadow: 0 2px 4px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .hash {
+            display: block;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .msg {
+            font-weight: bold;
+            color: #1e293b;
+        }
+
+        .controls {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Git Timeline</h1>
+    <div class="controls">
+        <button onclick="commit()">+ Git Commit</button>
+    </div>
+
+    <div id="history" class="timeline">
+        <!-- Commits appear here -->
+    </div>
+
+    <script>
+        const messages = [
+            "Initial commit",
+            "Added navbar layout",
+            "Fixed CSS bug in mobile view",
+            "Updated README.md",
+            "Refactored login logic",
+            "Deployed to production"
+        ];
+
+        let count = 0;
+
+        function commit() {
+            if (count >= messages.length) {
+                alert("Project finished! No more work needed. 😎");
+                return;
+            }
+
+            const container = document.getElementById('history');
+            const hash = Math.random().toString(16).substr(2, 7); // Random mini hash
+
+            const div = document.createElement('div');
+            div.className = 'commit';
+            div.innerHTML = `
+                <div class="dot"></div>
+                <div class="message-box">
+                    <span class="hash">${hash}</span>
+                    <span class="msg">${messages[count]}</span>
+                </div>
+            `;
+
+            container.appendChild(div);
+
+            // Trigger animation
+            requestAnimationFrame(() => div.classList.add('visible'));
+
+            count++;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Handling Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #fafafa;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background: #ef4444;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            user-select: none;
+            transition: transform 0.1s;
+        }
+
+        .box:active {
+            transform: scale(0.95);
+        }
+
+        .log-area {
+            width: 300px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            min-height: 100px;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CLICK EVENT DEMO -->
+    <div id="colorBox" class="box">Click Me!</div>
+
+    <!-- KEYBOARD EVENT DEMO -->
+    <div class="log-area">
+        <label>Type below:</label>
+        <input type="text" id="inputField" placeholder="Press any key...">
+        <p>You pressed: <strong id="keyDisplay" style="color: #3b82f6;">-</strong></p>
+    </div>
+
+    <script>
+        // 1. CLICK EVENT
+        const box = document.getElementById('colorBox');
+        const colors = ['#ef4444', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6'];
+
+        box.addEventListener('click', () => {
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            box.style.background = randomColor;
+            box.innerText = "Changed!";
+        });
+
+        // 2. INPUT EVENT
+        const input = document.getElementById('inputField');
+        const display = document.getElementById('keyDisplay');
+
+        input.addEventListener('keyup', (event) => {
+            display.innerText = event.key;
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semantic HTML Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Visualizing Semantic Regions */
+        header,
+        nav,
+        main,
+        article,
+        aside,
+        footer {
+            padding: 1.5rem;
+            margin: 0.5rem;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        /* Labels for demo purposes */
+        header::before,
+        nav::before,
+        main::before,
+        article::before,
+        aside::before,
+        footer::before {
+            content: attr(data-tag);
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background: #333;
+            color: white;
+            padding: 2px 8px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        header {
+            background: #ffe4e6;
+            border-color: #fda4af;
+        }
+
+        nav {
+            background: #fae8ff;
+            border-color: #f0abfc;
+        }
+
+        main {
+            background: #ecfccb;
+            border-color: #bef264;
+            flex: 1;
+            display: flex;
+            gap: 1rem;
+        }
+
+        article {
+            background: #fff;
+            border-color: #cbd5e1;
+            flex: 2;
+        }
+
+        aside {
+            background: #e0f2fe;
+            border-color: #7dd3fc;
+            flex: 1;
+        }
+
+        footer {
+            background: #fef3c7;
+            border-color: #fcd34d;
+        }
+
+        h1,
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header data-tag="<header>">
+        <h1>Website Logo & Title</h1>
+    </header>
+
+    <nav data-tag="<nav>">
+        <a href="#">Home</a> | <a href="#">About</a> | <a href="#">Contact</a>
+    </nav>
+
+    <main data-tag="<main>">
+        <article data-tag="<article>">
+            <h2>Blog Post Title</h2>
+            <p>This is the main content. Using <strong>&lt;article&gt;</strong> means this content makes sense on its
+                own (like a news story).</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </article>
+
+        <aside data-tag="<aside>">
+            <h3>Sidebar</h3>
+            <p>Related links or ads go here.</p>
+            <p>This content is tangentially related to the main content.</p>
+        </aside>
+    </main>
+
+    <footer data-tag="<footer>">
+        <p>&copy; 2025 Semantic Web Inc. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

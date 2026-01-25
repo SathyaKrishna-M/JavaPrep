@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #eef2ff;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4f46e5;
+            margin-top: 0;
+        }
+
+        button {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:disabled {
+            background: #a5b4fc;
+            cursor: not-allowed;
+        }
+
+        #status {
+            margin-top: 20px;
+            color: #6b7280;
+            font-style: italic;
+            min-height: 20px;
+        }
+
+        .user-list {
+            text-align: left;
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .user-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.5s;
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            background: #c7d2fe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #312e81;
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>Simulate API Fetch</h1>
+        <p>Click below to fetch fake user data from the server (2s delay).</p>
+
+        <button id="fetchBtn" onclick="loadData()">Fetch Users</button>
+        <div id="status"></div>
+        <ul id="list" class="user-list"></ul>
+    </div>
+
+    <script>
+        // Use Async/Await
+        async function loadData() {
+            const btn = document.getElementById('fetchBtn');
+            const status = document.getElementById('status');
+            const list = document.getElementById('list');
+
+            // Reset UI
+            status.innerText = "⏳ Loading data from server...";
+            list.innerHTML = "";
+            btn.disabled = true;
+
+            try {
+                // Stimulate 2 second delay (Promise)
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                // Fake Data
+                const users = [
+                    { id: 1, name: "Alice Johnson" },
+                    { id: 2, name: "Bob Smith" },
+                    { id: 3, name: "Charlie Davis" }
+                ];
+
+                status.innerText = "✅ Data received!";
+
+                // Render
+                users.forEach(user => {
+                    const li = document.createElement('li');
+                    li.className = 'user-item';
+                    li.innerHTML = `<div class='avatar'>${user.name[0]}</div> <span>${user.name}</span>`;
+                    list.appendChild(li);
+                });
+
+            } catch (error) {
+                status.innerText = "❌ Error fetching data.";
+            } finally {
+                btn.disabled = false;
+            }
+        }
+    </script>
+</body>
+
+</html>

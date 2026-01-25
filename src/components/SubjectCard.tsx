@@ -86,7 +86,7 @@ export default function SubjectCard({
                 <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-300 transition-all duration-300">
                   {title}
                 </h3>
-                <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300 line-clamp-1">
                   {description}
                 </p>
               </div>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Tags Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .code-label {
+            display: inline-block;
+            background: #eee;
+            color: #d63384;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Common HTML Content Tags</h1>
+
+    <section>
+        <div class="code-label">&lt;h1&gt; to &lt;h6&gt;</div>
+        <h1>Heading 1 (Main Title)</h1>
+        <h2>Heading 2 (Section Title)</h2>
+        <h3>Heading 3 (Subsection)</h3>
+    </section>
+
+    <section>
+        <div class="code-label">&lt;p&gt; and &lt;strong&gt;</div>
+        <p>This is a standard paragraph. It adds spacing before and after the text block.</p>
+        <p>You can make text <strong>bold (strong)</strong> or <em>italic (em)</em> for emphasis.</p>
+    </section>
+
+    <section>
+        <div class="code-label">&lt;ul&gt; and &lt;ol&gt;</div>
+        <p><strong>Unordered List:</strong></p>
+        <ul>
+            <li>Apples</li>
+            <li>Bananas</li>
+            <li>Cherries</li>
+        </ul>
+        <p><strong>Ordered List:</strong></p>
+        <ol>
+            <li>Step one</li>
+            <li>Step two</li>
+            <li>Step three</li>
+        </ol>
+    </section>
+
+    <section>
+        <div class="code-label">&lt;a&gt; (Anchor/Link)</div>
+        <p>
+            Links connect the web together.
+            <a href="https://google.com" target="_blank">Go to Google</a> (opens in new tab).
+        </p>
+    </section>
+
+    <section>
+        <div class="code-label">&lt;img&gt;</div>
+        <p>Images bring color to the page:</p>
+        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=500&auto=format&fit=crop&q=60"
+            alt="Abstract Gradient">
+        <p><small>Note: Always include an `alt` text for accessibility!</small></p>
+    </section>
+</body>
+
+</html>

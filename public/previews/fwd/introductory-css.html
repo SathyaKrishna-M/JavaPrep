@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Intro Demo</title>
+    <style>
+        /* CSS goes here! */
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+            background-color: #f8fafc;
+        }
+
+        h1 {
+            color: #2563eb;
+            /* Blue text */
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+
+            /* Transition for hover effect */
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            /* Slight zoom on hover */
+            border-color: #2563eb;
+        }
+
+        .highlight {
+            background-color: #fef08a;
+            /* Yellow background */
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            width: 100%;
+            margin-top: 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Intro to CSS</h1>
+
+    <div class="card">
+        <h3>This is a styled card</h3>
+        <p>
+            CSS allows us to change <span class="highlight">colors</span>, fonts, spacing, and layout.
+        </p>
+        <p>Hover over this card to see a simple interaction!</p>
+        <button>Click Me (I do nothing yet)</button>
+    </div>
+
+</body>
+
+</html>

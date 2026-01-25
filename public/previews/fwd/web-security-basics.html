@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #fff1f2;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #be123c;
+            margin-top: 0;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #881337;
+        }
+
+        input {
+            padding: 10px;
+            width: 100%;
+            border: 2px solid #fda4af;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .output-box {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 6px;
+        }
+
+        .unsafe {
+            background: #ffe4e6;
+            border-left: 5px solid #f43f5e;
+            color: #881337;
+        }
+
+        .safe {
+            background: #dcfce7;
+            border-left: 5px solid #22c55e;
+            color: #14532d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>XSS Simulator</h1>
+        <p>Cross-Site Scripting (XSS) happens when apps print user input directly without cleaning it.</p>
+
+        <div class="input-group">
+            <label>Try typing: &lt;b&gt;BOLD&lt;/b&gt;</label>
+            <input type="text" id="userInput" placeholder="Type html here..." oninput="update()">
+        </div>
+
+        <div class="output-box unsafe">
+            <strong>Unsafe Output (innerHTML):</strong>
+            <div id="unsafeOut"></div>
+        </div>
+
+        <div class="output-box safe">
+            <strong>Safe Output (innerText):</strong>
+            <div id="safeOut"></div>
+        </div>
+    </div>
+
+    <script>
+        function update() {
+            const val = document.getElementById('userInput').value;
+
+            // 1. Unsafe - Browser executes the HTML
+            document.getElementById('unsafeOut').innerHTML = val;
+
+            // 2. Safe - Browser treats it as plain text
+            document.getElementById('safeOut').innerText = val;
+        }
+    </script>
+</body>
+
+</html>

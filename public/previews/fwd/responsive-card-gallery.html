@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Gallery</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #111;
+            padding: 2rem;
+            color: white;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #ec4899, #8b5cf6);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+            /* The Magic Line: Responsive Columns */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .card {
+            background: #222;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #ec4899;
+        }
+
+        .img-placeholder {
+            height: 150px;
+            background: linear-gradient(45deg, #333, #444);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 2rem;
+        }
+
+        .content {
+            padding: 1.5rem;
+        }
+
+        h3 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+        }
+
+        p {
+            margin: 0;
+            color: #888;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 8px;
+            background: #333;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            color: #ccc;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Resize Window to Test</h1>
+
+    <div class="grid">
+        <!-- 8 Cards -->
+        <div class="card">
+            <div class="img-placeholder">📷</div>
+            <div class="content">
+                <h3>Card Title 1</h3>
+                <p>This card will resize automatically.</p><span class="tag">Design</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img-placeholder">📷</div>
+            <div class="content">
+                <h3>Card Title 2</h3>
+                <p>This card will resize automatically.</p><span class="tag">Code</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img-placeholder">📷</div>
+            <div class="content">
+                <h3>Card Title 3</h3>
+                <p>This card will resize automatically.</p><span class="tag">UI/UX</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img-placeholder">📷</div>
+            <div class="content">
+                <h3>Card Title 4</h3>
+                <p>This card will resize automatically.</p><span class="tag">Web</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img-placeholder">📷</div>
+            <div class="content">
+                <h3>Card Title 5</h3>
+                <p>This card will resize automatically.</p><span class="tag">App</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img-placeholder">📷</div>
+            <div class="content">
+                <h3>Card Title 6</h3>
+                <p>This card will resize automatically.</p><span class="tag">Mobile</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img-placeholder">📷</div>
+            <div class="content">
+                <h3>Card Title 7</h3>
+                <p>This card will resize automatically.</p><span class="tag">Data</span>
+            </div>
+        </div>
+        <div class="card">
+            <div class="img-placeholder">📷</div>
+            <div class="content">
+                <h3>Card Title 8</h3>
+                <p>This card will resize automatically.</p><span class="tag">Cloud</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #fff7ed;
+            padding: 2rem;
+        }
+
+        .app-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        h2 {
+            color: #ea580c;
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #fdba74;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        button {
+            background: #ea580c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #c2410c;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background: #fff;
+            border-bottom: 1px solid #fed7aa;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        .delete-btn {
+            background: #fee2e2;
+            color: #dc2626;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+        }
+
+        .delete-btn:hover {
+            background: #fecaca;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <h2>Todo List</h2>
+
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <button onclick="addTask()">Add</button>
+        </div>
+
+        <ul id="taskList">
+            <!-- Items go here -->
+        </ul>
+
+        <p style="text-align: center; font-size: 0.8rem; color: #9ca3af; margin-top: 20px;">
+            Tip: Click "Add" to create elements. Click "Del" to remove them.
+        </p>
+    </div>
+
+    <script>
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const taskText = input.value;
+            if (!taskText) return;
+
+            const list = document.getElementById('taskList');
+
+            // 1. Create Element
+            const li = document.createElement('li');
+
+            // 2. Add Content
+            li.innerHTML = `
+                <span>${taskText}</span> 
+                <button class="delete-btn" onclick="removeTask(this)">Del</button>
+            `;
+
+            // 3. Append to Parent
+            list.appendChild(li);
+
+            // Clear input
+            input.value = '';
+        }
+
+        function removeTask(button) {
+            // Find the parent <li> of the clicked button
+            const li = button.parentElement;
+
+            // 4. Remove Element from DOM
+            li.remove();
+        }
+    </script>
+
+</body>
+
+</html>

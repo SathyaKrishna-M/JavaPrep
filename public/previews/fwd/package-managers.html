@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NPM Simulator</title>
+    <style>
+        body {
+            font-family: monospace;
+            background: #27272a;
+            color: #a1a1aa;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .editor {
+            background: #18181b;
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #3f3f46;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.5);
+        }
+
+        .filename {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .json-key {
+            color: #f472b6;
+        }
+
+        .json-val {
+            color: #a5b4fc;
+        }
+
+        .json-brace {
+            color: #e4e4e7;
+        }
+
+        .controls {
+            margin-top: 2rem;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        button {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #b91c1c;
+        }
+
+        button.add-react {
+            background: #0ea5e9;
+        }
+
+        button.add-axios {
+            background: #8b5cf6;
+        }
+
+        .terminal {
+            margin-top: 20px;
+            background: black;
+            padding: 10px;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            height: 100px;
+            overflow-y: auto;
+        }
+
+        .term-line {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="editor">
+        <div class="filename">package.json</div>
+        <div id="code">
+            <span class="json-brace">{</span><br>
+            &nbsp;&nbsp;<span class="json-key">"name"</span>: <span class="json-val">"my-app"</span>,<br>
+            &nbsp;&nbsp;<span class="json-key">"version"</span>: <span class="json-val">"1.0.0"</span>,<br>
+            &nbsp;&nbsp;<span class="json-key">"dependencies"</span>: <span class="json-brace">{</span><br>
+            <span id="deps"></span>
+            &nbsp;&nbsp;<span class="json-brace">}</span><br>
+            <span class="json-brace">}</span>
+        </div>
+    </div>
+
+    <div class="terminal" id="terminal">
+        <div class="term-line">> Ready to install packages...</div>
+    </div>
+
+    <div class="controls">
+        <button class="add-react" onclick="install('react', '^18.2.0')">npm install react</button>
+        <button class="add-axios" onclick="install('axios', '^1.4.0')">npm install axios</button>
+    </div>
+
+    <script>
+        const added = {};
+
+        function install(name, version) {
+            if (added[name]) return;
+
+            // Log to terminal
+            const term = document.getElementById('terminal');
+            const line = document.createElement('div');
+            line.className = 'term-line';
+            line.style.color = '#4ade80';
+            line.innerText = `> npm install ${name}... Done!`;
+            term.appendChild(line);
+            term.scrollTop = term.scrollHeight;
+
+            // Update JSON
+            added[name] = true;
+            const depsDiv = document.getElementById('deps');
+            const newDep = document.createElement('div');
+            newDep.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;<span class="json-key">"${name}"</span>: <span class="json-val">"${version}"</span>,`;
+            depsDiv.appendChild(newDep);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+
+> babuhub@0.1.0 lint
+> next lint --no-cache
+
+
+./src/app/subjects/data-structures/topics/CO6/micro-projects/page.tsx
+71:60  Error: Parsing error: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules

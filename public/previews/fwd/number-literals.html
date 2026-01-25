@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Literals Demo</title>
+    <style>
+        body {
+            font-family: monospace;
+            background: #1f2937;
+            color: #f3f4f6;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .converter {
+            background: #111827;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #374151;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input {
+            background: #374151;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #374151;
+        }
+
+        .label {
+            color: #9ca3af;
+        }
+
+        .value {
+            color: #3b82f6;
+            font-weight: bold;
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #60a5fa;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="converter">
+        <h1>Base Converter</h1>
+        <p style="text-align: center; color: #9ca3af; margin-bottom: 20px;">Enter a decimal number</p>
+
+        <input type="number" id="input" value="255" oninput="updateValues()">
+
+        <div class="result-row">
+            <span class="label">Decimal (Base 10)</span>
+            <span class="value" id="dec">255</span>
+        </div>
+        <div class="result-row">
+            <span class="label">Binary (Base 2)</span>
+            <span class="value" style="color: #10b981;" id="bin">11111111</span>
+        </div>
+        <div class="result-row">
+            <span class="label">Octal (Base 8)</span>
+            <span class="value" style="color: #f59e0b;" id="oct">377</span>
+        </div>
+        <div class="result-row">
+            <span class="label">Hex (Base 16)</span>
+            <span class="value" style="color: #ec4899;" id="hex">FF</span>
+        </div>
+    </div>
+
+    <script>
+        function updateValues() {
+            const input = document.getElementById('input').value;
+            const num = parseInt(input) || 0; // Default to 0 if empty
+
+            document.getElementById('dec').innerText = num.toString(10);
+            document.getElementById('bin').innerText = "0b" + num.toString(2);
+            document.getElementById('oct').innerText = "0o" + num.toString(8);
+            document.getElementById('hex').innerText = "0x" + num.toString(16).toUpperCase();
+        }
+
+        // Init
+        updateValues();
+    </script>
+</body>
+
+</html>

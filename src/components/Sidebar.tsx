@@ -3,7 +3,9 @@
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { topics as javaTopics } from '@/data/java-topics'
+import { topics as dsTopics } from '@/data/ds-topics'
 import { dsdTopics } from '@/data/dsd-topics'
+import { fwdTopics } from '@/data/fwd-topics'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useMemo, useEffect } from 'react'
 import { FiChevronDown, FiChevronRight } from 'react-icons/fi'
@@ -13,15 +15,31 @@ export default function Sidebar() {
   const [openCOs, setOpenCOs] = useState<Set<string>>(new Set(['CO1', 'CO2', 'CO3', 'CO4', 'CO5', 'CO6']))
 
   const isDSD = pathname?.startsWith('/subjects/digital-system-design')
+  const isDS = pathname?.startsWith('/subjects/data-structures')
+  const isFWD = pathname?.startsWith('/subjects/web-development')
 
   // Reset open COs when subject changes, or keep them open by default
   useEffect(() => {
     setOpenCOs(new Set(['CO1', 'CO2', 'CO3', 'CO4', 'CO5', 'CO6']))
-  }, [isDSD])
+  }, [isDSD, isDS, isFWD])
 
-  const currentTopics = isDSD ? dsdTopics : javaTopics
-  const subjectTitle = isDSD ? 'DSD Topics' : 'Java Topics'
-  const subjectSubtitle = isDSD ? 'Digital System Design' : 'Master the fundamentals'
+  let currentTopics = javaTopics
+  let subjectTitle = 'Java Topics'
+  let subjectSubtitle = 'Master the fundamentals'
+
+  if (isDSD) {
+    currentTopics = dsdTopics
+    subjectTitle = 'DSD Topics'
+    subjectSubtitle = 'Digital System Design'
+  } else if (isDS) {
+    currentTopics = dsTopics
+    subjectTitle = 'DS Topics'
+    subjectSubtitle = 'Data Structures in Java'
+  } else if (isFWD) {
+    currentTopics = fwdTopics
+    subjectTitle = 'FWD Topics'
+    subjectSubtitle = 'Fundamentals of Web Development'
+  }
 
   const toggleCO = (co: string) => {
     setOpenCOs(prev => {
@@ -46,6 +64,26 @@ export default function Sidebar() {
         CO6: 'CO6 — Practical Applications',
       }
     }
+    if (isDS) {
+      return {
+        CO1: 'CO1 — Foundations of DS & Algorithms',
+        CO2: 'CO2 — Linked Lists',
+        CO3: 'CO3 — Stacks & Queues',
+        CO4: 'CO4 — Trees & Graphs',
+        CO5: 'CO5 — Hashing & Advanced',
+        CO6: 'CO6 — Applications',
+      }
+    }
+    if (isFWD) {
+      return {
+        CO1: 'CO1 — Internet Fundamentals, HTML & Introductory CSS',
+        CO2: 'CO2 — HTML Forms, Semantic Tags & Comprehensive CSS Layouts',
+        CO3: 'CO3 — JavaScript Programming Essentials',
+        CO4: 'CO4 — JavaScript Interactivity & DOM',
+        CO5: 'CO5 — Advanced Web Development & Deployment',
+        CO6: 'CO6 — Applications & Projects',
+      }
+    }
     return {
       CO1: 'CO1 — Basic Java Programming Constructs',
       CO2: 'CO2 — Arrays & Algorithmic Problem Solving',
@@ -54,7 +92,7 @@ export default function Sidebar() {
       CO5: 'CO5 — Advanced OOP & System Architecture',
       CO6: 'CO6 — Robust & Scalable Java Applications',
     }
-  }, [isDSD])
+  }, [isDSD, isDS, isFWD])
 
   // Group topics by CO
   const topicsByCO = useMemo(() => {
@@ -134,10 +172,10 @@ export default function Sidebar() {
                             <Link
                               href={topic.href}
                               className={`block px-3 py-2 rounded-lg transition-all duration-200 text-sm relative overflow-hidden group/link ${isActive
-                                  ? 'text-white font-medium bg-gradient-to-r from-blue-600/20 to-transparent border-l-2 border-blue-500'
-                                  : isImportant
-                                    ? 'text-yellow-200 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 hover:from-yellow-500/20 hover:to-orange-500/20 border-l-2 border-yellow-500/50'
-                                    : 'text-gray-400 hover:text-white hover:bg-white/5 border-l-2 border-transparent'
+                                ? 'text-white font-medium bg-gradient-to-r from-blue-600/20 to-transparent border-l-2 border-blue-500'
+                                : isImportant
+                                  ? 'text-yellow-200 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 hover:from-yellow-500/20 hover:to-orange-500/20 border-l-2 border-yellow-500/50'
+                                  : 'text-gray-400 hover:text-white hover:bg-white/5 border-l-2 border-transparent'
                                 }`}
                             >
                               <div className="flex items-center relative z-10">

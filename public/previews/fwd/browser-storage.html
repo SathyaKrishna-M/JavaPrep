@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f0fdf4;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #16a34a;
+            margin-top: 0;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #bbf7d0;
+            border-radius: 6px;
+            width: 80%;
+            margin-bottom: 1rem;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .save {
+            background: #16a34a;
+            color: white;
+        }
+
+        .clear {
+            background: #ef4444;
+            color: white;
+        }
+
+        #greeting {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #15803d;
+            min-height: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2>Preferences</h2>
+        <p>Enter your name. Reload the page, and I will remember you!</p>
+
+        <input type="text" id="username" placeholder="Enter your name...">
+
+        <div class="btn-group">
+            <button class="save" onclick="saveName()">Save</button>
+            <button class="clear" onclick="clearName()">Clear</button>
+        </div>
+
+        <div id="greeting"></div>
+    </div>
+
+    <script>
+        const input = document.getElementById('username');
+        const greeting = document.getElementById('greeting');
+
+        // 1. Load from Storage on Init
+        function loadPreferences() {
+            const savedName = localStorage.getItem('user_name');
+            if (savedName) {
+                greeting.innerText = `Welcome back, ${savedName}! 👋`;
+                input.value = savedName;
+            } else {
+                greeting.innerText = "";
+            }
+        }
+
+        // 2. Save to Storage
+        function saveName() {
+            const name = input.value;
+            if (!name) return;
+            localStorage.setItem('user_name', name);
+            loadPreferences(); // Update UI
+            alert('Saved! Now refresh the page.');
+        }
+
+        // 3. Clear Storage
+        function clearName() {
+            localStorage.removeItem('user_name');
+            input.value = '';
+            loadPreferences();
+        }
+
+        // Run on load
+        loadPreferences();
+    </script>
+
+</body>
+
+</html>

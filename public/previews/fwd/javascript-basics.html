@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Basics Demo</title>
+    <style>
+        body {
+            font-family: monospace;
+            /* Code-like font */
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #569cd6;
+        }
+
+        .console {
+            background: #000;
+            padding: 1rem;
+            border: 1px solid #333;
+            border-radius: 6px;
+            min-height: 200px;
+        }
+
+        .log-entry {
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid #222;
+            padding-bottom: 0.25rem;
+        }
+
+        .log-label {
+            color: #ce9178;
+            font-weight: bold;
+        }
+
+        .log-val {
+            color: #b5cea8;
+        }
+
+        button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>JavaScript Console Simulation</h2>
+    <div id="output" class="console">
+        <!-- Logs appear here -->
+    </div>
+    <button onclick="runDemo()">Run Script</button>
+
+    <script>
+        function log(label, value) {
+            const output = document.getElementById('output');
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `<span class="log-label">${label}:</span> <span class="log-val">${value}</span>`;
+            output.appendChild(entry);
+        }
+
+        function runDemo() {
+            document.getElementById('output').innerHTML = ''; // Clear
+
+            // 1. Variables
+            let name = "Alex";
+            const age = 25;
+            log("Variable (String)", name);
+            log("Constant (Number)", age);
+
+            // 2. Operations
+            let futureAge = age + 10;
+            log("Math Operation (age + 10)", futureAge);
+
+            // 3. Logic
+            let isAdult = age >= 18;
+            log("Boolean Logic (age >= 18)", isAdult);
+
+            // 4. Template Literal
+            let greeting = `Hello ${name}, you are ${age}!`;
+            log("Template Literal", greeting);
+        }
+    </script>
+
+</body>
+
+</html>

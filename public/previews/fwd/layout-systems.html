@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Systems Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #f0f9ff;
+            padding: 2rem;
+            margin: 0;
+        }
+
+        h2 {
+            text-align: center;
+            color: #0284c7;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .box {
+            background: #38bdf8;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #0ea5e9;
+        }
+
+        /* FLEXBOX DEMO */
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            /* Spacing magic */
+            gap: 10px;
+        }
+
+        /* GRID DEMO */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 Equal Columns */
+            gap: 15px;
+        }
+
+        .grid-container .box:nth-child(1) {
+            grid-column: span 2;
+            /* Spans 2 columns */
+            background: #a855f7;
+            border-color: #9333ea;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Flexbox (1D Layout)</h2>
+        <p>Perfect for aligning items in a row (like a navbar).</p>
+        <div class="flex-container">
+            <div class="box">Item 1</div>
+            <div class="box">Item 2</div>
+            <div class="box">Item 3</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>CSS Grid (2D Layout)</h2>
+        <p>Perfect for complex page layouts (Rows & Columns).</p>
+        <div class="grid-container">
+            <div class="box">Header (Spans 2)</div>
+            <div class="box">Sidebar</div>
+            <div class="box">Content A</div>
+            <div class="box">Content B</div>
+            <div class="box">Content C</div>
+        </div>
+    </div>
+
+</body>
+
+</html>

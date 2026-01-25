@@ -25,6 +25,8 @@ const subjectColors: Record<SearchItem['subject'], string> = {
   Java: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
   DDCOA: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
   DM: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+  DS: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+  FWD: 'bg-red-500/20 text-red-400 border-red-500/30',
 }
 
 export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: SearchDropdownProps) {
@@ -236,8 +238,8 @@ export default function SearchDropdown({ isOpen, onClose, initialQuery = '' }: S
                         setSelectedIndex(index)
                       }}
                       className={`px-4 py-3 cursor-pointer transition-colors ${isSelected
-                          ? 'bg-blue-500/20 border-l-4 border-blue-400'
-                          : 'hover:bg-white/5'
+                        ? 'bg-blue-500/20 border-l-4 border-blue-400'
+                        : 'hover:bg-white/5'
                         }`}
                     >
                       <div className="flex items-start gap-3">

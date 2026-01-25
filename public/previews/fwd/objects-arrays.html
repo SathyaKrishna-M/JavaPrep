@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects & Arrays</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #fffbeb;
+            padding: 2rem;
+        }
+
+        h1 {
+            color: #d97706;
+            text-align: center;
+        }
+
+        .product-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid #fcd34d;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .product-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #78350f;
+        }
+
+        .product-price {
+            color: #059669;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🛍️ Shopping Cart (Array of Objects)</h1>
+    <div id="container" class="product-list">
+        <!-- JS will inject content here -->
+    </div>
+
+    <script>
+        // Array of Objects
+        const products = [
+            { id: 1, name: "Wireless Mouse", price: 25.99 },
+            { id: 2, name: "Mechanical Keyboard", price: 120.50 },
+            { id: 3, name: "USB-C Cable", price: 12.00 },
+            { id: 4, name: "Monitor Stand", price: 45.00 }
+        ];
+
+        // Function to render
+        function renderProducts() {
+            const container = document.getElementById('container');
+
+            // Map the array to HTML
+            const html = products.map(product => `
+                <div class="product-card">
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-price">$${product.price}</div>
+                </div>
+            `).join('');
+
+            container.innerHTML = html;
+        }
+
+        renderProducts();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A11y Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #333;
+            color: white;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card {
+            background: #444;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        button,
+        input {
+            margin: 10px 0;
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 4px;
+            border: 2px solid transparent;
+        }
+
+        /* Focus Styles - CRITICAL for A11y */
+        button:focus,
+        input:focus {
+            outline: 3px solid #fbbf24;
+            border-color: #f59e0b;
+        }
+
+        /* Poor Contrast Example */
+        .bad-btn {
+            background: #555;
+            color: #777;
+            border: 1px solid #666;
+            cursor: not-allowed;
+        }
+
+        /* Good Contrast Example */
+        .good-btn {
+            background: #10b981;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>Keyboard Navigation</h1>
+        <p>Use the <strong>TAB</strong> key to move through this form.</p>
+
+        <label for="name">Name (Has Label)</label>
+        <input type="text" id="name" placeholder="Focus me...">
+
+        <button class="good-btn">Good Contrast Button</button>
+
+        <p style="font-size: 0.8rem; color: #aaa; margin-top: 10px;">The button below is hard to read (Low Contrast).
+        </p>
+        <button class="bad-btn">Bad Contrast</button>
+    </div>
+
+</body>
+
+</html>

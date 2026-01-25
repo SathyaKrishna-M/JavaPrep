@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import SubjectCard from '@/components/SubjectCard'
-import { FaJava } from 'react-icons/fa'
+import { FaJava, FaDatabase, FaGlobe } from 'react-icons/fa'
 import { FiCpu, FiLayers } from 'react-icons/fi'
 import Link from 'next/link'
 
@@ -36,13 +36,31 @@ const subjects = [
     gradientFrom: 'from-purple-400',
     gradientTo: 'to-pink-600',
   },
+  {
+    id: 'data-structures',
+    title: 'Data Structures in Java',
+    description: 'Master data structures including arrays, linked lists, and algorithms with complexity analysis.',
+    icon: <FaDatabase className="w-12 h-12" />,
+    href: '/subjects/data-structures',
+    gradientFrom: 'from-green-400',
+    gradientTo: 'to-emerald-600',
+  },
+  {
+    id: 'web-development',
+    title: 'Fundamentals of Web Development',
+    description: 'Learn to build modern websites with HTML, CSS, JavaScript, and responsive design principles.',
+    icon: <FaGlobe className="w-12 h-12" />,
+    href: '/subjects/web-development',
+    gradientFrom: 'from-pink-400',
+    gradientTo: 'to-rose-600',
+  },
 ]
 
 export default function SubjectsPage() {
   return (
     <main className="min-h-screen">
       <Navbar />
-      
+
       <div className="container mx-auto px-4 py-24">
         {/* Header */}
         <motion.div

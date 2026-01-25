@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Form Validation</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f8fafc;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #1e293b;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: 0.2s;
+        }
+
+        /* Valid/Invalid States */
+        input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+
+        input:valid:not(:placeholder-shown) {
+            border-color: #22c55e;
+            background: #f0fdf4;
+        }
+
+        input:invalid:not(:placeholder-shown) {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        /* Error Message Logic */
+        .error-msg {
+            display: none;
+            color: #ef4444;
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        input:invalid:not(:placeholder-shown)+.error-msg {
+            display: block;
+        }
+
+        button {
+            width: 100%;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        button:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h2>Register Account</h2>
+        <form id="myForm" onsubmit="handleSubmit(event)">
+
+            <div class="form-group">
+                <label for="username">Username (No spaces, 3-20 chars)</label>
+                <input type="text" id="username" pattern="[a-zA-Z0-9]{3,20}" placeholder=" " required>
+                <span class="error-msg">⚠ Only letters & numbers, 3-20 chars.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder=" " required>
+                <span class="error-msg">⚠ Please enter a valid email.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password (Min 8 chars)</label>
+                <input type="password" id="password" minlength="8" placeholder=" " required oninput="checkMatch()">
+                <span class="error-msg">⚠ Must be at least 8 characters.</span>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm">Confirm Password</label>
+                <input type="password" id="confirm" placeholder=" " required oninput="checkMatch()">
+                <div id="matchError" class="error-msg">⚠ Passwords do not match.</div>
+            </div>
+
+            <button type="submit" id="submitBtn">Create Account</button>
+        </form>
+    </div>
+
+    <script>
+        function checkMatch() {
+            const p1 = document.getElementById('password').value;
+            const p2 = document.getElementById('confirm').value;
+            const err = document.getElementById('matchError');
+            const btn = document.getElementById('submitBtn');
+
+            if (p2 && p1 !== p2) {
+                err.style.display = 'block';
+                document.getElementById('confirm').style.borderColor = '#ef4444';
+                btn.disabled = true;
+            } else {
+                err.style.display = 'none';
+                if (p2) document.getElementById('confirm').style.borderColor = '#22c55e';
+                btn.disabled = false;
+            }
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert("Success! Form is valid and submitted.");
+        }
+    </script>
+</body>
+
+</html>

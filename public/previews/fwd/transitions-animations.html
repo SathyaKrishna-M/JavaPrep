@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations Demo</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: #111827;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            gap: 3rem;
+        }
+
+        /* 1. TRANSITION DEMO */
+        .btn {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            /* The Magic Line */
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #2563eb;
+            transform: scale(1.1) rotate(-3deg);
+            box-shadow: 0 0 20px #3b82f6;
+        }
+
+        /* 2. ANIMATION DEMO */
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #374151;
+            border-top: 5px solid #10b981;
+            /* Green top */
+            border-radius: 50%;
+            /* Infinite Keyframe Animation */
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="text-align: center;">
+        <h3>Hover Transition</h3>
+        <button class="btn">Hover Me!</button>
+    </div>
+
+    <div style="text-align: center;">
+        <h3>Infinite Animation</h3>
+        <div class="loader"></div>
+    </div>
+
+</body>
+
+</html>

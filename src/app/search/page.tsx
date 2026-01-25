@@ -21,12 +21,16 @@ const subjectColors: Record<SearchItem['subject'], string> = {
   Java: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
   DDCOA: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
   DM: 'bg-purple-500/20 text-purple-400 border-purple-500/30',
+  DS: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
+  FWD: 'bg-red-500/20 text-red-400 border-red-500/30', // Assuming a color for FWD
 }
 
-const subjectLabels: Record<SearchItem['subject'], string> = {
+const subjectLabels: Record<string, string> = {
   Java: 'Java Programming',
-  DDCOA: 'DDCOA - Digital Design Computer Orientation Architecture',
+  DDCOA: 'Digital Design & COA',
   DM: 'Discrete Mathematics',
+  DS: 'Data Structures',
+  FWD: 'Web Development',
 }
 
 function SearchContent() {
@@ -70,7 +74,7 @@ function SearchContent() {
   const handleSelectResult = (item: SearchItem) => {
     const url = item.anchorId ? `${item.url}#${item.anchorId}` : item.url
     router.push(url)
-    
+
     // Scroll to element if anchor exists
     if (item.anchorId) {
       setTimeout(() => {
