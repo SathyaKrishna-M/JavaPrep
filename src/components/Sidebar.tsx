@@ -6,6 +6,7 @@ import { topics as javaTopics } from '@/data/java-topics'
 import { topics as dsTopics } from '@/data/ds-topics'
 import { dsdTopics } from '@/data/dsd-topics'
 import { fwdTopics } from '@/data/fwd-topics'
+import { topics as mathTopics } from '@/data/math-ai-topics'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useMemo, useEffect } from 'react'
 import { FiChevronDown, FiChevronRight } from 'react-icons/fi'
@@ -17,11 +18,12 @@ export default function Sidebar() {
   const isDSD = pathname?.startsWith('/subjects/digital-system-design')
   const isDS = pathname?.startsWith('/subjects/data-structures')
   const isFWD = pathname?.startsWith('/subjects/web-development')
+  const isMathAI = pathname?.startsWith('/subjects/mathematics-for-ai')
 
   // Reset open COs when subject changes, or keep them open by default
   useEffect(() => {
     setOpenCOs(new Set(['CO1', 'CO2', 'CO3', 'CO4', 'CO5', 'CO6']))
-  }, [isDSD, isDS, isFWD])
+  }, [isDSD, isDS, isFWD, isMathAI])
 
   let currentTopics = javaTopics
   let subjectTitle = 'Java Topics'
@@ -39,6 +41,10 @@ export default function Sidebar() {
     currentTopics = fwdTopics
     subjectTitle = 'FWD Topics'
     subjectSubtitle = 'Fundamentals of Web Development'
+  } else if (isMathAI) {
+    currentTopics = mathTopics
+    subjectTitle = 'Math for AI'
+    subjectSubtitle = 'Mathematics for Artificial Intelligence'
   }
 
   const toggleCO = (co: string) => {
@@ -84,6 +90,16 @@ export default function Sidebar() {
         CO6: 'CO6 — Applications & Projects',
       }
     }
+    if (isMathAI) {
+      return {
+        CO1: 'CO1 — Vectors, Matrices & Data Representation',
+        CO2: 'CO2 — Linear Algebra for Learning Systems',
+        CO3: 'CO3 — Multivariable Calculus for AI',
+        CO4: 'CO4 — Optimization & Learning Dynamics',
+        CO5: 'CO5 — Mathematics Behind Advanced AI Concepts',
+        CO6: 'CO6 — Mathematical Construction of AI Building Blocks',
+      }
+    }
     return {
       CO1: 'CO1 — Basic Java Programming Constructs',
       CO2: 'CO2 — Arrays & Algorithmic Problem Solving',
@@ -92,7 +108,7 @@ export default function Sidebar() {
       CO5: 'CO5 — Advanced OOP & System Architecture',
       CO6: 'CO6 — Robust & Scalable Java Applications',
     }
-  }, [isDSD, isDS, isFWD])
+  }, [isDSD, isDS, isFWD, isMathAI])
 
   // Group topics by CO
   const topicsByCO = useMemo(() => {

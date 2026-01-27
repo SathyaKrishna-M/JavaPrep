@@ -6,8 +6,8 @@ import Footer from '@/components/Footer'
 import Hero from '@/components/Hero'
 import SubjectCard from '@/components/SubjectCard'
 import FeatureCard from '@/components/FeatureCard'
-import { FaJava, FaDatabase } from 'react-icons/fa'
-import { FiCpu, FiLayers, FiBook, FiCode, FiEye, FiActivity } from 'react-icons/fi'
+import { FaJava, FaDatabase, FaCalculator } from 'react-icons/fa'
+import { FiCpu, FiLayers, FiBook, FiCode, FiEye, FiActivity, FiGlobe } from 'react-icons/fi'
 
 const subjects = [
   {
@@ -45,6 +45,24 @@ const subjects = [
     href: '/subjects/data-structures',
     gradientFrom: 'from-green-400',
     gradientTo: 'to-emerald-600',
+  },
+  {
+    id: 'web-development',
+    title: 'Fundamentals of Web Development',
+    description: 'Build modern responsive websites with HTML, CSS, JavaScript, and React through hands-on projects.',
+    icon: <FiGlobe className="w-12 h-12" />,
+    href: '/subjects/web-development',
+    gradientFrom: 'from-pink-400',
+    gradientTo: 'to-rose-600',
+  },
+  {
+    id: 'mathematics-for-ai',
+    title: 'Mathematics for AI',
+    description: 'Master vectors, calculus, optimization, and the math behind Neural Networks.',
+    icon: <FaCalculator className="w-12 h-12" />,
+    href: '/subjects/mathematics-for-ai',
+    gradientFrom: 'from-indigo-400',
+    gradientTo: 'to-violet-600',
   },
 ]
 
