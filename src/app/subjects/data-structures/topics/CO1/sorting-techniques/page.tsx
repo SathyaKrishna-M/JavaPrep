@@ -48,8 +48,8 @@ const content = {
                         <div className="my-4">
                             <CodeBlock
                                 language="java"
-                                code={`// Java Implementation (Optimized)
-public void bubbleSort(int[] arr) {
+                                code={`// Java Implementation (Optimized with Generics)
+public <T extends Comparable<T>> void bubbleSort(T[] arr) {
     int n = arr.length;
     boolean swapped;
     
@@ -59,9 +59,9 @@ public void bubbleSort(int[] arr) {
         
         // Inner loop - elements bubble up
         for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
+            if (arr[j].compareTo(arr[j + 1]) > 0) {
                 // Swap neighbors
-                int temp = arr[j];
+                T temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
                 swapped = true;
@@ -114,21 +114,21 @@ public void bubbleSort(int[] arr) {
                         <div className="my-4">
                             <CodeBlock
                                 language="java"
-                                code={`// Java Implementation
-public void selectionSort(int[] arr) {
+                                code={`// Java Implementation (Generics)
+public <T extends Comparable<T>> void selectionSort(T[] arr) {
     int n = arr.length;
     for (int i = 0; i < n - 1; i++) {
         int minIdx = i; // Assume current is min
         
         // Find min in remaining unsorted array
         for (int j = i + 1; j < n; j++) {
-            if (arr[j] < arr[minIdx]) {
+            if (arr[j].compareTo(arr[minIdx]) < 0) {
                 minIdx = j;
             }
         }
         
         // Swap min with first element of unsorted part
-        int temp = arr[minIdx];
+        T temp = arr[minIdx];
         arr[minIdx] = arr[i];
         arr[i] = temp;
     }
@@ -172,15 +172,15 @@ public void selectionSort(int[] arr) {
                         <div className="my-4">
                             <CodeBlock
                                 language="java"
-                                code={`// Java Implementation
-public void insertionSort(int[] arr) {
+                                code={`// Java Implementation (Generics)
+public <T extends Comparable<T>> void insertionSort(T[] arr) {
     int n = arr.length;
     for (int i = 1; i < n; i++) {
-        int key = arr[i]; // Card to be inserted
+        T key = arr[i]; // Card to be inserted
         int j = i - 1;
         
         // Move elements greater than key one pos ahead
-        while (j >= 0 && arr[j] > key) {
+        while (j >= 0 && arr[j].compareTo(key) > 0) {
             arr[j + 1] = arr[j];
             j = j - 1;
         }
@@ -228,8 +228,8 @@ public void insertionSort(int[] arr) {
                         <div className="my-4">
                             <CodeBlock
                                 language="java"
-                                code={`// Java Implementation
-public void mergeSort(int[] arr, int l, int r) {
+                                code={`// Java Implementation (Generics)
+public <T extends Comparable<T>> void mergeSort(T[] arr, int l, int r) {
     if (l < r) {
         int m = l + (r - l) / 2;
         mergeSort(arr, l, m);
@@ -238,11 +238,15 @@ public void mergeSort(int[] arr, int l, int r) {
     }
 }
 
-void merge(int[] arr, int l, int m, int r) {
+<T extends Comparable<T>> void merge(T[] arr, int l, int m, int r) {
     int n1 = m - l + 1;
     int n2 = r - m;
-    int[] L = new int[n1];
-    int[] R = new int[n2];
+    
+    // Create generic arrays using Object casting (common Java workaround)
+    @SuppressWarnings("unchecked")
+    T[] L = (T[]) new Comparable[n1];
+    @SuppressWarnings("unchecked")
+    T[] R = (T[]) new Comparable[n2];
     
     // Copy data
     for (int i=0; i<n1; ++i) L[i] = arr[l + i];
@@ -251,7 +255,7 @@ void merge(int[] arr, int l, int m, int r) {
     // Merge
     int i = 0, j = 0, k = l;
     while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) arr[k++] = L[i++];
+        if (L[i].compareTo(R[j]) <= 0) arr[k++] = L[i++];
         else arr[k++] = R[j++];
     }
     while (i < n1) arr[k++] = L[i++];
@@ -296,8 +300,8 @@ void merge(int[] arr, int l, int m, int r) {
                         <div className="my-4">
                             <CodeBlock
                                 language="java"
-                                code={`// Java Implementation
-void quickSort(int[] arr, int low, int high) {
+                                code={`// Java Implementation (Generics)
+<T extends Comparable<T>> void quickSort(T[] arr, int low, int high) {
     if (low < high) {
         int pi = partition(arr, low, high);
         quickSort(arr, low, pi - 1);
@@ -305,19 +309,19 @@ void quickSort(int[] arr, int low, int high) {
     }
 }
 
-int partition(int[] arr, int low, int high) {
-    int pivot = arr[high]; 
+<T extends Comparable<T>> int partition(T[] arr, int low, int high) {
+    T pivot = arr[high]; 
     int i = (low - 1); // Index of smaller element
     
     for (int j = low; j < high; j++) {
-        if (arr[j] < pivot) {
+        if (arr[j].compareTo(pivot) < 0) {
             i++;
             // Swap arr[i], arr[j]
-            int temp = arr[i]; arr[i] = arr[j]; arr[j] = temp;
+            T temp = arr[i]; arr[i] = arr[j]; arr[j] = temp;
         }
     }
     // Swap pivot to correct pos
-    int temp = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = temp;
+    T temp = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = temp;
     return i + 1;
 }`}
                             />
