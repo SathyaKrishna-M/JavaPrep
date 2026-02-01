@@ -1,0 +1,2746 @@
+
+
+--- START OF Session-1_7829 ALI.pdf ---
+
+ 
+ 
+ 
+Course Name: Mathematics for AI 
+Explain course handout:  
+Session-1: Understand vector representations and similarity measures 
+Vectors 
+• Definition of a vector in ℝ𝑛 
+A vector in ℝ𝑛is an ordered 𝑛-tuple of real numbers. 
+𝐱 = (𝑥1, 𝑥2, 𝑥3, … , 𝑥𝑛),where 𝑥𝑖 ∈ ℝ 
+Here: 
+• 𝑛is a positive integer called the dimension, 
+• each 𝑥𝑖is called a component (or coordinate) of the vector. 
+Set-Theoretic Description 
+ℝ𝑛 = {(𝑥1, 𝑥2, … , 𝑥𝑛) ∣ 𝑥𝑖 ∈ ℝ} 
+Geometric Interpretation 
+• In ℝ2: a vector represents a point or directed line segment in a plane. 
+• In ℝ3: a vector represents a point or directed line segment in space. 
+• For 𝑛 > 3: vectors exist in higher-dimensional spaces (cannot be visualized directly 
+but handled algebraically). 
+ 
+Algebraic Interpretation 
+A vector in ℝ𝑛is an element of a real vector space equipped with: 
+• vector addition 
+• scalar multiplication 
+Example-1: u = (2,4) ∈ ℝ2 𝐚𝐧𝐝 𝐯 = (2, −1,3) ∈ ℝ3. 
+Notation 
+• Row vector: (𝑥1, 𝑥2, … , 𝑥𝑛) 
+• Column vector: 
+(
+𝑥1
+𝑥2
+𝑥𝑛
+)  
+
+Vector addition in ℝ𝒏: Let 𝑢 = (𝑥1, 𝑥2, … , 𝑥𝑛) and v= (𝑦1, 𝑦2, … , 𝑦𝑛) be two vectors in ℝ𝒏 
+then, their sum 𝑢 + 𝑣 is defined as:  
+𝑢 + 𝑣 = (𝑥1, 𝑥2, … , 𝑥𝑛) + (𝑦1, 𝑦2, … , 𝑦𝑛) = (𝑥1 + 𝑦1, 𝑥2 + 𝑦2, … , 𝑥𝑛 + 𝑦𝑛). 
+Example 2: Let 𝒗𝟏 = (2, −1,3) ∈ ℝ3 and 𝒗𝟐 = (3, −4,6) ∈ ℝ3 then Let 𝒗𝟏 + 𝒗𝟐 =
+(5, −5,9) ∈ ℝ3. 
+Example 3: A drone flies 3 km east and then 4 km north. Find the resultant displacement. 
+Example 4: Three forces 5 N along x-axis, –3 N along y-axis, and 4 N along z-axis act on a 
+particle. Find the resultant force. 
+Dot Product 
+u ⋅ 𝑣 = ∑ 𝑥𝑖
+𝑛
+𝑖=1
+𝑦𝑖 
+Problem 1: Let u = (1, −2,3,4), v = (2,0, −1,5). Compute u ⋅ v. 
+Problem 2: A force 𝐹⃗ = (3, −2,6) N moves a body through a displacement 𝑠⃗ = (4,1,2) m. 
+Compute the work done. 
+Properties:  
+(i) Commutative: 𝐮 ⋅ 𝐯 = 𝐯 ⋅ 𝐮 for all 𝐮, 𝐯 ∈ ℝ𝑛. 
+(ii) Distributive: (𝐮 + 𝐯) ⋅ 𝐰 = 𝐮 ⋅ 𝐰 + 𝐯 ⋅ 𝐰. 
+Geometric meaning: 𝑢 ⋅ 𝐯 =∥ 𝐮 ∥ .  ∥ 𝐯 ∥ cos 𝜃 
+ 
+Vector Norms: Euclidean norm: ∥ 𝐯 ∥= √∑𝑦𝑖
+2  
+Meaning of magnitude and length: Distance between vectors 
+Problem-1: Find the Euclidean norm of 𝐯 = (1,   − 2,  2,  1). 
+Problem-2: Let 𝒗 = (𝑥,  2𝑥,  3𝑥), Find ∥ 𝒗 ∥in terms of 𝑥. 
+ 
+Projection of One Vector onto Another: The projection of a vector u onto another vector v 
+is the vector component of uthat lies in the direction of v. It is given by 
+
+ 
+Problem-1: Find the projection of u = (3,4) onto v = (1,0). 
+Problem-2: Show that the vector u − proj v(u) is orthogonal to v. 
+Problem-3: Let force 𝐅 = (5,3,4) acts on a body which moves along the direction 𝐝 =
+(1,2,2). Find the component of the force along the direction of motion. 
+Session-2: Represent AI data using vectors 
+Representing Vectors Digitally 
+A vector as a list/array: x = [𝑥1, 𝑥2, … , 𝑥𝑛] 
+ 
+• Concept of dimension 
+• High-dimensional vectors (motivation for text data) 
+Example 1: Three feature embeddings are 𝑒⃗1 = (1,2,3), 𝑒⃗2 = (2, −1,1), 𝑒⃗3 = (−1,1,2). 
+Find the combined embedding vector. 
+Solution:  𝑅⃗⃗ = 𝑒⃗1 + 𝑒⃗2 + 𝑒⃗3 
+= (1 + 2 − 1)𝑖̂+ (2 − 1 + 1)𝑗̂+ (3 + 1 + 2)𝑘̂ = (2, 2, 6) 
+Magnitude: ∣ 𝑅⃗⃗ ∣= √4 + 4 + 36 = √44 ≈ 6.63 
+Answer: Combined embedding = (2, 2, 6). 
+Problem 2: Let u = (𝑥, 2𝑥, 3𝑥, … , 𝑛𝑥), v = (1,1,1, … ,1). Find u ⋅ v. 
+Problem 3: Wind velocity is 𝑣⃗ = (6,8,2) m/s. The runway direction is given by the unit 
+vector 𝑛̂ = (
+3
+5
+, 4
+5
+, 0). Find the wind component along the runway. 
+Problem-4: A feature vector in an ML model is 𝐱 = (4,  3,  12), Compute its Euclidean norm. 
+Problem-5: If ∥ 𝐯 ∥= 5 and 𝐯 = (𝑎,  𝑏,  𝑐). find all possible values of 𝑎, 𝑏, 𝑐 satisfying the 
+condition. 
+Cosine Similarity (Core Concept) 
+Definition: Cosine Similarity(a, b) =
+a⋅b
+∥a∥ ∥b∥ 
+Why cosine? 
+• Independent of magnitude 
+• Measures directional similarity 
+• Values lie in [−1,1] 
+
+Value Meaning 
+1 Identical direction 
+0 Orthogonal (unrelated) 
+−1 Opposite direction 
+ 
+Case Study 1: Movie Recommendation Based on Plot Similarity             
+Problem 
+A streaming platform wants to recommend movies with similar stories based on their 
+descriptions. 
+Movie Description 
+D1 “A young hero saves the world from aliens” 
+D2 “A brave hero fights aliens to save Earth” 
+D3 “A romantic story about love and friendship” 
+Step 1: Text Preprocessing 
+We first clean the text: 
+• Convert to lowercase 
+• Remove stop words (a, the, to, from, etc.) 
+• Tokenize words 
+Key words extracted 
+• D1: {young, hero, saves, world, aliens} 
+• D2: {brave, hero, fights, aliens, save, earth} 
+• D3: {romantic, story, love, friendship} 
+Step 2: Vocabulary Construction 
+Unique words across all descriptions: 
+[young, hero, saves, world, aliens, brave, fights, earth, romantic, story, love, friendship] 
+Step 3: Vector Representation (Bag of Words) 
+Each movie is represented as a vector based on word presence (1 = present, 0 = absent). 
+Word ↓ 
+/ Movie 
+→ 
+young hero saves world aliens brave fights earth romantic story love friendship 
+D1 1 1 1 1 1 0 0 0 0 0 0 0 
+D2 0 1 0 0 1 1 1 1 0 0 0 0 
+D3 0 0 0 0 0 0 0 0 1 1 1 1 
+ Step 4: Similarity Measurement (Cosine Similarity) 
+Cosine Similarity(𝐴, 𝐵) = 𝐴 ⋅ 𝐵
+∥ 𝐴 ∥∥ 𝐵 ∥ 
+D1. D2 = 2, ||𝐷1|| = √5, ||𝐷2|| = √5,  
+Cosine Similarity(𝐷1, 𝐷2) = 2
+√5. √5
+= 2
+5 = 0.4 
+Similarity Scores 
+Similarity (D1, D2) ≈ 0.4 (High similarity), Similarity (D1, D3) = 0 and Similarity (D2, D3) = 0 
+Step 5: Recommendation Logic 
+• D1 and D2 share common themes: hero + aliens + saving Earth 
+• D3 is romance-based, unrelated to the first two 
+ 
+Practical-1: News Article Similarity Analysis Using TF-IDF 
+Step 1: Converting Text into Vectors 
+Method: TF–IDF (Frequency-Based Representation) 
+1. Words are treated as dimensions 
+2. Each document becomes a vector: 
+𝐝 = (𝑤1, 𝑤2, … , 𝑤𝑛) 
+TF (Term Frequency): 
+TF(𝑡, 𝑑) = Number of times term 𝑡 appears in 𝑑
+Total terms in 𝑑  
+IDF (Inverse Document Frequency):IDF(𝑡) = log (
+𝑁
+DF(𝑡)) 
+TF-IDF: TF-IDF(𝑡, 𝑑) = TF × IDF 
+ 
+Interpretation (Very Important for Exams & AI Context) 
+• The similarity is zero because the two documents share no common weighted terms 
+after TF–IDF. 
+• Even though both documents contain “AI”, its TF–IDF weight is zero, since it 
+appears in all documents. 
+• Hence, TF–IDF correctly identifies that the documents are conceptually related but 
+lexically different. 
+Step 2: Measuring Similarity 
+Once documents are vectors: 
+Similarity = 𝐝1 ⋅ 𝐝2
+∥ 𝐝1 ∥   ∥ 𝐝2 ∥ 
+Example:1 
+Document 1: “Mathematics is vital for AI” 
+Document 2: “AI depends on mathematical models” 
+Given Documents 
+• Document 1 (D₁): “Mathematics is vital for AI” 
+• Document 2 (D₂): “AI depends on mathematical models” 
+Step 1: Text Preprocessing 
+(a) Convert to lowercase 
+(b) Remove punctuation 
+(c) Tokenization 
+(d) Remove stop words (like is, for, on) 
+ 
+ 
+Processed Documents 
+D₁: mathematics, vital, ai  
+D₂: ai, depends, mathematical, models 
+Step 2: Vocabulary Construction 
+List all unique terms from both documents. 
+𝑉 = {mathematics,vital,ai,depends,mathematical,models} 
+Total documents: 𝑁 = 2 
+Step 3: Term Frequency (TF) 
+TF(𝑡, 𝑑) = Number of times term 𝑡 appears in 𝑑
+Total terms in 𝑑  
+TF for Document 1 
+Total words in D₁ = 3 
+Term mathematics vital ai depends mathematical models 
+Frequency 1 1 1 0 0 0 
+TF 
+      
+0 0 0 
+TF for Document 2 
+Total words in D₂ = 4 
+Term ai depends mathematical models mathematics vital 
+Frequency 1 1 1 1 0 0 
+         TF 
+        
+0 0 
+ 
+Step 4: Document Frequency (DF) 
+DF(𝑡) = Number of documents containing term 𝑡 
+ 
+Term mathematics vital ai depends mathematical models 
+DF 1 1 2 1 1 1 
+Step 5: Inverse Document Frequency (IDF) 
+IDF(𝑡) = log ( 𝑁
+DF(𝑡)) 
+Using natural logarithm (ln): 
+IDF Values 
+
+Term IDF 
+mathematics (𝐥𝐨𝐠(
+𝟐
+𝟏) = 0.693) 
+vital (𝐥𝐨𝐠(
+𝟐
+𝟏) = 0.693) 
+ai (𝐥𝐨𝐠(
+𝟐
+𝟐) = 0) 
+depends (𝐥𝐨𝐠(
+𝟐
+𝟏)= 0.693) 
+mathematical (𝐥𝐨𝐠(
+𝟐
+𝟏) = 0.693) 
+models ((𝐥𝐨𝐠(
+𝟐
+𝟏) = 0.693) 
+  
+Step 6: TF–IDF Calculation 
+TF–IDF(𝑡, 𝑑) = TF(𝑡, 𝑑) × IDF(𝑡) 
+TF–IDF for Document 1: 
+Term TF IDF TF–IDF 
+mathematics 1
+3 0.693 0.231 
+vital 1
+3 0.693 0.231 
+ai 1
+3 0 0 
+depends 0 0.693 0 
+mathematical 0 0.693 0 
+models 0 0.693 0 
+ TF–IDF for Document 2 
+Term TF IDF TF–IDF 
+ai 1
+4 0 0 
+depends 1
+4 0.693 0.173 
+Term TF IDF TF–IDF 
+mathematical 1
+4 0.693 0.173 
+models 1
+4 0.693 0.173 
+mathematics   0 0.693 0 
+vital   0 0.693 0 
+  
+Step 7: Final TF–IDF Vectors 
+Document 1 Vector 
+𝐷1 = (0.231,  0.231,  0,  0,  0,  0) 
+ 
+Document 2 Vector 
+𝐷2 = (0,  0,  0,  0.173,  0.173,  0.173) 
+Cosine Similarity Formula cos(𝜃) =
+𝐷1⋅𝐷2
+||𝐷1||.||𝐷2|| 
+As 𝐷1. 𝐷2 = 0. 
+Therefore,                                           cos(𝜃) = 0 
+Conclusion:  
+What Cosine Similarity Actually Measures 
+Cosine similarity measures the angle between two vectors, not their length. 
+Cosine Similarity = cos (𝜃) 
+• 𝜃= angle between document vectors 
+• It checks directional similarity, not size 
+Geometric Interpretation (Very Important) 
+Think of each document as a point/vector in high-dimensional space. 
+Case 1: Cosine similarity = 1 
+𝜃 = 0∘ 
+ 
+• Vectors point in the same direction 
+• Documents are identical in content distribution 
+• Same important words with similar weights 
+Meaning: Documents are almost the same 
+Case 2: Cosine similarity between 0 and 1 
+0∘ < 𝜃 < 90∘ 
+ 
+• Some overlap in important terms 
+• Partial similarity 
+Meaning: Documents are related to some extent 
+Case 3: Cosine similarity = 0 
+𝜃 = 90∘ 
+ 
+• Vectors are orthogonal 
+• No overlapping important features 
+Meaning: 
+Documents are not similar in meaningful terms 
+Very Important Clarification 
+Turnitin / iThenticate similarity % ≠ Cosine similarity 
+They do NOT use TF–IDF cosine similarity the way we compute in NLP textbooks. 
+Cosine similarity → vector-based mathematical similarity 
+ Turnitin/iThenticate → text overlap / matching similarity 
+Then what is the purpose of cosine similarity? 
+Main Uses of Cosine Similarity (Very Important) 
+Information Retrieval (Search Engines) 
+When you search: 
+“AI mathematical models” 
+The search engine: 
+• Converts query + documents into vectors 
+• Computes cosine similarity 
+• Ranks documents by highest cosine similarity 
+ Without cosine similarity, Google would not work. 
+ 
+ 
+
+
+--- END OF Session-1_7829 ALI.pdf ---
+
+
+
+--- START OF Session-2.pdf ---
+
+ 
+ 
+ 
+Course Name: Mathematics for AI 
+Week-2: Matrix operations, matrix multiplication and transformations  
+ 
+Matrices: Matrices play a central role in linear algebra. They can be used to compactly  
+represent systems of linear equations, but they also represent linear functions. 
+Definition: Let 𝒎, 𝒏 ∈ ℕ. A real -valued (𝒎, 𝒏)-matrix 𝑨 is an 𝒎 × 𝒏 tuple of elements  
+𝒂𝒊𝒋 ∈  𝑅, where 𝒊 = 𝟏, 𝟐, … , 𝒎 and 𝒋 = 𝟏, 𝟐, … , 𝒏, arranged according to a rectangular 
+scheme consisting of 𝒎 rows and 𝒏 columns. 
+[
+𝑎11 𝑎12 ⋯ 𝑎1𝑛
+𝑎21 𝑎22 ⋯ 𝑎2𝑛
+⋮ ⋮ ⋮ ⋮
+𝑎𝑚1 𝑎𝑚2 … 𝑎𝑚𝑛
+] 
+By convention (1, n)-matrices are called rows and (m,1)-matrices are called row columns.  
+These special matrices are also called row/column vectors. 
+Definition (Matrix Addition): Let 𝐴 = (𝑎𝑖𝑗)and 𝐵 = (𝑏𝑖𝑗)be two real-valued matrices of the 
+same order 𝑚 × 𝑛. The sum of 𝐴and 𝐵, denoted by 𝐴 + 𝐵, is the matrix 𝐶 = (𝑐𝑖𝑗)of order 
+𝑚 × 𝑛defined by 𝑐𝑖𝑗 = 𝑎𝑖𝑗 + 𝑏𝑖𝑗,for all 𝑖 = 1,2, … , 𝑚 and 𝑗 = 1,2, … , 𝑛. 
+That is, 
+𝐴 + 𝐵 = [
+𝑎11 + 𝑏11 𝑎12 + 𝑏12 ⋯ 𝑎1𝑛 + 𝑏1𝑛
+𝑎21 + 𝑏21 𝑎22 + 𝑏22 ⋯ 𝑎2𝑛 + 𝑏2𝑛
+⋮ ⋮ ⋱ ⋮
+𝑎𝑚1 + 𝑏𝑚1 𝑎𝑚2 + 𝑏𝑚2 ⋯ 𝑎𝑚𝑛 + 𝑏𝑚𝑛
+]. 
+Note: Matrix addition is defined only when both matrices have the same dimensions. 
+A. Practise Problems 
+1. Let 𝐴 = [2 3
+1 4] , 𝐵 = [5 1
+0 −2]. Find 𝐴 + 𝐵. 
+2. If  𝐴 = [7 −3 2], 𝐵 = [−4 6 5], find 𝐴 + 𝐵. 
+3. Let 𝐴 = [
+1
+4
+−2
+] , 𝐵 = [
+3
+−1
+5
+]. Compute 𝐴 + 𝐵. 
+4. If 𝐴 = [1 2 3
+4 5 6] , 𝐵 = [−1 0 2
+3 −5 1], find 𝐴 + 𝐵. 
+ 
+
+5. Given 𝐴 = [𝑎 𝑏
+𝑐 𝑑] , 𝐵 = [2𝑎 −𝑏
+𝑐 3𝑑 ], express 𝐴 + 𝐵. 
+6. If 𝐴 = [𝑥 𝑦
+𝑧 𝑤] , 𝐵 = [1 2
+3 4], find 𝐴 + 𝐵 when 𝑥 = 2, 𝑦 = −1, 𝑧 = 0, 𝑤 = 3. 
+Definition (Matrix Multiplication): 
+Let 𝐴 = (𝑎𝑖𝑗)be a matrix of order 𝑚 × 𝑛 and 𝐵 = (𝑏𝑗𝑘)be a matrix of order 𝑛 × 𝑝. 
+The product of 𝐴and 𝐵, denoted by 𝐴𝐵, is the matrix 𝐶 = (𝑐𝑖𝑘)of order 𝑚 × 𝑝, where each 
+entry is defined by 
+𝑐𝑖𝑘 = ∑ 𝑎𝑖𝑗
+𝑛
+𝑗=1
+ 𝑏𝑗𝑘,for 𝑖 = 1,2, … , 𝑚 and 𝑘 = 1,2, … , 𝑝. 
+That is, the element in the 𝑖-th row and 𝑘-th column of 𝐴𝐵is obtained by multiplying 
+corresponding entries of the 𝑖-th row of 𝐴and the 𝑘-th column of 𝐵, and then adding the 
+products. 
+Important Notes: 
+1. Matrix multiplication is defined only when the number of columns of 𝐴equals the 
+number of rows of 𝐵. 
+2. In general, matrix multiplication is not commutative, i.e., 𝐴𝐵 ≠ 𝐵𝐴. 
+3. The order of the product 𝐴𝐵 is 𝑚 × 𝑝. 
+Practice Problems: Matrix Multiplication 
+1. Compute 𝐴𝐵, where 𝐴 = [1 2
+3 4] , 𝐵 = [2 0
+1 5]. 
+2. Find the product 𝐴𝐵, where  𝐴 = [3 −1 2], 𝐵 = [
+1
+4
+−2
+]. 
+3. If  𝐴 = [ 1 0
+−2 3], compute 𝐴2 = 𝐴 ⋅ 𝐴. 
+4. Determine whether the following products are defined. If yes, state the order of the 
+result. 
+(a) (2 × 3)(3 × 4)    (b) (3 × 2)(3 × 2)     (c) (4 × 1)(1 × 5) 
+5. Let 𝐴 be a 3 × 2 matrix and 𝐵 be a 2 × 4 matrix. What is the order of 𝐴𝐵? 
+6. Show by example that matrix multiplication is not commutative, i.e., 𝐴𝐵 ≠ 𝐵𝐴. 
+7. If  𝐴𝐵 = 0, does it necessarily imply that 𝐴 = 0or 𝐵 = 0? Explain with a 
+counterexample. 
+8. If 𝐼 is the identity matrix, show that 𝐴𝐼 = 𝐼𝐴 = 𝐴. 
+ 
+Geometric Interpretation of Matrix Multiplication 
+Matrix multiplication can be understood geometrically as a linear transformation of space. 
+1. Matrices as Transformations 
+An 𝑛 × 𝑛 matrix represents a linear transformation of ℝ𝑛: 
+• It maps vectors to vectors, 
+• It preserves straight lines and the origin, 
+• It can stretch, shrink, rotate, reflect, or shear space. 
+If 𝐴 is a matrix and x is a vector, then 𝐴x is the image of x after the transformation defined by 
+𝐴. 
+2. Column Interpretation:  
+For a matrix 𝐴 = [
+∣ ∣
+a1 a2
+∣ ∣
+], the columns a1, a2 are the images of the standard basis vectors: 
+𝐴e1 = a1, 𝐴e2 = a2. Thus, the matrix tells us where the coordinate axes go. 
+3. Meaning of the Product 𝐴𝐵 
+Let 𝐴 and 𝐵 be square matrices. The product 𝐴𝐵 represents composition of transformations: 
+𝐴𝐵x = 𝐴(𝐵x). 
+Geometric meaning: 
+1. First apply the transformation 𝐵 to vector x, 
+2. Then apply the transformation 𝐴 to the result. 
+2D Example 
+Consider 𝐴 = [2 0
+0 1] and 𝐵 = [0 −1
+1 0 ]. 
+• 𝐵: rotation by 90∘counterclockwise, 
+• 𝐴: stretches the 𝑥-direction by a factor of 2. 
+• 𝐴𝐵: rotate first, then stretch, 
+• 𝐵𝐴: stretch first, then rotate. 
+The final images are different, showing 𝐴𝐵 ≠ 𝐵𝐴. 
+Area and Volume Interpretation 
+• The absolute value of the determinant of a matrix gives the area (in 2D) or volume (in 
+3D) scaling factor. 
+• For products: det (𝐴𝐵) = det (𝐴)det (𝐵), meaning the total scaling equals the 
+product of individual scaling. 
+Practise Problems:  
+1. A map uses a linear transformation represented by 𝐴 = [3 0
+0 2] to enlarge regions. 
+If the original region has area 5 square units, find the area after transformation. 
+2. A square of area 10 square units undergo the transformation 𝐴 = [1 𝑘
+0 1]. Find the 
+area of the transformed square and comment on the role of 𝑘. 
+3. A triangular region in the plane is transformed by 𝐴 = [−1 0
+0 1]. If the original area is 
+8 square units: 
+(a) find the area after transformation, (b) explain the sign of the determinant. 
+5. Rotation Matrix 
+A rotation in the plane is represented by 𝐴 = [cos 𝜃 −sin 𝜃
+sin 𝜃 cos 𝜃 ]. Explain why the area 
+of any region remains unchanged after rotation. 
+Neural-Network–Style Geometric Interpretation (Linear Layers) 
+In neural networks, each linear layer is a matrix multiplication, and geometry provides the 
+intuition for how data is transformed layer by layer. 
+1. Linear Layer as a Geometric Transformation 
+A typical linear layer is written as y = 𝑊x + b, 
+where 
+• x ∈ ℝ𝑛= input vector, 
+• 𝑊 ∈ ℝ𝑚×𝑛= weight matrix, 
+• b ∈ ℝ𝑚= bias vector. 
+Geometric meaning: 
+• 𝑊x→ linear transformation (stretching, rotating, shearing, projecting), 
+• +b→ translation of space. 
+So, a linear layer reshapes the space and then shifts it. 
+2. Column View (Very Important in NN) 
+Let 𝑊 = [
+∣ ∣ ∣
+w1 w2 ⋯ w𝑛
+∣ ∣ ∣
+]. Then  𝑊x = 𝑥1w1 + 𝑥2w2 + ⋯ + 𝑥𝑛w𝑛. 
+Interpretation: 
+• Each column w𝑗 is a direction in output space, 
+• Input coordinates 𝑥𝑗 decide how much we move along each direction. 
+Conclusion: A linear layer re-expresses the input vector in a new coordinate system. 
+3. One Linear Layer (2D → 2D Example) 
+Suppose input points lie in the plane ℝ2. Let 𝑊 = [2 1
+0 1]. 
+Geometric effect: 
+• The unit square becomes a parallelogram,  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+• Axes are skewed, 
+ 
+ 
+ 
+ 
+ 
+• Relative positions of points are preserved (linearity). 
+All input points are simultaneously transformed in the same way. 
+4. Multiple Linear Layers = Composition of Transformations 
+Consider two linear layers: h = 𝑊1x, y = 𝑊2h. Then y = (𝑊2𝑊1)x. 
+Geometric meaning: 
+• First layer 𝑊1: reshapes input space, 
+• Second layer 𝑊2: reshapes the new space again, 
+• The product 𝑊2𝑊1is a single combined transformation. 
+Conclusion: This is exactly matrix multiplication as composition of maps. 
+
+5. Why Depth Without Nonlinearity Is Limited 
+If a network has only linear layers: y = 𝑊𝑘 ⋯ 𝑊2𝑊1x, it is still just one linear transformation. 
+Geometrically: 
+• Multiple stretches/rotations collapse into one, 
+• No bending or warping of space. 
+Remark: Nonlinear activation functions (ReLU, tanh, sigmoid) are needed to: 
+• Fold space, 
+• Create curved decision boundaries, 
+• Separate complex data. 
+6. Geometric View of Classification 
+• Linear layer → maps data to a new space, 
+• Hyperplanes become decision boundaries, 
+• Training adjusts 𝑊so classes become linearly separable. 
+In 2D: A line separates classes 
+In higher dimensions: A hyperplane separates data clouds. 
+Case Study: Predicting Student Performance Using a Neural Network Linear Layer 
+Problem Context 
+Suppose we want to predict a student’s final performance score based on three factors: 
+1. Hours studied per week (𝑥1) 
+2. Attendance percentage (𝑥2) 
+3. Previous exam score (𝑥3) 
+We use a simple neural network with one linear layer having 2 neurons. 
+Solution: Step 1: Input Vector (Student Data) For a particular student: 
+      𝑋 = [
+𝑥1
+𝑥2
+𝑥3
+] = [
+6
+8
+7
+] 
+Step 2: Weight Matrix of the Linear Layer 
+Assume the network has learned the following weights: 
+𝑊 = [0.5 0.2 0.3
+0.1 0.6 0.4] 
+• Neuron 1 focuses more on study hours 
+• Neuron 2 focuses more on attendance and previous score 
+Step 3: Bias Vector 
+𝑏 = [ 1
+0.5] 
+Step 4: Linear Transformation (Matrix Multiplication) 𝑍 = 𝑊𝑋 + 𝑏 
+First compute 𝑊𝑋: 
+𝑊𝑋 = [0.5 0.2 0.3
+0.1 0.6 0.4] [
+6
+8
+7
+] 
+Neuron 1 Output: (0.5)(6) + (0.2)(8) + (0.3)(7) = 3 + 1.6 + 2.1 = 6.7 
+ 
+Neuron 2 Output: (0.1)(6) + (0.6)(8) + (0.4)(7) = 0.6 + 4.8 + 2.8 = 8.2 
+ 
+Now add bias: 𝑍 = [6.7
+8.2] + [ 1
+0.5] = [7.7
+8.7] 
+Step 5: Interpretation of the Transformation 
+• Input space: 3-dimensional (study, attendance, score) 
+• Output space: 2-dimensional feature space 
+• Matrix multiplication projects and reshapes the input into new features 
+Remark: Each neuron computes a weighted combination of all inputs. 
+Step 6: Activation Function (Optional) Apply ReLU (Rectified Linear Unit) activation: 
+Mathematical Definition 
+For any real number 𝑧, ReLU(𝑧) = max (0, 𝑧) 
+That means: 
+• If 𝑧 > 0, output is 𝑧 
+• If 𝑧 ≤ 0, output is 0 
+𝐴 = max (0, 𝑍) 
+𝐴 = [7.7
+8.7] 
+ReLU is applied element by element to the vector 𝑍. That is, No change since values are 
+positive. 
+Step 7: Second Layer (Final Prediction) 
+Assume a final layer to produce one performance score. 
+Weight and Bias: 𝑊2 = [0.7 0.3], 𝑏2 = 0.5 
+𝑌 = 𝑊2𝐴 + 𝑏2 
+𝑌 = (0.7)(7.7) + (0.3)(8.7) + 0.5 
+𝑌 = 5.39 + 2.61 + 0.5 = 8.5 
+Final Output:   Predicted Performance Score = 8. 
+ 
+Problem-2: 
+Suppose we want to predict a system performance index based on three input parameters: 
+• 𝑥1: Input load level 
+• 𝑥2: Resource utilization 
+• 𝑥3: System response time 
+We model this using a multi-layer neural network with: 
+• Input layer: 3 neurons 
+• Hidden layer 1: 2 neurons 
+• Hidden layer 2: 2 neurons 
+• Output layer: 1 neuron 
+Solution: Step-1 Input Vector For a particular system: X = [
+6
+8
+7
+] 
+Step 2: First Hidden Layer 
+Weight Matrix and Bias 𝑊1 = [0.4 0.3 0.2
+0.2 0.5 0.1] , 𝑏1 = [0.6
+0.4] respectively. 
+ 
+
+Linear Transformation 
+𝑍1 = 𝑊1𝑋 + 𝑏1 
+𝑍1 = [(0.4)(4) + (0.3)(6) + (0.2)(5) + 0.6
+(0.2)(4) + (0.5)(6) + (0.1)(5) + 0.4] = [5.0
+4.7] 
+Activation (ReLU) 
+𝐴1 = max (0, 𝑍1) = [5.0
+4.7]. 
+Step 3: Second Hidden Layer 
+Weight Matrix and Bias 𝑊2 = [0.6 0.2
+0.3 0.7] , 𝑏2 = [0.3
+0.2] 
+Linear Transformation 𝑍2 = 𝑊2𝐴1 + 𝑏2 
+𝑍2 = [(0.6)(5.0) + (0.2)(4.7) + 0.3
+(0.3)(5.0) + (0.7)(4.7) + 0.2] = [4.64
+5.99] 
+Activation (ReLU) 
+𝐴2 = [4.64
+5.99] 
+Step 4: Output Layer 
+Weight and Bias 𝑊3 = [0.5 0.5], 𝑏3 = 0.4 
+ 
+Output Computation 𝑌 = 𝑊3𝐴2 + 𝑏3 
+𝑌 = (0.5)(4.64) + (0.5)(5.99) + 0.4 
+𝑌 = 2.32 + 2.995 + 0.4 = 5.715 
+ 
+ 
+ 
+
+
+
+--- END OF Session-2.pdf ---
+
+
+
+--- START OF Session-3-1.pdf ---
+
+ 
+Course Name: Mathematics for AI 
+Session- 3 Linearly Independent & Dependent Vectors: 
+Definition: A set of vectors is linearly independent if the only way to write 
+𝑐1𝑣⃗1 + 𝑐2𝑣⃗2 + ⋯ + 𝑐𝑛𝑣⃗𝑛 = 0⃗⃗ 
+is when 
+𝑐1 = 𝑐2 = ⋯ = 𝑐𝑛 = 0. 
+This means no vector in the set can be written as a combination of the others. 
+Example: 
+𝑣⃗1 = (1,0), 𝑣⃗2 = (0,1) 
+ 
+The equation          𝑐1(1,0) + 𝑐2(0,1) = (0,0), gives  c1=0,c2=0 . 
+So, these vectors are linearly independent. 
+Definition: A set of vectors is linearly dependent if there exist constants, not all zero, such that 
+𝑐1𝑣⃗1 + 𝑐2𝑣⃗2 + ⋯ + 𝑐𝑛𝑣⃗𝑛 = 0⃗⃗. 
+This means at least one vector can be written as a combination of the others. 
+Example:𝑣⃗1 = (1,2), 𝑣⃗2 = (2,4) 
+ 
+Notice that 
+𝑣⃗2 = 2𝑣⃗1 
+So 
+2𝑣⃗1 − 𝑣⃗2 = (0,0) 
+Since the coefficients are not all zero, these vectors are linearly dependent. 
+Example 1 (2D): v⃗⃗1 = (2,3), v⃗⃗2 = (1, −1) 
+There is no scalar k  such that (2,3) = k(1, −1), so neither vector is a multiple of the other. 
+Example 2 (3D): v⃗⃗1 = (1,0,0), v⃗⃗2 = (0,1,0), v⃗⃗3 = (0,0,1)  
+These are the standard basis vectors in ℝ3. 
+The only solution to c1v⃗⃗1 + c2v⃗⃗2 + c3v⃗⃗3 = (0,0,0)   is c1 = c2 = c3 = 0. 
+Example 1 (2D):  v⃗⃗1 = (3,6), v⃗⃗2 = (−1, −2) 
+Notice that  v⃗⃗1 = −3v⃗⃗2, So one vector is a scalar multiple of the other. 
+Example 2 (3D): v⃗⃗1 = (1,2,3), v⃗⃗2 = (2,4,6), v⃗⃗3 = (1,0,1),  
+Since                                           v⃗⃗2 = 2v⃗⃗1 
+one vector depends on another, regardless of v⃗⃗3. 
+ 
+ 
+ 
+
+Rank of a Matrix 
+Definition: The rank of a matrix is the maximum number of linearly independent rows or 
+columns of the matrix. 
+Equivalently, 
+• Rank = dimension of the column space 
+• Rank = dimension of the row space 
+It represents the amount of non-redundant information in the matrix. 
+Example 1 (Solved) 
+A = [1 2
+2 4] 
+ 
+Solution 
+• Second row = 2 × first row 
+• Rows are linearly dependent 
+rank(A) = 1  
+ 
+Interpretation 
+Only one independent direction exists → redundancy present. 
+Example 2 (Solved) 
+B = [
+1 0 2
+0 1 3
+0 0 0
+] 
+ 
+Solution 
+• Two non-zero independent rows 
+• Third row is zero 
+rank(B) = 2  
+ 
+Interpretation 
+Matrix contains two independent features. 
+• Basis of a Vector Space  
+Definition: A basis of a vector space is a set of vectors that: 
+1. Are linearly independent 
+2. Span the vector space 
+A basis is the minimum set of vectors needed to represent all vectors in the space. 
+Example 1:       Consider vectors in ℝ2: 
+v1 = [1
+0] , v2 = [0
+1] 
+ 
+Solution 
+• v1, v2are linearly independent 
+• Any vector (x, y)can be written as 
+xv1 + yv2 
+{v1, v2} is a basis of ℝ2  
+ 
+ 
+Example 2 : 
+v1 = [
+1
+2
+3
+] , v2 = [
+2
+4
+6
+] , v3 = [
+1
+0
+1
+] 
+Solution 
+• v2 = 2v1→ dependent 
+• v1and v3are independent 
+{v1, v3} is a basis of the space spanned  
+Orthogonal Vectors 
+Definition: Two vectors are said to be orthogonal if their dot product is zero. 
+v ⋅ w = 0 
+Orthogonal vectors represent independent, non-overlapping information. 
+ 
+Example 1: 
+𝑣 = [1
+2] , 𝑤 = [ 2
+−1] 
+Solution 
+𝑣 ⋅ 𝑤 = (1)(2) + (2)(−1) = 2 − 2 = 0 
+𝑣 and 𝑤 are orthogonal  
+Example 2: 
+𝑣 = [
+1
+0
+0
+] , 𝑤 = [
+0
+3
+0
+] 
+Solution 
+𝑣 ⋅ 𝑤 = 0 
+𝑣 and 𝑤 are orthogonal  
+Case Study: Detecting Redundant Sensor Readings Using Matrix Rank 
+An industrial system uses four sensors 𝑆1, 𝑆2, 𝑆3, 𝑆4to monitor a physical process. 
+For a certain time interval, the sensor readings (after normalization) are represented by the 
+columns of the matrix 
+𝐴 = [
+1 2 3 1
+2 4 6 2
+1 2 3 1
+] 
+ 
+Each column corresponds to the readings of one sensor across three-time instants. Identify which 
+sensor readings are redundant. Also, determine the minimum number of sensors required to 
+represent all sensor information without loss. 
+ 
+Basically, redundant means which is not necessary 
+In data science, a redundant feature is a variable that provides no additional information to a 
+model beyond what is already provided by other variables. 
+Calling a blank sheet as empty 
+Temperature of a room in K and Celsius. 
+The Real-Life Example: The "Weather Station" 
+Imagine you are building a machine learning model to predict Ice Cream Sales. You collect data 
+from a weather station that gives you three features: 
+1. Temperature in Celsius (x1) 
+2. Temperature in Fahrenheit (x2) 
+3. Wind Speed (x3) 
+Why is there redundancy? 
+The Temperature in Fahrenheit is a redundant feature. Why? Because it doesn't tell the model 
+anything new that the Celsius column hasn't already said. They are just the same physical reality 
+expressed in different scales. 
+Redundant: Temperature in Fahrenheit (it's just a math transformation of Celsius). 
+Useful/Unique: Wind Speed (it measures something entirely different from temperature). 
+Methods to identify Redundancy: 
+The most common way to identify and quantify redundancy is through mathematics, specifically 
+Linear Dependence and Correlation Coefficients. 
+Linear Dependence (Linear Algebra) 
+In a matrix of data, features are represented as vectors. If one feature vector is a scalar multiple 
+of another (e.g., V2 = 2 V1), they are linearly dependent. In mathematical terms, the "Rank" of 
+your data matrix doesn't increase when you add a redundant feature. 
+ 
+Solution: 
+ 
+Concept: Matrix Rank, LI and LD. 
+How? We will see 
+First let us discuss the required concepts. 
+ 
+Definition: Matrix Rank 
+The rank of a matrix is defined as the maximum number of linearly independent rows or 
+columns of the matrix. 
+Equivalently, 
+• Rank = dimension of the row space 
+• Rank = dimension of the column space 
+Key Points (Exam-Friendly) 
+• Row rank = Column rank 
+• Rank indicates the true dimensionality of the data 
+• A matrix has full rank if its rank equals the smaller of the number of rows or columns 
+Example 1: Matrix with Full Rank 
+Consider the matrix 
+𝐴 = [1 0
+0 1] 
+ 
+Rows are linearly independent and Columns are linearly independent, hence rank(𝐴) = 2 
+ 
+Example 2: Matrix with Dependent Rows and Columns 
+𝐵 = [1 2
+2 4] 
+Second row = 2 × first row  
+Second column = 2 × first column 
+rank(𝐵) = 1 
+ 
+Example 3: Rectangular Matrix 
+𝐶 = [1 2 3
+2 4 6] 
+ 
+• Second row is a multiple of the first 
+• All columns depend on one vector 
+rank(𝐶) = 1 
+Interpretation 
+• High rank → more independent information 
+• Low rank → redundancy present 
+ 
+Consider the vectors in ℝ2: 
+𝑣1 = [1
+2] , 𝑣2 = [3
+6] 
+Step 1: Form a Linear Combination 
+Check whether there exist scalars 𝑐1, 𝑐2, not both zero, such that 
+𝑐1𝑣1 + 𝑐2𝑣2 = [0
+0] 
+ 
+That is, 
+𝑐1 [1
+2] + 𝑐2 [3
+6] = [0
+0] 
+Step 2: Solve the System 
+𝑐1 + 3𝑐2 = 0
+2𝑐1 + 6𝑐2 = 0 
+ 
+The second equation is just twice the first, so there are infinitely many non-zero solutions, for 
+example: 
+𝑐1 = −3, 𝑐2 = 1 
+ 
+Case Study: Detecting Redundant Sensor Readings Using Matrix Rank 
+An industrial system uses four sensors 𝑆1, 𝑆2, 𝑆3, 𝑆4to monitor a physical process.  
+For a certain time interval, the sensor readings (after normalization) are represented by the columns 
+of the matrix 
+𝐴 = [
+1 2 3 1
+2 4 6 2
+1 2 3 1
+] 
+ 
+Each column corresponds to the readings of one sensor across three -time instants. Identify which 
+sensor readings are redundant. Also, determine the minimum number of sensors required to 
+represent all sensor information without loss. 
+Step 1: Observe Linear Dependence 
+• Column 2 is 2 times column 1 
+• Column 3 is 3 times column 1 
+• Column 4 is equal to column 1 
+Thus, all columns are scalar multiples of the first column. 
+Step 2: Determine the Rank 
+Since all columns depend on one column, 
+rank(𝐴) = 1 
+Step 3: Identify Redundant Sensors 
+• Only one sensor provides independent information 
+• Sensors 𝑆2, 𝑆3,and 𝑆4are redundant 
+Step 4: Minimum Sensors Required 
+1 sensor  
+ 
+is sufficient to represent all readings without information loss. 
+Step 5: Interpretation 
+Matrix rank reveals the true dimensionality of sensor data. 
+A rank smaller than the number of sensors indicates redundancy. 
+Final Answer 
+Using matrix rank, redundant sensor readings are identified and removed, leading to efficient 
+data representation and reduced computational cost. 
+ 
+Case Study 2 : Removing Redundant Features in Smart City Air-Quality Monitoring 
+A smart city installs multiple sensors at each monitoring station to assess air quality. 
+For one station, the following six features are recorded every hour: 
+1. 𝑓1: Concentration of Carbon Monoxide (CO) 
+2. 𝑓2: Concentration of Nitrogen Oxides (NO) 
+3. 𝑓3: Air Quality Index (AQI) 
+4. 𝑓4: Weighted pollution score 
+5. 𝑓5: Temperature 
+6. 𝑓6: Heat index 
+The city wants to reduce storage and computation costs by removing redundant features, 
+without losing information. 
+ 
+Mathematical Representation 
+Each feature is represented as a column vector of sensor readings over time: 
+𝑋 = [𝑓1  𝑓2  𝑓3  𝑓4  𝑓5  𝑓6] 
+ 
+All vectors belong to the vector space ℝ𝑛, where 𝑛is the number of time samples. 
+Given Relationships (from environmental science) 
+• AQI is computed using CO and NO 
+• Weighted pollution score is a linear combination of AQI and pollutant concentrations 
+• Heat index is computed from temperature 
+Mathematically: 
+𝑓3 = 𝑎𝑓1 + 𝑏𝑓2
+𝑓4 = 𝑐𝑓1 + 𝑑𝑓2 + 𝑒𝑓3
+𝑓6 = 𝑘𝑓5
+ 
+ 
+Step-by-Step Solution Using Mathematical Concepts 
+Linear Independence (Detecting Redundancy) 
+A set of vectors is linearly independent if none can be written as a linear combination of others. 
+From the given relations: 
+• 𝑓3depends on 𝑓1, 𝑓2 
+• 𝑓4depends on 𝑓1, 𝑓2, 𝑓3 
+• 𝑓6depends on 𝑓5 
+Hence, 
+{𝑓1, 𝑓2, 𝑓3, 𝑓4, 𝑓5, 𝑓6} 
+ 
+is a linearly dependent set. 
+How this helps? 
+Linear dependence mathematically proves that some features do not add new information. 
+Rank (Finding True Dimensionality) 
+Although there are 6 features, only these are independent: 
+{𝑓1, 𝑓2, 𝑓5} 
+Therefore, 
+rank(𝑋) = 3 
+ How this helps 
+Rank tells us the true number of informative features, independent of how many are recorded. 
+ 
+ Basis (Selecting Essential Features) 
+A basis is a minimal linearly independent set that spans the same feature space. 
+Choose the basis: 
+ℬ = {𝑓1 (CO), 𝑓2 (NO), 𝑓5 (Temperature)} 
+ 
+All other features can be generated from this basis. 
+How this helps 
+Basis selection gives a systematic rule for which features to keep and which to remove. 
+Orthogonality (Avoiding Overlap of Information) 
+The original features are not orthogonal, because: 
+• AQI overlaps with CO and NO 
+• Heat index overlaps with temperature 
+Non-orthogonal features have high correlation. 
+By keeping only, the basis features (or orthogonalizing them if needed), each retained feature 
+contributes distinct information. 
+How this helps 
+Orthogonality ensures that no retained feature duplicates information from another. 
+Final Result: Redundant Feature Removal 
+Removed Features 
+• AQI 
+• Weighted pollution score 
+• Heat index 
+Retained Features 
+• CO concentration 
+• NO concentration 
+• Temperature 
+Dimensionality Reduction:  6     →     3 
+ 
+ 
+ 
+Final Conclusion : 
+In this smart -city air-quality case study, redundant features arise because several sensor 
+variables are linear combinations of others. Linear independence identifies redundancy, 
+rank reveals true dimensionality, basis selection determines essential featur es, and 
+orthogonality ensures non -overlapping information, enabling effective removal of 
+redundant features without loss of data. 
+ 
+Case study 3: A smart building uses four sensors to monitor environmental conditions. 
+Each sensor records readings at three-time instants. 
+The sensor data (after normalization) is represented by the matrix 
+𝐴 = [
+1 2 3 1
+2 4 6 2
+3 6 9 3
+] 
+ 
+Each column of the matrix corresponds to a sensor: 
+• 𝑆1, 𝑆2, 𝑆3, 𝑆4 
+The objective is to identify and remove redundant sensors without losing information. 
+ 
+
+
+--- END OF Session-3-1.pdf ---
+
+
+
+--- START OF Session-4 and 5.pdf ---
+
+ 
+ 
+ 
+Case Study: Face Recognition using PCA (Eigenfaces Method) 
+ 
+A university wants to build a face recognition system for secure access to a laboratory.  
+The system uses Principal Component Analysis (PCA), also known as the Eigenfaces method, to 
+recognize faces efficiently. 
+Each face image is a grayscale image of size 64×64 pixels. 
+In this session we will discuss this case study in details. 
+Session-4: Eigen values and Eigen vectors_ 
+Introduction  
+In linear algebra, eigenvalues arise when we study how a linear transformation acts on vectors. 
+Normally, when a matrix multiplies a vector, both the magnitude and direction of the vector 
+change. However, for certain special vectors, the direction remains the same —only the 
+magnitude is scaled. 
+ 
+These special vectors are called eigenvectors, and the corresponding scaling factors are called 
+eigenvalues. 
+Let 𝐴 be a square matrix  of order 𝑛×𝑛 . 
+A scalar 𝜆is called an eigenvalue of matrix 𝐴if there exists a non-zero vector 𝐱≠𝟎such that 
+𝐴𝐱=𝜆𝐱 
+ 
+Here: 
+• 𝐱 is called an eigenvector corresponding to the eigenvalue 𝜆, 
+• 𝜆 represents the factor by which the eigenvector is scaled. 
+Rewriting the equation: 
+(𝐴−𝜆𝐼)𝐱=𝟎 
+ 
+For a non-trivial solution to exist, 
+𝑑𝑒𝑡(𝐴−𝜆𝐼)=0 
+ 
+ 
+Explanation: Characteristic equation  
+For a 2x2 matrix 
+Let A = 
+11 12
+21 22
+aa
+aa
+
+ be a square matrix of order 2x2. We can form the matrix 
+AI − , where 
+ is 
+a scalar. The determinant of a square matrix equated to zero. i.e., 
+AI − = 
+11 12
+21 22
+aa
+aa
+
+
+−
+− =0 
+is called the character equation of A. 
+
+On expanding the determinant, the characteristic equation taken the form   
+𝝀𝟐−𝝀(𝒕𝒓𝒂𝒄𝒆 𝒐𝒇 𝑨)+𝒅𝒆𝒕𝒆𝒓𝒎𝒊𝒏𝒂𝒏𝒕 𝒐𝒇 𝑨=𝟎. 
+For a 3x3 matrix 
+Let A = 
+11 12 13
+21 22 23
+31 32 33
+a a a
+a a a
+a a a
+
+
+
+  be a square matrix of order 3x3. We can form the matrix 
+AI − , where 
+
+is a scalar. The determinant of a square matrix equated to zero. i.e., 
+AI − = 0 . On 
+expanding the determinant, the characteristic equation taken the form  
+𝝀𝟑−𝝀𝟐(𝒕𝒓𝒂𝒄𝒆 𝒐𝒇 𝑨)+𝝀(𝒔𝒖𝒎 𝒐𝒇 𝒑𝒓𝒊𝒏𝒄𝒊𝒑𝒂𝒍 𝒎𝒊𝒏𝒐𝒓𝒔 𝒐𝒇 𝑨)−𝒅𝒆𝒕𝒆𝒓𝒎𝒊𝒏𝒂𝒏𝒕 𝒐𝒇 𝑨=𝟎. 
+The roots of the characteristic equation are called the characteristic roots or latent roots or Eigen 
+values of matrix A. 
+Eigen vector: A non-zero vector 𝑋 is called an eigenvector of a matrix 𝐴 associated with an 
+eigen value 𝜆 if 𝐴𝐗=𝜆𝑋 holds. That is, 
+An eigenvector of a square matrix 𝑨 is a non-zero vector 𝑿 such that when 𝑨 acts on it, the 
+direction of 𝑿 does not change—it only gets scaled. 
+Example: Consider the matrix 
+𝐴=[2 1
+1 2] 
+The characteristic equation is det(A−λI)=0 
+𝜆2−4𝜆+3=0 
+ Implies 𝜆=1,3. 
+ 
+Step 3: Eigen Vector 
+For 𝜆=3: 
+(𝐴−3𝐼)𝐱=0⇒[−1 1
+1 −1]𝐱=0 
+This gives 
+𝐱=[1
+1] 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Example-2: Find the eigenvalues and eigenvectors of the matrix 
+𝐴=[
+2 1 1
+1 2 1
+1 1 2
+]. 
+ 
+Properties of Eigen values Eigen Values  
+ 
+(1) The sum of the Eigen values of a matrix is the sum of the elements of the principal 
+diagonal. 
+(2) If 𝜆 is an Eigen value of a matrix, A then 1/𝜆 is the Eigen value of 𝐴−1. 
+(3) If 𝜆 is an Eigen value of an orthogonal matrix, then 1/𝜆 is also its Eigen value. 
+(4) If 𝜆  be an Eigen value for a non – singular matrix, A show that 
+|𝐴|
+𝜆  is an Eigen value of 
+the matrix (Adj A). 
+(5) The Eigen values of triangular matrix A are equal to the elements of the principal 
+diagonal of A. 
+(6) If 𝜆1,𝜆2,−−−−,𝜆𝑛  are the Eigen values of a matrix A then 𝐴𝑚 has the Eigen values 
+𝜆1
+𝑚 ,𝜆2
+𝑚 ,−−− 𝜆𝑛
+𝑚. 
+(7) Any square matrix A and its transpose AT have same Eigen values. 
+(8) The product of the Eigen values of a matrix is equal to its determinant. 
+ 
+ 
+Definition of Principal Component Analysis (PCA): 
+Principal Component Analysis (PCA)  is a statistical and linear algebra –based dimensionality 
+reduction technique  that transforms a set of possibly correlated variables  into a new set of 
+uncorrelated variables , called principal components , ordered so that the first few components 
+retain most of the variation (information) present in the original data. 
+Mathematically, the principal components are the eigenvectors of the covariance matrix  of the 
+data, and the corresponding eigenvalues represent the amount of variance explained by each 
+component. 
+Case Study: Eigenvalues and Eigenvectors in Face Recognition (PCA / Eigenfaces) 
+Introduction 
+Eigenvalues and eigenvectors play a crucial role in dimensionality reduction, data compression, 
+and pattern recognition. One of the most popular real -world applications is Face Recognition 
+using Principal Component Analysis (PCA), commonly known as the Eigenfaces method. 
+In this case study, we examine how eigenvalues and eigenvectors are used to extract meaningful 
+features from facial images while reducing computational complexity. 
+ 
+ 
+Conceptual Diagram (Eigenfaces Method) 
+ 
+┌───────────┐   ┌───────────┐   ┌───────────┐ 
+│  Face 1           │  │  Face 2            │   │       Face 3      │ 
+│ (64×64)         │   │ (64×64)          │   │       (64×64)    │ 
+└───────────┘   └───────────┘   └───────────┘ 
+        │                               │                             │ 
+        └─────────────┴─────────────┘ 
+                                       ↓ 
+        Vectorization (4096 × 1 each) 
+                                       ↓ 
+        Mean Face Subtraction 
+                                       ↓ 
+     ┌──────────────────────────┐ 
+     │   Covariance Matrix                      │ 
+     │   (via AᵀA trick)                              │ 
+     └──────────────────────────┘ 
+                                      ↓ 
+        Eigenvectors (Eigenfaces) 
+                                     ↓ 
+     ┌──────────┬──────────┬──────────┐ 
+     │Eigenface1    │Eigenface2    │Eigenface3    │ 
+     └──────────┴──────────┴──────────┘ 
+                                     ↓ 
+     Projection into k-D Eigenspace 
+                                     ↓ 
+        ●      ●        ●      (Training faces) 
+ 
+------------------------------------------------ 
+ 
+          Test Face Image (64×64) 
+                    │ 
+              Mean Subtraction 
+                    │ 
+              Projection (●) 
+                    │ 
+      Distance Comparison in Eigenspace 
+                    │ 
+              Closest Match Found 
+                    │ 
+           Face Recognized 
+ 
+ 
+Challenges: 
+• High memory usage 
+• Slow computation 
+• Redundant information 
+Goal: 
+Reduce the dimensionality of face images while preserving the most important facial features. 
+Why Eigenvalues and Eigenvectors? 
+• Eigenvectors represent directions of maximum variance in data 
+• Eigenvalues indicate how important each direction is 
+• PCA uses eigenvectors of the covariance matrix 
+ In face recognition, these eigenvectors are called Eigenfaces. 
+Methodology 
+Step 1: Data Collection 
+• Collect facial images of different people 
+• Convert images to grayscale 
+• Flatten each image into a vector 
+Example: 
+100×100→10,000 dimensional vector 
+Step 2: Mean Centering 
+Compute the mean face and subtract it from each image vector: 
+Xcentered=X−μ 
+
+This ensures data is centered around the origin. 
+Step 3: Covariance Matrix 
+C=1
+nXcentered
+T Xcentered 
+The covariance matrix captures relationships between pixels. 
+Step 4: Eigen value Decomposition 
+Solve: 
+CX=λX 
+ 
+Where: 
+• X→ eigenvector (Eigenface) 
+• λ→ eigenvalue (importance) 
+Step 5: Feature Selection 
+• Sort eigenvalues in descending order 
+• Select top k eigenvectors 
+• These eigenvectors form a new feature space 
+ Large eigenvalues = important facial patterns 
+ Small eigenvalues = noise 
+Step 6: Projection 
+Project face images onto eigenfaces: 
+Y=XTU 
+This gives a compact representation of faces. 
+Results 
+Aspect Before PCA After PCA 
+Dimensions 10,000 100–300 
+Storage High Low 
+Speed Slow Fast 
+Accuracy Moderate High 
+• Most facial information is captured using very few eigenvectors 
+• System becomes faster and more efficient 
+6. Interpretation of Eigenvalues and Eigenvectors 
+• Eigenvectors = Facial patterns (eyes, nose, mouth structures) 
+• Eigenvalues = Amount of variance captured by each pattern 
+• Larger eigenvalue → more important eigenface 
+ 
+Discussion about above mentioned cases study. For convenient purpose we are taking the 
+case of 3 images. 
+Training Images (Grayscale) 
+Assume 3 training face images: 
+Image 1 
+𝐼1=[
+1 2 3
+2 3 4
+3 4 5
+] 
+ 
+Image 2 
+𝐼2=[
+2 3 4
+3 4 5
+4 5 6
+] 
+ 
+Image 3 
+𝐼3=[
+3 4 5
+4 5 6
+5 6 7
+] 
+Step 1: Vectorization 
+Each 3×3image is converted into a 9×1column vector: 
+x1=
+(
+ 
+ 
+ 
+ 
+ 
+ 
+1
+2
+3
+2
+3
+4
+3
+4
+5)
+ 
+ 
+ 
+ 
+ 
+ 
+,x2=
+(
+ 
+ 
+ 
+ 
+ 
+ 
+2
+3
+4
+3
+4
+5
+4
+5
+6)
+ 
+ 
+ 
+ 
+ 
+ 
+,x3=
+(
+ 
+ 
+ 
+ 
+ 
+ 
+3
+4
+5
+4
+5
+6
+5
+6
+7)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Step 2: Mean Face 
+𝜇=1
+3(x1+x2+x3)=
+(
+ 
+ 
+ 
+ 
+ 
+ 
+2
+3
+4
+3
+4
+5
+4
+5
+6)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Step 3: Mean-Centered Images 
+𝜙𝑖=x𝑖−𝜇 
+ 𝜙1=
+(
+ 
+ 
+ 
+ 
+ 
+ 
+−1
+−1
+−1
+−1
+−1
+−1
+−1
+−1
+−1)
+ 
+ 
+ 
+ 
+ 
+ 
+,𝜙2=
+(
+ 
+ 
+ 
+ 
+ 
+ 
+0
+0
+0
+0
+0
+0
+0
+0
+0)
+ 
+ 
+ 
+ 
+ 
+ 
+ 𝑎𝑛𝑑 𝜙3=
+(
+ 
+ 
+ 
+ 
+ 
+ 
+1
+1
+1
+1
+1
+1
+1
+1
+1)
+ 
+ 
+ 
+ 
+ 
+ 
+. 
+Step 4: Data Matrix 
+𝐴=[
+−1 0 1
+−1 0 1
+−1 0 1
+]
+9×3
+ 
+Step 5: Compute 𝑳=𝑨𝑻𝑨 
+𝐿=(
+9 0 −9
+0 0 0
+−9 0 9
+)  
+Step 6: Eigenvalues and Eigenvectors 
+Eigenvalues: 
+𝜆1=18,𝜆2=0,𝜆3=0 
+ 
+Corresponding eigenvector for 𝜆1: 𝐯1=(
+−1
+0
+1
+)  
+Step 7: Eigenface Construction 𝐮1=𝐴𝐯1=
+(
+ 
+ 
+ 
+ 
+ 
+ 
+2
+2
+2
+2
+2
+2
+2
+2
+2)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Normalize: 
+𝐮1=1
+6
+(
+ 
+ 
+ 
+ 
+ 
+ 
+2
+2
+2
+2
+2
+2
+2
+2
+2)
+ 
+ 
+ 
+ 
+ 
+ 
+=
+(
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+1
+3
+1
+3
+1
+3
+1
+3
+1
+3
+1
+3
+1
+3
+1
+3
+1
+3)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+. 
+Step 8: Projection of Training Faces 
+𝜔𝑖=𝐮1
+𝑇𝝓𝑖 
+ 
+Face Projection 
+Face 1 -3 
+Face 2 0 
+Face 3 3 
+  
+Step 9: Test Face Recognition Test Image  𝐼𝑡𝑒𝑠𝑡=[
+2 3 4
+3 4 5
+4 5 6
+] 
+ 
+Vectorized: x𝑡𝑒𝑠𝑡=
+(
+ 
+ 
+ 
+ 
+ 
+ 
+2
+3
+4
+3
+4
+5
+4
+5
+6)
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Mean-centered: 
+𝝓𝒕𝒆𝒔𝒕=𝟎 
+ 
+Projection: 
+𝝎𝒕𝒆𝒔𝒕=𝟎 
+Recognition Decision 
+Distances: 
+∣0−0∣=0(minimum) 
+Test face is recognized as Face 2. 
+ 
+ Applications Beyond Face Recognition 
+• Image compression 
+• Noise reduction 
+• Recommendation systems 
+• Feature extraction in Machine Learning 
+• Deep Learning preprocessing (CNN inputs) 
+ 
+Problem: Face Recognition using PCA (Eigenfaces) 
+A database contains 5 grayscale face images, each of size 2×2pixels. 
+Each image is converted into a 4-dimensional column vector by stacking its pixels column-wise. 
+The face vectors are: x1=(
+1
+2
+3
+4
+) ,x2=(
+2
+3
+4
+5
+) ,x3=(
+3
+4
+5
+6
+) ,x4=(
+4
+5
+6
+7
+) ,x5=(
+5
+6
+7
+8
+)  
+ 
+A test face image is given by: x3=(
+3
+4
+5
+6
+) . 
+ 
+ 
+Singular Value Decomposition (SVD) 
+Singular Value Decomposition (SVD) is a mathematical technique widely used in machine 
+learning for tasks like dimensionality reduction, noise reduction, and data compression. By 
+breaking down a matrix into its fundamental components, SVD helps uncover patterns in data, 
+making it easier to analyse and process large datasets. 
+Purpose of SVD in Machine Learning: 
+SVD enables the simplification of complex datasets by: 
+• Reducing dimensionality while retaining key information. 
+• Enhancing model performance by removing noise. 
+• Facilitating data compression for efficient storage. 
+Mathematics Behind SVD Algorithm 
+Singular Value Decomposition (SVD) is a mathematical process that decomposes a matrix into 
+three distinct matrices: U, Σ, and Vᵀ. This decomposition is the foundation of its applications 
+in machine learning, allowing for efficient data transformation and analysis. 
+Definition and Components: 
+For a matrix A with dimensions m×n, SVD is represented as: 𝐴 = 𝑈 𝑉𝑇 
+where: 
+U (Left Singular Vectors): An m×m orthogonal matrix representing the row space of A. 
+Σ ( Singular Values): A diagonal  m×n matrix containing non -negative singular values, 
+which represent the importance or weight of corresponding dimensions. 
+Vᵀ (Right Singular Vectors): An n×n orthogonal matrix representing the column space of 
+A. 
+Geometric Interpretation: 
+SVD geometrically transforms a dataset by: 
+1. Rotation: Aligning the data along its principal directions (defined by U and V). 
+2. Scaling: Adjusting the data based on the singular values in . 
+This transformation helps identify the most significant features or patterns in the data, making 
+it easier to process. 
+Relation to Eigenvalues and Eigenvectors: 
+SVD is closely related to eigen decomposition, a technique used to diagonalize square matrices: 
+• For𝐴𝑇𝐴 , the eigenvectors form V, and the square roots of eigenvalues are the singular 
+values. 
+• For 𝐴𝐴𝑇 , the eigenvectors form U, and the singular values remain the same. 
+Key Difference: 
+• Eigen decomposition works only for square matrices, while SVD applies to rectangular 
+matrices, making it more versatile for real-world applications. 
+Singular Value Decomposition Example 
+The process of finding the singular value decomposition for 3×3 matrix and 2×2 matrix is the 
+same. Let’s have a look at the example of 2×2 matrix decomposition. 
+Singular Value Decomposition  
+2×2 Matrix Example 
+Example 1: Obtain the singular value decomposition of a matrix 𝑨 = [−𝟒 −𝟕
+𝟏 𝟒 ] 
+
+Solution: Give that the matrix 𝐴 = [−4 −7
+1 4 ]. 
+Step 1: Compute 𝑨𝑻𝑨  
+𝐴𝑇𝐴 = [−4 1
+−7 4][−4 −7
+1 4 ] = [17 32
+32 65]. 
+Step 2: Eigenvalues of 𝑨𝑻𝑨 
+Solve det (𝐴𝑇𝐴 − 𝜆𝐼) = 0: 
+𝜆2 − 82𝜆 + 81 = 0 
+⇒ 𝜆1 = 81,𝜆2 = 1. 
+Step 3: Singular values 
+𝜎1 = √81 = 9,𝜎2 = √1 = 1. 
+So, 
+Σ = [9 0
+0 1]. 
+Step 4: Right singular vectors (𝑽) 
+Eigenvectors of 𝐴𝑇𝐴: 
+• For 𝜆1 = 81: eigenvector (1,2) 
+• For 𝜆2 = 1: eigenvector (−2,1) 
+Normalize: 
+𝑣1 = 1
+√5
+[1
+2],𝑣2 = 1
+√5
+[−2
+1 ]. 
+𝑉 = 1
+√5
+[1 −2
+2 1 ]. 
+Step 5: Left singular vectors (𝑈) 
+𝑢𝑖 = 1
+𝜎𝑖
+𝐴𝑣𝑖 
+𝑢1 = 1
+√5
+[−2
+1 ], 𝑢2 = 1
+√5
+[−1
+−2]. 
+𝑈 = 1
+√5
+[−2 −1
+1 −2]. 
+ 
+ Final SVD 
+𝐴 = 𝑈Σ𝑉𝑇  
+ 
+where 
+𝑈 = 1
+√5
+[−2 −1
+1 −2],Σ = [9 0
+0 1],𝑉𝑇 = 1
+√5
+[ 1 2
+−2 1]. 
+Numerical verification of SVD 
+From the previous result: 
+𝑈 = 1
+√5
+[−2 −1
+1 −2],Σ = [9 0
+0 1],𝑉𝑇 = 1
+√5
+[ 1 2
+−2 1] 
+ 
+Now compute 𝑈Σ: 
+𝑈Σ = 1
+√5
+[−18 −1
+9 −2] 
+ 
+Then 
+𝐴 = 𝑈Σ𝑉𝑇 = 1
+5[−18 −1
+9 −2][ 1 2
+−2 1] 
+ 
+Multiplying: 
+= 1
+5[−16 −35
+5 20 ] = [−4 −7
+1 4 ] 
+ 
+Verified numerically — the SVD is correct. 
+Rank-1 approximation (dominant singular value) 
+The rank-1 approximation is: 
+𝐴1 = 𝜎1 𝑢1𝑣1
+𝑇 
+where 
+𝜎1 = 9,𝑢1 = 1
+√5
+[−2
+1 ],𝑣1 = 1
+√5
+[1
+2] 
+Step 1: Compute 𝒖𝟏𝒗𝟏
+𝑻 
+𝑢1𝑣1
+𝑇 = 1
+5[−2 −4
+1 2 ] 
+Step 2: Multiply by 𝝈𝟏 = 𝟗 
+𝐴1 = 9
+5[−2 −4
+1 2 ] = [−3.6 −7.2
+1.8 3.6 ] 
+ Final Results 
+Exact matrix 
+𝐴 = [−4 −7
+1 4 ] 
+Rank-1 approximation 
+𝐴1 = [−3.6 −7.2
+1.8 3.6 ]  
+ 
+Exmple-2: Obtain SVD of the matrix 
+𝑨 = [
+𝟑 𝟎 𝟎
+𝟎 𝟐 𝟎
+𝟎 𝟎 𝟏
+] 
+ 
+This is a simple 3D example (diagonal matrix), but it perfectly illustrates how SVD works. 
+Step 1: Definition of SVD 
+For any matrix 𝐴, 
+𝐴 = 𝑈Σ𝑉𝑇 
+ 
+where 
+• 𝑈= left singular vectors (orthonormal) 
+• Σ= singular values (diagonal, non-negative) 
+• 𝑉= right singular vectors (orthonormal) 
+ Step 2: Compute 𝑨𝑻𝑨 
+𝐴𝑇𝐴 = [
+9 0 0
+0 4 0
+0 0 1
+] 
+Step 3: Singular Values 
+Eigenvalues of 𝐴𝑇𝐴are: 
+𝜆1 = 9,𝜆2 = 4,𝜆3 = 1 
+ 
+Singular values: 
+𝜎1 = 3,𝜎2 = 2,𝜎3 = 1 
+ 
+So, 
+Σ = [
+3 0 0
+0 2 0
+0 0 1
+] 
+ Step 4: Right Singular Vectors (𝑽) 
+Since 𝐴𝑇𝐴is diagonal, eigenvectors are the standard basis vectors: 
+𝑉 = 𝐼 = [
+1 0 0
+0 1 0
+0 0 1
+] 
+Step 5: Left Singular Vectors (𝑼) 
+𝑈 = 𝐴𝑉Σ−1 = 𝐼 
+Final SVD 
+𝐴 = [
+1 0 0
+0 1 0
+0 0 1
+]
+⏟
+𝑈
+[
+3 0 0
+0 2 0
+0 0 1
+]
+⏟
+Σ
+[
+1 0 0
+0 1 0
+0 0 1
+]
+⏟
+𝑉𝑇
+ 
+ 
+Geometric Interpretation (3D) 
+• 𝑉𝑇: rotates the 3D coordinate system 
+• Σ: stretches space by 3, 2, and 1 along three orthogonal directions 
+• 𝑈: rotates the result again 
+This shows how SVD decomposes a 3D transformation into rotation → scaling → rotation. 
+Rank-1 Approximation (Optional) 
+Keeping only the largest singular value: 
+𝐴1 = 3[
+1
+0
+0
+][1 0 0] = [
+3 0 0
+0 0 0
+0 0 0
+] 
+ 
+Used in 3D data compression and noise reduction. 
+ 
+Example 3: Given 3D Matrix 
+𝐴 = [
+1 1 0
+1 1 0
+0 0 0
+] 
+ 
+This kind of matrix appears in 3D data / image slices / correlated features. 
+Solution: 
+ Step 1: Compute 𝑨𝑻𝑨 
+𝐴𝑇𝐴 = [
+2 2 0
+2 2 0
+0 0 0
+] 
+Step 2: Eigenvalues of 𝑨𝑻𝑨 
+Solve det (𝐴𝑇𝐴 − 𝜆𝐼) = 0 
+Eigenvalues: 
+𝜆1 = 4,𝜆2 = 0,𝜆3 = 0 
+Step 3: Singular Values 
+𝜎1 = √4 = 2,𝜎2 = 0,𝜎3 = 0 
+So, 
+Σ = [
+2 0 0
+0 0 0
+0 0 0
+] 
+Rank of A = 1 
+Step 4: Right Singular Vectors 𝑽 
+Eigenvector for 𝜆1 = 4: 
+𝑣1 = 1
+√2
+[
+1
+1
+0
+] 
+Complete orthonormal basis: 
+𝑉 =
+[
+ 
+ 
+ 
+ 1
+√2
+1
+√2
+0
+1
+√2
+− 1
+√2
+0
+0 0 1]
+ 
+ 
+ 
+ 
+ 
+Step 5: Left Singular Vectors 𝑼 
+𝑢1 = 𝐴𝑣1
+𝜎1
+= 1
+2[
+2
+2
+0
+] = 1
+√2
+[
+1
+1
+0
+] 
+So, 
+𝑈 =
+[
+ 
+ 
+ 
+ 1
+√2
+1
+√2
+0
+1
+√2
+− 1
+√2
+0
+0 0 1]
+ 
+ 
+ 
+ 
+ 
+ Final SVD Decomposition 
+𝐴 = 𝑈Σ𝑉𝑇 
+𝐴 =
+[
+ 
+ 
+ 
+ 1
+√2
+1
+√2
+0
+1
+√2
+− 1
+√2
+0
+0 0 1]
+ 
+ 
+ 
+ 
+[
+2 0 0
+0 0 0
+0 0 0
+]
+[
+ 
+ 
+ 
+ 1
+√2
+1
+√2
+0
+1
+√2
+− 1
+√2
+0
+0 0 1]
+ 
+ 
+ 
+ 
+𝑇
+ 
+ 
+Rank-1 Approximation (3D Compression) 
+Since only one singular value is non-zero: 
+𝐴 ≈ 𝜎1𝑢1𝑣1
+𝑇 
+𝐴 = 2( 1
+√2
+[
+1
+1
+0
+]) ( 1
+√2
+[1 1 0]) 
+Exact reconstruction using one direction only 
+Geometric Meaning in 3D 
+• All data lies along one direction 
+• Other two dimensions contain no new information 
+• Perfect example of dimensionality reduction from 3D → 1D 
+Example 4: Given 3D Rectangular Matrix ( 𝟑 × 𝟐) 
+𝐴 = [
+1 0
+0 1
+1 1
+] 
+This represents 3D data with 2 features (very common in ML and image processing). 
+Step 1: Dimensions 
+• 𝐴is 3 × 2 
+• 𝑈→ 3 × 3 
+• Σ→ 3 × 2 
+• 𝑉𝑇→ 2 × 2 
+ Step 2: Compute 𝑨𝑻𝑨 
+𝐴𝑇𝐴 = [2 1
+1 2] 
+Step 3: Eigenvalues of 𝑨𝑻𝑨 
+det (𝐴𝑇𝐴 − 𝜆𝐼) = 0 
+(2 − 𝜆)2 − 1 = 0 
+𝜆1 = 3,𝜆2 = 1 
+Step 4: Singular Values 
+𝜎1 = √3,𝜎2 = 1 
+Σ = [
+√3 0
+0 1
+0 0
+] 
+Step 5: Right Singular Vectors 𝑽 
+Eigenvectors of 𝐴𝑇𝐴: 
+For 𝜆1 = 3: 
+𝑣1 = 1
+√2
+[1
+1] 
+ 
+For 𝜆2 = 1: 
+𝑣2 = 1
+√2
+[ 1
+−1] 
+𝑉 =
+[
+ 
+ 
+ 1
+√2
+1
+√2
+1
+√2
+− 1
+√2]
+ 
+ 
+ 
+ 
+Step 6: Left Singular Vectors 𝑼 
+𝑢𝑖 = 𝐴𝑣𝑖
+𝜎𝑖
+ 
+𝑢1 = 1
+√6
+[
+1
+1
+2
+],𝑢2 = 1
+√2
+[
+1
+−1
+0
+] 
+ 
+Complete with a third orthogonal vector: 
+𝑢3 = 1
+√3
+[
+−1
+−1
+1
+] 
+Final SVD 
+𝐴 = 𝑈Σ𝑉𝑇 
+ 
+Where: 
+𝑈 =
+[
+ 
+ 
+ 
+ 
+ 
+ 1
+√6
+1
+√2
+− 1
+√3
+1
+√6
+− 1
+√2
+− 1
+√3
+2
+√6
+0 1
+√3 ]
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Rank of the Matrix 
+Rank(𝐴) = 2 
+(Number of non-zero singular values) 
+Rank-1 Approximation (Dimensionality Reduction) 
+𝐴1 = 𝜎1𝑢1𝑣1
+𝑇 
+𝐴1 = [
+0.5 0.5
+0.5 0.5
+1 1
+] 
+Reduced from 3D → 1D dominant direction 
+Geometric Interpretation (3D) 
+• Data lives mainly on a plane 
+• SVD finds two orthogonal directions 
+• Third direction contains no information 
+Example-5: Obtain SVD of 𝐴 = [
+2 1
+1 2
+2 2
+] 
+ 
+Solution:  Step 1: Compute 𝑨𝑻𝑨 
+𝐴𝑇𝐴 = [2 1 2
+1 2 2][
+2 1
+1 2
+2 2
+] = [9 8
+8 9] 
+Step 2: Eigenvalues of 𝑨𝑻𝑨 
+det (𝐴𝑇𝐴 − 𝜆𝐼) = 0 
+∣ 9 − 𝜆 8
+8 9 − 𝜆 ∣= (9 − 𝜆)2 − 64 = 0 
+𝜆2 − 18𝜆 + 17 = 0 
+𝜆1 = 17,𝜆2 = 1 
+Step 3: Singular Values 
+𝜎1 = √17,𝜎2 = 1 
+Σ = [
+√17 0
+0 1
+0 0
+] 
+Step 4: Right Singular Vectors 𝑽 
+For 𝝀𝟏 = 𝟏𝟕 
+(𝐴𝑇𝐴 − 17𝐼)𝑣 = 0 ⇒ [−8 8
+8 −8]𝑣 = 0 
+𝑣1 = 1
+√2
+[1
+1] 
+ 
+For 𝝀𝟐 = 𝟏 
+𝑣2 = 1
+√2
+[ 1
+−1] 
+𝑉 =
+[
+ 
+ 
+ 1
+√2
+1
+√2
+1
+√2
+− 1
+√2]
+ 
+ 
+ 
+ 
+Step 5: Left Singular Vectors 𝑼 
+𝑢𝑖 = 𝐴𝑣𝑖
+𝜎𝑖
+ 
+First left singular vector 𝒖𝟏 
+𝐴𝑣1 =
+1
+√2[
+3
+3
+4
+],𝑢1 =
+1
+√34[
+3
+3
+4
+]  
+Second left singular vector 𝒖𝟐 
+𝐴𝑣2 =
+1
+√2[
+1
+−1
+0
+], 𝑢2 =
+1
+√2[
+1
+−1
+0
+] , 𝐴𝑣3 = 
+Third vector 𝒖𝟑(orthogonal completion) 
+𝑢3 = 1
+√17
+[
+−2
+−2
+3
+] 
+ 
+ Final SVD 
+𝐴 = 𝑈Σ𝑉𝑇 
+ 
+where 
+𝑈 =
+[
+ 
+ 
+ 
+ 
+ 
+ 3
+√34
+1
+√2
+− 2
+√17
+3
+√34
+− 1
+√2
+− 2
+√17
+4
+√34
+0 3
+√17 ]
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Rank of the Matrix 
+Rank(𝐴) = 2 (two non-zero singular values) 
+Rank-1 Approximation (Compression) 
+𝐴1 = 𝜎1𝑢1𝑣1
+𝑇 = √17
+2 [
+3 3
+3 3
+4 4
+] 
+Practice Problems on Singular Value Decomposition  
+1. Obtain the SVD of the matrix A = [[2, 0], [0, 1]]. Also determine its rank.  
+2. Given A = [[1, 0], [0, 0]]: 
+(a) Find the singular values 
+(b) Construct the rank-1 approximation 
+(c) Interpret the result. 
+3. Consider A = [[1, 1], [1, 1]]: 
+(a) Compute the SVD 
+(b) Find the rank 
+(c) Explain why one singular value is zero. 
+4. Compute the SVD of the rectangular matrix A = [[1, 0], [0, 1], [0, 0]]: 
+(a) Find U, Σ, V^T 
+(b) Determine the rank. 
+5. Let A = [[1, 1], [0, 1], [1, 0]]: 
+(a) Compute A^T A 
+(b) Find singular values 
+(c) Explain the geometric meaning. 
+6. Given A = [[2, 1], [1, 2], [2, 2]]: 
+(a) Find the singular values 
+(b) Determine the rank 
+(c) Construct the rank-1 approximation. 
+7. A grayscale image is represented by A = [[3, 2, 1], [2, 1, 0], [1, 0, 0]]: 
+(a) Compute the SVD 
+(b) Determine the rank 
+(c) Explain image compression using SVD. 
+ 
+ 
+Numerical Example: PCA using Eigenvalues & Eigenvectors 
+Given Data Matrix 
+Assume we have 3 face images , each represented using 2 features  
+(e.g., simplified pixel intensities). 
+𝑋 = [
+2 4
+4 6
+6 8
+] 
+Rows → Images, Columns → Features 
+Step 1: Compute the Mean Vector 
+Mean of each column: 
+𝜇1 = 2 + 4 + 6
+3 = 4𝜇2 = 4 + 6 + 8
+3 = 6 
+𝜇 = [4 6] 
+ 
+Step 2: Mean Center the Data 
+𝑋𝑐𝑒𝑛𝑡𝑒𝑟𝑒𝑑 = 𝑋 − 𝜇 
+= [
+2 − 4 4 − 6
+4 − 4 6 − 6
+6 − 4 8 − 6
+] = [
+−2 −2
+0 0
+2 2
+] 
+Step 3: Compute the Covariance Matrix 
+𝐶 = 1
+𝑛− 1𝑋𝑐𝑒𝑛𝑡𝑒𝑟𝑒𝑑
+𝑇 𝑋𝑐𝑒𝑛𝑡𝑒𝑟𝑒𝑑 
+𝐶 = 1
+2[−2 0 2
+−2 0 2][
+−2 −2
+0 0
+2 2
+] 
+𝐶 = 1
+2[8 8
+8 8] = [4 4
+4 4] 
+Step 4: Find Eigenvalues 
+Solve: 
+∣ 𝐶 − 𝜆𝐼 ∣= 0 
+∣ 4 − 𝜆 4
+4 4 − 𝜆 ∣= 0 
+(4 − 𝜆)2 − 16 = 0 
+𝜆2 − 8𝜆 = 0 ⇒ 𝜆(𝜆 − 8) = 0 
+𝜆1 = 8,  𝜆2 = 0  
+Step 5: Find Eigenvectors 
+For 𝝀𝟏 = 𝟖 
+(𝐶 − 8𝐼)𝑣 = 0 ⇒ [−4 4
+4 −4][𝑥
+𝑦] = 0 
+𝑥 = 𝑦 ⇒ 𝑣1 = [1
+1] 
+ 
+Normalize: 
+𝑣1 = 1
+√2
+[1
+1] 
+For 𝝀𝟐 = 𝟎 
+𝑥 = −𝑦 ⇒ 𝑣2 = [ 1
+−1] 
+Step 6: Principal Component (PCA Direction) 
+• Largest eigenvalue: 8 
+• Corresponding eigenvector: 
+Principal Component = 1
+√2
+[1
+1]  
+This is the Eigenface direction in simplified form. 
+Step 7: Project Data onto Principal Component 
+𝑍 = 𝑋𝑐𝑒𝑛𝑡𝑒𝑟𝑒𝑑 ⋅ 𝑣1 
+𝑍 = [
+−2 −2
+0 0
+2 2
+] ⋅ 1
+√2
+[1
+1] = [
+−2√2
+0
+2√2
+] 
+Data reduced from 2D → 1D 
+Step 8: Interpretation (Face Recognition Context) 
+• Eigenvalue 8 → major facial variation 
+• Eigenvalue 0 → redundant feature 
+• PCA removes redundancy and noise 
+• Projection coefficients are used for face matching 
+Final Exam-Ready Conclusion 
+Using PCA, the original 2 -dimensional data is reduced to 1 dimension by selecting the 
+eigenvector corresponding to the largest eigenvalue. This principal component captures 
+maximum variance and forms the basis of the Eigenfaces method in face recognition. 
+ 
+Rank-1 Reconstruction (Using PCA) 
+From the previous result: 
+Principal eigenvector: 𝑣1 =
+1
+√2[1
+1] 
+Projected values: 𝑍 = [
+−2√2
+0
+2√2
+] 
+Rank-1 Approximation Formula 
+𝑋𝑟𝑎𝑛𝑘1 = 𝑍𝑣1
+𝑇 
+Add Mean Back 
+Mean vector: 
+𝜇 = [4 6] 
+= [
+−2√2
+0
+2√2
+] ⋅ 1
+√2
+[1 1] = [
+−2 −2
+0 0
+2 2
+] 𝑋𝑟𝑒𝑐𝑜𝑛𝑠𝑡𝑟𝑢𝑐𝑡𝑒𝑑 = [
+2 4
+4 6
+6 8
+] 
+Perfect reconstruction here because data is already rank-1. 
+Interpretation 
+• Only one eigenvalue is non-zero 
+• Data lies in one principal direction 
+• PCA achieves maximum compression without loss 
+Eigenfaces using 𝑨𝑻𝑨 Trick (Numerical) Image size ≫ number of images 
+Step 1: Mean-centered matrix 
+𝐴 = [
+−2 −2
+0 0
+2 2
+] 
+Step 3: Eigenvalues 𝐴𝑇𝐴 𝑎𝑟𝑒  
+𝜆1 = 16,𝜆2 = 0 
+Step 2: Compute 𝑨𝑻𝑨 
+𝐴𝑇𝐴 = [−2 0 2
+−2 0 2][
+−2 −2
+0 0
+2 2
+] = [8 8
+8 8] 
+|𝐴𝑇𝐴 − 𝐼| = |[8 8
+8 8] − [1 0
+0 1]| = 0 
+Step 4: Eigenvector 
+𝑣1 = 1
+√2
+[1
+1] 
+Step 5: Compute Eigenface 
+𝑢1 = 𝐴𝑣1 = [
+−2 −2
+0 0
+2 2
+] 1
+√2
+[1
+1] = [
+−2√2
+0
+2√2
+] 
+This vector reshaped → Eigenface image  
+Distance-Based Face Recognition (Numerical) 
+Training weights:   𝜔1 = −2√2,𝜔2 = 0,𝜔3 = 2√2 
+Test face: Γ𝑡𝑒𝑠𝑡 = [5 7] and Mean-center: Φ𝑡𝑒𝑠𝑡 = [1 1] 
+Projection: 𝜔𝑡𝑒𝑠𝑡 = [1 1]⋅
+1
+√2[1
+1] = √2 
+Euclidean Distance 
+𝑑1 =∣ √2 + 2√2 ∣= 3√2 
+𝑑2 =∣ √2 − 0 ∣= √2 
+𝑑3 =∣ √2 − 2√2 ∣= √2 
+ 
+      Closest match → Face 2 or Face 3 
+ 
+ 
+Face Images 
+     ↓ 
+Vectorization 
+     ↓ 
+Mean Face Computation 
+     ↓ 
+Mean Subtraction 
+     ↓ 
+Covariance Matrix (AᵀA) 
+     ↓ 
+Eigenvalues & Eigenvectors 
+     ↓ 
+Eigenfaces Selection 
+     ↓ 
+Projection (Weights) 
+     ↓ 
+Distance Comparison 
+     ↓ 
+Face Recognition 
+
+
+--- END OF Session-4 and 5.pdf ---
+
+
+
+--- START OF HA-1.pdf ---
+
+CO-1: Home Assignment-1 
+ 
+1. Identify the combined embedding feature vector from vectors 𝑒⃗1 = (0,1,2), 𝑒⃗2 = (1, −1,2), 
+𝑒⃗3 = (−1,0,2).  
+2. In a neural network layer, if the input vector is 𝐱 ∈ ℝ3and weight matrix is 𝑊 ∈ ℝ2×3, 
+Identify the dimension of the output vector. 
+3. Determine the norms of u and v, and evaluate u ⋅ v, if u = (𝑎, 2𝑎, 3𝑎, … , 𝑛𝑎) and v =
+(𝑏, 𝑏, 𝑏, … , 𝑏). 
+4. A geometric transformation is represented by the matrix 𝐴 = [1 0
+0 2]. If a planar region has 
+an original area of 6 square units, compute the area of the region after the transformation. 
+5. An online streaming platform analyzes movie descriptions to improve its recommendation 
+system by identifying similarities in plot content. Two movie plots are given: 
+Movie A: A young wizard discovers his powers at a magic school. 
+Movie B: A boy with magical abilities studies spells in a wizard school.  
+Analyze the textual similarity between the two movie plots by applying the TF -IDF 
+representation followed by cosine similarity computation also examine the resulting cosine 
+similarity value and interpret what it reveals about the degree of thematic and con textual 
+similarity between the two movie plots in the context of recommendation systems. 
+6. An AI-based real estate platform uses a single-layer neural network to estimate house price 
+scores based on multiple input features: 𝑥1: House size (in 100 sq. ft), 𝑥2: Distance from 
+the city center, 𝑥3: Age of the house. The input vector, weight matrix, and bias vector for 
+the hidden linear layer (2 neurons) are given by: 
+𝑋 = [2    1    3], 𝑊 = [0.3 −0.2 −0.1
+0.4 −0.3 −0.2] , 𝑏 = [0.2
+0.3] 
+The final output layer (1 neuron) is defined as: 
+𝑊2 = [0.2    0.3], 𝑏2 = 0.2 
+Apply the linear transformation to compute the hidden layer output and also determine the 
+final output of the neural network and illustrate the linear layer neural network model using 
+a neat, labeled diagram from the above data. 
+ 
+ 
+ 
+
+
+--- END OF HA-1.pdf ---
+
+
+
+--- START OF Home Assignment-2.pdf ---
+
+ 
+Home Assignemnt-2 
+1. A map uses a linear transformation represented by 𝐴 = [3 0
+0 −2] to stretch regions 
+vertically. If the original area is 1 2 square units, calculate the area of the transformed 
+region. 
+2. State the implication of two feature vectors having a zero-dot product. 
+3. Compute the determinant of the matrix 𝐵if the eigenvalues of a square matrix are 
+15,0,3. 
+4. Determine the rank of the feature set and identify the redundant feature(s) for the 
+vectors 𝑥1 = (1,1,1),  𝑥2 = (2,2,2),  𝑥3 = (0,1,1). 
+5. Compute the singular values of the matrix 𝐴 = [1 2 3
+2 3 −2]. 
+6. Explain why high-dimensional data often contains redundant information. 
+7. An industrial plant monitors machine health using multiple sensors. At a given 
+machine, the following features are collected: 
+𝑓1: Motor vibration amplitude 
+𝑓2: Root mean square (RMS) vibration 
+𝑓3: Machine temperature 
+𝑓4: Thermal stress index 
+𝑓5: Power consumption 
+𝑓6: Electrical load factor 
+The plant wants to minimize data processing cost by eliminating highly correlated 
+features. Analyze which features are likely redundant and identify the essential features 
+to retain. 
+8. A grayscale image is represented by 𝐴 = [3 2
+1 0]. Obtain the SVD of 𝐴 and determine 
+the rank of 𝐴, also construct the rank-1 approximation using the largest singular value. 
+9. Consider the following matrices:  (a)  𝐴 = [1 1 0
+0 1 1] (b) 𝐴 = [
+−1 −2
+1 2
+1 2
+]  For each 
+matrix 𝐴, (i) compute its Singular Value Decomposition (SVD) and express it in the 
+form 𝐴 = 𝑈 Σ 𝑉𝑇.(ii) Clearly specify the dimensions of the matrices 𝑈, Σ, and 
+𝑉.(iii)Identify the singular values and determine the rank of each matrix.(iv) Comment 
+on how the shape of matrix 𝐴(rectangular vs square) affects the structure of its SVD. 
+10. A grayscale image is represented by the following pixel -intensity matrix 𝐵 = [
+5 4
+3 2
+1 0
+] 
+Using the above matrix, (i) compute the Singular Value Decomposition (SVD) of the 
+matrix 𝐵, i.e., express 𝐵 = 𝑈Σ𝑉𝑇,(ii) determine the rank of the matrix 𝐵, (iii) construct 
+a rank-1 approximation of the matrix 𝐵, also explain the significance of Singular Value 
+
+Decomposition in image compression, emphasizing how dimensionality reduction 
+helps preserve the most important visual information while reducing data size. 
+ 
+ 
+ 
+ 
+
+
+--- END OF Home Assignment-2.pdf ---
+

@@ -91,4 +91,22 @@ export const topics: Topic[] = [
         href: '/subjects/mathematics-for-ai/topics/CO6/building-blocks',
         co: 'CO6',
     },
+
+    // Assignments
+    {
+        id: 'ha1',
+        title: 'Home Assignment 1',
+        description: 'Vectors, basic operations, and introduction to neural networks.',
+        icon: '📝',
+        href: '/subjects/mathematics-for-ai/topics/assignments/ha1',
+        co: 'Assignments',
+    },
+    {
+        id: 'ha2',
+        title: 'Home Assignment 2',
+        description: 'Linear transformations, rank, SVD, and redundancy analysis.',
+        icon: '📝',
+        href: '/subjects/mathematics-for-ai/topics/assignments/ha2',
+        co: 'Assignments',
+    },
 ]

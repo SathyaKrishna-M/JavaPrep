@@ -1,149 +1,170 @@
-'use client'
+import React from 'react';
+import { BlockMath, InlineMath } from 'react-katex';
+import 'katex/dist/katex.min.css';
 
-import DMTopicPage from '@/components/DMTopicPage'
-import { FiGrid, FiActivity, FiLayers, FiCpu } from 'react-icons/fi'
-import { FaShapes, FaCalculator, FaNetworkWired } from 'react-icons/fa'
+const Page = () => {
+    return (
+        <div className="p-6 max-w-4xl mx-auto space-y-8">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+                1. Vectors as Data Representations
+            </h1>
 
-const content = {
-    title: 'Vectors, Matrices & Tensors in AI',
-    explanationSections: [
-        {
-            title: 'BTL-2: Understand Fundamental Objects',
-            icon: <FaShapes className="w-6 h-6" />,
-            content: (
-                <div className="space-y-6">
-                    <p className="text-gray-300">
-                        To build AI, we first need to understand the mathematical objects used to represent data. These are the containers that hold the world's information.
+            {/* 1. Vectors Definition */}
+            <section className="space-y-4">
+                <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
+                    1.1 Definition of a Vector
+                </h2>
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                        A vector in <InlineMath math="\mathbb{R}^n" /> is an ordered <InlineMath math="n" />-tuple of real numbers.
+                        It is a fundamental building block in linear algebra and AI for representing data points, features, and weights.
                     </p>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div className="bg-slate-800/50 p-4 rounded-lg border border-blue-500/20">
-                            <h4 className="text-blue-300 font-bold mb-2">Vectors (1D)</h4>
-                            <div className="text-gray-400 text-sm mb-2">An ordered list of numbers representing a single data point's features.</div>
-                            <code className="bg-black/30 px-2 py-1 rounded text-green-300 text-xs block text-center">[Height, Weight, Age]</code>
-                        </div>
-                        <div className="bg-slate-800/50 p-4 rounded-lg border border-purple-500/20">
-                            <h4 className="text-purple-300 font-bold mb-2">Matrices (2D)</h4>
-                            <div className="text-gray-400 text-sm mb-2">A grid of numbers representing a dataset or an image.</div>
-                            <div className="flex justify-center">
-                                <span className="text-xs bg-black/30 p-2 rounded font-mono text-purple-200">
-                                    [ [255, 0],<br />
-                                    &nbsp;&nbsp;[0, 255] ]
-                                </span>
-                            </div>
-                        </div>
-                        <div className="bg-slate-800/50 p-4 rounded-lg border border-orange-500/20">
-                            <h4 className="text-orange-300 font-bold mb-2">Tensors (N-D)</h4>
-                            <div className="text-gray-400 text-sm mb-2">Multi-dimensional arrays generalizing vectors and matrices.</div>
-                            <div className="text-center text-xs text-orange-200 mt-2">batch_size × channels × height × width</div>
-                        </div>
+                    <div className="my-4">
+                        <BlockMath math="\mathbf{x} = (x_1, x_2, x_3, \dots, x_n), \text{ where } x_i \in \mathbb{R}" />
                     </div>
-                </div>
-            ),
-        },
-        {
-            title: 'BTL-3: Apply Operations for Computation',
-            icon: <FaCalculator className="w-6 h-6" />,
-            content: (
-                <div className="space-y-4">
-                    <p className="text-gray-300">
-                        Once we have data in these objects, we apply operations to compute outputs. This is the "thinking" part of an AI model.
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="bg-indigo-900/10 p-4 rounded-lg border border-indigo-500/20">
-                            <h5 className="text-indigo-300 font-semibold mb-2 flex items-center gap-2"><FiActivity /> Dot Product</h5>
-                            <p className="text-sm text-gray-400 mb-2">Calculates similarity between two vectors.</p>
-                            <code className="block bg-black/30 p-2 rounded text-xs text-green-300">Similarity = A · B</code>
-                        </div>
-                        <div className="bg-pink-900/10 p-4 rounded-lg border border-pink-500/20">
-                            <h5 className="text-pink-300 font-semibold mb-2 flex items-center gap-2"><FiLayers /> Matrix Multiplication</h5>
-                            <p className="text-sm text-gray-400 mb-2">Transforms input vectors into new representations (e.g., layers in a Neural Net).</p>
-                            <code className="block bg-black/30 p-2 rounded text-xs text-green-300">Output = Input × Weights</code>
-                        </div>
-                    </div>
-                </div>
-            ),
-        },
-        {
-            title: 'BTL-4: Analyze Structural Roles',
-            icon: <FaNetworkWired className="w-6 h-6" />,
-            content: (
-                <div className="space-y-4">
-                    <p className="text-gray-300">
-                        We must analyze <strong>why</strong> these structures shape model behavior. The structure (shape) of the data dictates the architecture of the model.
-                    </p>
-                    <ul className="list-disc list-inside text-gray-300 text-sm space-y-2 bg-slate-800/30 p-4 rounded-lg">
-                        <li><strong>Shape Compatibility:</strong> A model designed for 10-feature vectors cannot process a 100-pixel image without reshaping.</li>
-                        <li><strong>Linear Transformations:</strong> Matrices stretch, rotate, and skew the data space, allowing the model to "separate" classes (e.g., cats vs dogs).</li>
-                        <li><strong>Broadcasting:</strong> Tensors allow efficient parallel processing of batches, shaping the speed and throughput of AI training.</li>
+                    <ul className="list-disc pl-6 space-y-2 text-gray-700 dark:text-gray-300">
+                        <li><InlineMath math="n" />: The dimension (number of components).</li>
+                        <li><InlineMath math="x_i" />: The <InlineMath math="i" />-th component or coordinate.</li>
                     </ul>
                 </div>
-            )
-        }
-    ],
-    practiceQuestions: [
-        {
-            question: "Why is a matrix used to represent a grayscale image?",
-            solution: "A grayscale image is a 2D grid of pixels. A matrix provides a direct mathematical structure (rows for height, columns for width) where each element stores the pixel intensity.",
-        },
-        {
-            question: "Apply the Dot Product: Calculate A · B given A=[2, 0, 1] and B=[3, 5, 2].",
-            solution: "(2*3) + (0*5) + (1*2) = 6 + 0 + 2 = 8.",
-        },
-        {
-            question: "Analyze: How does matrix multiplication fundamentally change a vector?",
-            solution: "It transforms the vector from one dimensional space to another. It can change its direction (rotation), magnitude (scaling), and even its dimensionality (projection), effectively 'extracting' new features.",
-        }
-    ],
-    exampleProblems: [
-        {
-            problem: "BTL-3: Basic Computation",
-            solution: "Vector y = [3, 7]",
-            steps: [
-                {
-                    step: "Problem",
-                    explanation: "Given Input x = [1, 2], Weights W = [[1, 1], [0, 1]], and Bias b = [2, 3]. Calculate y = Wx + b."
-                },
-                {
-                    step: "Matrix-Vector Multiplication (Wx)",
-                    explanation: "[ (1*1 + 1*2), (0*1 + 1*2) ] = [3, 2]"
-                },
-                {
-                    step: "Add Bias (+b)",
-                    explanation: "[3, 2] + [2, 3] = [5, 5] (Correction: 1*1+1*2 = 3, 0*1+1*2=2. Result is [3,2]. Add bias [2,3] -> [5,5]. Wait, let's re-verify simple math example for user clarity. Let's start with very simple identity. W=[[1,0],[0,1]] -> Wx=[1,2]. + b=[2,3] = [3,5]. Let's stick to the prompt values. Wx = [1(1)+1(2), 0(1)+1(2)] = [3, 2]. [3,2] + [2,3] = [5, 5]. Correct."
-                },
-                {
-                    step: "Result",
-                    explanation: "The transformed vector is [5, 5]."
-                }
-            ]
-        },
-        {
-            problem: "BTL-4: Structural Analysis",
-            solution: "Shape Mismatch Error",
-            steps: [
-                {
-                    step: "Scenario",
-                    explanation: "You have a matrix A of shape (3, 2) and a vector x of shape (3, 1). You try to compute A multiplied by x (Matrix-Vector product)."
-                },
-                {
-                    step: "Analysis",
-                    explanation: "Matrix multiplication rules state that inner dimensions must match. (3, 2) × (3, 1). The '2' and '3' do not match."
-                },
-                {
-                    step: "Conclusion",
-                    explanation: "The operation is mathematically undefined and will cause a runtime error in any AI framework. The vector x represents data with 3 features, but the matrix A expects input with 2 features."
-                }
-            ]
-        }
-    ],
-}
+            </section>
 
-export default function VectorsDataRepresentationPage() {
-    return (
-        <DMTopicPage
-            content={content}
-            subjectName="Mathematics for AI"
-            subjectHref="/subjects/mathematics-for-ai"
-        />
-    )
-}
+            {/* 2. Geometric & Algebraic Interpretation */}
+            <section className="space-y-4">
+                <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
+                    1.2 Interpretation
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-lg border-l-4 border-blue-500">
+                        <h3 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">Geometric</h3>
+                        <ul className="list-disc pl-5 space-y-1 text-gray-700 dark:text-gray-300 text-sm">
+                            <li>In <InlineMath math="\mathbb{R}^2" />: A point or directed line segment (arrow) in a plane.</li>
+                            <li>In <InlineMath math="\mathbb{R}^3" />: A point or arrow in 3D space.</li>
+                            <li>In <InlineMath math="\mathbb{R}^n" />: Can't visualize easily, but handled algebraically.</li>
+                        </ul>
+                    </div>
+                    <div className="bg-green-50 dark:bg-green-900/20 p-5 rounded-lg border-l-4 border-green-500">
+                        <h3 className="font-semibold text-green-700 dark:text-green-300 mb-2">Algebraic</h3>
+                        <p className="text-gray-700 dark:text-gray-300 text-sm">
+                            An element of a vector space equipped with addition and scalar multiplication.
+                        </p>
+                        <div className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                            <span className="font-medium">Example:</span> <InlineMath math="\mathbf{u} = (2,4) \in \mathbb{R}^2" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 3. Representation */}
+            <section className="space-y-4">
+                <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
+                    1.3 Notation
+                </h2>
+                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+                    <div className="flex flex-col md:flex-row gap-8 justify-center items-center">
+                        <div className="text-center">
+                            <span className="block font-semibold mb-2 text-gray-600 dark:text-gray-400">Row Vector</span>
+                            <BlockMath math="\mathbf{x} = [x_1, x_2, \dots, x_n]" />
+                        </div>
+                        <div className="text-center">
+                            <span className="block font-semibold mb-2 text-gray-600 dark:text-gray-400">Column Vector</span>
+                            <BlockMath math="\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* 4. Vector Operations */}
+            <section className="space-y-6">
+                <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
+                    1.4 Fundamental Operations
+                </h2>
+
+                {/* Addition */}
+                <div className="space-y-2">
+                    <h3 className="text-xl font-medium text-gray-800 dark:text-gray-200">Vector Addition</h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                        Component-wise addition of two vectors of the same dimension.
+                    </p>
+                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-md">
+                        <BlockMath math="\mathbf{u} + \mathbf{v} = (x_1+y_1, x_2+y_2, \dots, x_n+y_n)" />
+                    </div>
+                    <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-md text-sm">
+                        <span className="font-bold text-yellow-800 dark:text-yellow-200">Example:</span> Let <InlineMath math="\mathbf{v}_1 = (2, -1, 3)" /> and <InlineMath math="\mathbf{v}_2 = (3, -4, 6)" />. Then:
+                        <BlockMath math="\mathbf{v}_1 + \mathbf{v}_2 = (2+3, -1-4, 3+6) = (5, -5, 9)" />
+                    </div>
+                </div>
+
+                {/* Dot Product */}
+                <div className="space-y-2">
+                    <h3 className="text-xl font-medium text-gray-800 dark:text-gray-200">Dot Product</h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                        A scalar value representing the sum of the products of corresponding components.
+                    </p>
+                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-md">
+                        <BlockMath math="\mathbf{u} \cdot \mathbf{v} = \sum_{i=1}^{n} x_i y_i = x_1 y_1 + x_2 y_2 + \dots + x_n y_n" />
+                    </div>
+                    <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-md text-sm">
+                        <span className="font-bold text-yellow-800 dark:text-yellow-200">Example:</span> Let <InlineMath math="\mathbf{u} = (1, -2, 3, 4)" />, <InlineMath math="\mathbf{v} = (2, 0, -1, 5)" />.
+                        <BlockMath math="\mathbf{u} \cdot \mathbf{v} = (1)(2) + (-2)(0) + (3)(-1) + (4)(5) = 2 + 0 - 3 + 20 = 19" />
+                    </div>
+                </div>
+
+                {/* Norm */}
+                <div className="space-y-2">
+                    <h3 className="text-xl font-medium text-gray-800 dark:text-gray-200">Euclidean Norm (Magnitude)</h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                        The length of a vector, derived from the Pythagorean theorem.
+                    </p>
+                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-md">
+                        <BlockMath math="\|\mathbf{v}\| = \sqrt{x_1^2 + x_2^2 + \dots + x_n^2}" />
+                    </div>
+                    <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-md text-sm">
+                        <span className="font-bold text-yellow-800 dark:text-yellow-200">Example:</span> Find norm of <InlineMath math="\mathbf{v} = (1, -2, 2, 1)" />.
+                        <BlockMath math="\|\mathbf{v}\| = \sqrt{1^2 + (-2)^2 + 2^2 + 1^2} = \sqrt{1 + 4 + 4 + 1} = \sqrt{10} \approx 3.16" />
+                    </div>
+                </div>
+            </section>
+
+            {/* 5. Practice Problems */}
+            <section className="space-y-6 pt-8 border-t border-gray-200 dark:border-gray-700">
+                <h2 className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">
+                    Practice Problems
+                </h2>
+
+                {/* P2 */}
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                    <h3 className="font-semibold text-lg mb-4">Problem 1: Norm with Variable</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">
+                        Let <InlineMath math="\mathbf{v} = (x, 2x, 3x)" />. Find <InlineMath math="\|\mathbf{v}\|" /> in terms of <InlineMath math="x" />.
+                    </p>
+                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded border-l-4 border-indigo-500">
+                        <p className="font-medium text-gray-900 dark:text-gray-100 mb-2">Solution:</p>
+                        <BlockMath math="\|\mathbf{v}\| = \sqrt{(x)^2 + (2x)^2 + (3x)^2}" />
+                        <BlockMath math="\|\mathbf{v}\| = \sqrt{x^2 + 4x^2 + 9x^2}" />
+                        <BlockMath math="\|\mathbf{v}\| = \sqrt{14x^2}" />
+                        <BlockMath math="\|\mathbf{v}\| = |x|\sqrt{14}" />
+                    </div>
+                </div>
+
+                {/* P1 */}
+                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6">
+                    <h3 className="font-semibold text-lg mb-4">Problem 2: Linear Combination / Embedding</h3>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">
+                        Three feature embeddings are <InlineMath math="\vec{e}_1 = (1,2,3)" />, <InlineMath math="\vec{e}_2 = (2,-1,1)" />, <InlineMath math="\vec{e}_3 = (-1,1,2)" />. Find the combined embedding vector <InlineMath math="\vec{R} = \vec{e}_1 + \vec{e}_2 + \vec{e}_3" /> and its magnitude.
+                    </p>
+                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded border-l-4 border-indigo-500">
+                        <p className="font-medium text-gray-900 dark:text-gray-100 mb-2">Solution:</p>
+                        <p className="mb-2">Sum components:</p>
+                        <BlockMath math="\vec{R} = (1+2-1, 2-1+1, 3+1+2) = (2, 2, 6)" />
+                        <p className="mb-2">Calculate magnitude:</p>
+                        <BlockMath math="\|\vec{R}\| = \sqrt{2^2 + 2^2 + 6^2} = \sqrt{4 + 4 + 36} = \sqrt{44} \approx 6.63" />
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    );
+};
+
+export default Page;
