@@ -49,6 +49,14 @@ export const topics: Topic[] = [
         href: '/subjects/data-structures/topics/CO1/sorting-techniques',
         co: 'CO1',
     },
+    {
+        id: 'sorting-visualizer',
+        title: '6. Sorting Visualizer',
+        description: 'Interactive lab to visualize and control Bubble, Selection, Insertion, Merge, and Quick Sort animations.',
+        icon: '🎬',
+        href: '/subjects/data-structures/topics/CO1/sorting-visualizer',
+        co: 'CO1',
+    },
 
     // CO2 — Lists & Linked Lists (ADT-based)
     {
