@@ -133,10 +133,11 @@ export default function SortingVisualizer() {
             setItems(prev => {
                 const newItems = [...prev];
                 const [i, j] = step.indices;
-                // Perform the actual swap in React state
-                // Because we use key={item.id}, React knows these moved.
-                // CSS transition will animate the 'left' property change.
-                [newItems[i], newItems[j]] = [newItems[j], newItems[i]];
+
+                // Safety: Bounds check
+                if (i >= 0 && i < newItems.length && j >= 0 && j < newItems.length) {
+                    [newItems[i], newItems[j]] = [newItems[j], newItems[i]];
+                }
                 return newItems;
             });
         } else if (step.type === 'overwrite' && step.arrayState) {
@@ -262,6 +263,9 @@ export default function SortingVisualizer() {
                 {/* 2. VISUALIZATION CANVAS (Absolute Positioning) */}
                 <div className="relative w-full h-[350px] bg-slate-950 rounded-lg border border-slate-800 overflow-hidden">
                     {items.map((item, index) => {
+                        // Safety check: inconsistent state might trigger this during rapid hot-reloads or race conditions
+                        if (!item) return null;
+
                         const barWidth = 100 / items.length; // Percentage width
                         const leftPos = index * barWidth;      // Percentage left
 
