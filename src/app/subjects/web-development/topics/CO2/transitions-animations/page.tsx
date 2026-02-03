@@ -1,111 +1,85 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
-import { FiPlayCircle, FiClock, FiActivity, FiCheckCircle } from 'react-icons/fi'
+import { FiPlay, FiRefreshCw } from 'react-icons/fi'
+
+// Helper Component
+const CodePreview = ({ title, code, children }: { title: string, code: string, children: React.ReactNode }) => (
+    <div className="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden mb-8 shadow-xl">
+        <div className="bg-slate-800/80 px-4 py-2 border-b border-slate-700 flex justify-between items-center">
+            <span className="text-sm font-bold text-gray-300">{title}</span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="bg-slate-950 p-4 border-b md:border-b-0 md:border-r border-slate-700 overflow-x-auto text-xs font-mono">
+                <pre className="text-blue-300 whitespace-pre-wrap">{code}</pre>
+            </div>
+            <div className="bg-slate-900 p-4">
+                <div className="p-6 bg-white rounded-lg text-slate-900 border border-slate-300 min-h-[150px] flex items-center justify-center">
+                    {children}
+                </div>
+            </div>
+        </div>
+    </div>
+)
 
 const content = {
     title: 'Transitions & Animations',
     explanationSections: [
         {
             title: '1️⃣ CSS Transitions',
-            icon: <FiClock className="w-6 h-6" />,
+            icon: <FiRefreshCw className="w-6 h-6" />,
             content: (
-                <div className="space-y-4">
+                <div className="space-y-6">
                     <p className="text-gray-300">
-                        Smooth change from State A to State B.
+                        <strong>Transitions</strong> smooth out changes (like hover effects). Without them, changes are instant and jerky.
                     </p>
-                    <div className="bg-slate-800 p-4 rounded-lg font-mono text-sm border border-slate-700">
-                        transition: <span className="text-green-300">all</span> <span className="text-orange-300">0.3s</span> <span className="text-purple-300">ease-in-out</span>;
-                    </div>
+
+                    <CodePreview
+                        title="Smooth Hover Effect"
+                        code={`.btn {
+  background: blue;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: green;
+  transform: scale(1.1) rotate(5deg);
+}`}
+                    >
+                        <button className="px-6 py-3 bg-blue-600 text-white font-bold rounded shadow transition-all duration-300 ease-in-out hover:bg-green-600 hover:scale-110 hover:rotate-3">
+                            Hover Me
+                        </button>
+                    </CodePreview>
                 </div>
             ),
         },
         {
             title: '2️⃣ Keyframe Animations',
-            icon: <FiPlayCircle className="w-6 h-6" />,
+            icon: <FiPlay className="w-6 h-6" />,
             content: (
-                <div className="space-y-4">
+                <div className="space-y-6">
                     <p className="text-gray-300">
-                        Complex multi-step animations.
+                        <strong>@keyframes</strong> allow you to create complex, multi-step animations that run on their own loop.
                     </p>
-                    <div className="space-y-6">
-                        <p className="text-gray-300">
-                            Here are the most common standard animations.
-                        </p>
 
-                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                            {/* Bounce */}
-                            <div className="bg-slate-900 p-4 rounded border border-slate-700 flex flex-col items-center gap-4 hover:border-blue-500 transition-colors">
-                                <div className="w-12 h-12 bg-blue-500 rounded-full animate-bounce shadow-lg shadow-blue-500/50"></div>
-                                <div className="text-xs text-center font-mono text-gray-400">
-                                    <span className="text-blue-300 font-bold block mb-1">Bounce</span>
-                                    animation: bounce 1s infinite;
-                                </div>
-                            </div>
+                    <CodePreview
+                        title="Infinite Bounce"
+                        code={`@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
 
-                            {/* Spin */}
-                            <div className="bg-slate-900 p-4 rounded border border-slate-700 flex flex-col items-center gap-4 hover:border-purple-500 transition-colors">
-                                <div className="w-12 h-12 border-4 border-purple-500 border-t-transparent rounded-full animate-spin"></div>
-                                <div className="text-xs text-center font-mono text-gray-400">
-                                    <span className="text-purple-300 font-bold block mb-1">Spin</span>
-                                    animation: spin 1s linear infinite;
-                                </div>
-                            </div>
-
-                            {/* Pulse */}
-                            <div className="bg-slate-900 p-4 rounded border border-slate-700 flex flex-col items-center gap-4 hover:border-red-500 transition-colors">
-                                <div className="w-12 h-12 bg-red-500 rounded-lg animate-pulse shadow-lg shadow-red-500/50"></div>
-                                <div className="text-xs text-center font-mono text-gray-400">
-                                    <span className="text-red-300 font-bold block mb-1">Pulse</span>
-                                    animation: pulse 2s infinite;
-                                </div>
-                            </div>
-
-                            {/* Ping */}
-                            <div className="bg-slate-900 p-4 rounded border border-slate-700 flex flex-col items-center gap-4 hover:border-green-500 transition-colors">
-                                <span className="relative flex h-12 w-12">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-12 w-12 bg-green-500"></span>
-                                </span>
-                                <div className="text-xs text-center font-mono text-gray-400">
-                                    <span className="text-green-300 font-bold block mb-1">Ping</span>
-                                    animation: ping 1s infinite;
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Code Snippet */}
-                        <div className="bg-slate-800 p-4 rounded-lg font-mono text-xs md:text-sm border border-slate-700 overflow-x-auto">
-                            <span className="text-gray-500">/* How 'Spin' works under the hood */</span><br />
-                            <span className="text-blue-300">@keyframes</span> spin {'{'}<br />
-                            &nbsp;&nbsp;from {'{'} transform: <span className="text-orange-300">rotate(0deg)</span>; {'}'}<br />
-                            &nbsp;&nbsp;to {'{'} transform: <span className="text-orange-300">rotate(360deg)</span>; {'}'}<br />
-                            {'}'}
-                        </div>
-                    </div>
+.ball {
+  animation: bounce 1s infinite;
+}`}
+                    >
+                        <div className="w-12 h-12 bg-red-500 rounded-full shadow-lg animate-bounce"></div>
+                    </CodePreview>
                 </div>
-            ),
-        },
-        {
-            title: '3️⃣ Transforms & Performance (Exam Critical)',
-            icon: <FiActivity className="w-6 h-6" />,
-            content: (
-                <div className="space-y-4">
-                    <ul className="list-disc list-inside text-gray-300 text-sm space-y-2">
-                        <li><strong>Composite Layers:</strong> Only animate <code>opacity</code> and <code>transform</code> for 60fps.</li>
-                        <li><code>will-change: transform</code>: Hints browser to optimize.</li>
-                        <li><strong>Functions:</strong> <code>translate()</code>, <code>scale()</code>, <code>rotate()</code>.</li>
-                    </ul>
-                </div>
-            ),
-        },
+            )
+        }
     ],
-    practiceQuestions: [
-        {
-            question: "What is `animation-fill-mode: forwards`?",
-            solution: "Keeps the element at the final state of animation.",
-        },
-    ],
+    practiceQuestions: [],
     exampleProblems: [],
 }
 

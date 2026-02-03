@@ -57,6 +57,14 @@ export const fwdTopics: Topic[] = [
         href: '/subjects/web-development/topics/CO1/introductory-css',
         co: 'CO1',
     },
+    {
+        id: 'practice-exercises',
+        title: '7. Practice Exercises',
+        description: 'Hands-on coding tasks and implementation practice',
+        icon: '💻',
+        href: '/subjects/web-development/topics/CO1/practice-exercises',
+        co: 'CO1',
+    },
 
     // CO2 — HTML Forms, Semantic Tags & Comprehensive CSS Layouts
     {
@@ -113,6 +121,15 @@ export const fwdTopics: Topic[] = [
         description: 'CSS variables (calc, var), SCSS basics, Bootstrap utilities',
         icon: '💅',
         href: '/subjects/web-development/topics/CO2/modern-css',
+        co: 'CO2',
+    },
+
+    {
+        id: 'practice-exercises-co2',
+        title: '8. Practice Exercises (CO2)',
+        description: 'Forms, Tables, and Layout challenges',
+        icon: '🏋️',
+        href: '/subjects/web-development/topics/CO2/practice-exercises',
         co: 'CO2',
     },
 
@@ -248,5 +265,15 @@ export const fwdTopics: Topic[] = [
         icon: '🔒',
         href: '/subjects/web-development/topics/CO5/web-security-deployment',
         co: 'CO5',
+    },
+
+    // Extras
+    {
+        id: 'question-bank',
+        title: '🎓 Question Bank (Full)',
+        description: 'Exam preparation, visuals, and deep-dive solutions',
+        icon: '📚',
+        href: '/subjects/web-development/extras/questions',
+        co: 'EXTRAS',
     },
 ]

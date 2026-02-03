@@ -1,90 +1,97 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
-import { FiSmartphone, FiMonitor, FiVideo, FiPlay } from 'react-icons/fi'
+import { FiSmartphone, FiMonitor, FiTablet } from 'react-icons/fi'
+
+// Helper Component
+const CodePreview = ({ title, code, children }: { title: string, code: string, children: React.ReactNode }) => (
+    <div className="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden mb-8 shadow-xl">
+        <div className="bg-slate-800/80 px-4 py-2 border-b border-slate-700 flex justify-between items-center">
+            <span className="text-sm font-bold text-gray-300">{title}</span>
+            <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+            </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="bg-slate-950 p-4 border-b md:border-b-0 md:border-r border-slate-700 overflow-x-auto text-xs font-mono">
+                <pre className="text-blue-300 whitespace-pre-wrap">{code}</pre>
+            </div>
+            <div className="bg-slate-900 p-4">
+                <div className="p-6 bg-white rounded-lg text-slate-900 border border-slate-300 min-h-[150px] flex items-center justify-center">
+                    {children}
+                </div>
+            </div>
+        </div>
+    </div>
+)
 
 const content = {
     title: 'Responsive Design',
     explanationSections: [
         {
-            title: '1️⃣ Viewport Units',
+            title: '1️⃣ Media Queries',
             icon: <FiMonitor className="w-6 h-6" />,
             content: (
-                <div className="space-y-4">
+                <div className="space-y-6">
                     <p className="text-gray-300">
-                        Relative to browser window size.
+                        <strong>Responsive Design</strong> means your website adapts to look good on all devices (Phones, Tablets, Desktops). We use <code>@media</code> queries to apply different styles at different widths.
                     </p>
-                    <ul className="list-disc list-inside text-gray-300 text-sm space-y-2">
-                        <li><code>100vw</code> = 100% Width.</li>
-                        <li><code>100vh</code> = 100% Height.</li>
-                    </ul>
 
-                    {/* Visual Diagram Breakdown */}
-                    <div className="bg-slate-900 p-6 rounded-lg border border-slate-700 font-mono text-center">
-                        <div className="flex items-end gap-2 text-xs justify-center h-24">
-                            {/* Mobile */}
-                            <div className="w-12 bg-red-500/20 border border-red-500 rounded-t h-1/2 flex items-center justify-center text-red-300 relative group">
-                                <span className="absolute -top-6">Mobile</span>
-                                <FiSmartphone />
+                    {/* Visual Breakpoint Bar */}
+                    <div className="bg-slate-900 p-6 rounded-xl border border-slate-700">
+                        <h5 className="font-bold text-gray-300 mb-4 text-center">Common Breakpoints (Width)</h5>
+                        <div className="flex text-xs text-white font-bold text-center h-12 rounded overflow-hidden">
+                            <div className="w-1/3 bg-red-500 flex flex-col justify-center items-center border-r border-red-600">
+                                <FiSmartphone className="text-lg" />
+                                &lt; 768px
                             </div>
-                            {/* Tablet */}
-                            <div className="w-16 bg-blue-500/20 border border-blue-500 rounded-t h-3/4 flex items-center justify-center text-blue-300 relative group">
-                                <span className="absolute -top-6">Tablet</span>
-                                <FiSmartphone className="rotate-90" />
+                            <div className="w-1/3 bg-blue-500 flex flex-col justify-center items-center border-r border-blue-600">
+                                <FiTablet className="text-lg" />
+                                768px - 1024px
                             </div>
-                            {/* Desktop */}
-                            <div className="w-24 bg-green-500/20 border border-green-500 rounded-t h-full flex items-center justify-center text-green-300 relative group">
-                                <span className="absolute -top-6">Desktop</span>
-                                <FiMonitor />
+                            <div className="w-1/3 bg-green-500 flex flex-col justify-center items-center">
+                                <FiMonitor className="text-lg" />
+                                &gt; 1024px
                             </div>
                         </div>
-                        <div className="h-px bg-gray-600 w-full mt-2 relative">
-                            <div className="absolute top-2 left-[20%] text-xs text-gray-500">0px</div>
-                            <div className="absolute top-2 left-[45%] text-xs text-gray-500">768px</div>
-                            <div className="absolute top-2 left-[75%] text-xs text-gray-500">1024px</div>
+                        <div className="flex text-[10px] text-gray-500 text-center mt-2 px-2">
+                            <div className="w-1/3">Mobile (Phones)</div>
+                            <div className="w-1/3">Tablets</div>
+                            <div className="w-1/3">Desktop</div>
                         </div>
                     </div>
-                </div>
-            ),
-        },
-        {
-            title: '2️⃣ Responsive Images & Text',
-            icon: <FiVideo className="w-6 h-6" />,
-            content: (
-                <div className="space-y-4">
-                    <div className="bg-slate-800 p-4 rounded-lg font-mono text-sm border border-slate-700">
-                        img {'{'} max-width: 100%; height: auto; {'}'}<br />
-                        h1 {'{'} font-size: clamp(1rem, 5vw, 2.5rem); {'}'}
-                    </div>
-                </div>
-            ),
-        },
-        {
-            title: '🚀 Advanced Example: Auto-Fit Grid',
-            icon: <FiPlay className="w-6 h-6" />,
-            content: (
-                <div className="space-y-4">
-                    <p className="text-gray-300">
-                        Layouts that adapt without Media Queries.
-                    </p>
-                    <a
-                        href="/previews/fwd/responsive-card-gallery.html"
-                        target="_blank"
-                        className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white rounded-lg font-semibold transition-all shadow-lg hover:shadow-cyan-500/20"
+
+                    <CodePreview
+                        title="Mobile First Example"
+                        code={`/* Default = Mobile */
+.box {
+  background-color: red;
+}
+
+/* Tablet & Up */
+@media (min-width: 768px) {
+  .box {
+    background-color: blue;
+  }
+}`}
                     >
-                        <FiPlay className="w-4 h-4" />
-                        ▶ Open Responsive Gallery
-                    </a>
+                        <div className="w-full">
+                            <div className="p-4 bg-red-500 text-white font-bold text-center md:hidden rounded">
+                                I am RED on Mobile
+                            </div>
+                            <div className="p-4 bg-blue-500 text-white font-bold text-center hidden md:block rounded">
+                                I am BLUE on Desktop/Tablet
+                            </div>
+                            <p className="text-[10px] text-gray-500 text-center mt-2">Resize your browser window to see this change!</p>
+                        </div>
+                    </CodePreview>
                 </div>
             ),
-        },
+        }
     ],
-    practiceQuestions: [
-        {
-            question: "Why use REM units?",
-            solution: "Respects user font settings. 1rem = 16px usually.",
-        },
-    ],
+    practiceQuestions: [],
     exampleProblems: [],
 }
 

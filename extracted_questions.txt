@@ -1,0 +1,754 @@
+CO1 – QUESTION AND ANSWER
+1. Write few typography CSS properties.
+Some commonly used typography CSS properties are:
+ font-family
+ font-size
+ font-weight
+ font-style
+ text-align
+ line-height
+ letter-spacing
+ text-transform
+2. Write few ways to apply color to text in a web page.
+You can apply color to text using:
+ Named colors → color: red;
+ Hex codes → color: #ff0000;
+ RGB values → color: rgb(255,0,0);
+ RGBA values → color: rgba(255,0,0,0.7);
+ HSL values → color: hsl(0,100%,50%);
+3. List out the ways of applying CSS to an HTML page.
+There are three ways:
+1. Inline CSS
+2. Internal CSS (using <style> tag)
+3. External CSS (using .css file linked with <link> tag)
+4. How will you link external CSS to an HTML page? Write that particular tag.
+Use the <link> tag inside <head> section:
+<link rel="stylesheet" href="style.css">
+5. Explain about different selectors in CSS.
+CSS selectors are patterns used to select HTML elements for applying styles.
+
+--- PAGE BREAK ---
+
+1. Tag (Element) Selector
+Selects all elements of a specific tag.
+Example:
+p { color: blue; }
+2. Class Selector
+Selects elements with a specific class name.
+Example:
+.box { padding: 10px; }
+3. ID Selector
+Selects an element with a unique ID.
+Example:
+#header { background: black; }
+4. Universal Selector
+Applies style to all elements.
+* { margin: 0; }
+5. Group Selector
+Applies the same style to multiple elements.
+h1, h2, h3 { font-family: Arial; }
+6. Descendant (Nested) Selector
+Applies style to elements inside other elements.
+div p { color: green; }
+7. Attribute Selector
+Selects elements with specific attributes.
+input[type="text"] { border: 1px solid black; }
+6. What are the ways to apply CSS to an HTML page? Explain it.
+There are three ways to apply CSS:
+1. Inline CSS
+ Written inside HTML tags using the style attribute.
+ Used for quick, one-time styling.
+<p style="color:red;">Hello</p>
+2. Internal CSS
+ Written inside <style> tag in the <head> section.
+ Useful when a single page needs specific styling.
+
+--- PAGE BREAK ---
+
+<head>
+<style>
+p { color: blue; }
+</style>
+</head>
+3. External CSS
+ Written in a separate .css file.
+ Linked using <link> tag in HTML.
+ Best method for large websites.
+<link rel="stylesheet" href="style.css">
+7. Write typography tag with internal, external and inline CSS and explain what will get
+higher priority and why?
+Sample HTML with all three types of CSS
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+p { font-size: 20px; color: blue; }
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<p style="color: red;">Typography Example</p>
+</body>
+</html>
+style.css (external file)
+p { color: green; }
+Priority Order (Highest → Lowest)
+1. Inline CSS
+
+--- PAGE BREAK ---
+
+2. Internal CSS
+3. External CSS
+4. Browser default styles
+Why Inline gets highest priority?
+Because inline CSS is directly applied to the specific element, so it overrides internal and
+external styles unless !important is used.
+8. Apply different CSS selectors (class, id, tag, nested, universal) in style.css for a sample
+HTML page you design.
+Sample HTML Page
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1 id="title">Welcome</h1>
+<div class="container">
+<p>This is a paragraph inside container.</p>
+</div>
+<p class="info">This is another paragraph.</p>
+</body>
+</html>
+style.css using all selectors
+/* Universal selector */
+* {
+
+--- PAGE BREAK ---
+
+margin: 0;
+padding: 0;
+}
+/* Tag selector */
+p {
+font-size: 18px;
+}
+/* ID selector */
+#title {
+color: blue;
+text-align: center;
+}
+/* Class selector */
+.info {
+color: green;
+}
+/* Nested selector */
+.container p {
+color: purple;
+}
+G. What is box model in CSS?
+The CSS Box Model describes how every HTML element is represented as a rectangular box. It
+defines the space an element occupies and consists of four layers:
+1. Content – Actual text or image inside the element.
+2. Padding – Space between content and border; adds inner spacing.
+3. Border – A line surrounding the padding and content.
+4. Margin – Space outside the border; creates spacing between elements.
+
+--- PAGE BREAK ---
+
+It helps in designing layout, alignment, and spacing of elements accurately.
+10. Explain the need of border in designing phase.
+The border is important in the design phase because:
+ It visually separates one element from another.
+ Helps in identifying sections, boxes, and containers.
+ Useful for creating focus areas (ex: forms, cards, buttons).
+ Helps developers debug spacing by showing an element’s actual size.
+ Enhances aesthetic appearance, giving structure to layouts.
+ Used to create effects like outlines, separators, and UI components.
+11. Write any 2 absolute and any 2 relative measures for CSS properties.
+Absolute length units:
+1. px → pixels
+2. cm → centimeters
+(Other examples: mm, in, pt)
+Relative length units:
+1. em → relative to parent font-size
+2. rem → relative to root (HTML) font-size
+(Other examples: %, vw, vh)
+12. Explain about margin and padding in CSS.
+ Margin:
+o Space outside the border.
+o Creates distance between two elements.
+o Does not affect the element’s background color.
+o Example: margin: 20px;
+ Padding:
+o Space inside the border (around content).
+o Increases the clickable/content area.
+o Affects background color because it is inside the box.
+
+--- PAGE BREAK ---
+
+o Example: padding: 10px;
+Both are essential for layout spacing and readability.
+13. Write the HTML document structure.
+<!DOCTYPE html>
+<html>
+<head>
+<title>Document Title</title>
+</head>
+<body>
+<!-- Page Content -->
+</body>
+</html>
+14. What is the purpose of HTTPS? How does it differ from HTTP?
+Purpose of HTTPS:
+HTTPS (HyperText Transfer Protocol Secure) is used to secure communication between
+browser and server. It protects data using encryption.
+Difference:
+HTTP HTTPS
+Not secure Secure, encrypted
+Data can be intercepted Data is protected using SSL/TLS
+Uses port 80 Uses port 443
+No certificate Requires SSL certificate
+HTTPS ensures privacy, integrity, and authenticity.
+15. What are web protocols? Name any two and explain briefly.
+Web protocols are rules that define how data is transmitted over the internet.
+Two important protocols:
+1. HTTP/HTTPS – Used for transferring webpages between client and server. HTTPS adds
+encryption.
+2. FTP – Used for uploading and downloading files between client and server.
+
+--- PAGE BREAK ---
+
+Other examples: SMTP, IMAP, TCP, UDP.
+16. Explain the client–server architecture used in the web.
+Client–server architecture is a model where:
+ The client (browser) sends a request.
+ The server processes the request, retrieves data, and sends a response.
+Steps:
+1. User enters a URL.
+2. Browser sends HTTP/HTTPS request to server.
+3. Server processes the request.
+4. Server sends back HTML/CSS/JS files.
+5. Browser displays the webpage.
+It separates UI (client) from data processing (server).
+17. Design an HTML page for your personal portfolio and apply CSS. Utilize list, table,
+paragraph tags and apply required layout, color, typography and foundational spacing.
+Answer:
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{ box-sizing: border-box; }
+body{
+font-family:"Segoe UI", Arial, sans-serif;
+color:hsl(210,20%,20%);
+background:hsl(210,40%,97%);
+line-height:1.6;
+margin:20px;
+}
+h1{
+font-size:2rem;
+font-weight:700;
+
+--- PAGE BREAK ---
+
+color:rgb(10,90,160);
+border-bottom:3px solid rgba(10,90,160,0.5);
+padding-bottom:5px;
+}
+.section{
+margin-bottom:15px;
+padding:15px;
+border:2px solid hsl(210,20%,80%);
+background:white;
+border-radius:8px;
+}
+ul{ padding-left:20px; }
+table{
+width:100%;
+border-collapse:collapse;
+}
+th,td{
+border:1px solid rgb(180,180,180);
+padding:10px;
+}
+th{
+background:hsl(210,30%,90%);
+}
+</style>
+</head>
+<body>
+<h1>My Portfolio</h1>
+<div class="section">
+<h2>About Me</h2>
+
+--- PAGE BREAK ---
+
+<p>Hello! I am a web developer passionate about UI design and coding.</p>
+</div>
+<div class="section">
+<h2>Skills</h2>
+<ul>
+<li>HTML, CSS, JavaScript</li>
+<li>Spring Boot C MySQL</li>
+<li>AWS Cloud</li>
+</ul>
+</div>
+<div class="section">
+<h2>Projects</h2>
+<table>
+<tr><th>Project</th><th>Year</th></tr>
+<tr><td>Portfolio Website</td><td>2024</td></tr>
+<tr><td>Student Portal</td><td>2023</td></tr>
+</table>
+</div>
+</body>
+</html>
+18. Design an HTML page for listing students for the events and apply CSS. Utilize images,
+table, anchor tags and apply required layout, color, hover and foundational spacing.
+Answer:
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+--- PAGE BREAK ---
+
+*{ box-sizing: border-box; }
+body{
+font-family:"Calibri",sans-serif;
+background:hsl(100,40%,96%);
+margin:20px;
+color:hsl(120,20%,20%);
+line-height:1.5;
+}
+h1{
+color:rgb(0,120,60);
+font-size:2rem;
+border-bottom:3px solid rgba(0,120,60,0.5);
+padding-bottom:5px;
+}
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+th, td{
+border:1px solid rgb(160,160,160);
+padding:10px;
+}
+th{
+background:hsl(120,20%,90%);
+}
+a{
+color:rgb(0,100,200);
+}
+a:hover{
+color:hsl(240,80%,40%);
+
+--- PAGE BREAK ---
+
+text-decoration:underline;
+}
+img{
+width:60px;
+height:60px;
+border-radius:6px;
+}
+</style>
+</head>
+<body>
+<h1>Event Students</h1>
+<table>
+<tr><th>Photo</th><th>Name</th><th>Event</th><th>Profile</th></tr>
+<tr><td><img src="https://via.placeholder.com/60"></td><td>Arjun</td><td>Quiz</td><td><a
+href="#">View</a></td></tr>
+<tr><td><img
+src="https://via.placeholder.com/60"></td><td>Meera</td><td>Design</td><td><a
+href="#">View</a></td></tr>
+</table>
+</body>
+</html>
+1G. Design an HTML page for display the employee information with their salary. Utilize
+images, paragraphs and apply required layout, color with foundational spacing. Include
+external CSS to the HTML page.
+Answer (HTML + External CSS):
+HTML:
+<!DOCTYPE html>
+<html>
+
+--- PAGE BREAK ---
+
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Employee Details</h1>
+<div class="emp-card">
+<img src="https://via.placeholder.com/100">
+<p><b>Name:</b> Rahul<br><b>Role:</b> Manager<br><b>Salary:</b> ₹75,000</p>
+</div>
+</body>
+</html>
+style.css:
+*{ box-sizing:border-box; }
+body{
+font-family:Arial,sans-serif;
+background:hsl(200,40%,95%);
+margin:20px;
+color:hsl(200,20%,20%);
+line-height:1.6;
+}
+h1{
+font-size:2rem;
+color:rgb(0,80,140);
+border-bottom:3px solid rgba(0,80,140,0.4);
+padding-bottom:5px;
+}
+
+--- PAGE BREAK ---
+
+.emp-card{
+display:flex;
+gap:20px;
+background:white;
+padding:20px;
+border-radius:8px;
+border:2px solid hsl(200,30%,80%);
+}
+img{
+border-radius:8px;
+}
+20. Design an HTML page and apply required CSS to show a page with the list of course
+information for the students. Utilize list, table, div, span and apply required layout, color,
+typography and foundational spacing. Utilize internal CSS to apply in HTML page.
+Answer:
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{ box-sizing:border-box; }
+body{
+font-family:"Verdana",sans-serif;
+color:hsl(10,20%,20%);
+background:hsl(10,80%,96%);
+margin:20px;
+line-height:1.6;
+}
+h1{
+color:rgb(200,50,50);
+font-size:2rem;
+
+--- PAGE BREAK ---
+
+border-bottom:3px solid rgba(200,50,50,0.4);
+padding-bottom:5px;
+}
+.course-box{
+border:2px solid hsl(10,30%,80%);
+padding:15px;
+margin-bottom:15px;
+background:white;
+border-radius:8px;
+}
+span{
+color:hsl(10,40%,40%);
+font-weight:600;
+}
+ul{ padding-left:20px; }
+table{
+width:100%;
+border-collapse:collapse;
+}
+th,td{
+border:1px solid rgb(180,180,180);
+padding:10px;
+}
+</style>
+</head>
+<body>
+<h1>Courses</h1>
+<div class="course-box">
+
+--- PAGE BREAK ---
+
+<p><span>Course:</span> Web Development</p>
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>JS</li>
+</ul>
+<table>
+<tr><th>Module</th><th>Hours</th></tr>
+<tr><td>Frontend Basics</td><td>40</td></tr>
+<tr><td>Backend Basics</td><td>50</td></tr>
+</table>
+</div>
+</body>
+</html>
+21. Create a homepage for a college website with headings, navigation links, and styled
+content using basic CSS. Apply external CSS to HTML page.
+Answer (HTML + CSS):
+HTML:
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="college.css">
+</head>
+<body>
+<header>
+<h1>ABC College</h1>
+<nav>
+
+--- PAGE BREAK ---
+
+<a href="#">Home</a>
+<a href="#">Departments</a>
+<a href="#">Admissions</a>
+<a href="#">Contact</a>
+</nav>
+</header>
+<section class="info">
+<h2>Welcome</h2>
+<p>Leading institution with quality education for students.</p>
+</section>
+</body>
+</html>
+college.css:
+*{ box-sizing:border-box; }
+body{
+font-family:Arial,sans-serif;
+background:hsl(230,40%,96%);
+margin:20px;
+color:hsl(230,20%,20%);
+}
+header{
+border-bottom:3px solid rgba(0,0,0,0.2);
+padding-bottom:10px;
+}
+nav a{
+margin-right:20px;
+color:rgb(50,80,200);
+
+--- PAGE BREAK ---
+
+text-decoration:none;
+}
+nav a:hover{
+color:hsl(240,70%,40%);
+}
+22. Build an article layout using headings, subheadings, paragraphs, and style it using
+fonts, line spacing, and margin/padding. Apply internal CSS to HTML page.
+Answer:
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{ box-sizing:border-box; }
+body{
+font-family:"Georgia",serif;
+background:hsl(50,40%,95%);
+margin:30px;
+color:hsl(50,20%,20%);
+line-height:1.8;
+}
+.container{
+padding:25px;
+border:2px solid rgba(0,0,0,0.2);
+border-radius:10px;
+background:white;
+}
+h1{
+font-size:2.4rem;
+color:rgb(150,100,0);
+letter-spacing:1px;
+
+--- PAGE BREAK ---
+
+margin-bottom:15px;
+}
+h2{
+font-size:1.8rem;
+color:hsl(50,30%,30%);
+margin-top:20px;
+margin-bottom:10px;
+}
+p{
+margin-bottom:15px;
+text-align:justify;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Impact of Technology</h1>
+<h2>Introduction</h2>
+<p>Technology affects all aspects of life, improving communication, healthcare, and education
+globally.</p>
+<h2>Applications</h2>
+<p>Automation, AI, and cloud computing are transforming industries and daily life.</p>
+</div>
+</body>
+</html>
+23. Build an HTML page that uses nested content (headings, lists, links) to display student
+info and style it using padding, margin, and border to create structured spacing.
+Answer:
+<!DOCTYPE html>
+<html>
+
+--- PAGE BREAK ---
+
+<head>
+<style>
+*{ box-sizing:border-box; }
+body{
+font-family:"Arial",sans-serif;
+background:hsl(200,40%,96%);
+margin:20px;
+color:hsl(200,20%,20%);
+}
+.container{
+border:2px solid rgba(0,0,0,0.2);
+padding:20px;
+border-radius:8px;
+background:white;
+}
+ul{
+padding-left:25px;
+margin-top:10px;
+}
+li{
+margin-bottom:8px;
+}
+a{
+color:rgb(0,80,200);
+text-decoration:none;
+}
+a:hover{
+color:hsl(210,80%,40%);
+text-decoration:underline;
+}
+</style>
+
+--- PAGE BREAK ---
+
+</head>
+<body>
+<div class="container">
+<h2>Student Profile</h2>
+<ul>
+<li>Name: Naveen</li>
+<li>Department: CSE</li>
+<li>Email: <a href="#">naveen@example.com</a></li>
+<li>Interests:
+<ul>
+<li>AI</li>
+<li>Web Development</li>
+</ul>
+</li>
+</ul>
+</div>
+</body>
+</html>
+24. Build a basic webpage that displays a product description using headings, paragraphs,
+links, and simple CSS color/typography and foundational space styling.
+Answer:
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+*{ box-sizing:border-box; }
+body{
+
+--- PAGE BREAK ---
+
+font-family:"Segoe UI",sans-serif;
+background:hsl(340,40%,96%);
+margin:20px;
+color:hsl(340,20%,20%);
+line-height:1.6;
+}
+h1{
+font-size:2rem;
+font-weight:700;
+color:rgb(180,0,90);
+margin-bottom:10px;
+}
+p{
+margin-bottom:15px;
+}
+a{
+color:hsl(340,80%,40%);
+text-decoration:none;
+}
+a:hover{
+color:rgb(220,0,120);
+text-decoration:underline;
+}
+</style>
+</head>
+<body>
+<h1>Smartwatch X</h1>
+<p>Advanced smartwatch with heart-rate monitoring, GPS, and water resistance.</p>
+<p><strong>Price:</strong> ₹4999</p>
+
+--- PAGE BREAK ---
+
+<p>More details: <a href="#">Click Here</a></p>
+</body>
+</html>
+25. What is the use of the <textarea> tag?
+Answer:
+It is used to accept multi-line text input from the user. Mention any two media tags in HTML.
+26. What is the purpose of the alt attribute?
+Answer:
+It provides alternative text for images, useful for accessibility and screen readers.
+27. What does the CSS: hover selector do?
+Answer:
+It applies styles when the user places the mouse pointer over an element.
+28. Explain different form elements used in HTML.
+Answer:
+HTML forms use elements like <input> for single-line input, <textarea> for multi-line text,
+<select> and <option> for dropdown lists, and <button> to submit or reset forms.
+29. Describe any four HTML input types.
+Answer:
+text: Accepts plain text
+email: Accepts valid email addresses
+number: Accepts numeric values
+password: Hides user input
+30. Write HTML code to validate a 12-digit Aadhaar number.
+<html>
+<head>
+<title>Aadhaar Validation</title>
+</head>
+<body>
+<h2>Aadhaar Number Validation</h2>
+<form>
+
+--- PAGE BREAK ---
+
+<label>Aadhaar Number:</label><br>
+<input type="text” placeholder="Enter 12-digit Aadhaar” pattern="[0-9]{12}"
+required><br><br>
+<button type="submit">Verify</button>
+</form>
+</body>
+</html>
+31. Write the pattern for Indian mobile number validation.
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mobile Number Validation</title>
+</head>
+<body>
+<h2>Mobile Number Validation</h2>
+<form>
+<label>Mobile Number:</label><br>
+<input type="text" placeholder="Enter mobile number" pattern="[0-9]{10}
+required><br><br>
+<button>Submit</button>
+</form>
+</body>
+</html>
+
+--- PAGE BREAK ---
+

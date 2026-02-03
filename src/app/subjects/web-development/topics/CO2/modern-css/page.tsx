@@ -1,66 +1,65 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
-import { FiPackage, FiHash, FiSettings, FiCheckCircle } from 'react-icons/fi'
+import { FiCode, FiBox } from 'react-icons/fi'
+
+// Helper Component
+const CodePreview = ({ title, code, children }: { title: string, code: string, children: React.ReactNode }) => (
+    <div className="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden mb-8 shadow-xl">
+        <div className="bg-slate-800/80 px-4 py-2 border-b border-slate-700 flex justify-between items-center">
+            <span className="text-sm font-bold text-gray-300">{title}</span>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="bg-slate-950 p-4 border-b md:border-b-0 md:border-r border-slate-700 overflow-x-auto text-xs font-mono">
+                <pre className="text-blue-300 whitespace-pre-wrap">{code}</pre>
+            </div>
+            <div className="bg-slate-900 p-4">
+                <div className="p-6 bg-white rounded-lg text-slate-900 border border-slate-300 min-h-[150px] flex flex-col justify-center items-center">
+                    {children}
+                </div>
+            </div>
+        </div>
+    </div>
+)
 
 const content = {
-    title: 'Modern CSS & Frameworks',
+    title: 'Modern CSS',
     explanationSections: [
         {
             title: '1️⃣ CSS Variables (Custom Properties)',
-            icon: <FiHash className="w-6 h-6" />,
+            icon: <FiCode className="w-6 h-6" />,
             content: (
-                <div className="space-y-4">
+                <div className="space-y-6">
                     <p className="text-gray-300">
-                        The foundation of theming.
+                        <strong>Variables</strong> let you store values (like colors or sizes) in one place and reuse them. If you change the variable, it updates everywhere!
                     </p>
-                    <div className="bg-slate-800 p-4 rounded-lg font-mono text-sm border border-slate-700">
-                        :root {'{'} --primary: #3b82f6; {'}'}<br />
-                        .card {'{'} color: var(--primary); {'}'}
-                    </div>
+
+                    <CodePreview
+                        title="Using Variables"
+                        code={`:root {
+  --main-color: #3b82f6; /* Blue */
+  --padding: 20px;
+}
+
+.box {
+  background-color: var(--main-color);
+  padding: var(--padding);
+  color: white;
+}`}
+                    >
+                        <div className="bg-blue-500 p-5 text-white rounded font-bold">
+                            I am using var(--main-color)
+                        </div>
+                    </CodePreview>
                 </div>
             ),
-        },
-        {
-            title: '2️⃣ Modern Features',
-            icon: <FiSettings className="w-6 h-6" />,
-            content: (
-                <div className="space-y-4">
-                    <ul className="list-disc list-inside text-gray-300 text-sm space-y-2">
-                        <li><code>calc(100% - 20px)</code>: Math in CSS.</li>
-                        <li><code>backdrop-filter: blur(10px)</code>: Glassmorphism effect.</li>
-                        <li><code>@media (prefers-color-scheme: dark)</code>: Dark mode detection.</li>
-                    </ul>
-                </div>
-            ),
-        },
-        {
-            title: '3️⃣ Frameworks',
-            icon: <FiPackage className="w-6 h-6" />,
-            content: (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="bg-slate-800 p-4 rounded border-l-4 border-purple-500">
-                        <h5 className="font-bold text-purple-400 mb-2">Bootstrap</h5>
-                        <p className="text-xs text-gray-400">Pre-built components (Cards, Navs). Quick but generic.</p>
-                    </div>
-                    <div className="bg-slate-800 p-4 rounded border-l-4 border-cyan-500">
-                        <h5 className="font-bold text-cyan-400 mb-2">Tailwind CSS</h5>
-                        <p className="text-xs text-gray-400">Utility classes (mt-4, flex). Flexible and modern.</p>
-                    </div>
-                </div>
-            ),
-        },
+        }
     ],
-    practiceQuestions: [
-        {
-            question: "What is SCSS?",
-            solution: "Sassy CSS. A preprocessor that adds Nesting, Mixins, and Functions to CSS.",
-        },
-    ],
+    practiceQuestions: [],
     exampleProblems: [],
 }
 
-export default function ModernCssPage() {
+export default function ModernCSSPage() {
     return (
         <DMTopicPage
             content={content}

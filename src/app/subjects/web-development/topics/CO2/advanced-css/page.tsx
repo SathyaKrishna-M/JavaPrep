@@ -1,104 +1,150 @@
 'use client'
 
+import React from 'react'
 import DMTopicPage from '@/components/DMTopicPage'
-import { FiLayers, FiMousePointer, FiMaximize, FiCheckCircle } from 'react-icons/fi'
+import { FiZap, FiType, FiCode, FiMousePointer } from 'react-icons/fi'
+
+// Helper Component
+const CodePreview = ({ title, code, children }: { title: string, code: string, children: React.ReactNode }) => (
+    <div className="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden mb-8 shadow-xl">
+        <div className="bg-slate-800/80 px-4 py-2 border-b border-slate-700 flex justify-between items-center">
+            <span className="text-sm font-bold text-gray-300 flex items-center gap-2">
+                <FiCode className="text-blue-400" /> {title}
+            </span>
+            <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
+            </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="bg-slate-950 p-4 border-b md:border-b-0 md:border-r border-slate-700 overflow-x-auto text-xs font-mono">
+                <div className="text-gray-500 mb-2 font-sans uppercase tracking-wider text-[10px]">Source Code</div>
+                <pre className="text-blue-300 whitespace-pre-wrap">{code}</pre>
+            </div>
+            <div className="bg-slate-900 p-4 relative">
+                <div className="text-gray-500 mb-2 font-sans uppercase tracking-wider text-[10px]">Live Preview</div>
+                <div className="p-6 bg-white rounded-lg text-slate-900 border border-slate-300 h-full min-h-[150px] flex flex-col justify-center items-center">
+                    {children}
+                </div>
+            </div>
+        </div>
+    </div>
+)
 
 const content = {
     title: 'Advanced CSS',
     explanationSections: [
         {
-            title: '1️⃣ Pseudo-classes & Elements',
+            title: '1️⃣ Pseudo-Classes (Interaction)',
             icon: <FiMousePointer className="w-6 h-6" />,
             content: (
-                <div className="space-y-4">
+                <div className="space-y-6">
                     <p className="text-gray-300">
-                        Style elements based on their state or position.
-                    </p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="bg-slate-800 p-4 rounded border-l-4 border-pink-500">
-                            <h5 className="font-bold text-pink-400 mb-2">Pseudo-classes (:)</h5>
-                            <code className="text-sm block text-gray-300">a:hover <span className="text-gray-500">// Mouse over</span></code>
-                            <code className="text-sm block text-gray-300">input:valid <span className="text-gray-500">// Form state</span></code>
-                        </div>
-                        <div className="bg-slate-800 p-4 rounded border-l-4 border-purple-500">
-                            <h5 className="font-bold text-purple-400 mb-2">Pseudo-elements (::)</h5>
-                            <code className="text-sm block text-gray-300">p::first-line <span className="text-gray-500">// First line</span></code>
-                            <code className="text-sm block text-gray-300">div::before <span className="text-gray-500">// Insert content</span></code>
-                        </div>
-                    </div>
-                </div>
-            ),
-        },
-        {
-            title: '2️⃣ Specificity Wars (Exam Critical)',
-            icon: <FiLayers className="w-6 h-6" />,
-            content: (
-                <div className="space-y-4">
-                    <p className="text-gray-300">
-                        Who wins when styles conflict?
-                    </p>
-                    <div className="bg-slate-800 p-4 rounded-lg font-mono text-sm border border-slate-700">
-                        <ol className="list-decimal list-inside space-y-2">
-                            <li><span className="text-pink-400">!important</span> (The Nuclear Option)</li>
-                            <li><span className="text-orange-400">Inline Styles</span> (style="...") - 1000 pts</li>
-                            <li><span className="text-blue-400">ID Selector</span> (#id) - 100 pts</li>
-                            <li><span className="text-green-400">Class/Attribute</span> (.class) - 10 pts</li>
-                            <li><span className="text-gray-400">Tag Selector</span> (div) - 1 pt</li>
-                        </ol>
-                    </div>
-                </div>
-            ),
-        },
-        {
-            title: '3️⃣ Z-Index (Stacking)',
-            icon: <FiLayers className="w-6 h-6" />,
-            content: (
-                <div className="space-y-4">
-                    <p className="text-gray-300">
-                        Controls vertical stacking order. Requires <code>position</code> (relative/absolute/fixed/sticky).
+                        Pseudo-classes let you style an element based on its <strong>state</strong> (e.g., when a user hovers over it).
                     </p>
 
-                    {/* Visual Diagram */}
-                    <div className="bg-slate-900 p-8 rounded-lg border border-slate-700 flex items-center justify-center perspective-1000">
-                        <div className="relative w-32 h-32">
-                            <div className="absolute top-0 left-0 w-24 h-24 bg-red-500 shadow-lg flex items-center justify-center font-bold text-white z-0 rounded">
-                                z=1
-                            </div>
-                            <div className="absolute top-4 left-4 w-24 h-24 bg-blue-500 shadow-lg flex items-center justify-center font-bold text-white z-10 rounded">
-                                z=2
-                            </div>
-                            <div className="absolute top-8 left-8 w-24 h-24 bg-green-500 shadow-lg flex items-center justify-center font-bold text-white z-20 rounded">
-                                z=3
-                            </div>
+                    <CodePreview
+                        title=":hover, :active, :focus"
+                        code={`/* Change color on hover */
+button:hover {
+  background-color: blue;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Change on click */
+button:active {
+  background-color: darkblue;
+}
+
+/* When typing inside */
+input:focus {
+  border: 2px solid blue;
+  outline: none;
+}`}
+                    >
+                        <div className="flex flex-col gap-4 items-center">
+                            <button className="px-4 py-2 bg-gray-200 rounded transition-all hover:bg-blue-500 hover:text-white hover:scale-110 active:bg-blue-800">
+                                Hover Me!
+                            </button>
+                            <input
+                                type="text"
+                                placeholder="Click inside me..."
+                                className="border border-gray-400 rounded px-2 py-1 transition-all focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                            />
                         </div>
-                    </div>
+                    </CodePreview>
+
+                    <CodePreview
+                        title="Structural Pseudo-classes"
+                        code={`/* Style every 2nd item */
+li:nth-child(even) {
+  background-color: #f0f0f0;
+}
+
+/* Style the very first item */
+li:first-child {
+  font-weight: bold;
+  color: red;
+}`}
+                    >
+                        <ul className="w-full text-sm border rounded">
+                            <li className="p-2 border-b text-red-600 font-bold">1. First Item (:first-child)</li>
+                            <li className="p-2 border-b bg-gray-100">2. Second Item (:nth-child(even))</li>
+                            <li className="p-2 border-b">3. Third Item</li>
+                            <li className="p-2 border-b bg-gray-100">4. Fourth Item (:nth-child(even))</li>
+                            <li className="p-2">5. Fifth Item</li>
+                        </ul>
+                    </CodePreview>
                 </div>
             ),
         },
         {
-            title: '4️⃣ Combinators',
-            icon: <FiMaximize className="w-6 h-6" />,
+            title: '2️⃣ Typography Details',
+            icon: <FiType className="w-6 h-6" />,
             content: (
                 <div className="space-y-4">
-                    <ul className="list-disc list-inside text-gray-300 text-sm space-y-2">
-                        <li><code>div p</code> (Descendant): Any p inside div.</li>
-                        <li><code>div &gt; p</code> (Child): Direct child only.</li>
-                        <li><code>div + p</code> (Adjacent): Immediately following.</li>
-                    </ul>
+                    <p className="text-gray-300">Refining text makes it more readable.</p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-slate-900 border border-slate-700 p-4 rounded-xl">
+                            <h6 className="text-purple-400 font-bold mb-2">line-height</h6>
+                            <div className="bg-white p-3 rounded text-slate-800 text-xs">
+                                <p className="leading-none mb-4 border-b pb-2">
+                                    <span className="text-red-500 font-bold">Low (1):</span> This text is cramped.The lines are too close together. It is hard to read long blocks of text like this.
+                                </p>
+                                <p className="leading-loose">
+                                    <span className="text-green-500 font-bold">High (2):</span> This text breathes. The lines have space between them. Much better for reading.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="bg-slate-900 border border-slate-700 p-4 rounded-xl">
+                            <h6 className="text-blue-400 font-bold mb-2">font-weight</h6>
+                            <div className="bg-white p-3 rounded text-slate-800 text-sm space-y-2">
+                                <p className="font-light">Light (300)</p>
+                                <p className="font-normal">Normal (400)</p>
+                                <p className="font-semibold">Semi-Bold (600)</p>
+                                <p className="font-bold">Bold (700)</p>
+                                <p className="font-black">Black (900)</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            ),
-        },
+            )
+        }
     ],
     practiceQuestions: [
         {
-            question: "What is `position: sticky`?",
-            solution: "It acts like `relative` until you scroll past it, then it becomes `fixed` (stuck to the top). Great for headers.",
+            question: "What does the selector `div > p` target?",
+            solution: "It targets all <p> elements that are DIRECT children of a <div>. It will NOT select a <p> if it's nested deeper inside another tag within the div.",
         },
     ],
     exampleProblems: [],
 }
 
-export default function AdvancedCssPage() {
+export default function AdvancedCSSPage() {
     return (
         <DMTopicPage
             content={content}

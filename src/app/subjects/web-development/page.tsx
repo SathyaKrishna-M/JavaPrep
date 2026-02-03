@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { FiHome, FiChevronRight } from 'react-icons/fi'
 import { FaGlobe } from 'react-icons/fa'
@@ -52,8 +52,12 @@ const groupTopics = (topics: Topic[]): Record<string, Section> => {
     return sections
 }
 
+// Imports updated to include QuestionsBank
+import QuestionsBank from '@/components/FWD/QuestionsBank'
+
 export default function WebDevelopmentPage() {
     const [searchQuery, setSearchQuery] = useState('')
+    const [activeTab, setActiveTab] = useState<'topics' | 'extras'>('topics')
     const sections = useMemo(() => groupTopics(fwdTopics), [])
 
     // Filter topics based on search query
@@ -138,68 +142,123 @@ export default function WebDevelopmentPage() {
                     </div>
                 </motion.div>
 
-                {/* Search Bar */}
-                <TopicSearch query={searchQuery} onQueryChange={setSearchQuery} />
+                {/* --- TABS --- */}
+                <div className="flex justify-center mb-8">
+                    <div className="bg-slate-900 p-1 rounded-full border border-slate-700 flex relative">
+                        {/* Selected Indicator */}
+                        <motion.div
+                            layoutId="activeTab"
+                            className="absolute top-1 bottom-1 bg-slate-700 rounded-full"
+                            style={{
+                                left: activeTab === 'topics' ? '4px' : '50%',
+                                right: activeTab === 'topics' ? '50%' : '4px'
+                            }}
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        />
 
-                {/* Topics List by Section */}
-                <div className="space-y-10 md:space-y-14">
-                    {Object.entries(filteredSections).map(([key, section], sectionIndex) => {
-                        if (section.topics.length === 0) return null
-
-                        return (
-                            <motion.section
-                                key={key}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: '-100px' }}
-                                transition={{ duration: 0.6, delay: sectionIndex * 0.1 }}
-                                className="relative"
-                            >
-                                <SectionHeader
-                                    id={key}
-                                    title={section.title}
-                                    subtitle={section.subtitle}
-                                />
-
-                                {/* Compact horizontal list */}
-                                <div className="space-y-1.5">
-                                    {section.topics.map((topic, index) => (
-                                        <TopicListItem
-                                            key={topic.id}
-                                            topic={topic}
-                                            index={index}
-                                        />
-                                    ))}
-                                </div>
-
-                                {sectionIndex < Object.keys(filteredSections).length - 1 && (
-                                    <GradientDivider />
-                                )}
-                            </motion.section>
-                        )
-                    })}
+                        <button
+                            onClick={() => setActiveTab('topics')}
+                            className={`relative px-8 py-2 rounded-full text-sm font-bold transition-colors z-10 ${activeTab === 'topics' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+                        >
+                            Topics
+                        </button>
+                        <button
+                            onClick={() => setActiveTab('extras')}
+                            className={`relative px-8 py-2 rounded-full text-sm font-bold transition-colors z-10 ${activeTab === 'extras' ? 'text-white' : 'text-gray-400 hover:text-white'}`}
+                        >
+                            Extras & Questions
+                        </button>
+                    </div>
                 </div>
 
-                {/* Empty State */}
-                {searchQuery && Object.keys(filteredSections).length === 0 && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-center py-16"
-                    >
-                        <div className="text-6xl mb-4">🔍</div>
-                        <h3 className="text-2xl font-bold text-gray-300 mb-2">No topics found</h3>
-                        <p className="text-gray-400">
-                            Try adjusting your search query or{' '}
-                            <button
-                                onClick={() => setSearchQuery('')}
-                                className="text-pink-400 hover:text-pink-300 underline"
-                            >
-                                clear the search
-                            </button>
-                        </p>
-                    </motion.div>
-                )}
+                {/* --- CONTENT AREA --- */}
+                <AnimatePresence mode="wait">
+                    {activeTab === 'topics' ? (
+                        <motion.div
+                            key="topics"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: -20 }}
+                        >
+                            {/* Search Bar */}
+                            <TopicSearch query={searchQuery} onQueryChange={setSearchQuery} />
+
+                            {/* Topics List by Section */}
+                            <div className="space-y-10 md:space-y-14 mt-8">
+                                {Object.entries(filteredSections).map(([key, section], sectionIndex) => {
+                                    if (section.topics.length === 0) return null
+
+                                    return (
+                                        <motion.section
+                                            key={key}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true, margin: '-100px' }}
+                                            transition={{ duration: 0.6, delay: sectionIndex * 0.1 }}
+                                            className="relative"
+                                        >
+                                            <SectionHeader
+                                                id={key}
+                                                title={section.title}
+                                                subtitle={section.subtitle}
+                                            />
+
+                                            {/* Compact horizontal list */}
+                                            <div className="space-y-1.5">
+                                                {section.topics.map((topic, index) => (
+                                                    <TopicListItem
+                                                        key={topic.id}
+                                                        topic={topic}
+                                                        index={index}
+                                                    />
+                                                ))}
+                                            </div>
+
+                                            {sectionIndex < Object.keys(filteredSections).length - 1 && (
+                                                <GradientDivider />
+                                            )}
+                                        </motion.section>
+                                    )
+                                })}
+                            </div>
+
+                            {/* Empty State */}
+                            {searchQuery && Object.keys(filteredSections).length === 0 && (
+                                <div className="text-center py-16">
+                                    <div className="text-6xl mb-4">🔍</div>
+                                    <h3 className="text-2xl font-bold text-gray-300 mb-2">No topics found</h3>
+                                    <p className="text-gray-400">
+                                        Try adjusting your search query or{' '}
+                                        <button
+                                            onClick={() => setSearchQuery('')}
+                                            className="text-pink-400 hover:text-pink-300 underline"
+                                        >
+                                            clear the search
+                                        </button>
+                                    </p>
+                                </div>
+                            )}
+                        </motion.div>
+                    ) : (
+                        <motion.div
+                            key="extras"
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 20 }}
+                            className="space-y-8"
+                        >
+                            <div className="text-center mb-8">
+                                <h2 className="text-2xl font-bold text-white mb-2">🎓 Questions Bank</h2>
+                                <p className="text-gray-400 max-w-2xl mx-auto">
+                                    Practice questions aggregated from previous years, class notes, and lab manuals.
+                                    Filter by unit/module to test your knowledge.
+                                </p>
+                            </div>
+
+                            <QuestionsBank />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </div>
         </div>
     )
