@@ -62,8 +62,8 @@ const QuestionCard = ({ question, index }: { question: FWDQuestion, index: numbe
                             {question.co}
                         </span>
                         <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${question.difficulty === 'Easy' ? 'bg-emerald-500/5 text-emerald-400 border-emerald-500/20' :
-                                question.difficulty === 'Medium' ? 'bg-amber-500/5 text-amber-400 border-amber-500/20' :
-                                    'bg-rose-500/5 text-rose-400 border-rose-500/20'
+                            question.difficulty === 'Medium' ? 'bg-amber-500/5 text-amber-400 border-amber-500/20' :
+                                'bg-rose-500/5 text-rose-400 border-rose-500/20'
                             }`}>
                             {question.difficulty}
                         </span>
@@ -111,11 +111,9 @@ const QuestionCard = ({ question, index }: { question: FWDQuestion, index: numbe
                                 <CodePreview
                                     title="Solution Code & Preview"
                                     code={question.answer}
-                                    children={
-                                        // Specific Render for layout-heavy questions if needed, otherwise null makes CodePreview use default DangerouslySetHTML 
-                                        question.visualType === 'box-model' ? <BoxModelVisual /> : null
-                                    }
-                                />
+                                >
+                                    {question.visualType === 'box-model' ? <BoxModelVisual /> : null}
+                                </CodePreview>
                             ) : (
                                 <div className="text-gray-300 text-sm leading-relaxed whitespace-pre-line pl-3.5 border-l border-slate-800">
                                     {question.answer}
@@ -181,8 +179,8 @@ export default function QuestionsBank() {
                                 key={co}
                                 onClick={() => setFilterCO(co)}
                                 className={`flex items-center gap-2 px-3 py-1.5 rounded text-xs font-bold transition-all whitespace-nowrap border border-b-2 ${filterCO === co
-                                        ? 'bg-slate-800 text-white border-slate-600 border-b-indigo-500'
-                                        : 'bg-transparent text-gray-400 border-transparent hover:bg-slate-900 border-b-transparent'
+                                    ? 'bg-slate-800 text-white border-slate-600 border-b-indigo-500'
+                                    : 'bg-transparent text-gray-400 border-transparent hover:bg-slate-900 border-b-transparent'
                                     }`}
                             >
                                 {co === 'ALL' ? 'All Questions' : `${co}`}

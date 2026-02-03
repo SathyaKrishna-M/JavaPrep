@@ -94,38 +94,9 @@ export default function SortingVisualizer() {
     }, [selectedAlgorithm, originalItems]);
 
     // -------------------------------------------------------------------------
-    // ANIMATION ENGINE
-    // -------------------------------------------------------------------------
-    useEffect(() => {
-        if (isPlaying) {
-            const run = () => {
-                if (currentStep < steps.length) {
-                    processStep(currentStep); // Apply logic for THIS step
-                    setCurrentStep(prev => prev + 1);
-                    timeoutRef.current = setTimeout(run, speed);
-                } else {
-                    setIsPlaying(false); // Done
-                }
-            };
-            timeoutRef.current = setTimeout(run, speed);
-        }
-        return () => {
-            if (timeoutRef.current) clearTimeout(timeoutRef.current);
-        };
-    }, [isPlaying, currentStep, steps, speed]);
-
-    // Auto-scroll log
-    useEffect(() => {
-        if (logContainerRef.current) {
-            logContainerRef.current.scrollTop = logContainerRef.current.scrollHeight;
-        }
-    }, [currentStep]);
-
-
-    // -------------------------------------------------------------------------
     // STEP PROCESSOR
     // -------------------------------------------------------------------------
-    const processStep = (stepIndex: number) => {
+    const processStep = useCallback((stepIndex: number) => {
         if (stepIndex >= steps.length) return;
         const step = steps[stepIndex];
 
@@ -146,7 +117,37 @@ export default function SortingVisualizer() {
         }
         // 'compare', 'sorted', 'pivot' only affect visualization colors, not structure
         // But we rely on 'currentStep' to derive colors during render, so no state change needed here.
-    };
+    }, [steps]);
+
+    // -------------------------------------------------------------------------
+    // ANIMATION ENGINE
+    // -------------------------------------------------------------------------
+    useEffect(() => {
+        if (isPlaying) {
+            const run = () => {
+                if (currentStep < steps.length) {
+                    processStep(currentStep); // Apply logic for THIS step
+                    setCurrentStep(prev => prev + 1);
+                    timeoutRef.current = setTimeout(run, speed);
+                } else {
+                    setIsPlaying(false); // Done
+                }
+            };
+            timeoutRef.current = setTimeout(run, speed);
+        }
+        return () => {
+            if (timeoutRef.current) clearTimeout(timeoutRef.current);
+        };
+    }, [isPlaying, currentStep, steps, speed, processStep]);
+
+    // Auto-scroll log
+    useEffect(() => {
+        if (logContainerRef.current) {
+            logContainerRef.current.scrollTop = logContainerRef.current.scrollHeight;
+        }
+    }, [currentStep]);
+
+
 
     const handleStepForward = () => {
         if (currentStep < steps.length) {

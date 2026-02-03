@@ -79,7 +79,7 @@ const content = {
 
                             {/* Merge Arrow */}
                             <div className="text-gray-500 text-2xl">
-                                <span>}</span> →
+                                <span>{'}'}</span> →
                             </div>
 
                             {/* Render Tree */}
