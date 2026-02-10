@@ -51,7 +51,7 @@ export default function Navbar() {
   const navLinks = [
     { href: '/', label: 'Home' },
 
-    { href: '/about', label: 'About' },
+
   ]
 
   return (
@@ -120,6 +120,15 @@ export default function Navbar() {
                 )
               })}
             </div>
+
+            <a
+              href="https://alootype.vercel.app//"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-sm font-medium text-white transition-all shadow-[0_0_15px_rgba(59,130,246,0.4)] hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]"
+            >
+              Practice Typing
+            </a>
 
             {/* Auth Section */}
             <div className="pl-4 border-l border-white/10">
@@ -231,6 +240,16 @@ export default function Navbar() {
                     </Link>
                   )
                 })}
+
+                <a
+                  href="https://alootype.vercel.app//"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-3 rounded-xl text-blue-300 hover:bg-blue-500/10 transition-colors font-medium border border-blue-500/20 mt-2"
+                >
+                  Practice Typing
+                </a>
 
                 {/* Mobile Auth */}
                 <div className="pt-2 mt-2 border-t border-white/10">
