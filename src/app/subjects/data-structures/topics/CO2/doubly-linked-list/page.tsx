@@ -124,18 +124,37 @@ while (temp != null) {
                             <div className="bg-slate-800/50 p-3 rounded">
                                 <p className="text-red-300 font-semibold flex items-center gap-2"><FiTrash2 /> Delete Node (Given Pointer)</p>
                                 <p className="text-gray-400 text-sm mb-2">
-                                    If we have the pointer to the node to be deleted (and it's not null), we can delete it in <MathRenderer math="O(1)" /> time.
+                                    If we have the pointer to the node to be deleted (and it's not null), we can delete it in <MathRenderer math="O(1)" /> time. Clear pointers for garbage collection.
                                 </p>
-                                <CodeBlock language="java" code={`if (del.prev != null) del.prev.next = del.next;\nif (del.next != null) del.next.prev = del.prev;`} />
+                                <CodeBlock language="java" code={`if (del.prev != null) del.prev.next = del.next;\nif (del.next != null) del.next.prev = del.prev;\n// Clear pointers for garbage collection\ndel.prev = null;\ndel.next = null;`} />
                             </div>
                             <div className="bg-slate-800/50 p-3 rounded">
                                 <p className="text-red-300 font-semibold flex items-center gap-2"><FiTrash2 /> Delete at Head</p>
-                                <p className="text-gray-400 text-sm mb-2">Move head to next, set new head's prev to null.</p>
-                                <CodeBlock language="java" code={`head = head.next;\nif (head != null) head.prev = null;`} />
+                                <p className="text-gray-400 text-sm mb-2">Move head to next, set new head's prev to null, and clear the old head's next pointer.</p>
+                                <CodeBlock language="java" code={`if (head == null) return;\nNode temp = head;\nhead = head.next;\nif (head != null) head.prev = null;\n// Clear pointer\ntemp.next = null;`} />
                             </div>
                             <div className="bg-slate-800/50 p-3 rounded">
                                 <p className="text-red-300 font-semibold flex items-center gap-2"><FiTrash2 /> Delete at Tail</p>
-                                <p className="text-gray-400 text-sm mb-2">Go to last node, set previous node's next to null.</p>
+                                <p className="text-gray-400 text-sm mb-2">Go to last node, set previous node's next to null, and clear deleted node pointers.</p>
+                                <CodeBlock language="java" code={`if (tail == null) return;\nNode temp = tail;\ntail = tail.prev;\nif (tail != null) tail.next = null;\n// Clear pointer\ntemp.prev = null;`} />
+                            </div>
+                            <div className="bg-slate-800/50 p-3 rounded">
+                                <p className="text-red-300 font-semibold flex items-center gap-2"><FiTrash2 /> Delete by Value</p>
+                                <p className="text-gray-400 text-sm mb-2">Traverse to find the node, manage edge cases (head/tail), then adjust and clear pointers.</p>
+                                <CodeBlock language="java" code={`Node temp = head;
+while (temp != null && temp.data != key) {
+    temp = temp.next;
+}
+if (temp == null) return; // Value not found
+// If it's not the head
+if (temp.prev != null) temp.prev.next = temp.next;
+else head = temp.next; // It is the head
+// If it's not the tail
+if (temp.next != null) temp.next.prev = temp.prev;
+else tail = temp.prev; // It is the tail
+// Clear pointers for garbage collection
+temp.prev = null;
+temp.next = null;`} />
                             </div>
                         </div>
                     </div>
