@@ -4,6 +4,103 @@ import DMTopicPage from '@/components/DMTopicPage'
 import { FiRefreshCw, FiGrid, FiRotateCw, FiCheckSquare, FiPlayCircle, FiCpu, FiAlertTriangle, FiSearch, FiTrash2, FiPlusCircle } from 'react-icons/fi'
 import MathRenderer from '@/components/MathRenderer'
 import CodeBlock from '@/components/CodeBlock'
+import { FullProgram } from '@/components/FullProgramModal'
+
+const circularLinkedListProgram: FullProgram = {
+    code: `class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+public class CircularLinkedList {
+    private Node head;
+
+    public CircularLinkedList() {
+        this.head = null;
+    }
+
+    public void insertAtHead(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            newNode.next = head;
+            return;
+        }
+        
+        Node tail = head;
+        while (tail.next != head) {
+            tail = tail.next;
+        }
+        
+        newNode.next = head;
+        tail.next = newNode;
+        head = newNode;
+    }
+
+    public void insertAtTail(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            newNode.next = head;
+            return;
+        }
+        
+        Node tail = head;
+        while (tail.next != head) {
+            tail = tail.next;
+        }
+        
+        tail.next = newNode;
+        newNode.next = head;
+    }
+
+    public void printList() {
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+        
+        Node temp = head;
+        System.out.print("Circular List: ");
+        do {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        } while (temp != head);
+        
+        System.out.println("(head)");
+    }
+
+    public static void main(String[] args) {
+        CircularLinkedList list = new CircularLinkedList();
+        System.out.println("Inserting 10 and 20 at head:");
+        list.insertAtHead(10);
+        list.insertAtHead(20);
+        list.printList();
+        
+        System.out.println("\\nInserting 30 at tail:");
+        list.insertAtTail(30);
+        list.printList();
+    }
+}`,
+    explanations: [
+        { lines: [1, 2, 3, 4, 5, 6, 7, 8, 9], content: "Define the Node class for our Circular Linked List. Each node contains an integer data field and a reference to the 'next' node." },
+        { lines: [11, 12, 13, 14, 15, 16], content: "Declare the CircularLinkedList class and define its single 'head' pointer. The constructor initializes it to null, indicating the list is initially empty." },
+        { lines: [18, 19, 20, 21, 22, 23, 24, 25], content: "insertAtHead method logic: Create the new node. If the list is empty, the new node becomes the head, and its 'next' pointer points to itself, forming a circle of one." },
+        { lines: [26, 27, 28, 29, 30], content: "If the list is not empty, we need to find the last node (tail) because its 'next' pointer must be updated to point to the new head." },
+        { lines: [31, 32, 33, 34, 35], content: "Update pointers: the new node points to the current head, the tail points to the new node, and finally, the head reference is updated to point to the new node." },
+        { lines: [37, 38, 39, 40, 41, 42, 43], content: "insertAtTail method logic: Similar to head insertion, if the list is empty, the new node becomes the head and points to itself." },
+        { lines: [44, 45, 46, 47, 48], content: "Find the last node (tail) by traversing until tail.next == head." },
+        { lines: [49, 50, 51, 52], content: "Update the old tail to point to the new node, and set the new node's next to point to the head, maintaining the circular structure." },
+        { lines: [54, 55, 56, 57, 58], content: "printList method logic: Handle the empty list case by checking if head is null." },
+        { lines: [59, 60, 61, 62, 63, 64, 65, 66, 67, 68], content: "Use a do-while loop to traverse the list. This guarantees we print at least the first node, and we stop traversing only when the 'next' pointer leads us back to the head." },
+        { lines: [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81], content: "The main method to test and demonstrate our Circular Linked List operations." }
+    ]
+};
 
 const content = {
     title: 'Circular Linked List',
@@ -88,6 +185,12 @@ const content = {
                             <div className="bg-slate-800/50 p-3 rounded">
                                 <p className="text-green-300 font-semibold flex items-center gap-2"><FiPlusCircle /> At Given Position</p>
                                 <p className="text-gray-400 text-sm mb-2">Traverse to position - 1. Update pointers similar to SLL.</p>
+                                <CodeBlock language="java" code={`Node temp = head;
+for (int i = 1; i < pos - 1 && temp.next != head; i++) {
+    temp = temp.next;
+}
+newNode.next = temp.next;
+temp.next = newNode;`} />
                             </div>
                         </div>
                     </div>
@@ -104,6 +207,12 @@ const content = {
                             <div className="bg-slate-800/50 p-3 rounded">
                                 <p className="text-red-300 font-semibold flex items-center gap-2"><FiTrash2 /> Delete Tail</p>
                                 <p className="text-gray-400 text-sm mb-2">Traverse to second last node. Set its next to head.</p>
+                                <CodeBlock language="java" code={`if (head == null || head.next == head) {
+    head = null; return;
+}
+Node temp = head;
+while (temp.next.next != head) temp = temp.next; // Stop at second last
+temp.next = head;`} />
                             </div>
                         </div>
                     </div>
@@ -126,12 +235,98 @@ const content = {
             ),
         },
         {
-            title: '4️⃣ Advanced Operations',
+            title: '4️⃣ Java Implementation',
+            icon: <FiCpu className="w-6 h-6" />,
+            content: (
+                <div className="space-y-4">
+                    <p className="text-gray-300">
+                        A complete Java class implementing a Circular Singly Linked List with insertion and traversal operations.
+                    </p>
+                    <CodeBlock
+                        language="java"
+                        code={`class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class CircularLinkedList {
+    private Node head;
+
+    public CircularLinkedList() {
+        this.head = null;
+    }
+
+    // Insert at Head
+    public void insertAtHead(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            newNode.next = head; // Point to itself
+            return;
+        }
+        
+        Node tail = head;
+        while (tail.next != head) {
+            tail = tail.next;
+        }
+        
+        newNode.next = head;
+        tail.next = newNode;
+        head = newNode; // Update head
+    }
+
+    // Insert at Tail
+    public void insertAtTail(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+            newNode.next = head;
+            return;
+        }
+        
+        Node tail = head;
+        while (tail.next != head) {
+            tail = tail.next;
+        }
+        
+        tail.next = newNode;
+        newNode.next = head; // Maintain circular link
+    }
+
+    // Traverse
+    public void printList() {
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
+        
+        Node temp = head;
+        System.out.print("Circular List: ");
+        do {
+            System.out.print(temp.data + " -> ");
+            temp = temp.next;
+        } while (temp != head);
+        
+        System.out.println("(head)");
+    }
+}`}
+                        fullProgram={circularLinkedListProgram}
+                    />
+                </div>
+            ),
+        },
+        {
+            title: '5️⃣ Advanced Operations',
             icon: <FiCpu className="w-6 h-6" />,
             content: (
                 <div className="space-y-6">
                     <div>
-                        <h4 className="text-xl font-bold text-purple-400 mb-2">4.1 Reverse Circular List</h4>
+                        <h4 className="text-xl font-bold text-purple-400 mb-2">5.1 Reverse Circular List</h4>
                         <p className="text-gray-300 mb-2">Similar to SLL reversal, but we must update the last node's next pointer to the new head at the end.</p>
                         <CodeBlock language="java" code={`void reverse() {
     if (head == null) return;

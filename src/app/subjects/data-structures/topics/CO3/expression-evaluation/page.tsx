@@ -4,6 +4,268 @@ import DMTopicPage from '@/components/DMTopicPage'
 import { FiCode, FiArrowRight, FiCheckCircle, FiCheckSquare, FiDivide } from 'react-icons/fi'
 import MathRenderer from '@/components/MathRenderer'
 import CodeBlock from '@/components/CodeBlock'
+import { FullProgram } from '@/components/FullProgramModal'
+
+const balancingSymbolsProgram: FullProgram = {
+    code: `import java.util.Stack;
+
+public class BalancingSymbols {
+    
+    public static boolean isBalanced(String expression) {
+        Stack<Character> stack = new Stack<>();
+        
+        for (int i = 0; i < expression.length(); i++) {
+            char current = expression.charAt(i);
+            
+            // Push opening brackets to stack
+            if (current == '(' || current == '{' || current == '[') {
+                stack.push(current);
+            }
+            // If it's a closing bracket, check for matching pair
+            else if (current == ')' || current == '}' || current == ']') {
+                // If stack is empty, it means there's a closing bracket without an opening one
+                if (stack.isEmpty()) {
+                    return false;
+                }
+                
+                char top = stack.pop();
+                
+                // Fast-fail: if the newly popped bracket doesn't form a valid pair, return false
+                if (!isMatchingPair(top, current)) {
+                    return false;
+                }
+            }
+        }
+        
+        // After scanning the whole string, stack MUST be empty if fully balanced
+        return stack.isEmpty();
+    }
+    
+    // Helper method to check if brackets match
+    private static boolean isMatchingPair(char open, char close) {
+        return (open == '(' && close == ')') ||
+               (open == '{' && close == '}') ||
+               (open == '[' && close == ']');
+    }
+
+    public static void main(String[] args) {
+        String test1 = "((a+b)*c)";
+        String test2 = "[(x+y)-{z*2}]";
+        String test3 = "{[a+b(c]}"; // Invalid
+        
+        System.out.println(test1 + " -> " + (isBalanced(test1) ? "Balanced" : "Not Balanced"));
+        System.out.println(test2 + " -> " + (isBalanced(test2) ? "Balanced" : "Not Balanced"));
+        System.out.println(test3 + " -> " + (isBalanced(test3) ? "Balanced" : "Not Balanced"));
+    }
+}`,
+    explanations: [
+        { lines: [1], content: "Import the built-in java.util.Stack class which we will use to keep track of the opening symbols." },
+        { lines: [3, 4, 5], content: "Declare the main class and the `isBalanced` method which accepts the string expression to test and returns a true/false boolean." },
+        { lines: [6, 8, 9], content: "Initialize an empty Stack of Characters. We then start a loop that will examine every single character in the string from left to right." },
+        { lines: [11, 12, 13, 14], content: "If the current character is any of the opening brackets '(', '{', or '[', we push it onto the top of the stack. We must wait to find its corresponding closing bracket." },
+        { lines: [15, 16], content: "Otherwise, if the character is a closing bracket..." },
+        { lines: [17, 18, 19, 20], content: "...the first crucial check: If the stack is already empty, it means we found a closing bracket but there was never a previous opening bracket to match it. Immediately return false." },
+        { lines: [22, 24, 25, 26, 27], content: "Pop the most recent opening bracket from the top of the stack. Call a helper method to check if it's the correct match for the current closing character. If not (e.g., opened with '[' but closed with '}'), return false." },
+        { lines: [31, 32, 33], content: "After the loop finishes processing every character, we MUST check if the stack is completely empty. If opening brackets are still left inside, it means they were never closed (e.g., '((a+b)' ). Return true only if empty." },
+        { lines: [35, 36, 37, 38, 39, 40], content: "A simple helper method that checks if an opening bracket character correctly corresponds to a closing bracket character based on standard keyboard layout rules." },
+        { lines: [42, 43, 44, 45, 47, 48, 49, 50], content: "The main method sets up three test cases (two valid, one invalid) to run the `isBalanced` logic against and print out human-readable results." }
+    ]
+};
+
+const infixToPostfixProgram: FullProgram = {
+    code: `import java.util.Stack;
+
+public class InfixToPostfix {
+    static int Prec(char ch) {
+        switch (ch) {
+            case '+': case '-': return 1;
+            case '*': case '/': return 2;
+            case '^': return 3;
+        }
+        return -1;
+    }
+
+    static String infixToPostfix(String exp) {
+        String result = new String("");
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < exp.length(); ++i) {
+            char c = exp.charAt(i);
+
+            // Step 2: If operand, add to output
+            if (Character.isLetterOrDigit(c)) {
+                result += c;
+            } 
+            // Step 3: If '(', push to stack
+            else if (c == '(') {
+                stack.push(c);
+            } 
+            // Step 4: If ')', pop until '('
+            else if (c == ')') {
+                while (!stack.isEmpty() && stack.peek() != '(') {
+                    result += stack.pop();
+                }
+                stack.pop(); // discard '('
+            } 
+            // Step 5: Operator encountered
+            else {
+                while (!stack.isEmpty() && Prec(c) <= Prec(stack.peek())) {
+                    result += stack.pop();
+                }
+                stack.push(c);
+            }
+        }
+        
+        // Pop remaining operators
+        while (!stack.isEmpty()) {
+            if (stack.peek() == '(') return "Invalid Expression";
+            result += stack.pop();
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        String exp = "A+B*C";
+        System.out.println("Infix: " + exp);
+        System.out.println("Postfix: " + infixToPostfix(exp));
+    }
+}`,
+    explanations: [
+        { lines: [4, 5, 6, 7, 8, 9, 10, 11], content: "A helper method to determine the precedence of operators. Higher number means higher precedence." },
+        { lines: [13, 14, 15], content: "The main conversion method. We initialize an empty result string and a Stack for holding operators." },
+        { lines: [17, 18], content: "Loop through each character in the given infix expression from left to right." },
+        { lines: [20, 21, 22, 23], content: "If the character is an operand (letter or digit), simply concatenate it to the result string." },
+        { lines: [24, 25, 26, 27], content: "If it's an opening parenthesis '(', push it onto the stack." },
+        { lines: [28, 29, 30, 31, 32, 33, 34], content: "If it's a closing parenthesis ')', repeatedly pop from the stack to the result until we hit an opening '('. Then pop and discard the '('." },
+        { lines: [35, 36, 37, 38, 39, 40, 41], content: "If it's an operator (+, -, *, /), pop operators with strictly greater or equal precedence from the stack to the result. Finally, push the current operator to the stack." },
+        { lines: [44, 45, 46, 47, 48, 49], content: "After the loop, flush out any remaining operators in the stack to the result." },
+        { lines: [51, 52, 53, 54, 55], content: "The driver code to test a simple infix to postfix conversion." }
+    ]
+};
+
+const infixToPrefixProgram: FullProgram = {
+    code: `import java.util.Stack;
+
+public class InfixToPrefix {
+    static int prec(char c) {
+        if (c == '^') return 3;
+        else if (c == '/' || c == '*') return 2;
+        else if (c == '+' || c == '-') return 1;
+        else return -1;
+    }
+
+    static String infixToPrefix(String infix) {
+        // Step 1: Reverse infix expression
+        StringBuilder reversed = new StringBuilder(infix).reverse();
+
+        // Step 2: Swap brackets
+        for (int i = 0; i < reversed.length(); i++) {
+            if (reversed.charAt(i) == '(') reversed.setCharAt(i, ')');
+            else if (reversed.charAt(i) == ')') reversed.setCharAt(i, '(');
+        }
+
+        // Step 3: Modified Infix to Postfix logic
+        String result = new String("");
+        Stack<Character> stack = new Stack<>();
+        
+        for (int i = 0; i < reversed.length(); i++) {
+            char c = reversed.charAt(i);
+            
+            if (Character.isLetterOrDigit(c)) {
+                result += c;
+            } else if (c == '(') {
+                stack.push(c);
+            } else if (c == ')') {
+                while (!stack.isEmpty() && stack.peek() != '(') {
+                    result += stack.pop();
+                }
+                stack.pop();
+            } else {
+                // For Prefix, pop only if strictly LESS precedence (not equal)
+                while (!stack.isEmpty() && prec(c) < prec(stack.peek())) {
+                    result += stack.pop();
+                }
+                stack.push(c);
+            }
+        }
+        
+        while (!stack.isEmpty()) {
+            result += stack.pop();
+        }
+
+        // Step 4: Reverse the postfix result to get prefix
+        return new StringBuilder(result).reverse().toString();
+    }
+
+    public static void main(String[] args) {
+        String s = "(A-B/C)*(A/K-L)";
+        System.out.println("Infix: " + s);
+        System.out.println("Prefix: " + infixToPrefix(s));
+    }
+}`,
+    explanations: [
+        { lines: [4, 5, 6, 7, 8, 9], content: "Helper method assigning numerical precedence values strictly mapping the standard arithmetic hierarchy." },
+        { lines: [11, 12, 13], content: "Step 1: The foundational trick for Infix -> Prefix is to first completely reverse the given infix string." },
+        { lines: [15, 16, 17, 18, 19], content: "Step 2: Since we reversed the string, '(' became ')' and vice-versa. So we traverse to swap them back to their functional origins." },
+        { lines: [21, 22, 23], content: "Step 3 setup: We prepare to perform a standard Infix to Postfix conversion on this modified string." },
+        { lines: [28, 29, 30, 31, 32, 33, 34, 35, 36, 37], content: "Characters, '(' and ')' are handled identically to standard Postfix conversion." },
+        { lines: [38, 39, 40, 41, 42, 43], content: "CRUCIAL DIFFERENCE: When an operator is encountered, we ONLY pop from the stack if the top operator has strictly GREATER precedence. In Postfix, we pop on equal precedence too." },
+        { lines: [46, 47, 48], content: "Flush out the remaining elements." },
+        { lines: [50, 51, 52], content: "Step 4: Take the computed result and reverse it one final time. This produces the valid Prefix notation." }
+    ]
+};
+
+const evaluatePrefixProgram: FullProgram = {
+    code: `import java.util.Stack;
+
+public class EvaluatePrefix {
+    static Boolean isOperand(char c) {
+        // Checking if the character is a digit (0-9)
+        return c >= 48 && c <= 57;
+    }
+
+    static double evaluatePrefix(String expr) {
+        Stack<Double> stack = new Stack<>();
+
+        // Scan from RIGHT to LEFT
+        for (int j = expr.length() - 1; j >= 0; j--) {
+            char curr = expr.charAt(j);
+            
+            // If operand, push to Stack
+            if (isOperand(curr)) {
+                stack.push((double)(curr - '0'));
+            } else {
+                // Operator encountered, pop two elements
+                double o1 = stack.pop(); // Top element is first operand!
+                double o2 = stack.pop(); // Next element is second operand!
+
+                switch (curr) {
+                    case '+': stack.push(o1 + o2); break;
+                    case '-': stack.push(o1 - o2); break;
+                    case '*': stack.push(o1 * o2); break;
+                    case '/': stack.push(o1 / o2); break;
+                }
+            }
+        }
+        return stack.peek();
+    }
+
+    public static void main(String[] args) {
+        String expr = "+*235"; // + (* 2 3) 5 = 6 + 5 = 11
+        System.out.println("Prefix: " + expr);
+        System.out.println("Result: " + evaluatePrefix(expr));
+    }
+}`,
+    explanations: [
+        { lines: [4, 5, 6, 7], content: "Helper function checking if character is an operand (digit) specifically assuming single-digit values (ASCII math)." },
+        { lines: [9, 10, 11], content: "Method using a Stack typed as Double to support decimal divisions." },
+        { lines: [12, 13, 14, 15], content: "For Prefix evaluation, you MUST scan the expression purely backwards from Right to Left." },
+        { lines: [16, 17, 18], content: "If it's a number, convert it from an ascii char to an actual integer (using - '0'), cast to double, and push it." },
+        { lines: [19, 20, 21, 22], content: "If it's an operator, pop two operands. NOTE FOR PREFIX: the first pop is visually on the left operand `o1`, and the second pop is on the right `o2`." },
+        { lines: [24, 25, 26, 27, 28, 29, 30], content: "Evaluate the two operands depending on the operator and push the resulting calculation back into the stack." },
+        { lines: [32, 33], content: "When the entire string has been processed, the last remaining item in the stack is the final result." }
+    ]
+};
 
 const content = {
     title: 'Expression Evaluation & Applications',
@@ -65,6 +327,11 @@ const content = {
                             <li>If operator, pop operators with <strong>higher or equal precedence</strong> from stack, then push current operator.</li>
                         </ol>
                     </div>
+                    <CodeBlock
+                        language="java"
+                        code={`// Full Java Program for Infix -> Postfix available via "View Full Program"`}
+                        fullProgram={infixToPostfixProgram}
+                    />
                 </div>
             ),
         },
@@ -85,6 +352,11 @@ const content = {
                             <li>Reverse variables in the result to get the final <strong>Prefix</strong> expression.</li>
                         </ol>
                     </div>
+                    <CodeBlock
+                        language="java"
+                        code={`// Full Java Program for Infix -> Prefix available via "View Full Program"`}
+                        fullProgram={infixToPrefixProgram}
+                    />
                 </div>
             ),
         },
@@ -115,6 +387,11 @@ const content = {
                     <div className="bg-slate-800/30 p-2 rounded text-xs text-gray-400">
                         Complexity: Time <MathRenderer math="O(n)" />, Space <MathRenderer math="O(n)" />
                     </div>
+                    <CodeBlock
+                        language="java"
+                        code={`// Full Java Program for Evaluating Prefix Array via "View Full Program"`}
+                        fullProgram={evaluatePrefixProgram}
+                    />
                 </div>
             ),
         },
@@ -171,6 +448,28 @@ return stack.pop();`}
                             <li>At end, stack must be empty for valid string.</li>
                         </ul>
                     </div>
+                    <CodeBlock
+                        language="java"
+                        code={`// See "View Full Program" for the complete class implementation.
+boolean isValid(String s) {
+    Stack<Character> stack = new Stack<>();
+    for (char c : s.toCharArray()) {
+        if (c == '(' || c == '{' || c == '[') {
+            stack.push(c);
+        } else if (c == ')' || c == '}' || c == ']') {
+            if (stack.isEmpty()) return false;
+            char top = stack.pop();
+            if ((c == ')' && top != '(') || 
+                (c == '}' && top != '{') || 
+                (c == ']' && top != '[')) {
+                return false;
+            }
+        }
+    }
+    return stack.isEmpty();
+}`}
+                        fullProgram={balancingSymbolsProgram}
+                    />
                 </div>
             ),
         },

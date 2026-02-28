@@ -5,6 +5,90 @@ import DMTopicPage from '@/components/DMTopicPage'
 import { FiLayers, FiMinimize2, FiCheckSquare, FiAlertTriangle, FiCode } from 'react-icons/fi'
 import MathRenderer from '@/components/MathRenderer'
 import CodeBlock from '@/components/CodeBlock'
+import { FullProgram } from '@/components/FullProgramModal'
+
+const stackUsingArrayProgram: FullProgram = {
+    code: `class ArrayStack {
+    private int[] arr;
+    private int top;
+    private int capacity;
+
+    public ArrayStack(int size) {
+        this.arr = new int[size];
+        this.capacity = size;
+        this.top = -1;
+    }
+
+    public void push(int x) {
+        if (isFull()) {
+            System.out.println("Stack Overflow! Cannot push " + x);
+            return;
+        }
+        arr[++top] = x; 
+        System.out.println("Pushed: " + x);
+    }
+
+    public int pop() {
+        if (isEmpty()) {
+            System.out.println("Stack Underflow! Cannot pop.");
+            return -1;
+        }
+        return arr[top--]; 
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+            return -1;
+        }
+        return arr[top];
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public boolean isFull() {
+        return top == capacity - 1;
+    }
+
+    public void printStack() {
+        if (isEmpty()) {
+            System.out.println("Stack is empty.");
+            return;
+        }
+        System.out.print("Stack (Top to Bottom): ");
+        for (int i = top; i >= 0; i--) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        ArrayStack stack = new ArrayStack(5);
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.printStack();
+        System.out.println("Top element is: " + stack.peek());
+        System.out.println("Popped element: " + stack.pop());
+        stack.printStack();
+    }
+}`,
+    explanations: [
+        { lines: [1, 2, 3, 4], content: "Declare the ArrayStack class. It uses an integer array 'arr' to store elements, an integer 'top' to track the uppermost element's index, and 'capacity' to remember the maximum size." },
+        { lines: [6, 7, 8, 9, 10], content: "The constructor runs when a new stack object is created. It allocates the actual array in memory based on the requested 'size' and initializes 'top' to -1, which signifies an empty stack." },
+        { lines: [12, 13, 14, 15, 16], content: "Push operation: First, we check if the stack is already full using the helper method. If so, we print an Overflow error and abort." },
+        { lines: [17, 18], content: "If there's space, we use '++top' to first increment the top index, then assign the new value 'x' to that new uppermost spot in the array." },
+        { lines: [21, 22, 23, 24, 25], content: "Pop operation: First, check if the stack is empty. If it is, we print an Underflow error and return a dummy value (-1)." },
+        { lines: [26, 27], content: "If it has elements, we return 'arr[top]' and then immediately decrement 'top' using 'top--'. The element is still physically in the array, but it's now logically removed because the 'top' boundary moved down." },
+        { lines: [29, 30, 31, 32, 33, 34, 35], content: "Peek operation: Like pop, but it only returns the value at 'arr[top]' without modifying the 'top' variable. It just lets us look at the uppermost item." },
+        { lines: [37, 38, 39], content: "isEmpty Helper: Returns true if 'top' equals -1. This is a quick O(1) check." },
+        { lines: [41, 42, 43], content: "isFull Helper: Returns true if 'top' has reached the last valid index of the array (capacity - 1)." },
+        { lines: [45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56], content: "printStack traverses from 'top' downwards to 0, printing each element to simulate looking down into a physical stack." },
+        { lines: [58, 59, 60, 61, 62, 63, 64, 65, 66, 67], content: "The main method simulates a real execution flow, creating a stack of size 5, pushing/popping elements, and visualizing the state." }
+    ]
+};
 
 const content = {
     title: 'Stack Implementation Using Array',
@@ -185,6 +269,7 @@ const content = {
         System.out.println();
     }
 }`}
+                        fullProgram={stackUsingArrayProgram}
                     />
                 </div>
             )

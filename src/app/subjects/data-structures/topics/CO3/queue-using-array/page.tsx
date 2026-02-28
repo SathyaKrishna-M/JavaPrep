@@ -5,6 +5,104 @@ import DMTopicPage from '@/components/DMTopicPage'
 import { FiUsers, FiMinimize2, FiCheckSquare, FiAlertTriangle, FiCode } from 'react-icons/fi'
 import MathRenderer from '@/components/MathRenderer'
 import CodeBlock from '@/components/CodeBlock'
+import { FullProgram } from '@/components/FullProgramModal'
+
+const queueUsingArrayProgram: FullProgram = {
+    code: `class ArrayQueue {
+    private int[] arr;
+    private int front;
+    private int rear;
+    private int capacity;
+
+    public ArrayQueue(int size) {
+        this.arr = new int[size];
+        this.capacity = size;
+        this.front = -1;
+        this.rear = -1;
+    }
+
+    public void enqueue(int x) {
+        if (isFull()) {
+            System.out.println("Queue Overflow! Cannot enqueue " + x);
+            return;
+        }
+        if (front == -1) {
+            front = 0;
+        }
+        arr[++rear] = x;
+        System.out.println("Enqueued: " + x);
+    }
+
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue Underflow! Cannot dequeue.");
+            return -1;
+        }
+        int dequeuedValue = arr[front++];
+        
+        if (front > rear) {
+            front = -1;
+            rear = -1;
+        }
+        
+        return dequeuedValue;
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty.");
+            return -1;
+        }
+        return arr[front];
+    }
+
+    public boolean isEmpty() {
+        return front == -1 || front > rear;
+    }
+
+    public boolean isFull() {
+        return rear == capacity - 1;
+    }
+
+    public void printQueue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty.");
+            return;
+        }
+        System.out.print("Queue (Front to Rear): ");
+        for (int i = front; i <= rear; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        ArrayQueue queue = new ArrayQueue(5);
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.printQueue();
+        System.out.println("Front element is: " + queue.peek());
+        System.out.println("Dequeued element: " + queue.dequeue());
+        queue.printQueue();
+    }
+}`,
+    explanations: [
+        { lines: [1, 2, 3, 4, 5, 6, 7], content: "Declare the ArrayQueue class. We use 'arr' to store elements, 'front' to track the first item's index, 'rear' to track the last item's index, and 'capacity' for the max size." },
+        { lines: [9, 10, 11, 12, 13, 14, 15], content: "Constructor: Initializes the array with the given size. Both 'front' and 'rear' are initialized to -1, which is the standard way to represent an empty queue." },
+        { lines: [17, 18, 19, 20, 21], content: "Enqueue operation: First, we check if the queue is full using the 'isFull' helper. If it is full, we print an Overflow message and return." },
+        { lines: [22, 23, 24], content: "If the queue was previously empty (front == -1), we must set 'front' to 0 because the first element will be placed at index 0." },
+        { lines: [25, 26, 27], content: "Increment the 'rear' index with '++rear' and place the new element 'x' there. Note that elements are always added to the rear." },
+        { lines: [29, 30, 31, 32, 33], content: "Dequeue operation: First check if the queue is empty using 'isEmpty'. If it is, print an Underflow message and return a dummy value." },
+        { lines: [34, 35], content: "Retrieve the value at the 'front' index to return it later, and immediately increment 'front'. This logically removes the element from the queue." },
+        { lines: [36, 37, 38, 39, 40], content: "Crucial cleanup step: If 'front' has bypassed 'rear' (meaning we dequeued the last remaining element), we reset both pointers back to -1 to mark the queue as completely empty again." },
+        { lines: [43, 44, 45, 46, 47, 48, 49], content: "Peek operation: SIMILAR to dequeue but it only returns the element at 'arr[front]' without modifying the 'front' pointer." },
+        { lines: [51, 52, 53], content: "isEmpty Helper: A queue is empty either if 'front == -1' (initial state) OR if 'front > rear' (we dequeued everything)." },
+        { lines: [55, 56, 57], content: "isFull Helper: The queue is full if the 'rear' pointer has reached the very last index of the array ('capacity - 1')." },
+        { lines: [59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70], content: "printQueue helper: Iterates from 'front' index exactly up to the 'rear' index to print the current active contents in the queue." },
+        { lines: [72, 73, 74, 75, 76, 77, 78, 79, 80, 81], content: "Main method: Creates a queue, runs standard enqueue and dequeue tests to demonstrate the First-In First-Out properties." }
+    ]
+};
 
 const content = {
     title: 'Queue Implementation Using Array',
@@ -193,6 +291,7 @@ const content = {
         System.out.println();
     }
 }`}
+                        fullProgram={queueUsingArrayProgram}
                     />
                 </div>
             )
