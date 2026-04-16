@@ -27,7 +27,7 @@ const content = {
             content: (
                 <div className="space-y-6">
                     <p className="text-gray-300">
-                        GPS satellites naturally compute ranging distances leveraging a highly non-linear geometric equation loaded with extreme square roots: $ r = \\sqrt{(x-x_s)^2 + (y-y_s)^2} $. Attempting to solve millions of these exact roots directly utterly stretches mobile smartphone processors.
+                        GPS satellites naturally compute ranging distances leveraging a highly non-linear geometric equation loaded with extreme square roots: $ r = \\sqrt&#123;(x-x_s)^2 + (y-y_s)^2&#125; $. Attempting to solve millions of these exact roots directly utterly stretches mobile smartphone processors.
                     </p>
                     <ul className="list-disc ml-6 space-y-2 text-gray-400">
                         <li><strong>Linearization Strategy:</strong> GPS positional networks mathematically expand the ranging formula tightly into a First-Order Taylor series.</li>

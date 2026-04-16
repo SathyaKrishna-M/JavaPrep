@@ -95,7 +95,7 @@ const content = {
         <div className="space-y-4">
           <p className="text-gray-300"><span className="text-cyan-400 font-semibold">SHAP</span> uses Shapley values from cooperative game theory to fairly distribute the prediction among features. Each feature's SHAP value represents its marginal contribution across all possible feature coalitions.</p>
           <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700 font-mono text-sm">
-            <p className="text-cyan-300">φ_i = Σ_{S ⊆ F\{i}} [|S|!(|F|-|S|-1)!/|F|!] · [f(S∪{i}) - f(S)]</p>
+            <p className="text-cyan-300">{"φ_i = Σ_{S ⊆ F\\{i}} [|S|!(|F|-|S|-1)!/|F|!] · [f(S∪{i}) - f(S)]"}</p>
             <p className="text-gray-400 text-xs mt-1">φ_i = Shapley value for feature i; F = all features; S = feature subsets</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

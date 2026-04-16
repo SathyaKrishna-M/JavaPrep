@@ -12,7 +12,7 @@ const content = {
             content: (
                 <div className="space-y-6">
                     <p className="text-gray-300">
-                        If we have a <strong>vector-valued</strong> function $ \\mathbf{F}: \\mathbb{R}^n \\rightarrow \\mathbb{R}^m $, the first-order partial derivatives form an extremely critical $ m \\times n $ matrix known as the <strong>Jacobian</strong>.
+                        If we have a <strong>vector-valued</strong> function $ \\mathbf&#123;F&#125;: \\mathbb&#123;R&#125;^n \\rightarrow \\mathbb&#123;R&#125;^m $, the first-order partial derivatives form an extremely critical $ m \\times n $ matrix known as the <strong>Jacobian</strong>.
                     </p>
                     <div className="bg-slate-800 p-4 rounded font-mono text-xs overflow-x-auto text-gray-300 border border-gray-700">
                         {"$ J = \\begin{bmatrix} \\frac{\\partial f_1}{\\partial x_1} & \\dots & \\frac{\\partial f_1}{\\partial x_n} \\\\ \\dots & \\dots & \\dots \\\\ \\frac{\\partial f_m}{\\partial x_1} & \\dots & \\frac{\\partial f_m}{\\partial x_n} \\end{bmatrix} $"}
@@ -29,7 +29,7 @@ const content = {
             content: (
                 <div className="space-y-6">
                     <p className="text-gray-300">
-                        When evaluating a twice-differentiable <strong>scalar</strong> function $ f: \\mathbb{R}^n \\rightarrow \\mathbb{R} $, the exhaustive matrix of all <em>second-order</em> partial derivatives is the <strong>Hessian</strong>.
+                        When evaluating a twice-differentiable <strong>scalar</strong> function $ f: \\mathbb&#123;R&#125;^n \\rightarrow \\mathbb&#123;R&#125; $, the exhaustive matrix of all <em>second-order</em> partial derivatives is the <strong>Hessian</strong>.
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="bg-slate-800 p-4 border border-blue-500 rounded text-sm text-gray-300">
