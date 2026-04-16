@@ -1,149 +1,137 @@
-import React from 'react';
-import { BlockMath, InlineMath } from 'react-katex';
-import 'katex/dist/katex.min.css';
+'use client'
 
-const Page = () => {
-    return (
-        <div className="p-6 max-w-4xl mx-auto space-y-8">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-                2. Vector Operations & Applications
-            </h1>
+import DMTopicPage from '@/components/DMTopicPage'
+import { FiMove, FiTarget, FiHash, FiClock } from 'react-icons/fi'
 
-            {/* 1. Projection */}
-            <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
-                    2.1 Vector Projection
-                </h2>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
-                        The projection of a vector <InlineMath math="\mathbf{u}" /> onto another vector <InlineMath math="\mathbf{v}" /> is the vector component of <InlineMath math="\mathbf{u}" /> that lies in the direction of <InlineMath math="\mathbf{v}" />. This is crucial in AI for dimensionality reduction and feature extraction.
-                    </p>
-                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-md text-center">
-                        <BlockMath math="\text{proj}_{\mathbf{v}}(\mathbf{u}) = \left( \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{v}\|^2} \right) \mathbf{v}" />
-                    </div>
-                </div>
-
-                <div className="bg-blue-50 dark:bg-blue-900/20 p-5 rounded-lg border-l-4 border-blue-500">
-                    <h3 className="font-semibold text-blue-700 dark:text-blue-300 mb-2">Example</h3>
-                    <p className="text-gray-700 dark:text-gray-300">
-                        Find the projection of <InlineMath math="\mathbf{u} = (3,4)" /> onto <InlineMath math="\mathbf{v} = (1,0)" />.
-                    </p>
-                    <div className="mt-2 text-sm">
-                        <BlockMath math="\mathbf{u} \cdot \mathbf{v} = (3)(1) + (4)(0) = 3" />
-                        <BlockMath math="\|\mathbf{v}\|^2 = 1^2 + 0^2 = 1" />
-                        <BlockMath math="\text{proj}_{\mathbf{v}}(\mathbf{u}) = \frac{3}{1} (1,0) = (3,0)" />
-                    </div>
-                </div>
-            </section>
-
-            {/* 2. Cosine Similarity */}
-            <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
-                    2.2 Cosine Similarity
-                </h2>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">
-                        Cosine similarity measures the cosine of the angle between two vectors. It is independent of magnitude, focusing only on orientation.
-                        <br />
-                        <span className="font-semibold text-indigo-600 dark:text-indigo-400">Values range from -1 to 1.</span>
-                    </p>
-                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-md text-center">
-                        <BlockMath math="\text{Cosine Similarity}(\mathbf{a}, \mathbf{b}) = \frac{\mathbf{a} \cdot \mathbf{b}}{\|\mathbf{a}\| \|\mathbf{b}\|}" />
-                    </div>
-                    <div className="grid grid-cols-3 gap-4 mt-6 text-center text-sm">
-                        <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded">
-                            <BlockMath math="1" />
-                            <span className="block mt-1">Identical Direction</span>
-                        </div>
-                        <div className="p-3 bg-gray-100 dark:bg-gray-700 rounded">
-                            <BlockMath math="0" />
-                            <span className="block mt-1">Orthogonal (Unrelated)</span>
-                        </div>
-                        <div className="p-3 bg-red-100 dark:bg-red-900/30 rounded">
-                            <BlockMath math="-1" />
-                            <span className="block mt-1">Opposite Direction</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* Case Study */}
-            <section className="space-y-6 pt-8 border-t border-gray-200 dark:border-gray-700">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                    Case Study: Movie Recommendation
-                </h2>
-                <div className="prose dark:prose-invert max-w-none">
-                    <p>
-                        A streaming platform wants to recommend movies based on plot similarity. We convert text descriptions into vectors (Bag of Words) and calculate similarity.
-                    </p>
-
-                    <h3 className="text-lg font-semibold mt-4">Data</h3>
-                    <ul className="list-disc pl-5 space-y-2">
-                        <li><strong>D1 (Action):</strong> "A young hero saves the world from aliens"</li>
-                        <li><strong>D2 (Action):</strong> "A brave hero fights aliens to save Earth"</li>
-                        <li><strong>D3 (Romance):</strong> "A romantic story about love and friendship"</li>
-                    </ul>
-
-                    <h3 className="text-lg font-semibold mt-4">Simplified Vector Representation</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">vocabulary: [hero, aliens, save/s, world/earth, love]</p>
-
-                    <div className="overflow-x-auto my-4">
-                        <table className="min-w-full text-sm text-center border-collapse">
-                            <thead>
-                                <tr className="bg-gray-100 dark:bg-gray-800">
-                                    <th className="p-2 border">Movie</th>
-                                    <th className="p-2 border">hero</th>
-                                    <th className="p-2 border">aliens</th>
-                                    <th className="p-2 border">save/s</th>
-                                    <th className="p-2 border">love</th>
-                                    <th className="p-2 border">Vector</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td className="p-2 border font-medium">D1</td>
-                                    <td className="p-2 border">1</td>
-                                    <td className="p-2 border">1</td>
-                                    <td className="p-2 border">1</td>
-                                    <td className="p-2 border">0</td>
-                                    <td className="p-2 border font-mono">(1, 1, 1, 0)</td>
-                                </tr>
-                                <tr>
-                                    <td className="p-2 border font-medium">D2</td>
-                                    <td className="p-2 border">1</td>
-                                    <td className="p-2 border">1</td>
-                                    <td className="p-2 border">1</td>
-                                    <td className="p-2 border">0</td>
-                                    <td className="p-2 border font-mono">(1, 1, 1, 0)</td>
-                                </tr>
-                                <tr>
-                                    <td className="p-2 border font-medium">D3</td>
-                                    <td className="p-2 border">0</td>
-                                    <td className="p-2 border">0</td>
-                                    <td className="p-2 border">0</td>
-                                    <td className="p-2 border">1</td>
-                                    <td className="p-2 border font-mono">(0, 0, 0, 1)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p className="text-xs text-gray-500 mt-2">*Simplified for demonstration. Real example uses wider vocab.</p>
-                    </div>
-
-                    <h3 className="text-lg font-semibold mt-4">Similarity Calculation</h3>
-                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded">
-                        <p className="mb-2"><strong>Sim(D1, D2):</strong></p>
-                        <BlockMath math="\frac{(1)(1) + (1)(1) + (1)(1) + (0)(0)}{\sqrt{3}\sqrt{3}} = \frac{3}{3} = 1.0" />
-                        <p className="text-green-600 font-medium mt-2"> Perfect Match (High Recommendation)</p>
-                    </div>
-                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded mt-4">
-                        <p className="mb-2"><strong>Sim(D1, D3):</strong></p>
-                        <BlockMath math="\frac{(1)(0) + (1)(0) + (1)(0) + (0)(1)}{\sqrt{3}\sqrt{1}} = 0" />
-                        <p className="text-red-600 font-medium mt-2"> No Similarity (No Recommendation)</p>
-                    </div>
-                </div>
-            </section>
+const VisualCard = ({ title, children }: { title: string, children: React.ReactNode }) => (
+    <div className="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden mb-8 shadow-xl">
+        <div className="bg-slate-800/80 px-4 py-2 border-b border-slate-700 flex justify-between items-center">
+            <span className="text-sm font-bold text-gray-300">{title}</span>
         </div>
-    );
-};
+        <div className="p-6 bg-slate-950 flex flex-col items-center justify-center min-h-[200px]">
+            {children}
+        </div>
+    </div>
+)
 
-export default Page;
+const content = {
+    title: 'Vector Operations & Similarity',
+    explanationSections: [
+        {
+            title: '1️⃣ Dot Product & Cosine Similarity',
+            icon: <FiMove className="w-6 h-6" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-gray-300">
+                        The <strong>Dot Product</strong> multiplies two vectors to return a scalar. Geometrically, {"$\\( \\mathbf{u} \\cdot \\mathbf{v} = \\|\\mathbf{u}\\| \\|\\mathbf{v}\\| \\cos(\\theta) \\)$"}.
+                    </p>
+                    <p className="text-gray-300">
+                        However, the Dot Product scales with vector length. To measure pure <em>directional alignment</em>, AI systems use <strong>Cosine Similarity</strong>.
+                    </p>
+                    <div className="bg-slate-800/50 p-4 rounded-lg text-sm text-center border border-slate-700 text-gray-200">
+                        {"$\\text{Cosine Similarity}(\\mathbf{a}, \\mathbf{b}) = \\frac{\\mathbf{a} \\cdot \\mathbf{b}}{\\|\\mathbf{a}\\| \\|\\mathbf{b}\\|} = \\cos(\\theta)$"}
+                    </div>
+                    <ul className="list-disc ml-6 space-y-2 text-gray-400">
+                        <li><strong>1:</strong> Identical direction ( {"$\\( \\theta = 0^\\circ \\)"} )</li>
+                        <li><strong>0:</strong> Orthogonal/Unrelated ( {"$\\( \\theta = 90^\\circ \\)"} )</li>
+                        <li><strong>-1:</strong> Opposite direction</li>
+                    </ul>
+                </div>
+            ),
+        },
+        {
+            title: '2️⃣ Case Study: Movie Recommendation (Bag of Words)',
+            icon: <FiTarget className="w-6 h-6" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-gray-300">
+                        A streaming platform wants to recommend movies with similar stories.
+                    </p>
+                    <ul className="list-disc ml-6 space-y-2 text-gray-400">
+                        <li><strong>D1:</strong> "A young hero saves the world from aliens"</li>
+                        <li><strong>D2:</strong> "A brave hero fights aliens to save Earth"</li>
+                        <li><strong>D3:</strong> "A romantic story about love and friendship"</li>
+                    </ul>
+                    <p className="text-gray-300 mt-4">
+                        We extract keywords and encode them functionally as binary presence vectors (1 = present, 0 = absent). Based on overlapping words, D1 and D2 share common themes (hero, aliens).
+                    </p>
+                    <div className="bg-gray-800 rounded p-4 font-mono text-xs overflow-x-auto text-gray-300 border border-gray-700">
+                        D1: {"$\\( \\mathbf{v}_1 \\)"} = (1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0)<br/>
+                        D2: {"$\\( \\mathbf{v}_2 \\)"} = (0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0)
+                    </div>
+                    <p className="text-gray-300">
+                        Calculating similarity: {"$\\( \\mathbf{v}_1 \\cdot \\mathbf{v}_2 = 2 \\)$"} (words "hero", "aliens").<br/>
+                        {"$\\( \\|\\mathbf{v}_1\\| = \\sqrt{5} \\)$"}, {"$\\( \\|\\mathbf{v}_2\\| = \\sqrt{5} \\)$"}.<br/>
+                        Similarity(D1, D2) = {"$\\( 2 / (\\sqrt{5} \\cdot \\sqrt{5}) = 0.4 \\)$"}.
+                    </p>
+                </div>
+            )
+        },
+        {
+            title: '3️⃣ Advanced Similarity: TF-IDF',
+            icon: <FiHash className="w-6 h-6" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-gray-300">
+                        Bag of Words treats "the" and "AI" as equally important. To fix this, AI search engines (like Google) use <strong>TF-IDF</strong> (Term Frequency – Inverse Document Frequency).
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-slate-800 p-4 border border-indigo-500 rounded text-sm text-gray-300">
+                            <strong>TF (Term Frequency)</strong><br/>
+                            How often a word appears in a <em>specific document</em>. Rare words in the document get low scores, frequent words get high scores.<br/>
+                            <span className="font-mono text-indigo-400 mt-2 block">{"$\\text{TF}(t, d) = \\frac{\\text{Count}(t)}{\\text{Total Terms}}$"}</span>
+                        </div>
+                        <div className="bg-slate-800 p-4 border border-purple-500 rounded text-sm text-gray-300">
+                            <strong>IDF (Inverse Document Frequency)</strong><br/>
+                            How often a word appears across <em>ALL documents</em>. Common words ("is", "the", "AI") get penalized to 0. Rare unique words remain high.<br/>
+                            <span className="font-mono text-purple-400 mt-2 block">{"$\\text{IDF}(t) = \\log\\left(\\frac{N}{\\text{DF}(t)}\\right)$"}</span>
+                        </div>
+                    </div>
+                    <p className="text-gray-300">
+                        <strong>Practical Note:</strong> If two documents share the word "AI" but they are both from an AI textbook, TF-IDF will zero out the contribution of "AI" because it appears everywhere! It correctly identifies that the documents might be lexically similar but conceptually different if there are no other unique overlaps.
+                    </p>
+                </div>
+            )
+        }
+    ],
+    practiceQuestions: [
+        {
+            question: "Why do we use Cosine Similarity instead of Euclidean Distance when matching full text documents?",
+            solution: "Documents can vary wildly in length (magnitude). Exploring the angle (cosine similarity) evaluates the proportional distribution of terms irrespective of whether the document is 5 pages or 500 pages."
+        },
+        {
+            question: "In TF-IDF, what happens to the IDF score of a word that appears in every single document in the corpus?",
+            solution: "If a word appears in every document, DF(t) = N. The IDF formula becomes log(N / N) = log(1) = 0. Its importance is correctly zeroed out."
+        }
+    ],
+    exampleProblems: [
+        {
+            problem: "Document 1: 'Mathematics is vital for AI'. Document 2: 'AI depends on mathematical models'. Using generic Bag of Words without TF-IDF, what is the Cosine Similarity after removing stopwords ('is', 'for', 'on') and tokenizing?",
+            solution: "Cosine Similarity is 0.",
+            steps: [
+                {
+                    step: 'Tokenize',
+                    explanation: 'D1: {mathematics, vital, ai}. D2: {ai, depends, mathematical, models}'
+                },
+                {
+                    step: 'Find Vocab and Dots',
+                    explanation: 'The only exact repeating token is "ai". Thus D1 dot D2 = 1. Both have magnitudes of sqrt(3) and sqrt(4) respectively.'
+                },
+                {
+                    step: 'Cosine Similarity',
+                    explanation: '{"$\\( \\frac{1}{\\sqrt{3} \\cdot \\sqrt{4}} = \\frac{1}{3.46} = 0.288 \\)$"}.'
+                }
+            ]
+        }
+    ]
+}
+
+export default function VectorOperationsPage() {
+    return (
+        <DMTopicPage
+            content={content}
+            subjectName="Mathematics for AI"
+            subjectHref="/subjects/mathematics-for-ai"
+        />
+    )
+}

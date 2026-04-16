@@ -1,0 +1,63 @@
+﻿src/app/subjects/mathematics-for-ai/topics/CO1/vector-operations/page.tsx(122,47): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO1/vector-operations/page.tsx(122,57): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO1/vector-operations/page.tsx(122,78): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO1/vector-operations/page.tsx(122,105): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO1/vector-operations/page.tsx(122,107): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO1/vector-operations/page.tsx(122,134): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO1/vectors-data-representation/page.tsx(109,112): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO1/vectors-data-representation/page.tsx(109,123): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO1/vectors-data-representation/page.tsx(109,139): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO1/vectors-data-representation/page.tsx(109,149): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO1/vectors-data-representation/page.tsx(109,165): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO1/vectors-data-representation/page.tsx(109,177): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO1/vectors-data-representation/page.tsx(109,199): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO1/vectors-data-representation/page.tsx(109,211): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO2/linear-algebra-foundations/page.tsx(55,96): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO2/linear-algebra-foundations/page.tsx(55,114): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(29,148): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(29,158): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(29,160): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(29,172): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(34,40): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(34,50): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(34,52): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(34,62): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(35,40): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(35,50): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(35,52): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(35,62): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO4/optimization-basics/page.tsx(48,37): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO4/optimization-basics/page.tsx(48,46): error TS1109: Expression expected.
+src/app/subjects/mathematics-for-ai/topics/CO4/optimization-basics/page.tsx(48,47): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO4/optimization-basics/page.tsx(48,54): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO4/optimization-basics/page.tsx(48,64): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO5/advanced-ai-math/page.tsx(84,94): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO5/advanced-ai-math/page.tsx(84,104): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(45,84): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(45,94): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(45,96): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(45,106): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,40): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,50): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,52): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,64): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,74): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,84): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,86): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,98): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,113): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,125): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,127): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,139): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,154): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,166): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,168): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,180): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,195): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,207): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,209): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,221): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,236): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,248): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,250): error TS1127: Invalid character.
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(49,262): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?

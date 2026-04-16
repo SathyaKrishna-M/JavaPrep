@@ -7,6 +7,7 @@ import { topics as dsTopics } from '@/data/ds-topics'
 import { dsdTopics } from '@/data/dsd-topics'
 import { fwdTopics } from '@/data/fwd-topics'
 import { topics as mathTopics } from '@/data/math-ai-topics'
+import { topics as cfaiTopics } from '@/data/cfai-topics'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useMemo, useEffect } from 'react'
 import { FiChevronDown, FiChevronRight } from 'react-icons/fi'
@@ -19,11 +20,12 @@ export default function Sidebar() {
   const isDS = pathname?.startsWith('/subjects/data-structures')
   const isFWD = pathname?.startsWith('/subjects/web-development')
   const isMathAI = pathname?.startsWith('/subjects/mathematics-for-ai')
+  const isCFAI = pathname?.startsWith('/subjects/computational-foundations-ai')
 
   // Reset open COs when subject changes, or keep them open by default
   useEffect(() => {
     setOpenCOs(new Set(['CO1', 'CO2', 'CO3', 'CO4', 'CO5', 'CO6']))
-  }, [isDSD, isDS, isFWD, isMathAI])
+  }, [isDSD, isDS, isFWD, isMathAI, isCFAI])
 
   let currentTopics = javaTopics
   let subjectTitle = 'Java Topics'
@@ -45,6 +47,10 @@ export default function Sidebar() {
     currentTopics = mathTopics
     subjectTitle = 'Math for AI'
     subjectSubtitle = 'Mathematics for Artificial Intelligence'
+  } else if (isCFAI) {
+    currentTopics = cfaiTopics
+    subjectTitle = 'CFAI'
+    subjectSubtitle = 'Computational Foundations for AI'
   }
 
   const toggleCO = (co: string) => {
@@ -100,6 +106,16 @@ export default function Sidebar() {
         CO6: 'CO6 — Mathematical Construction of AI Building Blocks',
       }
     }
+    if (isCFAI) {
+      return {
+        CO1: 'CO1 — AI Agents, Problem Formulation & Python',
+        CO2: 'CO2 — Search Algorithms',
+        CO3: 'CO3 — Constraint Satisfaction Problems',
+        CO4: 'CO4 — Adversarial Search & Game Theory',
+        CO5: 'CO5 — Probabilistic Reasoning',
+        CO6: 'CO6 — Hybrid AI & Ethics',
+      }
+    }
     return {
       CO1: 'CO1 — Basic Java Programming Constructs',
       CO2: 'CO2 — Arrays & Algorithmic Problem Solving',
@@ -108,7 +124,7 @@ export default function Sidebar() {
       CO5: 'CO5 — Advanced OOP & System Architecture',
       CO6: 'CO6 — Robust & Scalable Java Applications',
     }
-  }, [isDSD, isDS, isFWD, isMathAI])
+  }, [isDSD, isDS, isFWD, isMathAI, isCFAI])
 
   // Group topics by CO
   const topicsByCO = useMemo(() => {

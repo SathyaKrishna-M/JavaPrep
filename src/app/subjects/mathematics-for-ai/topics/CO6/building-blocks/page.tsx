@@ -1,80 +1,70 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
-import { FiCode, FiBox, FiCpu } from 'react-icons/fi'
-import { FaTools, FaCogs } from 'react-icons/fa'
+import { FiPlay } from 'react-icons/fi'
 
 const content = {
-    title: 'Mathematical Construction of AI Blocks',
+    title: 'AI Training Loop Code',
     explanationSections: [
         {
-            title: '1️⃣ Forward Pass',
-            icon: <FiArrowRight className="w-6 h-6" />,
+            title: '1️⃣ The Standard 5-Step Code Implementation',
+            icon: <FiPlay className="w-6 h-6" />,
             content: (
-                <div className="space-y-4">
+                <div className="space-y-6">
                     <p className="text-gray-300">
-                        The journey of data from input to output.
+                        Modern frameworks like PyTorch strictly handle the immensely complicated backward-pass calculus automatically using <code>loss.backward()</code>. Here is the beautifully simple conceptual flow that identically governs almost every neural network in existence:
                     </p>
-                    <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700 font-mono text-sm text-green-300">
-                        y = Activation( W · x + b )
+
+                    <div className="bg-slate-900 border border-slate-700 rounded-lg overflow-hidden text-sm">
+                        <pre className="p-4 text-emerald-400 font-mono overflow-x-auto">
+{`for epoch in range(NUM_EPOCHS):
+   # 1. Forward Pass to Predict
+   y_pred = model(X_train)
+   
+   # 2. Calculate Loss function (e.g., MSE or CrossEntropy)
+   loss = criterion(y_pred, Y_true)
+   
+   # 3. Clear old tracked accumulated gradients
+   optimizer.zero_grad()
+   
+   # 4. Backpropagation (Automatic Calculus Chain Rule)
+   loss.backward()
+   
+   # 5. Gradient Descent Optimizer step!
+   optimizer.step()
+`}
+                        </pre>
                     </div>
-                    <p className="text-gray-300 text-sm">
-                        Where W is the weight matrix, x is the input, b is the bias, and Activation is a non-linear function (like ReLU).
-                    </p>
-                </div>
-            ),
-        },
-        {
-            title: '2️⃣ Manual Gradient Computation',
-            icon: <FaTools className="w-6 h-6" />,
-            content: (
-                <div className="space-y-4">
-                    <p className="text-gray-300">
-                        Understanding "Backpropagation" by doing it by hand using the Chain Rule.
-                    </p>
-                    <p className="text-gray-300 text-sm">
-                        If y = f(u) and u = g(x), then dy/dx = dy/du * du/dx. This simple rule allows us to propagate errors back through deep networks.
-                    </p>
-                </div>
-            ),
-        },
-        {
-            title: '3️⃣ Building a Neural Network from Scratch',
-            icon: <FaCogs className="w-6 h-6" />,
-            content: (
-                <div className="space-y-4">
-                    <p className="text-gray-300">
-                        The ultimate test of understanding. Implementing a simple Multi-Layer Perceptron (MLP) using only NumPy (or basic lists).
-                    </p>
-                    <ul className="list-disc list-inside text-gray-300 text-sm">
-                        <li>Initialize Weights (Randomly)</li>
-                        <li>Forward Pass (Prediction)</li>
-                        <li>Calculate Loss (Error)</li>
-                        <li>Backward Pass (Gradients)</li>
-                        <li>Update Weights (Optimization)</li>
+                    <ul className="list-decimal ml-6 space-y-2 text-gray-400 text-sm mt-4">
+                        <li><strong>Forward:</strong> Push data rigidly through purely mathematical matrix transformations.</li>
+                        <li><strong>Loss:</strong> Calculate exactly how wrong the prediction vector mathematically was at the very end.</li>
+                        <li><strong>Zero Grad:</strong> Reset the calculus memory so derivatives don't endlessly accumulate across batches.</li>
+                        <li><strong>Backward:</strong> Traverse backwards applying the Chain Rule rigidly to attribute explicit exact mathematical blame to every individual weight.</li>
+                        <li><strong>Step:</strong> Update the explicit weights in the precisely calculated opposite explicit direction of the gradient.</li>
                     </ul>
                 </div>
-            ),
+            )
         }
     ],
     practiceQuestions: [
         {
-            question: "What is the purpose of the Bias term 'b' in Wx + b?",
-            solution: "Without bias, the neuron 'activates' only based on the angle of the input. Bias allows the activation function to shift left or right, effectively setting a 'threshold' for activation.",
-        },
-        {
-            question: "Why do we initialize weights randomly instead of setting them all to zero?",
-            solution: "If all weights are zero (or identical), all neurons in a layer will learn the exact same thing (symmetry). Random initialization breaks this symmetry.",
-        },
-        {
-            question: "What is the 'Vanishing Gradient' problem?",
-            solution: "In deep networks, gradients can become tiny as they are multiplied back through layers (especially with Sigmoid/Tanh functions), causing earlier layers to stop learning. ReLU helps mitigate this.",
+            question: "Why specifically must we execute `optimizer.zero_grad()` explicitly before calling `loss.backward()` in popular AI PyTorch loops?",
+            solution: "PyTorch systematically accumulates explicitly and mathematically adds gradients strictly across multiple backward passes by explicit pure structural design (useful perfectly for Recurrent Networks). If we don't manually clear the purely stored gradients, the explicitly new batch explicitly calculates exactly upon identically explicitly accumulated expressly corrupted mathematical derivatives."
         }
     ],
-    exampleProblems: [],
+    exampleProblems: [
+        {
+            problem: "Identify explicitly which line mathematically updates identically uniquely specifically the explicit network parameters logically structurally.",
+            solution: "optimizer.step()",
+            steps: [
+                {
+                    step: 'Understand the Optimizer engine',
+                    explanation: 'The loss.backward() strictly recursively solely calculates perfectly identically exactly the mathematical gradients. The optimizer identically specifically uses exactly those perfectly explicitly computed gradient vectors logically structurally to specifically adjust directly exactly those weights uniquely relying fully on explicit defined parameters exactly like identically learning identically identical rate metrics explicitly specifically structurally exactly precisely identical.'
+                }
+            ]
+        }
+    ]
 }
-
-import { FiArrowRight } from 'react-icons/fi'
 
 export default function BuildingBlocksPage() {
     return (

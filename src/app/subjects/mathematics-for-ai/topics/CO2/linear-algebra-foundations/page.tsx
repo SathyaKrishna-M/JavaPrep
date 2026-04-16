@@ -1,91 +1,135 @@
-import React from 'react';
-import { BlockMath, InlineMath } from 'react-katex';
-import 'katex/dist/katex.min.css';
+'use client'
 
-const Page = () => {
-    return (
-        <div className="p-6 max-w-4xl mx-auto space-y-8">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-                1. Linear Algebra Foundations
-            </h1>
+import DMTopicPage from '@/components/DMTopicPage'
+import { FiTrendingUp, FiActivity, FiLayers, FiMinimize } from 'react-icons/fi'
 
-            {/* 1. Linear Independence */}
-            <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
-                    1.1 Linear Independence
-                </h2>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">
-                        A set of vectors is <strong>linearly independent</strong> if no vector in the set can be written as a linear combination of the others.
-                    </p>
-                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded-md">
-                        <p className="text-sm font-mono text-gray-600 dark:text-gray-400 mb-2">Equation condition:</p>
-                        <BlockMath math="c_1\mathbf{v}_1 + c_2\mathbf{v}_2 + \dots + c_n\mathbf{v}_n = \mathbf{0} \implies c_1 = c_2 = \dots = 0" />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                        <div className="bg-green-50 dark:bg-green-900/20 p-4 rounded border-l-4 border-green-500">
-                            <h3 className="font-semibold text-green-700 dark:text-green-300">Independent Example</h3>
-                            <p className="text-sm mt-1 mb-2"><InlineMath math="\mathbf{v}_1 = (1,0), \mathbf{v}_2 = (0,1)" /></p>
-                            <p className="text-xs text-gray-600 dark:text-gray-400">Standard basis vectors cannot form each other.</p>
-                        </div>
-                        <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded border-l-4 border-red-500">
-                            <h3 className="font-semibold text-red-700 dark:text-red-300">Dependent Example</h3>
-                            <p className="text-sm mt-1 mb-2"><InlineMath math="\mathbf{v}_1 = (1,2), \mathbf{v}_2 = (2,4)" /></p>
-                            <p className="text-xs text-gray-600 dark:text-gray-400">Notice <InlineMath math="\mathbf{v}_2 = 2\mathbf{v}_1" />. Redundant info.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* 2. Rank */}
-            <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
-                    1.2 Matrix Rank
-                </h2>
-                <p className="text-gray-700 dark:text-gray-300">
-                    The <strong>Rank</strong> of a matrix is the maximum number of linearly independent rows or columns. It tells us the "true" amount of information in the data.
-                </p>
-                <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg font-mono text-sm overflow-x-auto">
-                    <p className="mb-2">// Full Rank (Rank = 2)</p>
-                    <BlockMath math="A = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}" />
-                    <p className="mb-6 text-gray-500">Rows are unique directions.</p>
-
-                    <p className="mb-2">// Low Rank (Rank = 1)</p>
-                    <BlockMath math="B = \begin{bmatrix} 1 & 2 \\ 2 & 4 \end{bmatrix}" />
-                    <p className="text-gray-500">Row 2 is just <InlineMath math="2 \times" /> Row 1.</p>
-                </div>
-            </section>
-
-            {/* 3. Case Study */}
-            <section className="space-y-6 pt-8 border-t border-gray-200 dark:border-gray-700">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                    Case Study: Sensor Redundancy
-                </h2>
-                <div className="prose dark:prose-invert max-w-none">
-                    <p>
-                        An industrial system uses 4 sensors. We collect readings into a matrix <InlineMath math="A" /> where columns are sensors.
-                    </p>
-                    <BlockMath math="A = \begin{bmatrix} 1 & 2 & 3 & 1 \\ 2 & 4 & 6 & 2 \\ 1 & 2 & 3 & 1 \end{bmatrix}" />
-
-                    <h3 className="font-semibold text-lg mt-4">Analysis</h3>
-                    <ul className="list-disc pl-5 space-y-2 text-sm">
-                        <li><strong>Col 2:</strong> <InlineMath math="2 \times" /> Col 1</li>
-                        <li><strong>Col 3:</strong> <InlineMath math="3 \times" /> Col 1</li>
-                        <li><strong>Col 4:</strong> <InlineMath math="1 \times" /> Col 1</li>
-                    </ul>
-                    <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mt-4">
-                        <p><strong>Conclusion:</strong> Rank = 1.</p>
-                        <p className="mt-1">
-                            Sensors <InlineMath math="S_2, S_3, S_4" /> are <strong>redundant</strong>.
-                            We only need <InlineMath math="S_1" /> to capture 100% of the information variance.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
+const VisualCard = ({ title, children }: { title: string, children: React.ReactNode }) => (
+    <div className="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden mb-8 shadow-xl">
+        <div className="bg-slate-800/80 px-4 py-2 border-b border-slate-700 flex justify-between items-center">
+            <span className="text-sm font-bold text-gray-300">{title}</span>
         </div>
-    );
-};
+        <div className="p-6 bg-slate-950 flex flex-col items-center justify-center min-h-[200px]">
+            {children}
+        </div>
+    </div>
+)
 
-export default Page;
+const content = {
+    title: 'Gradients, Jacobian & Hessian',
+    explanationSections: [
+        {
+            title: '1️⃣ Partial Derivatives & The Gradient Vector',
+            icon: <FiTrendingUp className="w-6 h-6" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-gray-300">
+                        For a function {"$\\( f(x,y) \\)$"}, partial derivatives {"$\\( \\frac{\\partial f}{\\partial x} \\)$"} and {"$\\( \\frac{\\partial f}{\\partial y} \\)$"} represent the rate of change of {"$\\( f \\)$"} with respect to one variable while treating the other as a constant.
+                    </p>
+                    <div className="bg-slate-800/50 p-4 rounded-lg text-sm text-center border-l-4 border-indigo-500 font-mono text-gray-200">
+                        {"$\\nabla f = \\begin{bmatrix} \\frac{\\partial f}{\\partial x_1} \\\\ \\dots \\\\ \\frac{\\partial f}{\\partial x_n} \\end{bmatrix}$"}
+                    </div>
+                    <ul className="list-disc ml-6 space-y-2 text-gray-400">
+                        <li><strong>Gradient Direction:</strong> Always points in the direction of the <em>steepest ascent</em> (fastest increase).</li>
+                        <li><strong>Negative Gradient:</strong> Points in the direction of steepest <em>decrease</em>. Used in Gradient Descent!</li>
+                        <li><strong>Magnitude:</strong> Indicates how rapidly the function is changing.</li>
+                    </ul>
+                </div>
+            ),
+        },
+        {
+            title: '2️⃣ Cost Function Minimization in Machine Learning',
+            icon: <FiMinimize className="w-6 h-6" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-gray-300">
+                        A cost function like Mean Squared Error (MSE) measures the error between a model's predictions and actual targets. To minimize this error, we iteratively update parameters using <strong>Gradient Descent</strong>:
+                    </p>
+                    <div className="bg-slate-800 p-4 border border-rose-500 rounded text-sm text-center text-white font-mono">
+                        {"$\\theta_{\\text{new}} = \\theta_{\\text{old}} - \\eta \\nabla L(\\theta)$"}
+                    </div>
+                    <p className="text-gray-300">
+                        Where {"$\\( \\eta \\)$"} is the learning rate. We compute the gradient {"$\\( \\nabla L \\)$"} and move in the <em>opposite</em> direction to reach the minimum error.
+                    </p>
+                </div>
+            )
+        },
+        {
+            title: '3️⃣ The Jacobian Matrix',
+            icon: <FiLayers className="w-6 h-6" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-gray-300">
+                        If we have a <strong>vector-valued</strong> function {"$\\( \\mathbf{F}: \\mathbb{R}^n \\rightarrow \\mathbb{R}^m \\)$"}, the first-order partial derivatives form an {"$\\( m \\times n \\)$"} matrix known as the <strong>Jacobian</strong>.
+                    </p>
+                    <div className="bg-slate-800 p-4 rounded font-mono text-xs overflow-x-auto text-gray-300 border border-gray-700">
+                        {"$J = \\begin{bmatrix} \\frac{\\partial f_1}{\\partial x_1} & \\dots & \\frac{\\partial f_1}{\\partial x_n} \\\\ \\dots & \\dots & \\dots \\\\ \\frac{\\partial f_m}{\\partial x_1} & \\dots & \\frac{\\partial f_m}{\\partial x_n} \\end{bmatrix}$"}
+                    </div>
+                    <p className="text-gray-300">
+                        The Jacobian is essential in the multivariable chain rule and is the foundation for <strong>Backpropagation</strong> in Neural Networks.
+                    </p>
+                </div>
+            )
+        },
+        {
+            title: '4️⃣ The Hessian Matrix',
+            icon: <FiActivity className="w-6 h-6" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-gray-300">
+                        For a twice-differentiable <strong>scalar</strong> function {"$\\( f: \\mathbb{R}^n \\rightarrow \\mathbb{R} \\)$"}, the matrix of <em>second-order</em> partial derivatives is the <strong>Hessian</strong>.
+                    </p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-slate-800 p-4 border border-blue-500 rounded text-sm text-gray-300">
+                            <strong>Shape & Symmetry</strong><br/>
+                            It is an {"$\\( n \\times n \\)$"} square matrix. If mixed partials are continuous, it is perfectly symmetric.
+                        </div>
+                        <div className="bg-slate-800 p-4 border border-green-500 rounded text-sm text-gray-300">
+                            <strong>Curvature</strong><br/>
+                            The Hessian describes the local curvature of the loss surface. It tells us if a point is a minimum, maximum, or saddle point (using Newton's Method).
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    ],
+    practiceQuestions: [
+        {
+            question: "What is the key difference between the Jacobian and the Hessian?",
+            solution: "The Jacobian contains first-order derivatives for a vector-valued function. The Hessian contains second-order derivatives for a scalar-valued function (like a Loss Function), describing its curvature."
+        },
+        {
+            question: 'Find the partial derivative of {"$\\( f(x, y) = x^2y + \\sin x + \\cos y \\)$"} with respect to x.',
+            solution: 'Treating y as a constant: {"$\\( 2xy + \\cos x \\)$"}.'
+        }
+    ],
+    exampleProblems: [
+        {
+            problem: 'Find the Hessian of {"$\\( f(x, y) = x^3 + y^3 \\)$"}.',
+            solution: '{"$\\begin{bmatrix} 6x & 0 \\\\ 0 & 6y \\end{bmatrix}$"}',
+            steps: [
+                {
+                    step: 'Find First Derivatives',
+                    explanation: '{"$\\( f_x = 3x^2 \\)$"} and {"$\\( f_y = 3y^2 \\)$"}'
+                },
+                {
+                    step: 'Find Second Derivatives',
+                    explanation: '{"$\\( f_{xx} = 6x \\)$"}, {"$\\( f_{yy} = 6y \\)$"}, {"$\\( f_{xy} = 0 \\)$"}'
+                },
+                {
+                    step: 'Form Matrix',
+                    explanation: 'Place them in the 2x2 grid: {"$\\begin{bmatrix} 6x & 0 \\\\ 0 & 6y \\end{bmatrix}$"}.'
+                }
+            ]
+        }
+    ]
+}
+
+export default function LinearAlgebraFoundationsPage() {
+    return (
+        <DMTopicPage
+            content={content}
+            subjectName="Mathematics for AI"
+            subjectHref="/subjects/mathematics-for-ai"
+        />
+    )
+}

@@ -1,0 +1,36 @@
+﻿src/app/subjects/mathematics-for-ai/topics/CO1/matrices-transformations/page.tsx(125,13): error TS2322: Type '{ title: string; explanationSections: { title: string; icon: JSX.Element; content: JSX.Element; }[]; practiceQuestions: { question: string; options: string[]; correctAnswer: number; solution: string; }[]; exampleProblems: { ...; }[]; }' is not assignable to type 'TopicContent'.
+  Types of property 'exampleProblems' are incompatible.
+    Type '{ question: string; solution: string; }[]' is not assignable to type 'ExampleProblem[]'.
+      Type '{ question: string; solution: string; }' is missing the following properties from type 'ExampleProblem': problem, steps
+src/app/subjects/mathematics-for-ai/topics/CO1/tensors-shapes/page.tsx(143,13): error TS2322: Type '{ title: string; explanationSections: { title: string; icon: JSX.Element; content: JSX.Element; }[]; practiceQuestions: { question: string; options: string[]; correctAnswer: number; solution: string; }[]; exampleProblems: { ...; }[]; }' is not assignable to type 'TopicContent'.
+  Types of property 'exampleProblems' are incompatible.
+    Type '{ question: string; solution: string; }[]' is not assignable to type 'ExampleProblem[]'.
+      Type '{ question: string; solution: string; }' is missing the following properties from type 'ExampleProblem': problem, steps
+src/app/subjects/mathematics-for-ai/topics/CO1/vector-operations/page.tsx(153,13): error TS2322: Type '{ title: string; explanationSections: { title: string; icon: JSX.Element; content: JSX.Element; }[]; practiceQuestions: { question: string; options: string[]; correctAnswer: number; solution: string; }[]; exampleProblems: { ...; }[]; }' is not assignable to type 'TopicContent'.
+  Types of property 'exampleProblems' are incompatible.
+    Type '{ question: string; solution: string; }[]' is not assignable to type 'ExampleProblem[]'.
+      Type '{ question: string; solution: string; }' is missing the following properties from type 'ExampleProblem': problem, steps
+src/app/subjects/mathematics-for-ai/topics/CO1/vectors-data-representation/page.tsx(140,13): error TS2322: Type '{ title: string; explanationSections: { title: string; icon: JSX.Element; content: JSX.Element; }[]; practiceQuestions: { question: string; options: string[]; correctAnswer: number; solution: string; }[]; exampleProblems: { ...; }[]; }' is not assignable to type 'TopicContent'.
+  Types of property 'exampleProblems' are incompatible.
+    Type '{ question: string; solution: string; }[]' is not assignable to type 'ExampleProblem[]'.
+      Type '{ question: string; solution: string; }' is missing the following properties from type 'ExampleProblem': problem, steps
+src/app/subjects/mathematics-for-ai/topics/CO2/linear-algebra-foundations/page.tsx(109,13): error TS2322: Type '{ title: string; explanationSections: { title: string; icon: JSX.Element; content: JSX.Element; }[]; practiceQuestions: { question: string; options: string[]; correctAnswer: number; solution: string; }[]; exampleProblems: { ...; }[]; }' is not assignable to type 'TopicContent'.
+  Types of property 'exampleProblems' are incompatible.
+    Type '{ question: string; solution: string; }[]' is not assignable to type 'ExampleProblem[]'.
+      Type '{ question: string; solution: string; }' is missing the following properties from type 'ExampleProblem': problem, steps
+src/app/subjects/mathematics-for-ai/topics/CO3/multivariable-calculus/page.tsx(122,13): error TS2322: Type '{ title: string; explanationSections: { title: string; icon: JSX.Element; content: JSX.Element; }[]; practiceQuestions: { question: string; options: string[]; correctAnswer: number; solution: string; }[]; exampleProblems: { ...; }[]; }' is not assignable to type 'TopicContent'.
+  Types of property 'exampleProblems' are incompatible.
+    Type '{ question: string; solution: string; }[]' is not assignable to type 'ExampleProblem[]'.
+      Type '{ question: string; solution: string; }' is missing the following properties from type 'ExampleProblem': problem, steps
+src/app/subjects/mathematics-for-ai/topics/CO4/optimization-basics/page.tsx(98,13): error TS2322: Type '{ title: string; explanationSections: { title: string; icon: JSX.Element; content: JSX.Element; }[]; practiceQuestions: { question: string; options: string[]; correctAnswer: number; solution: string; }[]; exampleProblems: { ...; }[]; }' is not assignable to type 'TopicContent'.
+  Types of property 'exampleProblems' are incompatible.
+    Type '{ question: string; solution: string; }[]' is not assignable to type 'ExampleProblem[]'.
+      Type '{ question: string; solution: string; }' is missing the following properties from type 'ExampleProblem': problem, steps
+src/app/subjects/mathematics-for-ai/topics/CO5/advanced-ai-math/page.tsx(121,13): error TS2322: Type '{ title: string; explanationSections: { title: string; icon: JSX.Element; content: JSX.Element; }[]; practiceQuestions: { question: string; options: string[]; correctAnswer: number; solution: string; }[]; exampleProblems: { ...; }[]; }' is not assignable to type 'TopicContent'.
+  Types of property 'exampleProblems' are incompatible.
+    Type '{ question: string; solution: string; }[]' is not assignable to type 'ExampleProblem[]'.
+      Type '{ question: string; solution: string; }' is missing the following properties from type 'ExampleProblem': problem, steps
+src/app/subjects/mathematics-for-ai/topics/CO6/building-blocks/page.tsx(113,13): error TS2322: Type '{ title: string; explanationSections: { title: string; icon: JSX.Element; content: JSX.Element; }[]; practiceQuestions: { question: string; options: string[]; correctAnswer: number; solution: string; }[]; exampleProblems: { ...; }[]; }' is not assignable to type 'TopicContent'.
+  Types of property 'exampleProblems' are incompatible.
+    Type '{ question: string; solution: string; }[]' is not assignable to type 'ExampleProblem[]'.
+      Type '{ question: string; solution: string; }' is missing the following properties from type 'ExampleProblem': problem, steps

@@ -1,130 +1,147 @@
-import React from 'react';
-import { BlockMath, InlineMath } from 'react-katex';
-import 'katex/dist/katex.min.css';
+'use client'
 
-const Page = () => {
-    return (
-        <div className="p-6 max-w-4xl mx-auto space-y-8">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-                3. Matrices as Transformations
-            </h1>
+import DMTopicPage from '@/components/DMTopicPage'
+import { FiGrid, FiLayers, FiActivity, FiCpu } from 'react-icons/fi'
 
-            {/* 1. Matrix Definition */}
-            <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
-                    3.1 Basics
-                </h2>
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">
-                        A matrix <InlineMath math="A" /> of order <InlineMath math="m \times n" /> is a rectangular array of numbers.
-                        It can represent a system of linear equations or a linear transformation.
+const VisualCard = ({ title, children }: { title: string, children: React.ReactNode }) => (
+    <div className="bg-slate-900 border border-slate-700 rounded-xl overflow-hidden mb-8 shadow-xl">
+        <div className="bg-slate-800/80 px-4 py-2 border-b border-slate-700 flex justify-between items-center">
+            <span className="text-sm font-bold text-gray-300">{title}</span>
+        </div>
+        <div className="p-6 bg-slate-950 flex flex-col items-center justify-center min-h-[200px]">
+            {children}
+        </div>
+    </div>
+)
+
+const content = {
+    title: 'Linear Independence, Rank & Basis',
+    explanationSections: [
+        {
+            title: '1️⃣ Linearly Independent & Dependent Vectors',
+            icon: <FiGrid className="w-6 h-6" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-gray-300">
+                        A set of vectors is <strong>linearly independent</strong> if no vector in the set can be written as a combination of the others. Mathematically, the only way to write:
                     </p>
-                    <BlockMath math="A = \begin{bmatrix} a_{11} & a_{12} & \dots & a_{1n} \\ a_{21} & a_{22} & \dots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \dots & a_{mn} \end{bmatrix}" />
-                </div>
-            </section>
-
-            {/* 2. Operations */}
-            <section className="space-y-6">
-                <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
-                    3.2 Matrix Multiplication
-                </h2>
-                <div className="bg-yellow-50 dark:bg-yellow-900/20 p-5 rounded-lg border-l-4 border-yellow-500">
-                    <p className="text-gray-800 dark:text-gray-200 font-medium mb-2">Rule:</p>
-                    <p className="text-gray-700 dark:text-gray-300">
-                        For <InlineMath math="AB" /> to be defined, the number of columns in <InlineMath math="A" /> must equal the number of rows in <InlineMath math="B" />.
-                        <br />
-                        <InlineMath math="(m \times n) \times (n \times p) \rightarrow (m \times p)" />
-                    </p>
-                </div>
-
-                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
-                    <h3 className="font-semibold text-lg mb-3">Example</h3>
-                    <BlockMath math="A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}, \quad B = \begin{bmatrix} 2 & 0 \\ 1 & 5 \end{bmatrix}" />
-                    <BlockMath math="AB = \begin{bmatrix} (1)(2)+(2)(1) & (1)(0)+(2)(5) \\ (3)(2)+(4)(1) & (3)(0)+(4)(5) \end{bmatrix} = \begin{bmatrix} 4 & 10 \\ 10 & 20 \end{bmatrix}" />
-                </div>
-            </section>
-
-            {/* 3. Geometric Interpretation */}
-            <section className="space-y-4">
-                <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">
-                    3.3 Geometric Interpretation
-                </h2>
-                <p className="text-gray-700 dark:text-gray-300">
-                    Multiplying a vector by a matrix transforms the vector.
-                    <InlineMath math="A\mathbf{x} = \mathbf{y}" /> maps input space to output space.
-                </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-                    <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
-                        <h4 className="font-bold text-indigo-600 dark:text-indigo-400 mb-2">Scaling</h4>
-                        <BlockMath math="\begin{bmatrix} 2 & 0 \\ 0 & 2 \end{bmatrix}" />
-                        <p className="text-sm mt-2">Doubles size in X and Y (stretches space).</p>
+                    <div className="bg-slate-800/50 p-4 rounded-lg text-sm text-center border-l-4 border-indigo-500 font-mono text-gray-200">
+                        {"$\\( c_1\\mathbf{v}_1 + c_2\\mathbf{v}_2 + \\dots + c_n\\mathbf{v}_n = \\mathbf{0} \\)$"}
                     </div>
-                    <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg text-center">
-                        <h4 className="font-bold text-indigo-600 dark:text-indigo-400 mb-2">Rotation (90°)</h4>
-                        <BlockMath math="\begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix}" />
-                        <p className="text-sm mt-2">Rotates vector 90 degrees counter-clockwise.</p>
-                    </div>
-                </div>
-            </section>
-
-            {/* 4. Neural Networks */}
-            <section className="space-y-6 pt-8 border-t border-gray-200 dark:border-gray-700">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
-                    Application: Linear Layers in Neural Networks
-                </h2>
-
-                <div className="prose dark:prose-invert max-w-none">
-                    <p className="text-gray-700 dark:text-gray-300">
-                        In Deep Learning, a linear (dense) layer is simply a matrix multiplication followed by vector addition (bias).
+                    <p className="text-gray-300">
+                        is when {"$\\( c_1 = c_2 = \\dots = c_n = 0 \\)$"}.
                     </p>
-                    <div className="my-6 text-center bg-gray-900 text-white p-4 rounded-lg font-mono text-xl">
-                        <InlineMath math="\mathbf{y} = W\mathbf{x} + \mathbf{b}" />
-                    </div>
-
-                    <h3 className="text-xl font-semibold mt-6 mb-3">Case Study: Predicting Performance</h3>
-                    <p>
-                        <strong>Input <InlineMath math="\mathbf{x}" />:</strong> [Hours Studied, Attendance %, Prev Score]<br />
-                        <strong>Weights <InlineMath math="W" />:</strong> Matrix mapping 3 inputs to 2 features (neurons).
-                    </p>
-
-                    <div className="bg-gray-50 dark:bg-gray-900 p-6 rounded-lg my-4">
-                        <p className="font-mono text-sm mb-4">
-                            x = [6, 8, 7] <span className="text-gray-500">(Student Stats)</span><br />
-                            W = [[0.5, 0.2, 0.3], [0.1, 0.6, 0.4]]<br />
-                            b = [1, 0.5]
-                        </p>
-                        <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-                            <p className="font-semibold mb-2">Computation:</p>
-                            <BlockMath math="W\mathbf{x} = \begin{bmatrix} (0.5)(6) + (0.2)(8) + (0.3)(7) \\ (0.1)(6) + (0.6)(8) + (0.4)(7) \end{bmatrix} = \begin{bmatrix} 3 + 1.6 + 2.1 \\ 0.6 + 4.8 + 2.8 \end{bmatrix} = \begin{bmatrix} 6.7 \\ 8.2 \end{bmatrix}" />
-                            <BlockMath math="\mathbf{z} = W\mathbf{x} + \mathbf{b} = \begin{bmatrix} 6.7 \\ 8.2 \end{bmatrix} + \begin{bmatrix} 1 \\ 0.5 \end{bmatrix} = \begin{bmatrix} 7.7 \\ 8.7 \end{bmatrix}" />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-slate-800 p-4 border border-green-500 rounded text-sm text-gray-300">
+                            <strong>Independent Example</strong><br/>
+                            {"$\\( \\mathbf{v}_1 = (1,0), \\mathbf{v}_2 = (0,1) \\)$"}<br/>
+                            They point in orthogonal directions. You cannot make (0,1) by scaling (1,0).
+                        </div>
+                        <div className="bg-slate-800 p-4 border border-rose-500 rounded text-sm text-gray-300">
+                            <strong>Dependent Example</strong><br/>
+                            {"$\\( \\mathbf{v}_1 = (1,2), \\mathbf{v}_2 = (2,4) \\)$"}<br/>
+                            Since {"$\\( \\mathbf{v}_2 = 2\\mathbf{v}_1 \\)$"}, they are dependent. They carry redundant information.
                         </div>
                     </div>
                 </div>
-            </section>
-
-            {/* Practice Problems */}
-            <section className="space-y-6 pt-8 border-t border-gray-200 dark:border-gray-700">
-                <h2 className="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Practice Problem</h2>
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-                    <p className="font-medium mb-4">
-                        A square of area 10 units undergoes transformation <InlineMath math="A = \begin{bmatrix} 1 & k \\ 0 & 1 \end{bmatrix}" />. Find the new area.
+            ),
+        },
+        {
+            title: '2️⃣ Rank of a Matrix & Basis',
+            icon: <FiLayers className="w-6 h-6" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-gray-300">
+                        The <strong>Rank</strong> of a matrix is the maximum number of linearly independent rows or columns. It represents the amount of non-redundant information in a dataset.
                     </p>
-                    <div className="bg-gray-50 dark:bg-gray-900 p-4 rounded border-l-4 border-indigo-500 text-sm">
-                        <p className="mb-2"><strong>Solution:</strong></p>
-                        <p>The scaling factor of area is given by the determinent of the transformation matrix.</p>
-                        <BlockMath math="\text{Area}_{new} = |\det(A)| \times \text{Area}_{old}" />
-                        <BlockMath math="\det(A) = (1)(1) - (k)(0) = 1" />
-                        <p>Since <InlineMath math="\det(A) = 1" />, the area remains unchanged.</p>
-                        <p className="mt-2 text-gray-600 dark:text-gray-400">
-                            *Geometric Note: This is a shearing transformation. It slants the shape but preserves parallel lines and total area.
-                        </p>
+                    <ul className="list-disc ml-6 space-y-2 text-gray-400">
+                        <li><strong>Rank = dimension of the column space</strong></li>
+                        <li><strong>High Rank:</strong> More independent info.</li>
+                        <li><strong>Low Rank:</strong> Redundancy present.</li>
+                    </ul>
+                    <p className="text-gray-300 mt-4">
+                        A <strong>Basis</strong> is the minimum set of vectors needed to represent all vectors in the space. They must be independent AND span the space.
+                    </p>
+                </div>
+            )
+        },
+        {
+            title: '3️⃣ Case Study: Removing Redundant Sensors in Smart City AQI',
+            icon: <FiActivity className="w-6 h-6" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-gray-300">
+                        A smart city uses sensors to record six features every hour. We want to reduce storage by dropping redundant features without losing info.
+                    </p>
+                    <ol className="list-decimal ml-6 space-y-2 text-gray-400 text-sm">
+                        <li>{"$\\( f_1 \\)$"}: Carbon Monoxide (CO)</li>
+                        <li>{"$\\( f_2 \\)$"}: Nitrogen Oxides (NO)</li>
+                        <li>{"$\\( f_3 \\)$"}: Air Quality Index (AQI) — <em>Computed from CO & NO</em></li>
+                        <li>{"$\\( f_4 \\)$"}: Weighted pollution score — <em>Combination of AQI and pollutants</em></li>
+                        <li>{"$\\( f_5 \\)$"}: Temperature</li>
+                        <li>{"$\\( f_6 \\)$"}: Heat index — <em>Computed from Temperature</em></li>
+                    </ol>
+                    <div className="bg-slate-800 p-4 rounded text-sm text-gray-300">
+                        <strong>Mathematical Solution:</strong><br/>
+                        The vectors form a linearly dependent set. The <strong>Rank</strong> of this system is 3, meaning the true dimensionality is just 3. We choose a <strong>Basis</strong>: <code className="text-pink-400">{"$\\{f_1, f_2, f_5\\}$"}</code>. By keeping only these orthogonal base sensors, we drop {"$\\( f_3, f_4, f_6 \\)$"} and save 50% storage cost.
                     </div>
                 </div>
-            </section>
+            )
+        },
+        {
+            title: '4️⃣ Case Study: Detecting Redundant Sensor Matrix Readings',
+            icon: <FiCpu className="w-6 h-6" />,
+            content: (
+                <div className="space-y-6">
+                    <p className="text-gray-300">
+                        An industrial system records data into Matrix A where each column is a sensor {"$\\( S_1, S_2, S_3, S_4 \\)$"}.
+                    </p>
+                    <div className="bg-slate-800 p-4 rounded-lg flex justify-center items-center">
+                         <div className="text-lg text-white font-mono">
+                            {"$A = \\begin{bmatrix} 1 & 2 & 3 & 1 \\\\ 2 & 4 & 6 & 2 \\\\ 1 & 2 & 3 & 1 \\end{bmatrix}$"}
+                         </div>
+                    </div>
+                    <p className="text-gray-300">
+                        Observe that Col 2 = 2 * Col 1, Col 3 = 3 * Col 1, and Col 4 = Col 1. The <strong>Rank(A) = 1</strong>. Thus, sensors S2, S3, S4 are completely redundant. 1 sensor is sufficient!
+                    </p>
+                </div>
+            )
+        }
+    ],
+    practiceQuestions: [
+        {
+            question: "What does it signify if the Rank of a data matrix is much smaller than its number of columns?",
+            solution: "It signifies that there is high redundancy/multicollinearity in the data. Many columns (features) can be expressed as linear combinations of others."
+        },
+        {
+            question: 'Are vectors {"$\\( \\mathbf{v} = (1,2) \\)$"} and {"$\\( \\mathbf{w} = (2,-1) \\)$"} orthogonal?',
+            solution: 'Yes. The dot product is {"$\\( (1)(2) + (2)(-1) = 2 - 2 = 0 \\)$"}. Orthogonal vectors represent non-overlapping information.'
+        }
+    ],
+    exampleProblems: [
+        {
+            problem: 'Determine the rank of Matrix B: {"$\\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 1 & 3 \\\\ 0 & 0 & 0 \\end{bmatrix}$"}',
+            solution: "Rank = 2.",
+            steps: [
+                {
+                    step: 'Analyze the rows',
+                    explanation: 'The first two rows are non-zero and independent. The third row is entirely zero.'
+                },
+                {
+                    step: 'Conclusion',
+                    explanation: 'There are exactly two independent directions. Therefore, Rank(B) = 2.'
+                }
+            ]
+        }
+    ]
+}
 
-        </div>
-    );
-};
-
-export default Page;
+export default function MatricesTransformationsPage() {
+    return (
+        <DMTopicPage
+            content={content}
+            subjectName="Mathematics for AI"
+            subjectHref="/subjects/mathematics-for-ai"
+        />
+    )
+}
