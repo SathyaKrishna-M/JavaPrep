@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -16,8 +16,14 @@ export default function SignupPage() {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const { googleSignIn } = useAuth()
+    const { googleSignIn, currentUser } = useAuth()
     const router = useRouter()
+
+    useEffect(() => {
+        if (currentUser) {
+            router.push('/')
+        }
+    }, [currentUser, router])
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -34,25 +40,28 @@ export default function SignupPage() {
         setLoading(true)
         try {
             await createUserWithEmailAndPassword(auth, email, password)
-            router.push('/')
+            // redirect handled by useEffect above
         } catch (err: any) {
             setError('Failed to create account. Email might be in use.')
             console.error(err)
+            setLoading(false)
         }
-        setLoading(false)
     }
 
     const handleGoogleSignIn = async () => {
         setError('')
-        setLoading(true)
         try {
             await googleSignIn()
-            router.push('/')
         } catch (err: any) {
-            setError('Failed to sign up with Google.')
-            console.error(err)
+            if (err?.code === 'auth/popup-blocked') {
+                setError('Popup was blocked by your browser. Please allow popups for this site and try again.')
+            } else if (err?.code === 'auth/popup-closed-by-user') {
+                // user dismissed — no error needed
+            } else {
+                setError('Failed to sign in with Google. Please try again.')
+                console.error(err)
+            }
         }
-        setLoading(false)
     }
 
     return (
@@ -154,7 +163,7 @@ export default function SignupPage() {
                     <button
                         onClick={handleGoogleSignIn}
                         disabled={loading}
-                        className="mt-6 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 hover:border-white/20"
+                        className="mt-6 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 hover:border-white/20 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <FcGoogle className="w-5 h-5" />
                         Google

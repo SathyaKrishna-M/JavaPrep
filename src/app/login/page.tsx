@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -15,8 +15,15 @@ export default function LoginPage() {
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
-    const { googleSignIn } = useAuth()
+    const { googleSignIn, currentUser } = useAuth()
     const router = useRouter()
+
+    // Redirect when user is authenticated (handles both email login and Google redirect return)
+    useEffect(() => {
+        if (currentUser) {
+            router.push('/')
+        }
+    }, [currentUser, router])
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -24,25 +31,31 @@ export default function LoginPage() {
         setLoading(true)
         try {
             await signInWithEmailAndPassword(auth, email, password)
-            router.push('/')
+            // redirect handled by useEffect above
         } catch (err: any) {
             setError('Failed to log in. Please check your credentials.')
             console.error(err)
+            setLoading(false)
         }
-        setLoading(false)
     }
 
     const handleGoogleSignIn = async () => {
+        // googleSignIn (signInWithPopup) must be called first — before any setState.
+        // Any state update before it breaks the browser's trusted-event chain → popup blocked.
         setError('')
-        setLoading(true)
         try {
             await googleSignIn()
-            router.push('/')
+            // onAuthStateChanged fires → currentUser updates → useEffect redirects to '/'
         } catch (err: any) {
-            setError('Failed to log in with Google.')
-            console.error(err)
+            if (err?.code === 'auth/popup-blocked') {
+                setError('Popup was blocked by your browser. Please allow popups for this site and try again.')
+            } else if (err?.code === 'auth/popup-closed-by-user') {
+                // user dismissed — no error message needed
+            } else {
+                setError('Failed to sign in with Google. Please try again.')
+                console.error(err)
+            }
         }
-        setLoading(false)
     }
 
     return (
@@ -129,7 +142,7 @@ export default function LoginPage() {
                     <button
                         onClick={handleGoogleSignIn}
                         disabled={loading}
-                        className="mt-6 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 hover:border-white/20"
+                        className="mt-6 w-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium py-3 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 hover:border-white/20 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                         <FcGoogle className="w-5 h-5" />
                         Google

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { DryRunStep } from './DryRunVisualizer'
+import MarkCompleteButton from '@/components/MarkCompleteButton'
 
 // ... existing imports
 
@@ -449,6 +450,9 @@ export default function DMTopicPage({
         <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent">
           {content.title}
         </h1>
+        <div className="mt-2 mb-2">
+          <MarkCompleteButton topicTitle={content.title} />
+        </div>
       </motion.div>
 
       {/* Tabs */}

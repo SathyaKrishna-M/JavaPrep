@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import CodeBlock from './CodeBlock'
 import { DryRunStep } from './DryRunVisualizer'
 import Accordion from './Accordion'
+import MarkCompleteButton from '@/components/MarkCompleteButton'
 import { 
   FiArrowRight, 
   FiCode, 
@@ -208,6 +209,9 @@ export default function TopicPage({ content }: TopicPageProps) {
         <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent">
           {content.title}
         </h1>
+        <div className="mt-2">
+          <MarkCompleteButton topicTitle={content.title} />
+        </div>
       </motion.div>
 
       {/* Tabs */}

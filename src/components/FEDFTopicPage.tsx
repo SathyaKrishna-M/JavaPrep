@@ -10,6 +10,7 @@ import {
   FiArrowRight, FiBook, FiTarget, FiZap, FiKey,
   FiCode, FiStar, FiAlertTriangle, FiCheckSquare,
 } from 'react-icons/fi'
+import MarkCompleteButton from '@/components/MarkCompleteButton'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -47,13 +48,20 @@ export interface FEDFContent {
 
 // ─── Subject detection ────────────────────────────────────────────────────────
 
-function useSubject() {
+const SUBJECT_MAP: Record<string, { name: string; href: string }> = {
+  'mathematics-data-science':         { name: 'Mathematics for Data Science',          href: '/subjects/mathematics-data-science' },
+  'mathematics-communication-systems':{ name: 'Mathematics for Communication Systems', href: '/subjects/mathematics-communication-systems' },
+  'computational-foundations-ai':     { name: 'Computational Foundations for AI',      href: '/subjects/computational-foundations-ai' },
+  'data-structures-algorithms-2':     { name: 'Data Structures & Algorithms 2',        href: '/subjects/data-structures-algorithms-2' },
+  'front-end-development-frameworks': { name: 'Front-End Development Frameworks',      href: '/subjects/front-end-development-frameworks' },
+}
+
+function useSubjectInfo() {
   const pathname = usePathname() ?? ''
-  if (pathname.includes('mathematics-data-science'))
-    return { name: 'Mathematics for Data Science', href: '/subjects/mathematics-data-science' }
-  if (pathname.includes('mathematics-communication-systems'))
-    return { name: 'Mathematics for Communication Systems', href: '/subjects/mathematics-communication-systems' }
-  return { name: 'Front-End Development Frameworks', href: '/subjects/front-end-development-frameworks' }
+  const segments = pathname.split('/').filter(Boolean)
+  const subjectId = segments[1] ?? ''
+  const meta = SUBJECT_MAP[subjectId] ?? { name: 'Subject', href: '/subjects' }
+  return { ...meta, subjectId }
 }
 
 // ─── Section card ─────────────────────────────────────────────────────────────
@@ -88,8 +96,9 @@ function SectionCard({
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function FEDFTopicPage({ content }: { content: FEDFContent }) {
-  const subject = useSubject()
+  const subject = useSubjectInfo()
   const [activeTab, setActiveTab] = useState<'explanation' | 'practice'>('explanation')
+
 
   const tabs = [
     { id: 'explanation' as const, label: 'Explanation', icon: <FiBook className="w-4 h-4" /> },
@@ -208,8 +217,11 @@ export default function FEDFTopicPage({ content }: { content: FEDFContent }) {
           {content.title}
         </h1>
         {content.subtitle && (
-          <p className="text-gray-400 text-sm">{content.subtitle}</p>
+          <p className="text-gray-400 text-sm mb-4">{content.subtitle}</p>
         )}
+        <div className="mt-4">
+          <MarkCompleteButton topicTitle={content.title} />
+        </div>
       </motion.div>
 
       {/* Tabs */}

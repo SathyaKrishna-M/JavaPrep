@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import MarkCompleteButton from '@/components/MarkCompleteButton'
 import CodeBlock from '@/components/CodeBlock'
 import Accordion from '@/components/Accordion'
 import AnimatedFlowchart, { FlowStep, FlowEdge } from '@/components/AnimatedFlowchart'
@@ -427,6 +428,9 @@ export default function DSDTopicPage({ content, subjectHref = '/subjects/digital
         <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-600 bg-clip-text text-transparent">
           {content.title}
         </h1>
+        <div className="mt-2">
+          <MarkCompleteButton topicTitle={content.title} />
+        </div>
       </motion.div>
 
       {/* Tabs */}

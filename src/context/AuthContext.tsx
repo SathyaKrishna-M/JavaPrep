@@ -9,6 +9,7 @@ import {
     GoogleAuthProvider
 } from 'firebase/auth'
 import { auth, googleProvider } from '@/lib/firebase'
+import { ensureUserDoc } from '@/lib/db'
 
 interface AuthContextType {
     currentUser: User | null
@@ -27,19 +28,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             setCurrentUser(user)
             setLoading(false)
+            if (user) ensureUserDoc(user).catch(console.error)
         })
-
         return unsubscribe
     }, [])
 
-    const googleSignIn = async () => {
-        try {
-            await signInWithPopup(auth, googleProvider)
-        } catch (error) {
-            console.error('Error signing in with Google', error)
-            throw error
-        }
-    }
+    // Must be called directly inside a click handler with no awaits before it
+    // so the browser recognises it as a trusted user gesture (prevents popup-blocked)
+    const googleSignIn = () => signInWithPopup(auth, googleProvider).then(() => {})
 
     const logout = async () => {
         try {
