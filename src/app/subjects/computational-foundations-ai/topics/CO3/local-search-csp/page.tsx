@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiActivity, FiTrendingUp, FiCode, FiCheckCircle } from 'react-icons/fi'
 
 const content = {
@@ -41,7 +42,7 @@ const content = {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300"><span className="text-cyan-400 font-semibold">Min-conflicts</span>: start with a random complete assignment, then repeatedly pick a conflicted variable and reassign it to the value that minimises the number of constraint violations.</p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`import random
+          <PyCode>{`import random
 
 def min_conflicts(variables, domains, constraints, max_steps=10000):
     # Random complete initial assignment
@@ -66,7 +67,7 @@ def min_conflicts(variables, domains, constraints, max_steps=10000):
 
 def conflicts(var, assignment, constraints):
     return sum(1 for neighbor in constraints.get(var, [])
-               if assignment.get(neighbor) == assignment[var])`}</pre>
+               if assignment.get(neighbor) == assignment[var])`}</PyCode>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
             <p className="text-green-300 font-semibold mb-1">Performance on N-Queens</p>
             <p className="text-gray-300 text-sm">Min-conflicts solves the million-queens problem in an average of 50 steps! Systematic backtracking would take astronomical time. The sparse constraint structure of n-queens makes the landscape easy to navigate.</p>
@@ -102,7 +103,7 @@ def conflicts(var, assignment, constraints):
       content: (
         <div className="space-y-4">
           <p className="text-gray-300"><span className="text-cyan-400 font-semibold">Simulated annealing</span> allows uphill moves (worsening) with a probability that decreases over time (temperature T). This allows escape from local optima while converging to a good solution.</p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`import math, random
+          <PyCode>{`import math, random
 
 def simulated_annealing(problem, schedule):
     current = problem.initial_state()
@@ -124,7 +125,7 @@ def simulated_annealing(problem, schedule):
 
 # Temperature schedule: exponential cooling
 def schedule(t, T0=100, alpha=0.995):
-    return T0 * (alpha ** t)`}</pre>
+    return T0 * (alpha ** t)`}</PyCode>
           <div className="bg-violet-500/10 p-4 rounded-lg border border-violet-500/30">
             <p className="text-violet-300 font-semibold mb-1">Key Insight</p>
             <p className="text-gray-300 text-sm">At high T: almost any move is accepted (random walk — explores). At low T: almost only improvements accepted (hill climbing — exploits). The cooling schedule bridges exploration and exploitation.</p>

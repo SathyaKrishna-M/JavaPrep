@@ -91,6 +91,7 @@ export default function SortingVisualizer() {
                 setCurrentStep(0);
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [selectedAlgorithm, originalItems]);
 
     // -------------------------------------------------------------------------

@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiRefreshCw, FiTrendingUp, FiCode, FiCheckCircle, FiActivity } from 'react-icons/fi'
 
 const content = {
@@ -42,7 +43,7 @@ const content = {
             <p className="text-gray-300">T = [[0.8, 0.2],   # from Sunny: P(Sunny)=0.8, P(Rainy)=0.2</p>
             <p className="text-gray-300 ml-4">[0.4, 0.6]]  # from Rainy: P(Sunny)=0.4, P(Rainy)=0.6</p>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`import numpy as np
+          <PyCode>{`import numpy as np
 
 T = np.array([[0.8, 0.2],
               [0.4, 0.6]])  # transition matrix
@@ -58,7 +59,7 @@ for n in [1, 5, 10, 50]:
 eigenvalues, eigenvectors = np.linalg.eig(T.T)
 stationary = eigenvectors[:, np.argmax(eigenvalues)].real
 stationary /= stationary.sum()
-print(f"Stationary: Sunny={stationary[0]:.3f}, Rainy={stationary[1]:.3f}")`}</pre>
+print(f"Stationary: Sunny={stationary[0]:.3f}, Rainy={stationary[1]:.3f}")`}</PyCode>
         </div>
       ),
     },
@@ -111,7 +112,7 @@ print(f"Stationary: Sunny={stationary[0]:.3f}, Rainy={stationary[1]:.3f}")`}</pr
             <p className="text-cyan-300">α_t(i) = P(O_1..O_t, X_t=s_i | model)</p>
             <p className="text-gray-400 text-xs mt-1">Forward variable: probability of partial observation up to t AND being in state i</p>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def forward_algorithm(observations, pi, A, B):
+          <PyCode>{`def forward_algorithm(observations, pi, A, B):
     """
     pi: initial distribution [N]
     A:  transition matrix [N x N]
@@ -134,7 +135,7 @@ print(f"Stationary: Sunny={stationary[0]:.3f}, Rainy={stationary[1]:.3f}")`}</pr
     # Total probability of observation sequence
     return alpha, alpha[-1].sum()
 
-# Filtering: P(X_t | O_1..O_t) = alpha_t / sum(alpha_t)`}</pre>
+# Filtering: P(X_t | O_1..O_t) = alpha_t / sum(alpha_t)`}</PyCode>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
             <p className="text-blue-300 font-semibold mb-1">Complexity</p>
             <p className="text-gray-300 text-sm">Forward algorithm: O(N²T) where N = number of states, T = sequence length. Far more efficient than brute-force O(N^T).</p>
@@ -148,7 +149,7 @@ print(f"Stationary: Sunny={stationary[0]:.3f}, Rainy={stationary[1]:.3f}")`}</pr
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">The <span className="text-cyan-400 font-semibold">Viterbi algorithm</span> finds the most probable hidden state sequence given observations — "decoding." It is identical to forward algorithm but uses <em>max</em> instead of <em>sum</em>.</p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def viterbi(observations, pi, A, B):
+          <PyCode>{`def viterbi(observations, pi, A, B):
     T = len(observations)
     N = len(pi)
     delta = np.zeros((T, N))   # max probability
@@ -169,7 +170,7 @@ print(f"Stationary: Sunny={stationary[0]:.3f}, Rainy={stationary[1]:.3f}")`}</pr
     for t in range(T-1, 0, -1):
         path.insert(0, psi[t, path[0]])
 
-    return path, delta[-1].max()  # best path and its probability`}</pre>
+    return path, delta[-1].max()  # best path and its probability`}</PyCode>
           <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
             <p className="text-green-300 font-semibold mb-1">Forward vs Viterbi</p>
             <p className="text-gray-300 text-sm">Forward (sum): P(O|model) — total probability, used for recognition. Viterbi (max + backtrack): argmax P(X|O) — best state sequence, used for decoding. Same complexity O(N²T).</p>

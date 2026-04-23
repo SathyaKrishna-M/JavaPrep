@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiGrid, FiShare2, FiList, FiCode, FiCheckCircle, FiAlertCircle } from 'react-icons/fi'
 
 const content = {
@@ -34,7 +35,7 @@ const content = {
           <p className="text-gray-300">
             Graphs are the most natural structure for representing <span className="text-cyan-400 font-semibold">state spaces</span> in search problems. Each node is a state; each directed edge is an action with associated cost.
           </p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`# Graph as adjacency dict with costs
+          <PyCode>{`# Graph as adjacency dict with costs
 romania_map = {
     'Arad':     [('Zerind', 75), ('Sibiu', 140), ('Timisoara', 118)],
     'Zerind':   [('Arad', 75), ('Oradea', 71)],
@@ -45,7 +46,7 @@ romania_map = {
 }
 
 def get_neighbors(graph, city):
-    return graph.get(city, [])`}</pre>
+    return graph.get(city, [])`}</PyCode>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
               <p className="text-blue-300 font-semibold mb-2">Directed Graph</p>
@@ -75,7 +76,7 @@ def get_neighbors(graph, city):
               <li>A search tree can be infinite even if the state space is finite (due to cycles)</li>
             </ul>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`# Decision tree as nested dict
+          <PyCode>{`# Decision tree as nested dict
 weather_tree = {
     'outlook': {
         'Sunny': {'humidity': {
@@ -92,7 +93,7 @@ def classify(tree, sample):
     if isinstance(tree, str):
         return tree
     attr = list(tree.keys())[0]
-    return classify(tree[attr][sample[attr]], sample)`}</pre>
+    return classify(tree[attr][sample[attr]], sample)`}</PyCode>
         </div>
       ),
     },
@@ -131,7 +132,7 @@ IF diagnose_flu THEN recommend_rest_and_fluids`}</pre>
           <p className="text-gray-300">
             A <span className="text-cyan-400 font-semibold">constraint network</span> represents a CSP: nodes are variables, edges connect variables that share a constraint. Used to model scheduling, configuration, and combinatorial problems.
           </p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`# Constraint network for map coloring
+          <PyCode>{`# Constraint network for map coloring
 variables = ['WA', 'NT', 'SA', 'Q', 'NSW', 'V', 'T']
 domains = {v: ['red', 'green', 'blue'] for v in variables}
 constraints = [
@@ -147,7 +148,7 @@ def is_consistent(assignment, var, value):
             if assignment[v2] == value: return False
         if v2 == var and v1 in assignment:
             if assignment[v1] == value: return False
-    return True`}</pre>
+    return True`}</PyCode>
         </div>
       ),
     },

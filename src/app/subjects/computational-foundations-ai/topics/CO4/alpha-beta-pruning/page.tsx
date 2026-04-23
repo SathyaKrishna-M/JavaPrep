@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiScissors, FiTrendingDown, FiCode, FiCheckCircle } from 'react-icons/fi'
 
 const content = {
@@ -49,7 +50,7 @@ const content = {
       icon: <FiCode className="w-6 h-6" />,
       content: (
         <div className="space-y-4">
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def alpha_beta(state, depth, alpha, beta, is_max, game):
+          <PyCode>{`def alpha_beta(state, depth, alpha, beta, is_max, game):
     if depth == 0 or game.is_terminal(state):
         return game.evaluate(state)
 
@@ -73,7 +74,7 @@ const content = {
         return value
 
 # Initial call
-best = alpha_beta(initial_state, max_depth, float('-inf'), float('inf'), True, game)`}</pre>
+best = alpha_beta(initial_state, max_depth, float('-inf'), float('inf'), True, game)`}</PyCode>
         </div>
       ),
     },

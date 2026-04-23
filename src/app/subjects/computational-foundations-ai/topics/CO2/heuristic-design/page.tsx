@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiTarget, FiTrendingUp, FiCheckCircle, FiAlertCircle } from 'react-icons/fi'
 
 const content = {
@@ -93,7 +94,7 @@ const content = {
             <p className="text-amber-300 font-semibold mb-2">h₂ Dominates h₁</p>
             <p className="text-gray-300 text-sm">h₂(n) ≥ h₁(n) for all n. Manhattan distance is always ≥ misplaced tile count, because each misplaced tile contributes at least 1 to Manhattan distance. A more informative (larger) admissible heuristic is always preferred.</p>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def h1_misplaced(state, goal):
+          <PyCode>{`def h1_misplaced(state, goal):
     """Count misplaced tiles (excluding blank)."""
     return sum(1 for i in range(9) if state[i] != 0 and state[i] != goal[i])
 
@@ -110,7 +111,7 @@ def h2_manhattan(state, goal):
 state = (7,2,4,5,0,6,8,3,1)
 goal  = (0,1,2,3,4,5,6,7,8)
 print(h1_misplaced(state, goal))  # 6
-print(h2_manhattan(state, goal))  # 18`}</pre>
+print(h2_manhattan(state, goal))  # 18`}</PyCode>
         </div>
       ),
     },

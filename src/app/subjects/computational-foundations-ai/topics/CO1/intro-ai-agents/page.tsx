@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiCpu, FiClock, FiLayers, FiUser, FiZap, FiCode } from 'react-icons/fi'
 
 const content = {
@@ -282,7 +283,7 @@ const content = {
             A <span className="text-cyan-400 font-semibold">simple reflex agent</span> acts only on the <strong>current percept</strong>, ignoring history. It uses condition-action
             rules (if-then rules). While simple, it illustrates the core agent-loop structure used in all AI agents.
           </p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`# Simple Reflex Agent — Vacuum World Example
+          <PyCode>{`# Simple Reflex Agent — Vacuum World Example
 # Environment: Two rooms (A, B), each can be Clean or Dirty
 # Sensors: current location + dirt status
 # Actuators: Suck, Move Left, Move Right
@@ -355,7 +356,7 @@ simulate()
 # 1     A          ('A', 'Dirty')       Suck            Clean      Dirty
 # 2     A          ('A', 'Clean')       Move_Right      Clean      Dirty
 # 3     B          ('B', 'Dirty')       Suck            Clean      Clean
-# All rooms clean! Agent goal achieved.`}</pre>
+# All rooms clean! Agent goal achieved.`}</PyCode>
           <div className="bg-purple-500/10 p-4 rounded-lg border border-purple-500/30">
             <p className="text-violet-400 font-semibold mb-2">Limitations of Simple Reflex Agents:</p>
             <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">

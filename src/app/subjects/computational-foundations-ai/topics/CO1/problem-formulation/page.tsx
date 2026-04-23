@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiMap, FiBox, FiTarget, FiCheckCircle, FiAlertCircle, FiCode } from 'react-icons/fi'
 
 const content = {
@@ -194,7 +195,7 @@ const content = {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">Search algorithms work with <span className="text-cyan-400 font-semibold">Node</span> objects that track state, parent, action, and path cost.</p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`from dataclasses import dataclass, field
+          <PyCode>{`from dataclasses import dataclass, field
 from typing import Optional, Any
 
 @dataclass
@@ -229,7 +230,7 @@ class Node:
 start = Node(state='Arad')
 child = Node(state='Sibiu', parent=start, action='Go(Sibiu)', path_cost=140, depth=1)
 print(child.solution())  # ['Go(Sibiu)']
-print(child.path_cost)   # 140`}</pre>
+print(child.path_cost)   # 140`}</PyCode>
         </div>
       ),
     },

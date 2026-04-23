@@ -1,43 +1,80 @@
 'use client'
 
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FiHome, FiChevronRight, FiRadio } from 'react-icons/fi'
+import { mfcsTopics, Topic } from '@/data/mfcs-topics'
+import TopicListItem from '@/components/TopicListItem'
+import SectionHeader from '@/components/SectionHeader'
+import GradientDivider from '@/components/GradientDivider'
+import TopicSearch from '@/components/TopicSearch'
+import Fuse from 'fuse.js'
 
-const courseOutcomes = [
-  {
-    co: 'CO1',
-    title: 'Signal Representation',
-    desc: 'Sinusoids, amplitude, frequency, phase, superposition, energy & power of periodic signals, phasor notation; describe BPSK waveforms mathematically.',
+interface Section {
+  title: string
+  subtitle: string
+  topics: Topic[]
+}
+
+const groupTopics = (topics: Topic[]): Record<string, Section> => ({
+  co1: {
+    title: 'CO-1: Signal Representation',
+    subtitle: 'Sinusoids, amplitude, frequency, phase, superposition, energy & power of periodic signals, phasor notation, BPSK waveforms',
+    topics: topics.filter(t => t.co === 'CO1'),
   },
-  {
-    co: 'CO2',
-    title: 'Fourier Analysis',
-    desc: 'Fourier Series & Fourier Transform, deriving Fourier coefficients, spectrum of a BPSK signal, Parseval\'s theorem, convolution in frequency domain.',
+  co2: {
+    title: 'CO-2: Fourier Analysis',
+    subtitle: 'Fourier Series & Fourier Transform, Fourier coefficients, spectrum of BPSK, Parseval\'s theorem, convolution in frequency domain',
+    topics: topics.filter(t => t.co === 'CO2'),
   },
-  {
-    co: 'CO3',
-    title: 'LTI Systems & Matched Filters',
-    desc: 'Linear time-invariant systems, matched filter design, how the channel distorts signals and how the receiver recovers them.',
+  co3: {
+    title: 'CO-3: LTI Systems & Matched Filters',
+    subtitle: 'Linear time-invariant systems, impulse response, matched filter design, channel distortion and receiver recovery',
+    topics: topics.filter(t => t.co === 'CO3'),
   },
-  {
-    co: 'CO4',
-    title: 'Z-Transform & FIR Filters',
-    desc: 'Z-transform fundamentals, FIR filter design and implementation of the matched filter in discrete time.',
+  co4: {
+    title: 'CO-4: Z-Transform & FIR Filters',
+    subtitle: 'Z-transform fundamentals, region of convergence, poles & zeros, FIR filter design, discrete matched filter implementation',
+    topics: topics.filter(t => t.co === 'CO4'),
   },
-  {
-    co: 'CO5',
-    title: 'Probability & BER Analysis',
-    desc: 'Probability review, Bit Error Rate (BER) analysis, Monte Carlo simulation, Q-function and noise modeling.',
+  co5: {
+    title: 'CO-5: Probability & BER Analysis',
+    subtitle: 'AWGN noise model, Q-function, Bit Error Rate derivation for BPSK, Monte Carlo simulation, SNR vs BER curves',
+    topics: topics.filter(t => t.co === 'CO5'),
   },
-  {
-    co: 'CO6',
-    title: 'Shannon Capacity & Information Theory',
-    desc: 'Shannon channel capacity, computing the gap between BPSK and the theoretical limit, information-theoretic fundamentals.',
+  co6: {
+    title: 'CO-6: Shannon Capacity & Information Theory',
+    subtitle: 'Shannon channel capacity, bandwidth-power tradeoff, entropy, mutual information, gap between BPSK and Shannon limit',
+    topics: topics.filter(t => t.co === 'CO6'),
   },
-]
+})
 
 export default function MFCSPage() {
+  const [searchQuery, setSearchQuery] = useState('')
+  const sections = useMemo(() => groupTopics(mfcsTopics), [])
+
+  const filteredSections = useMemo(() => {
+    if (!searchQuery.trim()) return sections
+
+    const fuse = new Fuse(mfcsTopics, {
+      keys: ['title', 'description'],
+      threshold: 0.3,
+      includeScore: true,
+    })
+
+    const resultIds = new Set(fuse.search(searchQuery).map(r => r.item.id))
+
+    const filtered: Record<string, Section> = {}
+    Object.entries(sections).forEach(([key, section]) => {
+      const filteredTopics = section.topics.filter(t => resultIds.has(t.id))
+      if (filteredTopics.length > 0) {
+        filtered[key] = { ...section, topics: filteredTopics }
+      }
+    })
+    return filtered
+  }, [searchQuery, sections])
+
   return (
     <div className="relative">
       {/* Background orbs */}
@@ -55,8 +92,7 @@ export default function MFCSPage() {
           className="flex items-center gap-2 text-sm text-gray-400 mb-8"
         >
           <Link href="/" className="hover:text-amber-400 transition-colors flex items-center gap-1">
-            <FiHome className="w-4 h-4" />
-            <span>Home</span>
+            <FiHome className="w-4 h-4" /><span>Home</span>
           </Link>
           <FiChevronRight className="w-4 h-4" />
           <Link href="/subjects" className="hover:text-amber-400 transition-colors">Subjects</Link>
@@ -75,53 +111,59 @@ export default function MFCSPage() {
           <div className="flex items-center gap-4">
             <FiRadio className="w-12 h-12 md:w-16 md:h-16 text-amber-400" />
             <div>
-              <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-amber-400 to-orange-300 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-400 to-orange-300 bg-clip-text text-transparent leading-tight">
                 Mathematics for Communication Systems
               </h1>
-              <div className="flex items-center gap-3 mt-1">
-                <p className="text-gray-400 text-sm">MFCS &nbsp;·&nbsp; 4 Credits &nbsp;·&nbsp; 25-26 3rd Sem</p>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">ECE</span>
-              </div>
+              <p className="text-gray-400 mt-1 text-sm">MFCS &nbsp;·&nbsp; 4 Credits &nbsp;·&nbsp; 25-26 3rd Sem &nbsp;·&nbsp; ECE</p>
             </div>
           </div>
         </motion.div>
 
-        {/* Course Outcomes */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-10"
-        >
-          <h2 className="text-xl font-semibold text-gray-200 mb-6">Course Outcomes</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {courseOutcomes.map((co, i) => (
-              <motion.div
-                key={co.co}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 * i }}
-                className="rounded-xl border border-white/10 bg-white/5 p-5 hover:border-amber-500/40 hover:bg-amber-500/5 transition-all duration-300"
-              >
-                <span className="text-xs font-bold text-amber-400 uppercase tracking-widest">{co.co}</span>
-                <h3 className="text-white font-semibold mt-1 mb-2">{co.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{co.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        {/* Search */}
+        <TopicSearch query={searchQuery} onQueryChange={setSearchQuery} />
 
-        {/* Coming Soon */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="text-center py-16 border border-dashed border-white/10 rounded-2xl"
-        >
-          <p className="text-4xl mb-3">🚧</p>
-          <h3 className="text-xl font-semibold text-gray-300 mb-2">Topics Coming Soon</h3>
-          <p className="text-gray-500 text-sm">Content for this subject is being prepared.</p>
-        </motion.div>
+        {/* Topic Sections */}
+        <div className="space-y-10 md:space-y-14">
+          {Object.entries(filteredSections).map(([key, section], sectionIndex) => {
+            if (section.topics.length === 0) return null
+            return (
+              <motion.section
+                key={key}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.6, delay: sectionIndex * 0.1 }}
+                className="relative"
+              >
+                <SectionHeader id={key} title={section.title} subtitle={section.subtitle} />
+                <div className="space-y-1.5">
+                  {section.topics.map((topic, index) => (
+                    <TopicListItem key={topic.id} topic={topic} index={index} />
+                  ))}
+                </div>
+                {sectionIndex < Object.keys(filteredSections).length - 1 && <GradientDivider />}
+              </motion.section>
+            )
+          })}
+        </div>
+
+        {/* Empty state */}
+        {searchQuery && Object.keys(filteredSections).length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-16"
+          >
+            <div className="text-6xl mb-4">🔍</div>
+            <h3 className="text-2xl font-bold text-gray-300 mb-2">No topics found</h3>
+            <p className="text-gray-400">
+              Try adjusting your search or{' '}
+              <button onClick={() => setSearchQuery('')} className="text-amber-400 hover:text-amber-300 underline">
+                clear the search
+              </button>
+            </p>
+          </motion.div>
+        )}
       </div>
     </div>
   )

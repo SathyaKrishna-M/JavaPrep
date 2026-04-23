@@ -8,6 +8,10 @@ import { dsdTopics } from '@/data/dsd-topics'
 import { fwdTopics } from '@/data/fwd-topics'
 import { topics as mathTopics } from '@/data/math-ai-topics'
 import { topics as cfaiTopics } from '@/data/cfai-topics'
+import { topics as dsa2Topics } from '@/data/dsa2-topics'
+import { fedfTopics } from '@/data/fedf-topics'
+import { mdsTopics } from '@/data/mds-topics'
+import { mfcsTopics } from '@/data/mfcs-topics'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useMemo, useEffect } from 'react'
 import { FiChevronDown, FiChevronRight } from 'react-icons/fi'
@@ -17,15 +21,19 @@ export default function Sidebar() {
   const [openCOs, setOpenCOs] = useState<Set<string>>(new Set(['CO1', 'CO2', 'CO3', 'CO4', 'CO5', 'CO6']))
 
   const isDSD = pathname?.startsWith('/subjects/digital-system-design')
-  const isDS = pathname?.startsWith('/subjects/data-structures')
+  const isDSA2 = pathname?.startsWith('/subjects/data-structures-algorithms-2')
+  const isDS = pathname?.startsWith('/subjects/data-structures') && !isDSA2
   const isFWD = pathname?.startsWith('/subjects/web-development')
   const isMathAI = pathname?.startsWith('/subjects/mathematics-for-ai')
   const isCFAI = pathname?.startsWith('/subjects/computational-foundations-ai')
+  const isFEDF = pathname?.startsWith('/subjects/front-end-development-frameworks')
+  const isMDS = pathname?.startsWith('/subjects/mathematics-data-science')
+  const isMCS = pathname?.startsWith('/subjects/mathematics-communication-systems')
 
   // Reset open COs when subject changes, or keep them open by default
   useEffect(() => {
     setOpenCOs(new Set(['CO1', 'CO2', 'CO3', 'CO4', 'CO5', 'CO6']))
-  }, [isDSD, isDS, isFWD, isMathAI, isCFAI])
+  }, [isDSD, isDS, isDSA2, isFWD, isMathAI, isCFAI, isFEDF, isMDS, isMCS])
 
   let currentTopics = javaTopics
   let subjectTitle = 'Java Topics'
@@ -35,6 +43,10 @@ export default function Sidebar() {
     currentTopics = dsdTopics
     subjectTitle = 'DSD Topics'
     subjectSubtitle = 'Digital System Design'
+  } else if (isDSA2) {
+    currentTopics = dsa2Topics
+    subjectTitle = 'DSA2 Topics'
+    subjectSubtitle = 'Data Structures & Algorithms 2'
   } else if (isDS) {
     currentTopics = dsTopics
     subjectTitle = 'DS Topics'
@@ -51,6 +63,18 @@ export default function Sidebar() {
     currentTopics = cfaiTopics
     subjectTitle = 'CFAI'
     subjectSubtitle = 'Computational Foundations for AI'
+  } else if (isFEDF) {
+    currentTopics = fedfTopics
+    subjectTitle = 'FEDF Topics'
+    subjectSubtitle = 'Front-End Development Frameworks'
+  } else if (isMDS) {
+    currentTopics = mdsTopics
+    subjectTitle = 'MDS Topics'
+    subjectSubtitle = 'Mathematics for Data Science'
+  } else if (isMCS) {
+    currentTopics = mfcsTopics
+    subjectTitle = 'MCS Topics'
+    subjectSubtitle = 'Mathematics for Communication Systems'
   }
 
   const toggleCO = (co: string) => {
@@ -86,6 +110,16 @@ export default function Sidebar() {
         CO6: 'CO6 — Applications',
       }
     }
+    if (isDSA2) {
+      return {
+        CO1: 'CO1 — Trees & Self-Balancing Structures',
+        CO2: 'CO2 — Range Queries & Graphs',
+        CO3: 'CO3 — Shortest Paths & Sorting',
+        CO4: 'CO4 — Advanced Sorting, Greedy & DP',
+        CO5: 'CO5 — Advanced Topics',
+        CO6: 'CO6 — Applications',
+      }
+    }
     if (isFWD) {
       return {
         CO1: 'CO1 — Internet Fundamentals, HTML & Introductory CSS',
@@ -116,6 +150,36 @@ export default function Sidebar() {
         CO6: 'CO6 — Hybrid AI & Ethics',
       }
     }
+    if (isFEDF) {
+      return {
+        CO1: 'CO1 — Front-End Engineering Foundations',
+        CO2: 'CO2 — JavaScript & TypeScript for Frameworks',
+        CO3: 'CO3 — React Component Model',
+        CO4: 'CO4 — State Architecture & API Integration',
+        CO5: 'CO5 — Routing, Forms & Performance',
+        CO6: 'CO6 — Build Systems, Testing & Deployment',
+      }
+    }
+    if (isMDS) {
+      return {
+        CO1: 'CO1 — Introduction to Data Science',
+        CO2: 'CO2 — Descriptive Statistics',
+        CO3: 'CO3 — Probability Theory',
+        CO4: 'CO4 — Inferential Statistics',
+        CO5: 'CO5 — Regression Analysis',
+        CO6: 'CO6 — Visualization & Decision Making',
+      }
+    }
+    if (isMCS) {
+      return {
+        CO1: 'CO1 — Signal Representation',
+        CO2: 'CO2 — Fourier Analysis',
+        CO3: 'CO3 — LTI Systems & Matched Filters',
+        CO4: 'CO4 — Z-Transform & FIR Filters',
+        CO5: 'CO5 — Probability & BER Analysis',
+        CO6: 'CO6 — Shannon Capacity & Information Theory',
+      }
+    }
     return {
       CO1: 'CO1 — Basic Java Programming Constructs',
       CO2: 'CO2 — Arrays & Algorithmic Problem Solving',
@@ -124,7 +188,7 @@ export default function Sidebar() {
       CO5: 'CO5 — Advanced OOP & System Architecture',
       CO6: 'CO6 — Robust & Scalable Java Applications',
     }
-  }, [isDSD, isDS, isFWD, isMathAI, isCFAI])
+  }, [isDSD, isDS, isDSA2, isFWD, isMathAI, isCFAI, isFEDF, isMDS, isMCS])
 
   // Group topics by CO
   const topicsByCO = useMemo(() => {

@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiStar, FiTarget, FiTrendingUp, FiCheckCircle, FiCode } from 'react-icons/fi'
 
 const content = {
@@ -51,7 +52,7 @@ const content = {
               </ul>
             </div>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`import heapq
+          <PyCode>{`import heapq
 
 def greedy_bfs(graph, start, goal, h):
     frontier = [(h(start), start)]
@@ -69,7 +70,7 @@ def greedy_bfs(graph, start, goal, h):
             if neighbor not in explored:
                 parent.setdefault(neighbor, node)
                 heapq.heappush(frontier, (h(neighbor), neighbor))
-    return None`}</pre>
+    return None`}</PyCode>
         </div>
       ),
     },
@@ -85,7 +86,7 @@ def greedy_bfs(graph, start, goal, h):
             <p className="text-violet-300 font-semibold mb-2">Optimality Proof Sketch</p>
             <p className="text-gray-300 text-sm">When A* selects a goal node G from the frontier, its f(G) = g(G) (since h(goal)=0). Any unexpanded node n on an optimal path has f(n) = g(n) + h(n) ≤ g(n) + h*(n) = C* (because h is admissible). So A* would have expanded n before G if G were suboptimal. Contradiction → G is optimal.</p>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`import heapq
+          <PyCode>{`import heapq
 
 def astar(graph, start, goal, h):
     # frontier: (f, g, state)
@@ -109,7 +110,7 @@ def astar(graph, start, goal, h):
                 parent[neighbor] = node
                 f_val = new_g + h(neighbor)
                 heapq.heappush(frontier, (f_val, new_g, neighbor))
-    return None, float('inf')`}</pre>
+    return None, float('inf')`}</PyCode>
         </div>
       ),
     },

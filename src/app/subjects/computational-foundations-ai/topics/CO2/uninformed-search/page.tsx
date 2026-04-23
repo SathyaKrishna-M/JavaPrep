@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiSearch, FiGitBranch, FiLayers, FiClock, FiAlignLeft, FiTrendingDown, FiGrid, FiBarChart2 } from 'react-icons/fi'
 
 const content = {
@@ -80,7 +81,7 @@ const content = {
             </ul>
             <p className="text-gray-400 text-sm mt-2">Example: b=10, d=10 → over 10 billion nodes in memory. BFS is impractical for large d.</p>
           </div>
-          <pre className="bg-black/40 p-3 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`from collections import deque
+          <PyCode>{`from collections import deque
 
 def bfs(graph, start, goal):
     """
@@ -122,7 +123,7 @@ romania = {
 
 path = bfs(romania, 'Arad', 'Bucharest')
 print("BFS path:", path)
-# Output: BFS path: ['Arad', 'Sibiu', 'Fagaras', 'Bucharest']`}</pre>
+# Output: BFS path: ['Arad', 'Sibiu', 'Fagaras', 'Bucharest']`}</PyCode>
         </div>
       ),
     },
@@ -146,7 +147,7 @@ print("BFS path:", path)
           <p className="text-gray-300">
             The space advantage is dramatic: where BFS would need O(b<sup>d</sup>) memory, DFS only needs O(b·m). For b=10, m=20, DFS needs just 200 nodes vs BFS's 10<sup>20</sup>. This makes DFS the preferred base for memory-sensitive algorithms.
           </p>
-          <pre className="bg-black/40 p-3 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def dfs(graph, start, goal):
+          <PyCode>{`def dfs(graph, start, goal):
     """
     DFS graph search using an explicit stack.
     """
@@ -185,7 +186,7 @@ def dfs_recursive(graph, node, goal, path=None, explored=None):
                                    path + [neighbour], explored)
             if result:
                 return result
-    return None`}</pre>
+    return None`}</PyCode>
         </div>
       ),
     },
@@ -208,7 +209,7 @@ def dfs_recursive(graph, node, goal, path=None, explored=None):
           <p className="text-gray-300">
             A critical subtlety: UCS expands nodes in order of path cost. The goal test is applied when a node is <em>popped from the frontier</em>, not when it is first generated. This guarantees optimality — by the time we pop the goal, we have found the cheapest route to it.
           </p>
-          <pre className="bg-black/40 p-3 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`import heapq
+          <PyCode>{`import heapq
 
 def ucs(graph, start, goal):
     """
@@ -240,7 +241,7 @@ def ucs(graph, start, goal):
 path, cost = ucs(romania, 'Arad', 'Bucharest')
 print(f"UCS path: {path}")
 print(f"Total cost: {cost}")
-# Optimal: Arad -> Sibiu -> Rimnicu -> Pitesti -> Bucharest, cost = 418`}</pre>
+# Optimal: Arad -> Sibiu -> Rimnicu -> Pitesti -> Bucharest, cost = 418`}</PyCode>
           <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-600">
             <p className="text-green-400 font-semibold mb-2">Trace on Romania (Arad → Bucharest):</p>
             <ol className="list-decimal list-inside text-gray-300 space-y-1 text-sm">
@@ -280,7 +281,7 @@ print(f"Total cost: {cost}")
           <p className="text-gray-300">
             <span className="text-yellow-300">Why is the repetition overhead small?</span> In a tree with branching factor b, the number of nodes at depth d is b<sup>d</sup>, while all previous levels combined are b<sup>d-1</sup> + b<sup>d-2</sup> + … ≈ b<sup>d</sup>/(b-1). So the total extra work of re-generating is at most a constant factor (b/(b-1)), e.g., for b=10 it is only 11% overhead. IDS is the <em>preferred uninformed algorithm</em> for large search spaces.
           </p>
-          <pre className="bg-black/40 p-3 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def depth_limited_search(graph, node, goal, limit, path=None, explored=None):
+          <PyCode>{`def depth_limited_search(graph, node, goal, limit, path=None, explored=None):
     """DLS: DFS with a depth cutoff."""
     if path is None: path = [node]
     if explored is None: explored = set([node])
@@ -315,7 +316,7 @@ def iterative_deepening_search(graph, start, goal, max_depth=50):
     return None
 
 path = iterative_deepening_search(romania, 'Arad', 'Bucharest')
-print("IDS path:", path)`}</pre>
+print("IDS path:", path)`}</PyCode>
         </div>
       ),
     },

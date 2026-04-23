@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiBarChart2, FiTarget, FiCheckCircle, FiCode } from 'react-icons/fi'
 
 const content = {
@@ -57,7 +58,7 @@ const content = {
             <p className="text-violet-300 font-semibold mb-2">Rationale</p>
             <p className="text-gray-300 text-sm">A high-degree variable constrains many others. Assigning it first reduces the domains of the most neighbors, giving the most information about remaining variables early.</p>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def select_variable(variables, assignment, domains, constraints):
+          <PyCode>{`def select_variable(variables, assignment, domains, constraints):
     unassigned = [v for v in variables if v not in assignment]
 
     # MRV: fewest remaining values
@@ -70,7 +71,7 @@ const content = {
     # Tie-break with Degree heuristic
     def degree(v):
         return sum(1 for n in constraints[v] if n not in assignment)
-    return max(mrv_vars, key=degree)`}</pre>
+    return max(mrv_vars, key=degree)`}</PyCode>
         </div>
       ),
     },
@@ -84,7 +85,7 @@ const content = {
             <p className="text-blue-300 font-semibold mb-2">Why Succeed-First for Values?</p>
             <p className="text-gray-300 text-sm">For variables, we want to fail fast (MRV). For values, once we've chosen a variable, we want to find a solution, so we try the value most likely to lead to a complete solution. LCV gives the best chance of succeeding without backtracking.</p>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def order_values(var, assignment, domains, constraints):
+          <PyCode>{`def order_values(var, assignment, domains, constraints):
     def conflicts(value):
         # Count values ruled out in all neighbors
         count = 0
@@ -97,7 +98,7 @@ const content = {
         return count
 
     # Sort by fewest conflicts (ascending)
-    return sorted(domains[var], key=conflicts)`}</pre>
+    return sorted(domains[var], key=conflicts)`}</PyCode>
         </div>
       ),
     },

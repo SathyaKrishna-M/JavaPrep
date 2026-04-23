@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiCode, FiCpu, FiLayers, FiZap, FiCheckCircle } from 'react-icons/fi'
 
 const content = {
@@ -14,7 +15,7 @@ const content = {
           <p className="text-gray-300">
             Recursion is the backbone of many AI algorithms — DFS, minimax, backtracking all use it. A recursive function calls itself with a simpler subproblem until reaching a <span className="text-cyan-400 font-semibold">base case</span>.
           </p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`# Recursive DFS — trace with depth
+          <PyCode>{`# Recursive DFS — trace with depth
 def dfs(graph, node, goal, visited=None, depth=0):
     if visited is None:
         visited = set()
@@ -36,7 +37,7 @@ def dfs(graph, node, goal, visited=None, depth=0):
 # Call stack trace for dfs({A:[B,C], B:[D], C:[]}, 'A', 'D'):
 # Visiting: A
 #   Visiting: B
-#     Visiting: D  ← Goal found!`}</pre>
+#     Visiting: D  ← Goal found!`}</PyCode>
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/30">
             <p className="text-amber-300 font-semibold mb-1">Base Case Rule</p>
             <p className="text-gray-300 text-sm">Every recursive function must have a base case that stops recursion. Without it, you get a stack overflow (RecursionError in Python). Python's default recursion limit is 1000 — use <code className="text-green-300">sys.setrecursionlimit()</code> for deeper search.</p>
@@ -52,7 +53,7 @@ def dfs(graph, node, goal, visited=None, depth=0):
           <p className="text-gray-300">
             AI search algorithms need to represent <span className="text-cyan-400 font-semibold">states</span> and <span className="text-cyan-400 font-semibold">nodes</span> as objects with well-defined attributes and methods.
           </p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`class Node:
+          <PyCode>{`class Node:
     """A node in the search tree."""
     def __init__(self, state, parent=None, action=None, cost=0):
         self.state = state
@@ -87,7 +88,7 @@ def dfs(graph, node, goal, visited=None, depth=0):
         while node.parent:
             actions.append(node.action)
             node = node.parent
-        return list(reversed(actions))`}</pre>
+        return list(reversed(actions))`}</PyCode>
         </div>
       ),
     },
@@ -99,7 +100,7 @@ def dfs(graph, node, goal, visited=None, depth=0):
           <p className="text-gray-300">
             <span className="text-cyan-400 font-semibold">Dataclasses</span> reduce boilerplate for classes that primarily hold data. They auto-generate <code className="text-green-300">__init__</code>, <code className="text-green-300">__repr__</code>, and <code className="text-green-300">__eq__</code>.
           </p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`from dataclasses import dataclass, field
+          <PyCode>{`from dataclasses import dataclass, field
 from typing import Optional, Tuple
 
 @dataclass(order=True)  # enables <, > comparisons
@@ -116,7 +117,7 @@ class SearchNode:
 root = SearchNode(path_cost=0, state='Arad')
 child = SearchNode(path_cost=140, state='Sibiu', parent=root, action='Go(Sibiu)')
 print(root < child)   # True — useful for heapq
-print(child)          # SearchNode(path_cost=140, state='Sibiu', ...)`}</pre>
+print(child)          # SearchNode(path_cost=140, state='Sibiu', ...)`}</PyCode>
         </div>
       ),
     },
@@ -128,7 +129,7 @@ print(child)          # SearchNode(path_cost=140, state='Sibiu', ...)`}</pre>
           <p className="text-gray-300">
             <span className="text-cyan-400 font-semibold">Type hints</span> make AI code more readable, help IDEs catch bugs, and serve as documentation.
           </p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`from typing import Optional, List, Dict, Tuple, Set, Callable, TypeVar
+          <PyCode>{`from typing import Optional, List, Dict, Tuple, Set, Callable, TypeVar
 
 State = TypeVar('State')  # Generic state type
 
@@ -152,7 +153,7 @@ def bfs(
         for action, next_state, cost in successors(node.state):
             if next_state not in explored:
                 frontier.append(Node(next_state, node, action, node.path_cost + cost))
-    return None`}</pre>
+    return None`}</PyCode>
           <div className="bg-blue-500/10 p-4 rounded-lg border border-blue-500/30">
             <p className="text-blue-300 font-semibold mb-2">Common Type Hint Patterns in AI</p>
             <div className="space-y-1 text-sm font-mono">
@@ -195,7 +196,7 @@ def bfs(
               </tbody>
             </table>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`# SLOW: O(n) membership check on list
+          <PyCode>{`# SLOW: O(n) membership check on list
 explored_list = []
 if state not in explored_list:  # O(n) each time!
     explored_list.append(state)
@@ -203,7 +204,7 @@ if state not in explored_list:  # O(n) each time!
 # FAST: O(1) membership check on set
 explored_set = set()
 if state not in explored_set:   # O(1) each time
-    explored_set.add(state)`}</pre>
+    explored_set.add(state)`}</PyCode>
         </div>
       ),
     },
@@ -213,7 +214,7 @@ if state not in explored_set:   # O(1) each time
       content: (
         <div className="space-y-4">
           <p className="text-gray-300"><span className="text-cyan-400 font-semibold">Memoization</span> stores previously computed results to avoid redundant work — critical in dynamic programming and recursive search.</p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`# Manual memoization with dict
+          <PyCode>{`# Manual memoization with dict
 memo = {}
 def minimax(state, is_max):
     if state in memo:
@@ -240,7 +241,7 @@ def successors(state):
     for action in all_actions:
         new_state = apply(state, action)
         if is_valid(new_state):
-            yield action, new_state, cost(state, action)`}</pre>
+            yield action, new_state, cost(state, action)`}</PyCode>
         </div>
       ),
     },

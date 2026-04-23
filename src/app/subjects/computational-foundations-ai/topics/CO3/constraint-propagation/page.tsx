@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiLink, FiZap, FiCode, FiCheckCircle } from 'react-icons/fi'
 
 const content = {
@@ -51,7 +52,7 @@ REVISE(Xi, Xj):
             <p className="text-amber-300 font-semibold mb-1">Complexity</p>
             <p className="text-gray-300 text-sm">AC-3 runs in O(cd³) where c = number of constraints, d = max domain size. Each arc (Xi, Xj) can be added to queue at most d times (once per Xi value removed). Each REVISE call is O(d²).</p>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`from collections import deque
+          <PyCode>{`from collections import deque
 
 def ac3(variables, domains, constraints):
     queue = deque([(xi, xj) for xi in variables for xj in constraints.get(xi,[])])
@@ -73,7 +74,7 @@ def revise(domains, xi, xj, constraints):
                    for y in domains[xj]):
             domains[xi].remove(x)
             removed = True
-    return removed`}</pre>
+    return removed`}</PyCode>
         </div>
       ),
     },

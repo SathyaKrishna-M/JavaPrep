@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiBarChart2, FiAlertCircle, FiCode, FiCheckCircle } from 'react-icons/fi'
 
 const content = {
@@ -69,12 +70,12 @@ const content = {
               </tbody>
             </table>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`# Simple evaluation for tic-tac-toe
+          <PyCode>{`# Simple evaluation for tic-tac-toe
 def evaluate_tictactoe(board, player):
     winner = check_winner(board)
     if winner == player: return 10
     if winner == opponent(player): return -10
-    return 0  # draw or game not over`}</pre>
+    return 0  # draw or game not over`}</PyCode>
         </div>
       ),
     },
@@ -91,7 +92,7 @@ def evaluate_tictactoe(board, player):
             <p className="text-green-300 font-semibold mb-2">Quiescence Search — The Fix</p>
             <p className="text-gray-300 text-sm">At the cutoff depth, instead of immediately applying the evaluation function, extend search only for <em>quiet positions</em> (no captures, checks, or tactical threats). For <em>noisy positions</em>, continue searching until the position is stable. This avoids evaluating a position mid-exchange.</p>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def quiescence(state, alpha, beta, game):
+          <PyCode>{`def quiescence(state, alpha, beta, game):
     """Extend search until position is quiet."""
     stand_pat = game.evaluate(state)  # static eval
     if stand_pat >= beta:
@@ -104,7 +105,7 @@ def evaluate_tictactoe(board, player):
         if score >= beta:
             return beta
         alpha = max(alpha, score)
-    return alpha`}</pre>
+    return alpha`}</PyCode>
         </div>
       ),
     },

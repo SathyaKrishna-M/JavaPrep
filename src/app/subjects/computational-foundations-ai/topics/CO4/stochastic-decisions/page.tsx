@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiShuffle, FiUsers, FiCode, FiCheckCircle } from 'react-icons/fi'
 
 const content = {
@@ -40,7 +41,7 @@ const content = {
             <p className="text-gray-300 text-sm">MIN: min over actions of EXPECTIMAX(child)</p>
             <p className="text-green-300 text-sm">CHANCE: Σ P(outcome) · EXPECTIMAX(child)</p>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def expectimax(state, depth, player, game):
+          <PyCode>{`def expectimax(state, depth, player, game):
     if depth == 0 or game.is_terminal(state):
         return game.evaluate(state)
 
@@ -55,7 +56,7 @@ const content = {
     else:  # CHANCE node
         outcomes = game.chance_outcomes(state)  # [(prob, next_state), ...]
         return sum(p * expectimax(s, depth-1, game.next_player(state), game)
-                   for p, s in outcomes)`}</pre>
+                   for p, s in outcomes)`}</PyCode>
         </div>
       ),
     },

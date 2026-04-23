@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiPackage, FiZap, FiCode, FiCheckCircle } from 'react-icons/fi'
 
 const content = {
@@ -12,7 +13,7 @@ const content = {
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">Python <span className="text-cyan-400 font-semibold">dict</span> (hash map) is O(1) average for insert, lookup, and delete. In AI it is used for: graph adjacency lists, g-values in A*, memoization caches, and parent tracking in search.</p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`# Graph as adjacency dict
+          <PyCode>{`# Graph as adjacency dict
 graph = {
     'Arad':   [('Sibiu', 140), ('Zerind', 75)],
     'Sibiu':  [('Arad', 140), ('Fagaras', 99)],
@@ -31,7 +32,7 @@ memo = {}
 def h(state):
     if state not in memo:
         memo[state] = compute_heuristic(state)
-    return memo[state]`}</pre>
+    return memo[state]`}</PyCode>
         </div>
       ),
     },
@@ -41,7 +42,7 @@ def h(state):
       content: (
         <div className="space-y-4">
           <p className="text-gray-300">Python <span className="text-cyan-400 font-semibold">set</span> provides O(1) average membership test, add, and remove. Critical for the <em>explored/closed</em> set in graph search to avoid revisiting states.</p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`explored = set()
+          <PyCode>{`explored = set()
 
 # O(1) check — no matter how many states explored
 if state not in explored:
@@ -56,7 +57,7 @@ only_in_A = domain_A - domain_B          # {'red'}
 
 # Frozenset for hashable states (e.g., 8-puzzle board)
 board = frozenset({(0,0,'blank'), (0,1,'1'), (1,0,'2')})
-explored.add(board)  # ✓ frozenset is hashable`}</pre>
+explored.add(board)  # ✓ frozenset is hashable`}</PyCode>
           <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/30">
             <p className="text-amber-300 font-semibold mb-1">Hashability Requirement</p>
             <p className="text-gray-300 text-sm">States added to a set must be hashable. Use tuples (not lists) or frozensets to represent states: <code className="text-green-300">tuple(board)</code> instead of <code className="text-green-300">list(board)</code>.</p>
@@ -70,7 +71,7 @@ explored.add(board)  # ✓ frozenset is hashable`}</pre>
       content: (
         <div className="space-y-4">
           <p className="text-gray-300"><span className="text-cyan-400 font-semibold">deque</span> (double-ended queue) provides O(1) append to right and popleft from left — perfect for BFS FIFO frontier. A plain list has O(n) pop(0).</p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`from collections import deque
+          <PyCode>{`from collections import deque
 
 def bfs(graph, start, goal):
     frontier = deque([start])   # O(1) append/popleft
@@ -96,7 +97,7 @@ def reconstruct_path(parent, start, goal):
     return list(reversed(path))
 
 # Test
-print(bfs(graph, 'Arad', 'Zerind'))  # ['Arad', 'Zerind']`}</pre>
+print(bfs(graph, 'Arad', 'Zerind'))  # ['Arad', 'Zerind']`}</PyCode>
         </div>
       ),
     },
@@ -106,7 +107,7 @@ print(bfs(graph, 'Arad', 'Zerind'))  # ['Arad', 'Zerind']`}</pre>
       content: (
         <div className="space-y-4">
           <p className="text-gray-300"><span className="text-cyan-400 font-semibold">heapq</span> implements a min-heap: the smallest element is always at index 0. Used as the frontier in UCS (sort by g) and A* (sort by f = g + h). heappush and heappop are O(log n).</p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`import heapq
+          <PyCode>{`import heapq
 
 def ucs(graph, start, goal):
     # frontier: (cost, state)
@@ -150,7 +151,7 @@ def astar(graph, start, goal, h):
                 g[neighbor] = new_g
                 parent[neighbor] = node
                 f_val = new_g + h(neighbor)
-                heapq.heappush(frontier, (f_val, new_g, neighbor))`}</pre>
+                heapq.heappush(frontier, (f_val, new_g, neighbor))`}</PyCode>
         </div>
       ),
     },

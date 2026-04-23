@@ -1,43 +1,80 @@
 'use client'
 
+import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FiHome, FiChevronRight, FiBarChart2 } from 'react-icons/fi'
+import { mdsTopics, Topic } from '@/data/mds-topics'
+import TopicListItem from '@/components/TopicListItem'
+import SectionHeader from '@/components/SectionHeader'
+import GradientDivider from '@/components/GradientDivider'
+import TopicSearch from '@/components/TopicSearch'
+import Fuse from 'fuse.js'
 
-const courseOutcomes = [
-  {
-    co: 'CO1',
-    title: 'Introduction to Data Science',
-    desc: 'Types of data, data sources, data lifecycle, data cleaning (missing values, duplicates, outliers), feature preparation.',
+interface Section {
+  title: string
+  subtitle: string
+  topics: Topic[]
+}
+
+const groupTopics = (topics: Topic[]): Record<string, Section> => ({
+  co1: {
+    title: 'CO-1: Introduction to Data Science',
+    subtitle: 'Types of data, data sources, data lifecycle, cleaning (missing values, duplicates, outliers), feature preparation',
+    topics: topics.filter(t => t.co === 'CO1'),
   },
-  {
-    co: 'CO2',
-    title: 'Descriptive Statistics',
-    desc: 'Measurement scales, measures of central tendency (mean, median, mode), dispersion (variance, SD, IQR), percentiles.',
+  co2: {
+    title: 'CO-2: Descriptive Statistics',
+    subtitle: 'Measurement scales, central tendency (mean, median, mode), dispersion (variance, SD, IQR), percentiles, skewness',
+    topics: topics.filter(t => t.co === 'CO2'),
   },
-  {
-    co: 'CO3',
-    title: 'Probability Theory',
-    desc: 'Sample space, conditional probability, Bayes theorem, distributions (Bernoulli, Binomial, Normal), expectation & variance.',
+  co3: {
+    title: 'CO-3: Probability Theory',
+    subtitle: 'Sample space, conditional probability, Bayes\' theorem, Bernoulli, Binomial, Normal distributions, expectation',
+    topics: topics.filter(t => t.co === 'CO3'),
   },
-  {
-    co: 'CO4',
-    title: 'Inferential Statistics',
-    desc: 'Sampling distributions, point estimation, confidence intervals, hypothesis testing (z-test, t-test, chi-square), p-values.',
+  co4: {
+    title: 'CO-4: Inferential Statistics',
+    subtitle: 'Sampling distributions, point estimation, confidence intervals, hypothesis testing (z-test, t-test, chi-square)',
+    topics: topics.filter(t => t.co === 'CO4'),
   },
-  {
-    co: 'CO5',
-    title: 'Regression Analysis',
-    desc: 'Correlation, simple & multiple linear regression, assumptions, residual analysis, multicollinearity, model evaluation.',
+  co5: {
+    title: 'CO-5: Regression Analysis',
+    subtitle: 'Correlation, simple & multiple linear regression, OLS, residual analysis, multicollinearity, model evaluation',
+    topics: topics.filter(t => t.co === 'CO5'),
   },
-  {
-    co: 'CO6',
-    title: 'Visualization & Decision Making',
-    desc: 'Advanced visualization, data storytelling, pattern discovery, evaluation metrics (MSE, RMSE, R²), ethics in analytics.',
+  co6: {
+    title: 'CO-6: Visualization & Decision Making',
+    subtitle: 'Advanced visualization, data storytelling, evaluation metrics (MSE, RMSE, R²), ethics in analytics',
+    topics: topics.filter(t => t.co === 'CO6'),
   },
-]
+})
 
 export default function MDSPage() {
+  const [searchQuery, setSearchQuery] = useState('')
+  const sections = useMemo(() => groupTopics(mdsTopics), [])
+
+  const filteredSections = useMemo(() => {
+    if (!searchQuery.trim()) return sections
+
+    const fuse = new Fuse(mdsTopics, {
+      keys: ['title', 'description'],
+      threshold: 0.3,
+      includeScore: true,
+    })
+
+    const resultIds = new Set(fuse.search(searchQuery).map(r => r.item.id))
+
+    const filtered: Record<string, Section> = {}
+    Object.entries(sections).forEach(([key, section]) => {
+      const filteredTopics = section.topics.filter(t => resultIds.has(t.id))
+      if (filteredTopics.length > 0) {
+        filtered[key] = { ...section, topics: filteredTopics }
+      }
+    })
+    return filtered
+  }, [searchQuery, sections])
+
   return (
     <div className="relative">
       {/* Background orbs */}
@@ -55,8 +92,7 @@ export default function MDSPage() {
           className="flex items-center gap-2 text-sm text-gray-400 mb-8"
         >
           <Link href="/" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
-            <FiHome className="w-4 h-4" />
-            <span>Home</span>
+            <FiHome className="w-4 h-4" /><span>Home</span>
           </Link>
           <FiChevronRight className="w-4 h-4" />
           <Link href="/subjects" className="hover:text-emerald-400 transition-colors">Subjects</Link>
@@ -75,7 +111,7 @@ export default function MDSPage() {
           <div className="flex items-center gap-4">
             <FiBarChart2 className="w-12 h-12 md:w-16 md:h-16 text-emerald-400" />
             <div>
-              <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent leading-tight">
                 Mathematics for Data Science
               </h1>
               <p className="text-gray-400 mt-1 text-sm">25MT1306E &nbsp;·&nbsp; 4 Credits &nbsp;·&nbsp; 25-26 3rd Sem</p>
@@ -83,42 +119,51 @@ export default function MDSPage() {
           </div>
         </motion.div>
 
-        {/* Course Outcomes */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-10"
-        >
-          <h2 className="text-xl font-semibold text-gray-200 mb-6">Course Outcomes</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {courseOutcomes.map((co, i) => (
-              <motion.div
-                key={co.co}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.1 * i }}
-                className="rounded-xl border border-white/10 bg-white/5 p-5 hover:border-emerald-500/40 hover:bg-emerald-500/5 transition-all duration-300"
-              >
-                <span className="text-xs font-bold text-emerald-400 uppercase tracking-widest">{co.co}</span>
-                <h3 className="text-white font-semibold mt-1 mb-2">{co.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">{co.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        {/* Search */}
+        <TopicSearch query={searchQuery} onQueryChange={setSearchQuery} />
 
-        {/* Coming Soon */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="text-center py-16 border border-dashed border-white/10 rounded-2xl"
-        >
-          <p className="text-4xl mb-3">🚧</p>
-          <h3 className="text-xl font-semibold text-gray-300 mb-2">Topics Coming Soon</h3>
-          <p className="text-gray-500 text-sm">Content for this subject is being prepared.</p>
-        </motion.div>
+        {/* Topic Sections */}
+        <div className="space-y-10 md:space-y-14">
+          {Object.entries(filteredSections).map(([key, section], sectionIndex) => {
+            if (section.topics.length === 0) return null
+            return (
+              <motion.section
+                key={key}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-100px' }}
+                transition={{ duration: 0.6, delay: sectionIndex * 0.1 }}
+                className="relative"
+              >
+                <SectionHeader id={key} title={section.title} subtitle={section.subtitle} />
+                <div className="space-y-1.5">
+                  {section.topics.map((topic, index) => (
+                    <TopicListItem key={topic.id} topic={topic} index={index} />
+                  ))}
+                </div>
+                {sectionIndex < Object.keys(filteredSections).length - 1 && <GradientDivider />}
+              </motion.section>
+            )
+          })}
+        </div>
+
+        {/* Empty state */}
+        {searchQuery && Object.keys(filteredSections).length === 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center py-16"
+          >
+            <div className="text-6xl mb-4">🔍</div>
+            <h3 className="text-2xl font-bold text-gray-300 mb-2">No topics found</h3>
+            <p className="text-gray-400">
+              Try adjusting your search or{' '}
+              <button onClick={() => setSearchQuery('')} className="text-emerald-400 hover:text-emerald-300 underline">
+                clear the search
+              </button>
+            </p>
+          </motion.div>
+        )}
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiCpu, FiZap, FiCode, FiCheckCircle } from 'react-icons/fi'
 
 const content = {
@@ -43,7 +44,7 @@ const content = {
               </ul>
             </div>
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def ida_star(start, goal, h):
+          <PyCode>{`def ida_star(start, goal, h):
     threshold = h(start)
     path = [start]
 
@@ -73,7 +74,7 @@ def dfs_contour(path, g, threshold, goal, h):
             if result < minimum:
                 minimum = result
             path.pop()
-    return minimum`}</pre>
+    return minimum`}</PyCode>
         </div>
       ),
     },

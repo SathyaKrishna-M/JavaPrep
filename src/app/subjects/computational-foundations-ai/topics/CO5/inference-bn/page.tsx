@@ -1,6 +1,7 @@
 'use client'
 
 import DMTopicPage from '@/components/DMTopicPage'
+import PyCode from '@/components/PyCode'
 import { FiCpu, FiGitMerge, FiCode, FiCheckCircle, FiActivity } from 'react-icons/fi'
 
 const content = {
@@ -64,7 +65,7 @@ const content = {
               </div>
             ))}
           </div>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`# Factor operations for Variable Elimination
+          <PyCode>{`# Factor operations for Variable Elimination
 import numpy as np
 from itertools import product
 
@@ -97,7 +98,7 @@ class Factor:
         return Factor(new_vars, new_vals)
 
     def normalise(self):
-        return Factor(self.variables, self.values / self.values.sum())`}</pre>
+        return Factor(self.variables, self.values / self.values.sum())`}</PyCode>
         </div>
       ),
     },
@@ -143,7 +144,7 @@ class Factor:
       content: (
         <div className="space-y-4">
           <p className="text-gray-300"><span className="text-cyan-400 font-semibold">Rejection sampling</span> is the simplest approximate inference method. Generate samples from the prior joint distribution; <em>reject</em> any sample inconsistent with evidence; count query variable values among accepted samples.</p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def rejection_sampling(query_var, evidence, bn, num_samples=10000):
+          <PyCode>{`def rejection_sampling(query_var, evidence, bn, num_samples=10000):
     counts = {}
     accepted = 0
 
@@ -161,7 +162,7 @@ class Factor:
     total = sum(counts.values())
     return {k: v / total for k, v in counts.items()}
 
-# Limitation: if P(evidence) is very small, almost all samples are rejected`}</pre>
+# Limitation: if P(evidence) is very small, almost all samples are rejected`}</PyCode>
           <div className="bg-red-500/10 p-4 rounded-lg border border-red-500/30">
             <p className="text-red-300 font-semibold mb-1">Problem with Rejection Sampling</p>
             <p className="text-gray-300 text-sm">When evidence is unlikely (e.g., rare disease = True), nearly all samples are rejected. Variance is high, convergence is slow. Likelihood weighting fixes this.</p>
@@ -175,7 +176,7 @@ class Factor:
       content: (
         <div className="space-y-4">
           <p className="text-gray-300"><span className="text-cyan-400 font-semibold">Likelihood weighting</span> fixes evidence variables to their observed values and weights each sample by the probability of the evidence given the sample. No samples are rejected — all contribute with different weights.</p>
-          <pre className="bg-black/40 p-4 rounded-lg text-green-300 text-sm font-mono overflow-x-auto">{`def likelihood_weighting(query_var, evidence, bn, num_samples=10000):
+          <PyCode>{`def likelihood_weighting(query_var, evidence, bn, num_samples=10000):
     weighted_counts = {}
 
     for _ in range(num_samples):
@@ -194,7 +195,7 @@ class Factor:
         weighted_counts[val] = weighted_counts.get(val, 0) + weight
 
     total = sum(weighted_counts.values())
-    return {k: v / total for k, v in weighted_counts.items()}`}</pre>
+    return {k: v / total for k, v in weighted_counts.items()}`}</PyCode>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-green-500/10 p-4 rounded-lg border border-green-500/30">
               <p className="text-green-300 font-semibold mb-2">Advantages</p>
